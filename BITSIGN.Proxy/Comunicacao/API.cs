@@ -105,6 +105,8 @@ namespace BITSIGN.Proxy.Comunicacao
                 {
                     try
                     {
+                        this.logger.Escrever(Severidade.Info, $"Request.Headers: {string.Join(";", requisicao.Headers.Select(h => $"{h.Key}={string.Join(",", h.Value)}"))}");
+
                         return await analiseDeRetorno(resposta);
                     }
                     catch (Exception ex)

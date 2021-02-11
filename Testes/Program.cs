@@ -18,76 +18,111 @@ namespace Testes
     {
         static async Task Main(string[] args)
         {
-            var codigoDoContratante = new Guid("985E0702-E94A-4954-B7A8-1F28C73C8122");
+            var codigoDoContratante = new Guid("985e0702-e94a-4954-b7a8-1f28c73c8122");
+            var arquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao.pdf");
 
-            using (var proxy = new ProxyDoServico(
-                new Conexao(
-                    Ambiente.Sandbox,
-                    codigoDoContratante,
-                    new Guid("5A83A804-1416-476F-8C78-D4D1B8D33FE4"),
-                    FormatoDeSerializacao.Json),
-                new LogEmTexto(new StreamWriter("Log.txt")),
-                new RastreioComGuid()))
+            using (var logger = new LogEmTexto(new StreamWriter("Log.txt")))
             {
-                var pacote = new Pacote(new Lote()
+                using (var proxy = new ProxyDoServico(
+                    new Conexao(
+                        Ambiente.Sandbox,
+                        codigoDoContratante,
+                        new Guid("5a83a804-1416-476f-8c78-d4d1b8d33fe4"),
+                        FormatoDeSerializacao.Json),
+                    logger,
+                    new RastreioComGuid()))
                 {
-                    Contratante = new Contratante()
+                    var pacote = new Pacote(new Lote()
                     {
-                        Id = codigoDoContratante,
+                        Contratante = new Contratante()
+                        {
+                            Id = codigoDoContratante,
+                            Entidade = new Entidade()
+                            {
+                                Nome = "Antares Securitizadora de Recebíveis Comerciais S/A",
+                                Documento = "031508560000185"
+                            }
+                        },
                         Entidade = new Entidade()
                         {
                             Nome = "Antares Securitizadora de Recebíveis Comerciais S/A",
                             Documento = "031508560000185"
-                        }
-                    },
-                    Entidade = new Entidade()
-                    {
-                        Nome = "Antares Securitizadora de Recebíveis Comerciais S/A",
-                        Documento = "031508560000185"
-                    },
-                    Documentos = new List<Documento>()
-                    {
-                        new Documento()
+                        },
+                        Documentos = new List<Documento>()
                         {
-                            NomeDoArquivo = "Declaracao.pdf",
-                            Descricao = "Declaração de Isenção",
-                            Tipo = "Contrato",
-                            Tags = "contratoId=123",
-                            FormatoDoArquivo = "PDF",
-                            ConteudoOriginal = File.ReadAllBytes("Exemplo/Declaracao.pdf"),
-                            PadraoDeAssinatura = "CAdES",
-                            PoliticaDeAssinatura = "PA_AD_RB_v2_3",
-                            Assinaturas = new List<Assinatura>()
+                            new Documento()
                             {
-                                new Assinatura()
+                                NomeDoArquivo = "ContratoDeLocacao.pdf",
+                                Descricao = "Contrato de Locação",
+                                Tipo = "Contrato",
+                                Tags = "contratoId=123",
+                                FormatoDoArquivo = "PDF",
+                                ConteudoOriginal = arquivo,
+                                TamanhoDoArquivo = arquivo.Length,
+                                PadraoDeAssinatura = "CAdES",
+                                PoliticaDeAssinatura = "PA_AD_RB_v2_3",
+                                Assinaturas = new List<Assinatura>()
                                 {
-                                    Perfil = "Declarante",
-                                    QtdeMinima = 1,
-                                    Assinantes = new List<Assinante>()
+                                    new Assinatura()
                                     {
-                                        new Assinante()
+                                        Perfil = "Locador",
+                                        QtdeMinima = 1,
+                                        Assinantes = new List<Assinante>()
                                         {
-                                            Entidade = new Entidade()
+                                            new Assinante()
                                             {
-                                                Nome = "Israel",
-                                                Documento = "28387365823",
-                                                Email = "israelaece@yahoo.com.br"
+                                                Entidade = new Entidade()
+                                                {
+                                                    Nome = "Jack Bauer",
+                                                    Documento = "12345678900",
+                                                    Email = "jack.bauer@uct.com"
+                                                },
+                                                Notificar = true,
+                                                Obrigatorio = false
                                             },
-                                            Notificar = true,
-                                            Obrigatorio = true
+                                            new Assinante()
+                                            {
+                                                Entidade = new Entidade()
+                                                {
+                                                    Nome = "Nina Myers",
+                                                    Documento = "98765432100",
+                                                    Email = "nina.myers@uct.com"
+                                                },
+                                                Notificar = true,
+                                                Obrigatorio = false
+                                            }
+                                        }
+                                    },
+                                    new Assinatura()
+                                    {
+                                        Perfil = "Locatário",
+                                        QtdeMinima = 1,
+                                        Assinantes = new List<Assinante>()
+                                        {
+                                            new Assinante()
+                                            {
+                                                Entidade = new Entidade()
+                                                {
+                                                    Nome = "Joe Biden",
+                                                    Documento = "11122233300",
+                                                    Email = "potus@whitehouse.com"
+                                                },
+                                                Notificar = true,
+                                                Obrigatorio = true
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
-                    },
-                    Tags = "processo=456"
-                });
+                        },
+                        Tags = "processo=456"
+                    });
 
-                var local = await proxy.Lotes.Upload(pacote);
+                    var urlDoLote = await proxy.Lotes.Upload(pacote);
 
-                Console.WriteLine(pacote.Lote.Id);
-                Console.WriteLine(pacote.Lote.UrlAoVivo);
+                    Console.WriteLine(pacote.Lote.Id);
+                    Console.WriteLine(pacote.Lote.UrlAoVivo);
+                }
             }
         }
     }

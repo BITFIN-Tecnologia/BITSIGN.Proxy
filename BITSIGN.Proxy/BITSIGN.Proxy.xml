@@ -876,7 +876,7 @@
         </member>
         <member name="M:BITSIGN.Proxy.Logging.LogEmTexto.Dispose">
             <summary>
-            Armazena eventuais mensagens que estejam no buffer e encerrar e descarta os recursos utilizados.
+            Armazena eventuais mensagens que estejam no buffer, encerra e descarta os recursos utilizados.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.Logging.Severidade">

@@ -31,6 +31,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// </summary>
         /// <param name="pacote">O pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>URI onde estará disponível o lote para consulta.</returns>
         public async Task<Uri> Upload(DTOs.Pacote pacote, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Post, "lotes")
