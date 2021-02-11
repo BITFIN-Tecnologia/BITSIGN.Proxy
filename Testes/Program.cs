@@ -56,7 +56,7 @@ namespace Testes
                             FormatoDoArquivo = "PDF",
                             ConteudoOriginal = File.ReadAllBytes("Exemplo/Declaracao.pdf"),
                             PadraoDeAssinatura = "CAdES",
-                            PoliticaDeAssinatura = "",
+                            PoliticaDeAssinatura = "PA_AD_RB_v2_3",
                             Assinaturas = new List<Assinatura>()
                             {
                                 new Assinatura()
