@@ -7,7 +7,7 @@ using System.Diagnostics;
 namespace BITSIGN.Proxy.Logging
 {
     [DebuggerDisplay("{Id}")]
-    internal class Escopo : ILogger, IDisposable
+    internal class Escopo : ILogger
     {
         private readonly ILogger logger;
 
@@ -52,9 +52,9 @@ namespace BITSIGN.Proxy.Logging
                 this.logger.QuebrarLinha();
         }
 
-        public void Dispose() => Encerrar();
-
         public void Flush() => this.logger.Flush();
+
+        public void Dispose() => this.logger.Dispose();
 
         public Guid Id { get; private set; }
 

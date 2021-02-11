@@ -8,7 +8,7 @@ namespace BITSIGN.Proxy.Logging
     /// <summary>
     /// Definição para a criação e armazenamento de logs de execução.
     /// </summary>
-    public interface ILogger
+    public interface ILogger : IDisposable
     {
         /// <summary>
         /// Permite incluir uma mensagem e sua respectiva severidade.

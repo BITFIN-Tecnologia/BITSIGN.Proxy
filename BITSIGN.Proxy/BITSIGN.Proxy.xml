@@ -848,7 +848,7 @@
             <summary>
             Inicializa o log com armazenamento das mensagens no sistema de arquivos.
             </summary>
-            <param name="escritor">Local onde serão armazenados as mensagens de logs que forem geradas.</param>
+            <param name="escritor">Local onde serão armazenadas as mensagens de logs que forem geradas.</param>
             <param name="qtdeDeMensagensParaFlush">Quantidade de mensagens em buffer. Quando este valor for atingido, as mensagens serão escritas no arquivo. O padrão é <c>10</c>.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Logging.LogEmTexto.Escrever(System.Exception)">
@@ -872,6 +872,11 @@
         <member name="M:BITSIGN.Proxy.Logging.LogEmTexto.Flush">
             <summary>
             Efetiva fisicamente a gravação dos logs.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.LogEmTexto.Dispose">
+            <summary>
+            Armazena eventuais mensagens que estejam no buffer e encerrar e descarta os recursos utilizados.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.Logging.Severidade">

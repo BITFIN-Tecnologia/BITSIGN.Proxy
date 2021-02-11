@@ -62,5 +62,14 @@ namespace BITSIGN.Proxy.Logging
 
             this.mensagens.Clear();
         }
+
+        /// <summary>
+        /// Armazena eventuais mensagens que estejam no buffer, encerra e descarta os recursos utilizados.
+        /// </summary>
+        public void Dispose()
+        {
+            this.Flush();
+            this.escritor.Dispose();
+        }
     }
 }
