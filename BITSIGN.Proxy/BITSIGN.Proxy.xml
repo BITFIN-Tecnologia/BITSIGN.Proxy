@@ -1,0 +1,962 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BITSIGN.Proxy</name>
+    </assembly>
+    <members>
+        <member name="T:BITSIGN.Proxy.Ambiente">
+            <summary>
+            Tipos de ambientes disponíveis para consumo dos serviços.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.Ambiente.Sandbox">
+            <summary>
+            Ambiente destinado exclusivamente para testes de implementação e integração.
+            </summary>
+            <remarks>O ambiente de Sandbox é um "espelho" do ambiente de PRODUÇÃO, com exceção de que as assinaturas realizadas não são efetivamente válidas.</remarks>
+        </member>
+        <member name="F:BITSIGN.Proxy.Ambiente.Producao">
+            <summary>
+            Esta opção indica que as requisições serão encaminhadas para ambiente de Produção, e estarão sujeitas à cobrança e aos encargos do plano contratado.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.API">
+            <summary>
+            Classe base que define os recursos necessários para comunicação com a API remota.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.Comunicacao.API.proxy">
+            <summary>
+            Proxy HTTP pré-configurado para comunicação com o serviço.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.API.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+            <summary>
+            Inicializa a API.
+            </summary>
+            <param name="proxy">Instânca da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
+            <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.API.Executar(System.Net.Http.HttpRequestMessage,System.Action{System.Net.Http.HttpResponseMessage},System.Threading.CancellationToken)">
+            <summary>
+            Configura, envia e captura o retorno da requisição para um determinado serviço.
+            </summary>
+            <param name="requisicao">Mensagem de requisição para o serviço.</param>
+            <param name="analiseDeRetorno">Função que analisa o retorno.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.API.Executar``1(System.Net.Http.HttpRequestMessage,System.Func{System.Net.Http.HttpResponseMessage,System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken)">
+            <summary>
+            Configura, envia e captura o retorno da requisição para um determinado serviço.
+            </summary>
+            <typeparam name="T">Especifica em tipo o conteúdo de retorno será deserializado.</typeparam>
+            <param name="requisicao">Mensagem de requisição para o serviço.</param>
+            <param name="analiseDeRetorno">Função que analisa o retorno e constrói o objeto do tipo <typeparamref name="T"/></param>.
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Retorna o objeto do tipo <typeparamref name="T"/> pronto para utilização.</returns>
+        </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes">
+            <summary>
+            Ajustes relacionados ao processo operacional das assinaturas digitais, callbacks, etc.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+            <summary>
+            Inicializa a API de configurações.
+            </summary>
+            <param name="proxy">Instânca da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
+            <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.Atualizar(BITSIGN.Proxy.DTOs.Integracao,System.Threading.CancellationToken)">
+            <summary>
+            Atualização de configurações.
+            </summary>
+            <param name="integracao">Objeto com os parâmetros para serem atualizados.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Documentos">
+            <summary>
+            Download dos documentos enviados, assinados e manifestos de assinaturas.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+            <summary>
+            Inicializa a API de documentos.
+            </summary>
+            <param name="proxy">Instânca da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
+            <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Detalhes(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Detalhes do Documento.
+            </summary>
+            <param name="id">Identificador do Documento.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Retorna todas as informações do documento que foi submetido para assinatura.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Original(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Documento Original.
+            </summary>
+            <param name="id">Identificador do Documento.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Um <c>array</c> de <see cref="T:System.Byte"/>s que corresponde ao documento original enviado.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Assinado(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Documento Assinado.
+            </summary>
+            <param name="id">Identificador do Documento.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Um <c>array</c> de <see cref="T:System.Byte"/>s que corresponde ao documento assinado.</returns>
+            <remarks>Este arquivo é aquele que possui validade jurídica.</remarks>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Manifesto(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Manifesto de Assinaturas.
+            </summary>
+            <param name="id">Identificador do Documento.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Um <c>array</c> de <see cref="T:System.Byte"/>s que corresponde à um arquivo PDF com os detalhes dos assinantes e as características das assinaturas.</returns>
+        </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Financeiro">
+            <summary>
+            Detalhamento dos planos contratados, fechamentos e faturas do contratante.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Financeiro.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+            <summary>
+            Inicializa a API financeira.
+            </summary>
+            <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
+            <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Financeiro.Planos(System.Threading.CancellationToken)">
+            <summary>
+            Planos Contratados.
+            </summary>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Coleção contendo os planos contratados, suas respectivas características e o status atual de cada um deles.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Financeiro.Fechamentos(System.Threading.CancellationToken)">
+            <summary>
+            Fechamentos Mensais.
+            </summary>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Coleção contendo a versão resumida dos fechamentos dos últimos 12 meses.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Financeiro.Fechamento(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Fechamento Mensal.
+            </summary>
+            <param name="id">Identificador do Fechamento.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Detalhamento completo do fechamento de um ano/mês específico, incluindo os dados de pagamento.</returns>
+        </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Lotes">
+            <summary>
+            Envio e gestão dos lotes de documentos para assinatura digital.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+            <summary>
+            Inicializa a API de lotes.
+            </summary>
+            <param name="proxy">Instânca da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
+            <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Upload(BITSIGN.Proxy.DTOs.Pacote,System.Threading.CancellationToken)">
+            <summary>
+            Upload de Documentos.
+            </summary>
+            <param name="pacote">O pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Detalhes(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Detalhes do Lote.
+            </summary>
+            <param name="id">Identificador do Lote.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Retorna todas as informações do lote que foi submetido para o serviço.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Excluir(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Exclusão do Lote.
+            </summary>
+            <param name="id">Identificador do Lote.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Notificacoes(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Notificações do Lote.
+            </summary>
+            <param name="id">Identificador do Lote.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Coleção com as notificações enviadas à todos os assinantes envolvidos no lote.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Pacote(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Download do Pacote.
+            </summary>
+            <param name="id">Identificador do Lote.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Um objeto que representa o lote enviado com seus documentos e os arquivos associados.</returns>
+        </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio">
+            <summary>
+            Define a estrutura para geração de códigos de rastreio.
+            </summary>
+            <remarks>O rastreio de requisições é útil para correlacionar as requisições com os logs armazenados pelos serviços.</remarks>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio.Gerar">
+            <summary>
+            Método que gera o código de rastreio.
+            </summary>
+            <returns>Valor aleatório, que identifica unicamente a requisição.</returns>
+        </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.RastreioComGuid">
+            <summary>
+            Gerador de código de rastreio com base no <see cref="T:System.Guid"/>.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.RastreioComGuid.Gerar">
+            <summary>
+            Ao gerar, o método <see cref="M:System.Guid.NewGuid"/> é chamado.
+            </summary>
+            <returns>Retorna um <see cref="T:System.Guid"/> em formato <c>string</c>.</returns>
+        </member>
+        <member name="T:BITSIGN.Proxy.Conexao">
+            <summary>
+            Informações necessárias para iniciar a comunicação com o serviço.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Conexao.#ctor(BITSIGN.Proxy.Ambiente,System.Guid,System.Guid,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
+            <summary>
+            Inicia a conexão com o mínimo necessário para estabelecer a comunicação com um dos <see cref="T:BITSIGN.Proxy.Ambiente"/>s.
+            </summary>
+            <param name="ambiente">Ambiente de produção ou de testes (Sandbox).</param>
+            <param name="codigoDoContratante">Código exclusivo do contratante.</param>
+            <param name="codigoDeIntegracao">Código do contratante para integração entre sistemas.</param>
+            <param name="formato">Define como será serializado o conteúdo das mensagens trocadas com os serviços. O padrão é <see cref="F:BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao.Json"/>.</param>
+            <exception cref="T:System.ArgumentException">Se o <paramref name="codigoDoContratante"/> ou o <paramref name="codigoDeIntegracao"/> forem <see cref="F:System.Guid.Empty"/>.</exception>
+        </member>
+        <member name="P:BITSIGN.Proxy.Conexao.Ambiente">
+            <summary>
+            Ambiente de Sandbox ou Produção.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Conexao.CodigoDoContratante">
+            <summary>
+            Código do Contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Conexao.CodigoDeIntegracao">
+            <summary>
+            Código de Integração gerado para o contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Conexao.FormatoDeSerializacao">
+            <summary>
+            Formato da serialização das mensagens trocadas com os serviços.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Conexao.Url">
+            <summary>
+            Endereço HTTP para o serviço, variando de acordo com o <see cref="P:BITSIGN.Proxy.Conexao.Ambiente"/>.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Assinante">
+            <summary>
+            Informações do assinante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.Entidade">
+            <summary>
+            Pessoa física ou jurídica definida como assinante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.Status">
+            <summary>
+            Indica o status atual do assinante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.DataDoStatus">
+            <summary>
+            Data em que o status foi definido.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.Obrigatorio">
+            <summary>
+            Indica se o assinante é ou não obrigatório.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.Observacoes">
+            <summary>
+            Observações complementares do assinante. Serve para indicar, por exemplo, o motivo de rejeição.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.Notificar">
+            <summary>
+            Indica se o assinante deve ser notificado de que há um novo documento disponível para assinatura.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Assinatura">
+            <summary>
+            Perfil de assinatura.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinatura.Perfil">
+            <summary>
+            Nome do perfil de assinatura.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinatura.QtdeMinima">
+            <summary>
+            Quantidade mínima necessária de assinantes para este perfil.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinatura.Status">
+            <summary>
+            Indica o status atual da assinatura.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinatura.DataDoStatus">
+            <summary>
+            Data em que o status foi definido.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinatura.Assinantes">
+            <summary>
+            Coleção de assinantes associados à assinatura.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Base">
+            <summary>
+            Classe com recursos comuns para os DTOs.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Base.Id">
+            <summary>
+            Identificador único para o objeto.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Callback">
+            <summary>
+            Classe utilizada para recepcionar os callbacks gerados pela plataforma.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Callback.Evento">
+            <summary>
+            Nome do evento indicando de qual entidade se refere o callback.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Callback.Id">
+            <summary>
+            Identificador da entidade que gerou o callback.
+            </summary>
+            <remarks>Na maioria das vezes será um <see cref="T:System.Guid"/>; porém quando se tratar de um assinante, o <see cref="P:BITSIGN.Proxy.DTOs.Callback.Id"/> será o número de seu documento (CNPJ/CPF).</remarks>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Callback.Status">
+            <summary>
+            Status que foi atribuído à entidade.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Callback.Data">
+            <summary>
+            Data em que o callback ocorreu.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Callback.Complemento">
+            <summary>
+            Alguma informação complementar relevante para este evento.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Callback.Tags">
+            <summary>
+            Se a entidade que gerou o callback possuir tags associadas, elas serão informadas nesta propriedade.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Contratante">
+            <summary>
+            Empresa ou Pessoa Física que possui contrato para assinaturas digitais.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Contratante.Entidade">
+            <summary>
+            Entidade associada ao contratante.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Documento">
+            <summary>
+            Documento para assinatura digital.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.Data">
+            <summary>
+            Data de criação do documento.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.Descricao">
+            <summary>
+            Descrição amigável do arquivo.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.Tipo">
+            <summary>
+            Tipo do documento (opções predefinidas).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.NomeDoArquivo">
+            <summary>
+            Nome do arquivo (original) dentro do pacote.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.FormatoDoArquivo">
+            <summary>
+            Formato do arquivo (PDF, XML, etc.).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.TamanhoDoArquivo">
+            <summary>
+            Tamanho (em bytes) do arquivo.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.Hash">
+            <summary>
+            Código hash do arquivo original.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.PadraoDeAssinatura">
+            <summary>
+            Padrão de assinatura (CAdES, PAdES ou XAdES).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.PoliticaDeAssinatura">
+            <summary>
+            Política de assinatura utilizada.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.Tags">
+            <summary>
+            Tags utilizadas para correlacionar o documento ao sistema do contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.Status">
+            <summary>
+            Indica o status atual do documento.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.DataDoStatus">
+            <summary>
+            Data em que o status foi definido.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.NomeDoArquivoAssinado">
+            <summary>
+            Informa o nome do arquivo assinado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.NomeDoArquivoDeManifesto">
+            <summary>
+            Informa o nome do arquivo de manifesto de assinaturas.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.NomeDoArquivoOriginalComManifesto">
+            <summary>
+            Informa o nome do arquivo original com de manifesto de assinaturas adicionado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.ConteudoOriginal">
+            <summary>
+            Conteúdo do arquivo original.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.ConteudoAssinado">
+            <summary>
+            Conteúdo do arquivo assinado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.ConteudoDoManifesto">
+            <summary>
+            Conteúdo do arquivo de manifesto de assinaturas.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.ConteudoDoOrginalComManifesto">
+            <summary>
+            Conteúdo do arquivo original com o manifesto de assinaturas incluído.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.UrlDoManifesto">
+            <summary>
+            URL para acesso online do manifesto de assinaturas do documento.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.Assinaturas">
+            <summary>
+            Relação de assinaturas associadas ao documento.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Entidade">
+            <summary>
+            Entidade que define os dados de uma pessoa física ou jurídica.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Entidade.Nome">
+            <summary>
+            Nome completo da entidade.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Entidade.Documento">
+            <summary>
+            Documento (CNPJ/CPF) da entidade.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Entidade.Email">
+            <summary>
+            Endereço de e-mail da entidade.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Fechamento">
+            <summary>
+            Apuração mensal das assinaturas realizadas.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.Contratante">
+            <summary>
+            Contratante associado ao fechamento.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.Plano">
+            <summary>
+            Detalhes do plano contratado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.Ano">
+            <summary>
+            Ano do período de apuração.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.Mes">
+            <summary>
+            Mês do período de apuração.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.Status">
+            <summary>
+            Indica o status atual do fechamento.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.DataDoStatus">
+            <summary>
+            Data em que o status foi definido.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.Data">
+            <summary>
+            Data em que a apuração foi realizada.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.ValorTotal">
+            <summary>
+            Valor total apurado, calculado com base no plano contratado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.QtdeDeLotes">
+            <summary>
+            Quantidade de lotes enviados no período.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.QtdeDeDocumentos">
+            <summary>
+            Quantidade de documentos enviados no período.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.QtdeDeAssinaturas">
+            <summary>
+            Quantidade de assinaturas realizadas no período.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.Armazenamento">
+            <summary>
+            Total de armazenamento consumido no período.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.DataDeVencimento">
+            <summary>
+            Data de vencimento para pagamento.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Integracao">
+            <summary>
+            Configurações referente ao processo operacional e integração.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Integracao.UrlDeCallback">
+            <summary>
+            Url para notificar o contratante dos eventos ocorridos.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Integracao.HeadersDeCallback">
+            <summary>
+            Headers que serão embutidos na requisição quando o callback for enviado ao contratante. Exemplo: AppKey=123;Servico=Assinaturas
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Integracao.FormatoDeCallback">
+            <summary>
+            Determina em qual formato será serializado o objeto de callback, pode ser JSON ou XML.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Integracao.EventosReportados">
+            <summary>
+            Eventos disponíveis para notificação (Financeiro, Pacote, Lote, Documento, Assinatura e Assinante).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Integracao.DocumentosDoPacote">
+            <summary>
+            Indica quais documentos (Original, Assinado, Manifesto e Original + Manifesto) devem compor o pacote gerado quando um lote é concluído (assinado).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Integracao.PosicaoDoCarimbo">
+            Indica o local onde será definido o carimbo da assinatura no documento original (Topo, Esquerda, Direita ou Rodapé).)]
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Integracao.AcompanhamentoAoVivo">
+            <summary>
+            Permite ou não a geração de links para acompanhamento ao vivo do processo de assinaturas dos documentos.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Lote">
+            <summary>
+            Define a relação de documentos enviados para geração de assinaturas digitais.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.Contratante">
+            <summary>
+            Contratante responsável pelo lote.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.Entidade">
+            <summary>
+            Entidade associada ao lote.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.Data">
+            <summary>
+            Data de criação do lote.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.Tags">
+            <summary>
+            Tags utilizadas para correlacionar o lote ao sistema do contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.QtdeDeDocumentos">
+            <summary>
+            Totaliza a quantidade de documentos deste lote.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.Status">
+            <summary>
+            Indica o status atual do lote.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.DataDoStatus">
+            <summary>
+            Data em que o status foi definido.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.UrlAoVivo">
+            <summary>
+            URL para acesso ao vivo do andamento das assinaturas de todos os documentos do lote.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.Documentos">
+            <summary>
+            Relação de documentos adicionados ao lote.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Notificacao">
+            <summary>
+            Notificação de assinantes.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Notificacao.Status">
+            <summary>
+            Indica o status atual da notificação.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Notificacao.DataDoStatus">
+            <summary>
+            Data em que o status foi definido.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Notificacao.Protocolo">
+            <summary>
+            Protocolo utilizado para envio da notificação.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Notificacao.Destinatario">
+            <summary>
+            Endereço de destino para onde a notificação foi enviada.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Pacote">
+            <summary>
+            Classe que abstrai a complexidade para criação dos pacotes de lotes e documentos que são enviados e recebidos.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.DTOs.Pacote.#ctor(BITSIGN.Proxy.DTOs.Lote)">
+            <summary>
+            Inicia o pacote com o lote para ser enviado ao serviço.
+            </summary>
+            <param name="lote">Lote com os documentos originais para envio e geração de assinaturas.</param>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Pacote.Vazio">
+            <summary>
+            Indica se o pacote está ou não vazio.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Pacote.Lote">
+            <summary>
+            Lote de documentos com seus respectivos arquivos.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Pacote.Arquivos">
+            <summary>
+            Relação de arquivos contidos no lote.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Plano">
+            <summary>
+            Detalhe do plano de assinaturas digitais.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.Nome">
+            <summary>
+            Nome do Plano.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.Descricao">
+            <summary>
+            Descrição do Plano.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.Base">
+            <summary>
+            Base de Cobrança (por assinatura ou por documento).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.FaixaInicial">
+            <summary>
+            Faixa inicial.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.FaixaFinal">
+            <summary>
+            Faixa final.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.Valor">
+            <summary>
+            Valor por assinatura/documento.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.ValorExcedente">
+            <summary>
+            Valor por assinatura/documento excedente.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.TamanhoDeArmazenamento">
+            <summary>
+            Espaço de armazenamento disponível.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.AnosDeArmazenamento">
+            <summary>
+            Período de duração do armazenamento.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.PlanoContratado">
+            <summary>
+            Informações do plano contratado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.Plano">
+            <summary>
+            Plano selecionado na contratação.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.Data">
+            <summary>
+            Data de contratação.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.DiaParaPagamento">
+            <summary>
+            Dia estipulado para pagamento das faturas.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.Status">
+            <summary>
+            Indica o status atual da contratação.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.TotalDeArmazenamento">
+            <summary>
+            Total atual de armazenamento utilizado.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.Logging.ILogger">
+            <summary>
+            Definição para a criação e armazenamento de logs de execução.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.ILogger.Escrever(BITSIGN.Proxy.Logging.Severidade,System.String)">
+            <summary>
+            Permite incluir uma mensagem e sua respectiva severidade.
+            </summary>
+            <param name="severidade">Severidade da mensagem.</param>
+            <param name="mensagem">Mensagem a ser armazenada.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.ILogger.Escrever(System.Exception)">
+            <summary>
+            Informa que uma exceção ocorreu.
+            </summary>
+            <param name="excecao">Dados da exceção ocorrida.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.ILogger.QuebrarLinha">
+            <summary>
+            Inclui uma quebra de linha.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.ILogger.Flush">
+            <summary>
+            Efetiva fisicamente a gravação dos logs.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.Logging.LogEmTexto">
+            <summary>
+            Armazena os logs gerados em formato texto.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.LogEmTexto.#ctor(System.IO.TextWriter,System.Int32)">
+            <summary>
+            Inicializa o log com armazenamento das mensagens no sistema de arquivos.
+            </summary>
+            <param name="escritor">Local onde serão armazenados as mensagens de logs que forem geradas.</param>
+            <param name="qtdeDeMensagensParaFlush">Quantidade de mensagens em buffer. Quando este valor for atingido, as mensagens serão escritas no arquivo. O padrão é <c>10</c>.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.LogEmTexto.Escrever(System.Exception)">
+            <summary>
+            Informa que uma exceção ocorreu.
+            </summary>
+            <param name="excecao">Dados da exceção ocorrida.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.LogEmTexto.Escrever(BITSIGN.Proxy.Logging.Severidade,System.String)">
+            <summary>
+            Permite incluir uma mensagem e sua respectiva severidade.
+            </summary>
+            <param name="severidade">Severidade da mensagem.</param>
+            <param name="mensagem">Mensagem a ser armazenada.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.LogEmTexto.QuebrarLinha">
+            <summary>
+            Inclui uma quebra de linha.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.LogEmTexto.Flush">
+            <summary>
+            Efetiva fisicamente a gravação dos logs.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.Logging.Severidade">
+            <summary>
+            Opções para categorização dos logs.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.Logging.Severidade.Info">
+            <summary>
+            Mensagem meramente informativa.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.Logging.Severidade.Alerta">
+            <summary>
+            Alerta de que algo não está como esperado, mas que não prejudica a execução.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.Logging.Severidade.Erro">
+            <summary>
+            Algum erro previsto ocorreu durante a execução.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.Logging.Severidade.Excecao">
+            <summary>
+            Uma falha não prevista ocorreu durante a execução.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.ProxyDoServico">
+            <summary>
+            Abstrai toda a comunicação com os serviços (APIs) de assinaturas da BITSIGN.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.ProxyDoServico.#ctor(BITSIGN.Proxy.Conexao,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+            <summary>
+            Inicializa o proxy.
+            </summary>
+            <param name="conexao">Dados da conexão com o ambiente.</param>
+            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
+            <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
+            <exception cref="T:System.ArgumentNullException">Se a <paramref name="conexao"/> não for informada.</exception>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Conexao">
+            <summary>
+            Dados de conexão com um dos <see cref="T:BITSIGN.Proxy.Ambiente"/>s disponíveis.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Lotes">
+            <summary>
+            API de Lotes.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Documentos">
+            <summary>
+            API de Documentos.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Financeiro">
+            <summary>
+            API da área Financeira.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Configuracoes">
+            <summary>
+            API de Configurações.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.ProxyDoServico.Dispose">
+            <summary>
+            Encerra e remove os recursos de comunicação utilizados por esta classe.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao.Json">
+            <summary>
+            Serializa os objetos em formato JSON.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao.Xml">
+            <summary>
+            Serializa os objetos em formato XML.
+            </summary>
+        </member>
+    </members>
+</doc>
