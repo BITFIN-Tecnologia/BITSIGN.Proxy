@@ -86,19 +86,19 @@ public class ConsultaDeDocumentos : Exemplo
         using (var proxy = new ProxyDoServico(this.Conexao))
         {
             //Retorna todas as informações de um determinado documento, exceto seus arquivos (bytes[]).
-            var detalhes = await proxy.Documentos.Detalhes(new Guid("aa9076b3-a058-44e2-b776-dca0a1743ce7"));
+            var documento = await proxy.Documentos.Detalhes(new Guid("aa9076b3-a058-44e2-b776-dca0a1743ce7"));
 
-            if (detalhes != null)
+            if (documento != null)
             {
-                Console.WriteLine($"Status: {detalhes.Status}");
+                Console.WriteLine($"Status: {documento.Status}");
 
                 //Individualmente, cada método a seguir retorna: arquivo origninal, assinado e o manifesto.
-                File.WriteAllBytes(detalhes.NomeDoArquivo, await proxy.Documentos.Original(detalhes.Id));
+                File.WriteAllBytes(documento.NomeDoArquivo, await proxy.Documentos.Original(documento.Id));
 
                 if (detalhes.Status == "Assinado")
                 {
-                    File.WriteAllBytes(detalhes.NomeDoArquivoAssinado, await proxy.Documentos.Assinado(detalhes.Id));
-                    File.WriteAllBytes(detalhes.NomeDoArquivoDeManifesto, await proxy.Documentos.Manifesto(detalhes.Id));
+                    File.WriteAllBytes(documento.NomeDoArquivoAssinado, await proxy.Documentos.Assinado(documento.Id));
+                    File.WriteAllBytes(documento.NomeDoArquivoDeManifesto, await proxy.Documentos.Manifesto(documento.Id));
                 }
             }
         }
