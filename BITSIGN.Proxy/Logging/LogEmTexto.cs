@@ -61,6 +61,7 @@ namespace BITSIGN.Proxy.Logging
                 this.escritor.WriteLine(m);
 
             this.mensagens.Clear();
+            this.escritor.Flush();
         }
 
         /// <summary>

@@ -24,11 +24,11 @@ namespace BITSIGN.Proxy
         /// <param name="logger">Instância de <see cref="ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
         /// <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
         /// <exception cref="ArgumentNullException">Se a <paramref name="conexao"/> não for informada.</exception>
-        public ProxyDoServico(Conexao conexao, ILogger logger = null, IGeradorDeRastreio rastreioDeRequisicao = null)
+        public ProxyDoServico(Conexao conexao, ILogger logger = null, IRastreio rastreioDeRequisicao = null)
         {
             this.Conexao = conexao ?? throw new ArgumentNullException(nameof(conexao));
 
-            this.proxy = new HttpClient()
+            this.proxy = new HttpClient(new RastreioDaRequisicao(logger, rastreioDeRequisicao))
             {
                 BaseAddress = conexao.Url,
                 DefaultRequestVersion = HttpVersion.Version20,
@@ -40,10 +40,10 @@ namespace BITSIGN.Proxy
             this.proxy.DefaultRequestHeaders.Add(Protocolo.CodigoDeIntegracao, conexao.CodigoDeIntegracao.ToString());
             this.proxy.DefaultRequestHeaders.Add("Accept", $"application/{conexao.FormatoDeSerializacao.ToString().ToLower()}");
 
-            this.Lotes = new Lotes(proxy, logger, rastreioDeRequisicao) { Ambiente = conexao.Ambiente };
-            this.Documentos = new Documentos(proxy, logger, rastreioDeRequisicao) { Ambiente = conexao.Ambiente };
-            this.Financeiro = new Financeiro(proxy, logger, rastreioDeRequisicao) { Ambiente = conexao.Ambiente };
-            this.Configuracoes = new Configuracoes(proxy, logger, rastreioDeRequisicao) { Ambiente = conexao.Ambiente, FormatoDeSerializacao = conexao.FormatoDeSerializacao };
+            this.Lotes = new Lotes(proxy);
+            this.Documentos = new Documentos(proxy);
+            this.Financeiro = new Financeiro(proxy);
+            this.Configuracoes = new Configuracoes(proxy) { FormatoDeSerializacao = conexao.FormatoDeSerializacao };
         }
 
         /// <summary>

@@ -3,12 +3,12 @@
 
 using System;
 
-namespace BITSIGN.Proxy.Comunicacao
+namespace BITSIGN.Proxy.Logging
 {
     /// <summary>
     /// Gerador de código de rastreio com base no <see cref="Guid"/>.
     /// </summary>
-    public class RastreioComGuid : IGeradorDeRastreio
+    public class RastreioComGuid : IRastreio
     {
         /// <summary>
         /// Ao gerar, o método <see cref="Guid.NewGuid()"/> é chamado.

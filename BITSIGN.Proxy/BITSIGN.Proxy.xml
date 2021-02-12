@@ -30,13 +30,11 @@
             Proxy HTTP pré-configurado para comunicação com o serviço.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.API.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.API.#ctor(System.Net.Http.HttpClient)">
             <summary>
             Inicializa a API.
             </summary>
             <param name="proxy">Instânca da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
-            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
-            <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.API.Executar(System.Net.Http.HttpRequestMessage,System.Action{System.Net.Http.HttpResponseMessage},System.Threading.CancellationToken)">
             <summary>
@@ -61,13 +59,11 @@
             Ajustes relacionados ao processo operacional das assinaturas digitais, callbacks, etc.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.#ctor(System.Net.Http.HttpClient)">
             <summary>
             Inicializa a API de configurações.
             </summary>
             <param name="proxy">Instânca da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
-            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
-            <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.Atualizar(BITSIGN.Proxy.DTOs.Integracao,System.Threading.CancellationToken)">
             <summary>
@@ -81,13 +77,11 @@
             Download dos documentos enviados, assinados e manifestos de assinaturas.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.#ctor(System.Net.Http.HttpClient)">
             <summary>
             Inicializa a API de documentos.
             </summary>
             <param name="proxy">Instânca da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
-            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
-            <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Detalhes(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -127,13 +121,11 @@
             Detalhamento dos planos contratados, fechamentos e faturas do contratante.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Financeiro.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Financeiro.#ctor(System.Net.Http.HttpClient)">
             <summary>
             Inicializa a API financeira.
             </summary>
             <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
-            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
-            <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Financeiro.Planos(System.Threading.CancellationToken)">
             <summary>
@@ -162,13 +154,11 @@
             Envio e gestão dos lotes de documentos para assinatura digital.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.#ctor(System.Net.Http.HttpClient)">
             <summary>
             Inicializa a API de lotes.
             </summary>
             <param name="proxy">Instânca da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
-            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
-            <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Upload(BITSIGN.Proxy.DTOs.Pacote,System.Threading.CancellationToken)">
             <summary>
@@ -208,29 +198,6 @@
             <param name="id">Identificador do Lote.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Um objeto que representa o lote enviado com seus documentos e os arquivos associados.</returns>
-        </member>
-        <member name="T:BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio">
-            <summary>
-            Define a estrutura para geração de códigos de rastreio.
-            </summary>
-            <remarks>O rastreio de requisições é útil para correlacionar as requisições com os logs armazenados pelos serviços.</remarks>
-        </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio.Gerar">
-            <summary>
-            Método que gera o código de rastreio.
-            </summary>
-            <returns>Valor aleatório, que identifica unicamente a requisição.</returns>
-        </member>
-        <member name="T:BITSIGN.Proxy.Comunicacao.RastreioComGuid">
-            <summary>
-            Gerador de código de rastreio com base no <see cref="T:System.Guid"/>.
-            </summary>
-        </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.RastreioComGuid.Gerar">
-            <summary>
-            Ao gerar, o método <see cref="M:System.Guid.NewGuid"/> é chamado.
-            </summary>
-            <returns>Retorna um <see cref="T:System.Guid"/> em formato <c>string</c>.</returns>
         </member>
         <member name="T:BITSIGN.Proxy.Conexao">
             <summary>
@@ -845,6 +812,18 @@
             Efetiva fisicamente a gravação dos logs.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.Logging.IRastreio">
+            <summary>
+            Define a estrutura para geração de códigos de rastreio.
+            </summary>
+            <remarks>O rastreio de requisições é útil para correlacionar as requisições com os logs armazenados pelos serviços.</remarks>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.IRastreio.Gerar">
+            <summary>
+            Método que gera o código de rastreio.
+            </summary>
+            <returns>Valor aleatório, que identifica unicamente a requisição.</returns>
+        </member>
         <member name="T:BITSIGN.Proxy.Logging.LogEmTexto">
             <summary>
             Armazena os logs gerados em formato texto.
@@ -885,6 +864,17 @@
             Armazena eventuais mensagens que estejam no buffer, encerra e descarta os recursos utilizados.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.Logging.RastreioComGuid">
+            <summary>
+            Gerador de código de rastreio com base no <see cref="T:System.Guid"/>.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Logging.RastreioComGuid.Gerar">
+            <summary>
+            Ao gerar, o método <see cref="M:System.Guid.NewGuid"/> é chamado.
+            </summary>
+            <returns>Retorna um <see cref="T:System.Guid"/> em formato <c>string</c>.</returns>
+        </member>
         <member name="T:BITSIGN.Proxy.Logging.Severidade">
             <summary>
             Opções para categorização dos logs.
@@ -915,7 +905,7 @@
             Abstrai toda a comunicação com os serviços (APIs) de assinaturas da BITSIGN.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.ProxyDoServico.#ctor(BITSIGN.Proxy.Conexao,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Comunicacao.IGeradorDeRastreio)">
+        <member name="M:BITSIGN.Proxy.ProxyDoServico.#ctor(BITSIGN.Proxy.Conexao,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Logging.IRastreio)">
             <summary>
             Inicializa o proxy.
             </summary>

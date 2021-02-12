@@ -23,7 +23,7 @@ namespace Testes.Exemplos
             var geradorDeRastreio = new RastreioComGuid();
 
             //Contexto do log. O conteúdo é descarregado na conclusão do bloco using.
-            using (var loggerEmArquivo = new LogEmTexto(new StreamWriter("Log.txt")))
+            using (var loggerEmArquivo = new LogEmTexto(new StreamWriter("Log.txt", true)))
             {
                 using (var proxy = new ProxyDoServico(this.Conexao, loggerEmArquivo, geradorDeRastreio))
                 {

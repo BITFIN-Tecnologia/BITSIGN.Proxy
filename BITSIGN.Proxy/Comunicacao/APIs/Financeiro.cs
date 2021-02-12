@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2021 - BITFIN Software Ltda. Todos os Direitos Reservados.
 // Código exclusivo para consumo dos serviços (APIs) da BITSIGN.
 
-using BITSIGN.Proxy.Logging;
 using BITSIGN.Proxy.Utilitarios;
 using System;
 using System.Collections.Generic;
@@ -21,10 +20,8 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// Inicializa a API financeira.
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
-        /// <param name="logger">Implementação da interface <see cref="ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
-        /// <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
-        public Financeiro(HttpClient proxy, ILogger logger, IGeradorDeRastreio rastreioDeRequisicao)
-            : base(proxy, logger, rastreioDeRequisicao) { }
+        public Financeiro(HttpClient proxy)
+            : base(proxy) { }
 
         /// <summary>
         /// Planos Contratados.
