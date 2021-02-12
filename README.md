@@ -95,7 +95,7 @@ public class ConsultaDeDocumentos : Exemplo
                 //Individualmente, cada método a seguir retorna: arquivo origninal, assinado e o manifesto.
                 File.WriteAllBytes(documento.NomeDoArquivo, await proxy.Documentos.Original(documento.Id));
 
-                if (detalhes.Status == "Assinado")
+                if (documento.Status == "Assinado")
                 {
                     File.WriteAllBytes(documento.NomeDoArquivoAssinado, await proxy.Documentos.Assinado(documento.Id));
                     File.WriteAllBytes(documento.NomeDoArquivoDeManifesto, await proxy.Documentos.Manifesto(documento.Id));
