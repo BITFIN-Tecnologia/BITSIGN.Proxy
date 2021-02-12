@@ -52,7 +52,7 @@ Opcionalmente, é possível gerar um "código de rastreio", que identifica unica
 E, para informar que desejar utilizar um rastreador de requisições, basta informar o gerador de códigos no construtor da classe `ProxyDoServico`, como se vê no trecho de código abaixo. E, na sequência, o conteúdo do _log_ armazenado no arquivo texto. Note, que o Guid que se repete por todas as linhas, relacionam todas as informações associadas aquela requisição e sua respectiva resposta.
 
 ```csharp
-using (var log = new LogEmTexto(new StreamWriter("Log.txt")))
+using (var log = new LogEmTexto(new StreamWriter("Log.txt", true)))
 {
     using (var proxy = new ProxyDoServico(this.Conexao, log, new RastreioComGuid()))
     {
