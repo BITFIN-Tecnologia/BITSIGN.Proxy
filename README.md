@@ -36,7 +36,7 @@ Para indicar ao _proxy_ que deseja capturar estas informações, será necessár
 `ILogger` herda da _interface_ `IDisposable`, e quando o _logger_ for envolvido em um bloco `using`, o método `Dispose` é chamado e as mensagens, que estão no `buffer` são armazenadas fisicamente. Uma vez que _logger_ esteja criado, basta informá-lo no construtor do _proxy_, que internamente fará uso, quando necessário, para armazenar as informações mais relevantes, que podem ocorrer durante a preparação e o envio das requisições e para armazenar o resultado recebido dos serviços.
 
 ```csharp
-using (var log = new LogEmTexto(new StreamWriter("Log.txt")))
+using (var log = new LogEmTexto(new StreamWriter("Log.txt", true)))
 {
     using (var proxy = new ProxyDoServico(this.Conexao, log))
     {
@@ -47,7 +47,7 @@ using (var log = new LogEmTexto(new StreamWriter("Log.txt")))
 Console.Write(File.ReadAllText("Log.txt"));
 ```
 ### Rastreio de Requisições
-Opcionalmente, é possível gerar um "código de rastreio", que identifica unicamente a requisição que será enviada ao serviço. Isso permitirá correlacionar a mensagem ao processamento remoto realizado pelo serviço e, consequentemente, facilitar a depuração de eventuais problemas. Da mesma forma que o _log_, o gerador de códigos de rastreios é extensível, e pode ser customizado simplesmente implementando a _interface_ [IGeradorDeRastreio](https://github.com/BITFIN-Software/BITSIGN.Proxy/blob/master/BITSIGN.Proxy/Comunicacao/IGeradorDeRastreio.cs). De qualquer forma, já existe um gerador nativo, chamado `RastreioComGuid`, que como o próprio nome sugere, para cada requisição, gera um novo _Guid_.
+Opcionalmente, é possível gerar um "código de rastreio", que identifica unicamente a requisição que será enviada ao serviço. Isso permitirá correlacionar a mensagem ao processamento remoto realizado pelo serviço e, consequentemente, facilitar a depuração de eventuais problemas. Da mesma forma que o _log_, o gerador de códigos de rastreios é extensível, e pode ser customizado simplesmente implementando a _interface_ [IRastreio](https://github.com/BITFIN-Software/BITSIGN.Proxy/blob/master/BITSIGN.Proxy/Logging/IRastreio.cs). De qualquer forma, já existe um gerador nativo, chamado `RastreioComGuid`, que como o próprio nome sugere, para cada requisição, gera um novo _Guid_.
 
 E, para informar que desejar utilizar um rastreador de requisições, basta informar o gerador de códigos no construtor da classe `ProxyDoServico`, como se vê no trecho de código abaixo. E, na sequência, o conteúdo do _log_ armazenado no arquivo texto. Note, que o Guid que se repete por todas as linhas, relacionam todas as informações associadas aquela requisição e sua respectiva resposta.
 
@@ -63,11 +63,10 @@ using (var log = new LogEmTexto(new StreamWriter("Log.txt")))
 
 ```
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - INÍCIO DO ESCOPO
-11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Ambiente: Sandbox - POST /lotes
-11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.BS-CodigoDeRastreio: a678128a-5658-4d8a-a4fe-b85bb2c75490
+11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - POST /lotes
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Type: ByteArrayContent
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Content-Type: 
-11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Headers: BS-Contratante=985e0702-e94a-4954-b7a8-1f28c73c8122;BS-Token=5a83a804-1416-476f-8c78-d4d1b8d33fe4;Accept=application/json
+11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Headers: BS-Contratante=985e0702-e94a-4954-b7a8-1f28c73c8122;BS-Token=5a83a804-1416-476f-8c78-d4d1b8d33fe4;BS-CodigoDeRastreio: 2c83d520-138d-45d1-b29c-b9c4bf027ac2;Accept=application/json
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.Headers: Location=http://localhost:33664/api/lotes/06202cf4-281d-46a5-bd81-975c15f58d94;
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.StatusCode: Created
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.ReasonPhrase: Created
