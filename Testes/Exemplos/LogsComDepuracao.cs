@@ -6,7 +6,6 @@ using BITSIGN.Proxy;
 using BITSIGN.Proxy.Comunicacao;
 using BITSIGN.Proxy.DTOs;
 using BITSIGN.Proxy.Logging;
-using BITSIGN.Proxy.Utilitarios;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,29 +13,25 @@ using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
-    public class LogsComDepuracao : IExemplo
+    public class LogsComDepuracao : Exemplo
     {
-        public async Task Executar(params string[] parametros)
+        public override async Task Executar(params string[] parametros)
         {
-            var codigoDoContratante = new Guid("985e0702-e94a-4954-b7a8-1f28c73c8122");
             var arquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao.pdf");
 
+            //Gera, para cada requisição, um Guid para correlacionar os logs do cliente com o do serviço.
+            var geradorDeRastreio = new RastreioComGuid();
+
+            //Contexto do log. O conteúdo é descarregado na conclusão do bloco using.
             using (var loggerEmArquivo = new LogEmTexto(new StreamWriter("Log.txt")))
             {
-                using (var proxy = new ProxyDoServico(
-                    new Conexao(
-                        Ambiente.Sandbox,
-                        codigoDoContratante,
-                        new Guid("5a83a804-1416-476f-8c78-d4d1b8d33fe4"),
-                        FormatoDeSerializacao.Json),
-                    loggerEmArquivo,
-                    new RastreioComGuid()))
+                using (var proxy = new ProxyDoServico(this.Conexao, loggerEmArquivo, geradorDeRastreio))
                 {
                     var pacote = new Pacote(new Lote()
                     {
                         Contratante = new Contratante()
                         {
-                            Id = codigoDoContratante,
+                            Id = this.CodigoDoContratante,
                             Entidade = new Entidade()
                             {
                                 Nome = "White House - USA",
@@ -118,12 +113,11 @@ namespace Testes.Exemplos
                         Tags = "processo=456"
                     });
 
-                    var urlDoLote = await proxy.Lotes.Upload(pacote);
-
-                    Console.WriteLine(pacote.Lote.Id);
-                    Console.WriteLine(pacote.Lote.UrlAoVivo);
+                    await proxy.Lotes.Upload(pacote);
                 }
             }
+
+            Console.WriteLine(File.ReadAllText("Log.txt"));
         }
     }
 }

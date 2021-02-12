@@ -20,7 +20,7 @@ namespace BITSIGN.Proxy.Logging
         public void Escrever(Severidade severidade, string mensagem)
         {
             if (this.Habilitado)
-                this.logger.Escrever(severidade, $"{this.Id} - {mensagem}");
+                this.logger?.Escrever(severidade, $"{this.Id} - {mensagem}");
         }
 
         public void Escrever(Exception excecao)
@@ -46,15 +46,17 @@ namespace BITSIGN.Proxy.Logging
             this.Id = Guid.Empty;
         }
 
-        public void QuebrarLinha()
+        public void QuebrarLinha() =>
+            this.logger?.QuebrarLinha();
+
+        public void Flush() => 
+            this.logger?.Flush();
+
+        public void Dispose()
         {
-            if (this.Habilitado)
-                this.logger.QuebrarLinha();
+            this.Encerrar();
+            this.logger?.Dispose();
         }
-
-        public void Flush() => this.logger.Flush();
-
-        public void Dispose() => this.logger.Dispose();
 
         public Guid Id { get; private set; }
 

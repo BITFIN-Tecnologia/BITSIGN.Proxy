@@ -60,6 +60,11 @@ namespace BITSIGN.Proxy
         public FormatoDeSerializacao FormatoDeSerializacao { get; }
 
         /// <summary>
+        /// Define o tempo máximo de espera permitido para executar uma requisição. O tempo padrão é de 100 segundos.
+        /// </summary>
+        public TimeSpan Timeout { get; init; } = TimeSpan.FromSeconds(100);
+
+        /// <summary>
         /// Endereço HTTP para o serviço, variando de acordo com o <see cref="Ambiente"/>.
         /// </summary>
         public Uri Url => urls[this.Ambiente];

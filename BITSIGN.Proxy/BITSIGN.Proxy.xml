@@ -267,6 +267,11 @@
             Formato da serialização das mensagens trocadas com os serviços.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.Conexao.Timeout">
+            <summary>
+            Define o tempo máximo de espera permitido para executar uma requisição. O tempo padrão é de 100 segundos.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.Conexao.Url">
             <summary>
             Endereço HTTP para o serviço, variando de acordo com o <see cref="P:BITSIGN.Proxy.Conexao.Ambiente"/>.
@@ -915,7 +920,7 @@
             Inicializa o proxy.
             </summary>
             <param name="conexao">Dados da conexão com o ambiente.</param>
-            <param name="logger">Implementação da interface <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
+            <param name="logger">Instância de <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
             <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
             <exception cref="T:System.ArgumentNullException">Se a <paramref name="conexao"/> não for informada.</exception>
         </member>

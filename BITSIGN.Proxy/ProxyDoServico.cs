@@ -5,6 +5,7 @@ using BITSIGN.Proxy.Comunicacao;
 using BITSIGN.Proxy.Comunicacao.APIs;
 using BITSIGN.Proxy.Logging;
 using System;
+using System.Net;
 using System.Net.Http;
 
 namespace BITSIGN.Proxy
@@ -20,7 +21,7 @@ namespace BITSIGN.Proxy
         /// Inicializa o proxy.
         /// </summary>
         /// <param name="conexao">Dados da conexão com o ambiente.</param>
-        /// <param name="logger">Implementação da interface <see cref="ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
+        /// <param name="logger">Instância de <see cref="ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
         /// <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
         /// <exception cref="ArgumentNullException">Se a <paramref name="conexao"/> não for informada.</exception>
         public ProxyDoServico(Conexao conexao, ILogger logger = null, IGeradorDeRastreio rastreioDeRequisicao = null)
@@ -29,7 +30,10 @@ namespace BITSIGN.Proxy
 
             this.proxy = new HttpClient()
             {
-                BaseAddress = conexao.Url
+                BaseAddress = conexao.Url,
+                DefaultRequestVersion = HttpVersion.Version20,
+                DefaultVersionPolicy = HttpVersionPolicy.RequestVersionOrLower,
+                Timeout = conexao.Timeout
             };
 
             this.proxy.DefaultRequestHeaders.Add(Protocolo.CodigoDoContratante, conexao.CodigoDoContratante.ToString());
