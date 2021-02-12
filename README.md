@@ -104,6 +104,18 @@ public class ConsultaDeDocumentos : Exemplo
     }
 }
 ```
+O projeto de `Testes` é do tipo `Console`, o que quer dizer que você poderá executá-lo. Ao fazer isso, uma relação dos exemplos disponíveis será listado. Basta você digitar o número que corresponde ao serviço para que ele seja executado. Só é importante configurar os parâmetros de acordo com o que deseja testar.
+
+```
+EXEMPLOS DISPONIVEIS
+    01 - UploadDeLote
+    02 - LogsComDepuracao
+    03 - ConsultaDeLotes
+    04 - ConsultaDeDocumentos
+    05 - DownloadDePacote
+    06 - DadosFinanceiros
+INFORME O NUMERO DO EXEMPLO:
+```
 
 ## Callbacks
 Os _callbacks_ servem para recepcionar algum evento relevante que foi gerado pelo processo de assinaturas. Uma vez que o contratante informa ao serviço que ele deseja receber estas notificações, será necessário informar uma `URL` para que o serviço envie o _callback_. Além da `URL`, você pode optar também em qual formato deseja receber este _callback_, onde o padrão é o formato **JSON** e pode ser alterado para **XML**. 
