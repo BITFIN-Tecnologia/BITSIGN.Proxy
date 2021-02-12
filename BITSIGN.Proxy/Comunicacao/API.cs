@@ -140,5 +140,5 @@ namespace BITSIGN.Proxy.Comunicacao
         }
 
         internal Ambiente Ambiente { get; init; }
-}
+    }
 }
