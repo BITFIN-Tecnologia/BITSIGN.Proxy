@@ -37,7 +37,7 @@ namespace BITSIGN.Proxy
             };
 
             this.proxy.DefaultRequestHeaders.Add(Protocolo.CodigoDoContratante, conexao.CodigoDoContratante.ToString());
-            this.proxy.DefaultRequestHeaders.Add(Protocolo.CodigoDeIntegracao, conexao.CodigoDeIntegracao.ToString());
+            this.proxy.DefaultRequestHeaders.Add(Protocolo.ChaveDeIntegracao, conexao.ChaveDeIntegracao);
             this.proxy.DefaultRequestHeaders.Add("Accept", $"application/{conexao.FormatoDeSerializacao.ToString().ToLower()}");
 
             this.Lotes = new Lotes(proxy);

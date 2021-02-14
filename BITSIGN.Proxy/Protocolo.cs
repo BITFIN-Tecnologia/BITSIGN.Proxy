@@ -6,7 +6,7 @@ namespace BITSIGN.Proxy
     internal class Protocolo
     {
         internal const string CodigoDoContratante = "BS-Contratante";
-        internal const string CodigoDeIntegracao = "BS-Token";
+        internal const string ChaveDeIntegracao = "BS-Token";
 
         internal const string CodigoDeRastreio = "BS-CodigoDeRastreio";
     }
