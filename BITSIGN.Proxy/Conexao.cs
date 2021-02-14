@@ -34,7 +34,7 @@ namespace BITSIGN.Proxy
                 codigoDoContratante != Guid.Empty ? codigoDoContratante : throw new ArgumentException("Código do Contratante não informado.", nameof(codigoDoContratante));
 
             this.ChaveDeIntegracao =
-                !string.IsNullOrWhiteSpace(chaveDeIntegracao) ? chaveDeIntegracao : throw new ArgumentException("Código de Integração não informado.", nameof(chaveDeIntegracao));
+                !string.IsNullOrWhiteSpace(chaveDeIntegracao) ? chaveDeIntegracao : throw new ArgumentException("Chave de Integração não informada.", nameof(chaveDeIntegracao));
 
             this.FormatoDeSerializacao = formato;
         }
