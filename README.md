@@ -13,13 +13,13 @@ A classe que intermedia toda a comunicação é chamada de `ProxyDoServico`. Ess
 
 ```csharp
 var codigoDoContratante = new Guid("985e0702-e94a-4954-b7a8-1f28c73c8122");
-var codigoDeIntegracao = "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq";
+var chaveDeIntegracao = "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq";
 
 using (var proxy = new ProxyDoServico(
     new Conexao(
         Ambiente.Sandbox,
         codigoDoContratante,
-        codigoDeIntegracao,
+        chaveDeIntegracao,
         FormatoDeSerializacao.Json)))
 {
     //consumo dos serviços (APIs)
