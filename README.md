@@ -13,7 +13,7 @@ A classe que intermedia toda a comunicação é chamada de `ProxyDoServico`. Ess
 
 ```csharp
 var codigoDoContratante = new Guid("985e0702-e94a-4954-b7a8-1f28c73c8122");
-var codigoDeIntegracao = new Guid("5a83a804-1416-476f-8c78-d4d1b8d33fe4");
+var codigoDeIntegracao = "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq";
 
 using (var proxy = new ProxyDoServico(
     new Conexao(
@@ -66,7 +66,7 @@ using (var log = new LogEmTexto(new StreamWriter("Log.txt", true)))
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - POST /lotes
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Type: ByteArrayContent
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Content-Type: 
-11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Headers: BS-Contratante=985e0702-e94a-4954-b7a8-1f28c73c8122;BS-Token=5a83a804-1416-476f-8c78-d4d1b8d33fe4;BS-CodigoDeRastreio: 2c83d520-138d-45d1-b29c-b9c4bf027ac2;Accept=application/json
+11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Headers: BS-Contratante=985e0702-e94a-4954-b7a8-1f28c73c8122;BS-Token=TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq;BS-CodigoDeRastreio: 2c83d520-138d-45d1-b29c-b9c4bf027ac2;Accept=application/json
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.Headers: Location=http://localhost:33664/api/lotes/06202cf4-281d-46a5-bd81-975c15f58d94;
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.StatusCode: Created
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.ReasonPhrase: Created
