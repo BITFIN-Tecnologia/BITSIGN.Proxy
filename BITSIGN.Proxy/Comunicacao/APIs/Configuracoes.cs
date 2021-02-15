@@ -46,7 +46,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <returns>Retornará a nova chave de integração gerada pelo serviço.</returns>
         public async Task<string> RenovarChave(CancellationToken cancellationToken = default)
         {
-            using (var requisicao = new HttpRequestMessage(HttpMethod.Get, "configuracoes/renovarchave"))
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Patch, "configuracoes/renovarchave"))
                 return await Executar(
                     requisicao,
                     async resposta => await resposta.Content.ReadAsStringAsync(cancellationToken),
