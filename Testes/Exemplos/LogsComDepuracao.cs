@@ -3,19 +3,19 @@
 // biblioteca/pacote BITFIN.BITSIGN.Proxy.
 
 using BITSIGN.Proxy;
-using BITSIGN.Proxy.Comunicacao;
 using BITSIGN.Proxy.DTOs;
 using BITSIGN.Proxy.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
     public class LogsComDepuracao : Exemplo
     {
-        public override async Task Executar(params string[] parametros)
+        public override async Task Executar(CancellationToken cancellationToken = default)
         {
             var arquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao.pdf");
 
@@ -113,7 +113,7 @@ namespace Testes.Exemplos
                         Tags = "processo=456"
                     });
 
-                    await proxy.Lotes.Upload(pacote);
+                    await proxy.Lotes.Upload(pacote, cancellationToken);
                 }
             }
 

@@ -7,13 +7,14 @@ using BITSIGN.Proxy.DTOs;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
     public class UploadDeLote : Exemplo
     {
-        public override async Task Executar(params string[] parametros)
+        public override async Task Executar(CancellationToken cancellationToken = default)
         {
             //Arquivo a ser enviado para coleta de assinatura(s).
             var arquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao.pdf");
@@ -107,7 +108,7 @@ namespace Testes.Exemplos
                     Tags = "processo=456"
                 });
 
-                var urlDoLote = await proxy.Lotes.Upload(pacote);
+                var urlDoLote = await proxy.Lotes.Upload(pacote, cancellationToken);
 
                 Console.WriteLine(urlDoLote);
                 Console.WriteLine(pacote.Lote.Id);

@@ -72,6 +72,13 @@
             <param name="integracao">Objeto com os parâmetros para serem atualizados.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.RenovarChave(System.Threading.CancellationToken)">
+            <summary>
+            Renova a chave de integração entre sistemas.
+            </summary>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Retornará a nova chave de integração gerada pelo serviço.</returns>
+        </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Documentos">
             <summary>
             Download dos documentos enviados, assinados e manifestos de assinaturas.
@@ -583,6 +590,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.Integracao.FormatoDeCallback">
             <summary>
             Determina em qual formato será serializado o objeto de callback, pode ser JSON ou XML.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Integracao.IPsAutorizados">
+            <summary>
+            Relação de IPs que estão autorizados à consumir a API. Múltiplos IPs são suportados desde que separados por ponto-e-vírgula (;).
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Integracao.EventosReportados">

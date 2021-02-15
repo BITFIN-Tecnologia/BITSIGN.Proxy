@@ -5,18 +5,19 @@
 using BITSIGN.Proxy;
 using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
     public class ConsultaDeDocumentos : Exemplo
     {
-        public override async Task Executar(params string[] parametros)
+        public override async Task Executar(CancellationToken cancellationToken = default)
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
                 //Retorna todas as informações de um determinado documento, exceto seus arquivos (bytes[]).
-                var documento = await proxy.Documentos.Detalhes(new Guid("aa9076b3-a058-44e2-b776-dca0a1743ce7"));
+                var documento = await proxy.Documentos.Detalhes(new Guid("aa9076b3-a058-44e2-b776-dca0a1743ce7"), cancellationToken);
 
                 if (documento != null)
                 {

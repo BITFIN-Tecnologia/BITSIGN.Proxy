@@ -4,18 +4,19 @@
 
 using BITSIGN.Proxy;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
     public class DadosFinanceiros : Exemplo
     {
-        public override async Task Executar(params string[] parametros)
+        public override async Task Executar(CancellationToken cancellationToken = default)
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
                 //Percorre os planos contratados.
-                foreach (var pc in await proxy.Financeiro.Planos())
+                foreach (var pc in await proxy.Financeiro.Planos(cancellationToken))
                 {
                     Console.WriteLine(pc.Plano.Nome);
                     Console.WriteLine(pc.Plano.FaixaInicial);
@@ -23,7 +24,7 @@ namespace Testes.Exemplos
                 }
 
                 //Percorre os últimos 12 fechamentos realizados.
-                foreach (var f in await proxy.Financeiro.Fechamentos())
+                foreach (var f in await proxy.Financeiro.Fechamentos(cancellationToken))
                 {
                     Console.WriteLine($"Período: {f.Mes:00}/{f.Ano}");
                     Console.WriteLine($"Valor: {f.ValorTotal:N2}");
@@ -31,7 +32,7 @@ namespace Testes.Exemplos
                 }
 
                 //Detalhes sobre o fechamento.
-                var fechamento = await proxy.Financeiro.Fechamento(new Guid("a0ef4f82-91a6-4a28-a9ae-361c3c0a427d"));
+                var fechamento = await proxy.Financeiro.Fechamento(new Guid("a0ef4f82-91a6-4a28-a9ae-361c3c0a427d"), cancellationToken);
 
                 if (fechamento != null)
                 {

@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Testes.Exemplos;
 
@@ -18,7 +19,9 @@ namespace Testes
             { 3, new ConsultaDeLotes() },
             { 4, new ConsultaDeDocumentos() },
             { 5, new DownloadDePacote() },
-            { 6, new DadosFinanceiros() }
+            { 6, new DadosFinanceiros() },
+            { 7, new AtualizacaoDeConfiguracoes() },
+            { 8, new RenovacaoDeChave() }
         };
 
         static async Task Main(string[] args)
@@ -37,7 +40,8 @@ namespace Testes
                 Console.WriteLine($"EXECUTANDO: {exemplo.GetType().Name}");
                 Console.ForegroundColor = ConsoleColor.Yellow;
 
-                await exemplo.Executar();
+                using (var cts = new CancellationTokenSource())
+                    await exemplo.Executar(cts.Token);
             }
             else
             {

@@ -27,6 +27,11 @@ namespace BITSIGN.Proxy.DTOs
         public string FormatoDeCallback { get; set; }
 
         /// <summary>
+        /// Relação de IPs que estão autorizados à consumir a API. Múltiplos IPs são suportados desde que separados por ponto-e-vírgula (;).
+        /// </summary>
+        public string IPsAutorizados { get; set; }
+
+        /// <summary>
         /// Eventos disponíveis para notificação (Financeiro, Pacote, Lote, Documento, Assinatura e Assinante).
         /// </summary>
         public string EventosReportados { get; set; }

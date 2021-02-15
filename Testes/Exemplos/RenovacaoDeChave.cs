@@ -4,25 +4,23 @@
 
 using BITSIGN.Proxy;
 using System;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
-    public class DownloadDePacote : Exemplo
+    public class RenovacaoDeChave : Exemplo
     {
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                //Retorna o pacote, contendo o arquivo de manifesto.xml, arquivos originais e assinados.
-                var pacote = await proxy.Lotes.Pacote(new Guid("06202cf4-281d-46a5-bd81-975c15f58d94"), cancellationToken);
+                var novaChave = await proxy.Configuracoes.RenovarChave(cancellationToken);
 
-                Console.WriteLine(pacote.Lote.Id);
+                Console.WriteLine(novaChave);
 
-                foreach (var a in pacote.Arquivos)
-                    File.WriteAllBytes(a.Item1, a.Item2);
+                //Armazenar para futuras requisições;
+                this.ChaveDeIntegracao = novaChave;
             }
         }
     }
