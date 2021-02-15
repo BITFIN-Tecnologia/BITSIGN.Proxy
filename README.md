@@ -4,9 +4,9 @@ Biblioteca .NET para consumo dos serviços (APIs) fornecidos pela BITSIGN, recep
 
 Além da comunicação que já está embutida, a biblioteca também oferece recursos para _logging_, correlação de requisições e classes de DTOs (que também são definidas pelas APIs). Isso garantirá uma experiência diferenciada para consumo dos serviços, já que o _proxy_ expõe em sua _interface_ pública, métodos e propriedades que refletem o negócio, que é o de "assinaturas digitais".
 
-> Processo de Assinaturas (visão técnica e operacional): [https://www.bitsign.com.br/documentacao](https://www.bitsign.com.br/documentacao).
+> Processo de Assinaturas (visão técnica e operacional): [https://www.bitsign.com.br/documentacao](https://www.bitsign.com.br/documentacao)
 
-> Documentação das APIs: [https://www.bitsign.com.br/apis](https://www.bitsign.com.br/apis).
+> Documentação das APIs: [https://www.bitsign.com.br/apis](https://www.bitsign.com.br/apis)
 
 ## Conexão e Autenticação
 A classe que intermedia toda a comunicação é chamada de `ProxyDoServico`. Essa classe recebe em seu construtor os dados necessários para estabelecer a comunicação com os serviços. Todos os parâmetros necessários são informados através da classe `Conexao`, onde o **código do contratante** e o **código de integração** são fornecidos no nomento da criação/contratação; além disso, é neste objeto que também deverá ser informado para qual ambiente as requisições devem ser encaminhadas: **SANDBOX** ou **PRODUÇÃO**.
