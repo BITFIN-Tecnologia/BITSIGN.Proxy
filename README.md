@@ -4,9 +4,9 @@ Biblioteca .NET para consumo dos serviços (APIs) fornecidos pela BITSIGN, recep
 
 Além da comunicação que já está embutida, a biblioteca também oferece recursos para _logging_, correlação de requisições e classes de DTOs (que também são definidas pelas APIs). Isso garantirá uma experiência diferenciada para consumo dos serviços, já que o _proxy_ expõe em sua _interface_ pública, métodos e propriedades que refletem o negócio, que é o de "assinaturas digitais".
 
-> Processo de Assinaturas (visão técnica e operacional): [https://www.bitsign.com.br/documentacao](https://www.bitsign.com.br/documentacao).
+> Processo de Assinaturas (visão técnica e operacional): [https://www.bitsign.com.br/documentacao](https://www.bitsign.com.br/documentacao)
 
-> Documentação das APIs: [https://www.bitsign.com.br/apis](https://www.bitsign.com.br/apis).
+> Documentação das APIs: [https://www.bitsign.com.br/apis](https://www.bitsign.com.br/apis)
 
 ## Conexão e Autenticação
 A classe que intermedia toda a comunicação é chamada de `ProxyDoServico`. Essa classe recebe em seu construtor os dados necessários para estabelecer a comunicação com os serviços. Todos os parâmetros necessários são informados através da classe `Conexao`, onde o **código do contratante** e o **código de integração** são fornecidos no nomento da criação/contratação; além disso, é neste objeto que também deverá ser informado para qual ambiente as requisições devem ser encaminhadas: **SANDBOX** ou **PRODUÇÃO**.
@@ -80,12 +80,12 @@ Para os principais cenários, foi incluído neste mesmo repositório, um projeto
 ```csharp
 public class ConsultaDeDocumentos : Exemplo
 {
-    public override async Task Executar(params string[] parametros)
+    public override async Task Executar(CancellationToken cancellationToken = default)
     {
         using (var proxy = new ProxyDoServico(this.Conexao))
         {
             //Retorna todas as informações de um determinado documento, exceto seus arquivos (bytes[]).
-            var documento = await proxy.Documentos.Detalhes(new Guid("aa9076b3-a058-44e2-b776-dca0a1743ce7"));
+            var documento = await proxy.Documentos.Detalhes(new Guid("aa9076b3-a058-44e2-b776-dca0a1743ce7"), cancellationToken);
 
             if (documento != null)
             {
