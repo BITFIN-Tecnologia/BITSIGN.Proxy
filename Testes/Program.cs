@@ -22,7 +22,7 @@ namespace Testes
             { 6, new DadosFinanceiros() },
             { 7, new AtualizacaoDeConfiguracoes() },
             { 8, new RenovacaoDeChave() },
-            { 9, new ReplayDeNotificacoes() }
+            { 9, new NotificacoesDoLote() }
         };
 
         static async Task Main(string[] args)

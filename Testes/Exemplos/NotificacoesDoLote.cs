@@ -9,12 +9,21 @@ using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
-    public class ReplayDeNotificacoes : Exemplo
+    public class NotificacoesDoLote : Exemplo
     {
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
-                await proxy.Notificacoes.Replay(Guid.Parse(""), cancellationToken);
+            {
+                //Listando as notificações de um determinado lote
+                var loteId = Guid.Parse("...");
+
+                var notificacoes = await proxy.Lotes.Notificacoes(loteId, cancellationToken);
+
+                //Solicitando o replay das notificações
+                foreach (var n in notificacoes)
+                    await proxy.Notificacoes.Replay(n.Id, cancellationToken);
+            }
         }
     }
 }
