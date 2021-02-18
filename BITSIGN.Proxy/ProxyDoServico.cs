@@ -44,6 +44,7 @@ namespace BITSIGN.Proxy
             this.Documentos = new Documentos(proxy);
             this.Financeiro = new Financeiro(proxy);
             this.Configuracoes = new Configuracoes(proxy) { FormatoDeSerializacao = conexao.FormatoDeSerializacao };
+            this.Notificacoes = new Notificacoes(proxy);
         }
 
         /// <summary>
@@ -70,6 +71,11 @@ namespace BITSIGN.Proxy
         /// API de Configurações.
         /// </summary>
         public Configuracoes Configuracoes { get; }
+
+        /// <summary>
+        /// API de Notificações.
+        /// </summary>
+        public Notificacoes Notificacoes { get; }
 
         /// <summary>
         /// Encerra e remove os recursos de comunicação utilizados por esta classe.

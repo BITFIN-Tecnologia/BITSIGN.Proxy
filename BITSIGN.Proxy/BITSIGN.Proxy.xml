@@ -63,7 +63,7 @@
             <summary>
             Inicializa a API de configurações.
             </summary>
-            <param name="proxy">Instânca da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.Atualizar(BITSIGN.Proxy.DTOs.Integracao,System.Threading.CancellationToken)">
             <summary>
@@ -88,7 +88,7 @@
             <summary>
             Inicializa a API de documentos.
             </summary>
-            <param name="proxy">Instânca da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Detalhes(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -165,7 +165,7 @@
             <summary>
             Inicializa a API de lotes.
             </summary>
-            <param name="proxy">Instânca da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Upload(BITSIGN.Proxy.DTOs.Pacote,System.Threading.CancellationToken)">
             <summary>
@@ -205,6 +205,32 @@
             <param name="id">Identificador do Lote.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Um objeto que representa o lote enviado com seus documentos e os arquivos associados.</returns>
+        </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Notificacoes">
+            <summary>
+            Manipulação e informações sobre as notificações e callbacks gerados pelo sistema.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Notificacoes.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Inicializa a API de notificações.
+            </summary>
+            <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Notificacoes.Detalhes(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Detalhes da Notificação.
+            </summary>
+            <param name="id">Identificador da Notificação.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Retorna as informações sobre a notificação e seu status de envio.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Notificacoes.Replay(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Reenvia a notificação.
+            </summary>
+            <param name="id">Identificador da Notificação.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         </member>
         <member name="T:BITSIGN.Proxy.Conexao">
             <summary>
@@ -667,7 +693,12 @@
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Notificacao">
             <summary>
-            Notificação de assinantes.
+            Notificação de assinantes e callbacks.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Notificacao.Data">
+            <summary>
+            Data em que a notificação foi gerada pela sistema.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Notificacao.Status">
@@ -688,6 +719,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.Notificacao.Destinatario">
             <summary>
             Endereço de destino para onde a notificação foi enviada.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Notificacao.Assunto">
+            <summary>
+            O assunto sobre do que se trata a notificação.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Pacote">
@@ -949,6 +985,11 @@
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Configuracoes">
             <summary>
             API de Configurações.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Notificacoes">
+            <summary>
+            API de Notificações.
             </summary>
         </member>
         <member name="M:BITSIGN.Proxy.ProxyDoServico.Dispose">

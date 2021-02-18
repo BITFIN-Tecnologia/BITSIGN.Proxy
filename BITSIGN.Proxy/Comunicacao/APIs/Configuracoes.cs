@@ -16,7 +16,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <summary>
         /// Inicializa a API de configurações.
         /// </summary>
-        /// <param name="proxy">Instânca da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
+        /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
         public Configuracoes(HttpClient proxy)
             : base(proxy) { }
 

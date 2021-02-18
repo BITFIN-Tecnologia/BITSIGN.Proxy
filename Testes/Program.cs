@@ -21,7 +21,8 @@ namespace Testes
             { 5, new DownloadDePacote() },
             { 6, new DadosFinanceiros() },
             { 7, new AtualizacaoDeConfiguracoes() },
-            { 8, new RenovacaoDeChave() }
+            { 8, new RenovacaoDeChave() },
+            { 9, new ReplayDeNotificacoes() }
         };
 
         static async Task Main(string[] args)
