@@ -73,10 +73,7 @@ namespace BITSIGN.Proxy.Comunicacao
             return resposta;
         }
 
-        private void Log(string id, Severidade severidade, string mensagem)
-        {
-            if (this.logger != null)
-                this.logger.Escrever(severidade, $"{id} - {mensagem}");
-        }
+        private void Log(string id, Severidade severidade, string mensagem) =>
+            this.logger?.Escrever(severidade, $"{id} - {mensagem}");
     }
 }
