@@ -108,12 +108,15 @@ O projeto de `Testes` é do tipo `Console`, o que quer dizer que você poderá e
 
 ```
 EXEMPLOS DISPONIVEIS
-    01 - UploadDeLote
-    02 - LogsComDepuracao
-    03 - ConsultaDeLotes
-    04 - ConsultaDeDocumentos
-    05 - DownloadDePacote
-    06 - DadosFinanceiros
+  01 - UploadDeLote
+  02 - LogsComDepuracao
+  03 - ConsultaDeLotes
+  04 - ConsultaDeDocumentos
+  05 - DownloadDePacote
+  06 - DadosFinanceiros
+  07 - AtualizacaoDeConfiguracoes
+  08 - RenovacaoDeChave
+  09 - NotificacoesDoLote
 INFORME O NUMERO DO EXEMPLO:
 ```
 
