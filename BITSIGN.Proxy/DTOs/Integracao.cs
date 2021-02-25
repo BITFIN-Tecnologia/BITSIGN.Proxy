@@ -41,8 +41,15 @@ namespace BITSIGN.Proxy.DTOs
         /// </summary>
         public string DocumentosDoPacote { get; set; }
 
-        ///Indica o local onde será definido o carimbo da assinatura no documento original (Topo, Esquerda, Direita ou Rodapé).)]
+        /// <summary>
+        /// Indica o local onde será definido o carimbo da assinatura no documento original (Topo, Esquerda, Direita ou Rodapé).)
+        /// </summary>
         public string PosicaoDoCarimbo { get; set; }
+
+        /// <summary>
+        /// Mensagens predefinidas com os possíveis motivos de rejeição que o assinante poderá selecionar.
+        /// </summary>
+        public string RejeicoesPadroes { get; set; }
 
         /// <summary>
         /// Permite ou não a geração de links para acompanhamento ao vivo do processo de assinaturas dos documentos.
