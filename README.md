@@ -28,6 +28,8 @@ using (var proxy = new ProxyDoServico(
 
 O _proxy_ é também encarregado de configurar a autenticação da conexão, nomeando e anexando os _headers_ exigidos pelo serviço para identificar quem é o cliente que está consumindo. Por fim, ainda há o formato de serialização em que o _proxy_ irá operar. Por padrão, ele utilizará o formato **JSON**, mas através do enumerador `FormatoDeSerializacao` é possível alternar para o formato **XML**.
 
+As configurações de conexão também estão expostas através da interface [IConfiguracao](https://github.com/BITFIN-Software/BITSIGN.Proxy/blob/master/BITSIGN.Proxy/IConfiguracao.cs), possibilitando a extração destas informações de algum repositório, como por exemplo nos arquivos de configurações ([App.config](https://github.com/BITFIN-Software/BITSIGN.Proxy/blob/master/Testes/Exemplos/UsoDoAppSettings.cs#L26), Web.config ou appSettings.json) e com isso, não deixar estes parâmetros em "hard-code", possibilitando a alteração sem a necessidade de recompilar o programa.
+
 ## Logging
 O _logging_ é um item de extrema importância em ambientes distribuídos, já que invariavelmente, precisamos depurar eventuais problemas que ocorrem. Se o código não estiver bem instrumentado em relação à isso, pode-se perder muito tempo para descobrir o problema e corrigí-lo. Para auxiliar no desenvolvimento e consumo pelos clientes, foi espalhado por toda biblioteca, pontos de captura de informações que podem ser relevantes para a análise. 
 
