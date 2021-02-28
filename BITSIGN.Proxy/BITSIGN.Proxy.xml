@@ -237,9 +237,16 @@
             Informações necessárias para iniciar a comunicação com o serviço.
             </summary>
         </member>
+        <member name="M:BITSIGN.Proxy.Conexao.#ctor(BITSIGN.Proxy.IConfiguracao)">
+            <summary>
+            Inicializa a conexão com os dados sendo extraídos de um repositório.
+            </summary>
+            <param name="configuracao">Implementação que deve ser utilizada para localização das configurações.</param>
+            <exception cref="T:System.ArgumentNullException">Se o parâmetro <paramref name="configuracao"/> for nulo.</exception>
+        </member>
         <member name="M:BITSIGN.Proxy.Conexao.#ctor(BITSIGN.Proxy.Ambiente,System.Guid,System.String,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
             <summary>
-            Inicia a conexão com o mínimo necessário para estabelecer a comunicação com um dos <see cref="T:BITSIGN.Proxy.Ambiente"/>s.
+            Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um dos <see cref="T:BITSIGN.Proxy.Ambiente"/>s.
             </summary>
             <param name="ambiente">Ambiente de produção ou de testes (Sandbox).</param>
             <param name="codigoDoContratante">Código exclusivo do contratante.</param>
@@ -634,7 +641,14 @@
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Integracao.PosicaoDoCarimbo">
-            Indica o local onde será definido o carimbo da assinatura no documento original (Topo, Esquerda, Direita ou Rodapé).)]
+            <summary>
+            Indica o local onde será definido o carimbo da assinatura no documento original (Topo, Esquerda, Direita ou Rodapé).)
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Integracao.RejeicoesPadroes">
+            <summary>
+            Mensagens predefinidas com os possíveis motivos de rejeição que o assinante poderá selecionar.
+            </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Integracao.AcompanhamentoAoVivo">
             <summary>
@@ -830,6 +844,36 @@
         <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.TotalDeArmazenamento">
             <summary>
             Total atual de armazenamento utilizado.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.IConfiguracao">
+            <summary>
+            Especificação para implementação para extração e uso das configurações.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.IConfiguracao.Ambiente">
+            <summary>
+            Ambiente de Sandbox ou Produção.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.IConfiguracao.CodigoDoContratante">
+            <summary>
+            Código do Contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.IConfiguracao.ChaveDeIntegracao">
+            <summary>
+            Chave de Integração gerado para o contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.IConfiguracao.FormatoDeSerializacao">
+            <summary>
+            Formato da serialização das mensagens trocadas com os serviços.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.IConfiguracao.Timeout">
+            <summary>
+            Define o tempo máximo de espera permitido para executar uma requisição.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.Logging.ILogger">

@@ -19,7 +19,18 @@ namespace BITSIGN.Proxy
         };
 
         /// <summary>
-        /// Inicia a conexão com o mínimo necessário para estabelecer a comunicação com um dos <see cref="Proxy.Ambiente"/>s.
+        /// Inicializa a conexão com os dados sendo extraídos de um repositório.
+        /// </summary>
+        /// <param name="configuracao">Implementação que deve ser utilizada para localização das configurações.</param>
+        /// <exception cref="ArgumentNullException">Se o parâmetro <paramref name="configuracao"/> for nulo.</exception>
+        public Conexao(IConfiguracao configuracao)
+            : this(configuracao.Ambiente, configuracao.CodigoDoContratante, configuracao.ChaveDeIntegracao, configuracao.FormatoDeSerializacao)
+        {
+            this.Timeout = configuracao.Timeout;
+        }
+
+        /// <summary>
+        /// Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um dos <see cref="Proxy.Ambiente"/>s.
         /// </summary>
         /// <param name="ambiente">Ambiente de produção ou de testes (Sandbox).</param>
         /// <param name="codigoDoContratante">Código exclusivo do contratante.</param>
@@ -30,7 +41,7 @@ namespace BITSIGN.Proxy
         {
             this.Ambiente = ambiente;
 
-            this.CodigoDoContratante = 
+            this.CodigoDoContratante =
                 codigoDoContratante != Guid.Empty ? codigoDoContratante : throw new ArgumentException("Código do Contratante não informado.", nameof(codigoDoContratante));
 
             this.ChaveDeIntegracao =
