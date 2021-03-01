@@ -28,6 +28,8 @@ using (var proxy = new ProxyDoServico(
 
 O _proxy_ é também encarregado de configurar a autenticação da conexão, nomeando e anexando os _headers_ exigidos pelo serviço para identificar quem é o cliente que está consumindo. Por fim, ainda há o formato de serialização em que o _proxy_ irá operar. Por padrão, ele utilizará o formato **JSON**, mas através do enumerador `FormatoDeSerializacao` é possível alternar para o formato **XML**.
 
+As configurações de conexão também estão expostas através da interface [IConfiguracao](https://github.com/BITFIN-Software/BITSIGN.Proxy/blob/master/BITSIGN.Proxy/IConfiguracao.cs), possibilitando a extração destas informações de algum repositório, como por exemplo nos arquivos de configurações ([App.config](https://github.com/BITFIN-Software/BITSIGN.Proxy/blob/master/Testes/Exemplos/UsoDoAppSettings.cs#L26), Web.config ou appSettings.json) e com isso, não deixar estes parâmetros em "hard-code", possibilitando a alteração sem a necessidade de recompilar o programa.
+
 ## Logging
 O _logging_ é um item de extrema importância em ambientes distribuídos, já que invariavelmente, precisamos depurar eventuais problemas que ocorrem. Se o código não estiver bem instrumentado em relação à isso, pode-se perder muito tempo para descobrir o problema e corrigí-lo. Para auxiliar no desenvolvimento e consumo pelos clientes, foi espalhado por toda biblioteca, pontos de captura de informações que podem ser relevantes para a análise. 
 
@@ -117,6 +119,8 @@ EXEMPLOS DISPONIVEIS
   07 - AtualizacaoDeConfiguracoes
   08 - RenovacaoDeChave
   09 - NotificacoesDoLote
+  10 - UsoDoAppSettings
+  11 - StatusDosServicos
 INFORME O NUMERO DO EXEMPLO:
 ```
 
@@ -161,6 +165,41 @@ public class Callback
     public string Tags { get; set; }
 }
 ```
+
+## Status dos Serviços
+O _proxy_ também expõe uma propriedade para analisar o status dos serviços e seus recursos associados. Isso permitirá ao cliente que consome as APIs possa criar alguma regra em torno disso, e desabilitar e reabilitar funcionalidades em seu sistema de acordo com a situação atual de cada serviço. A propriedade `Status` está acessível a partir do _proxy_ e através do método `Atualizar` é acessar o relatório com a situação de todos os serviços. Abaixo temos o exemplo de como chamar o método e exibir o relatório:
+
+```csharp
+using (var proxy = new ProxyDoServico(this.Conexao))
+{
+    var relatorio = await proxy.Status.Atualizar(cancellationToken);
+
+    Console.WriteLine($"Status Geral: {relatorio.Status}");
+    Console.WriteLine("--------- SERVIÇOS ---------");
+
+    foreach (var item in relatorio.Servicos)
+    {
+        Console.WriteLine($"Serviço: {item.Nome}");
+        Console.WriteLine($"Status: {item.Status}");
+        Console.WriteLine($"Descrição: {item.Descricao}");
+        Console.WriteLine();
+    }
+}
+```
+```
+Status Geral: Online
+
+--------- SERVIÇOS ---------
+Serviço: Base de Dados
+Status: Online
+Descriçao: Base de Dados Online.
+
+Serviço: NTP.br - Horário de Brasília
+Status: Online
+Descriçao: Horário de Brasília Validado.
+...
+```
+> É importante dizer que o _proxy_, nesta versão, ignora o status atual do serviço, ou seja, mesmo que por algum motivo ele esteja indisponível, a requisição sempre será enviada.
 ---
 
 > #### CONTATOS
