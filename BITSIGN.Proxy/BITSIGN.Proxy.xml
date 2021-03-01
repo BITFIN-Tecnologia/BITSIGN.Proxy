@@ -899,9 +899,9 @@
             Nome do serviço analisado.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servico.Descricao">
+        <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servico.Mensagem">
             <summary>
-            Descrição gerada pela análise do serviço.
+            Mensagem gerada pela análise do serviço.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servico.Status">

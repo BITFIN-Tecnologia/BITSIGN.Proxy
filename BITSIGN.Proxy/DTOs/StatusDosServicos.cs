@@ -40,9 +40,9 @@ namespace BITSIGN.Proxy.DTOs
             public string Nome { get; set; }
 
             /// <summary>
-            /// Descrição gerada pela análise do serviço.
+            /// Mensagem gerada pela análise do serviço.
             /// </summary>
-            public string Descricao { get; set; }
+            public string Mensagem { get; set; }
 
             /// <summary>
             /// Status atual do serviço.

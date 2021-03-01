@@ -24,7 +24,7 @@ namespace Testes.Exemplos
                 {
                     Console.WriteLine($"Serviço: {item.Nome}");
                     Console.WriteLine($"Status: {Traduzir(item.Status)}");
-                    Console.WriteLine($"Descrição: {item.Descricao}");
+                    Console.WriteLine($"Mensagem: {item.Mensagem}");
                     Console.WriteLine($"Duração: {item.Duracao}");
                     Console.WriteLine();
                 }
