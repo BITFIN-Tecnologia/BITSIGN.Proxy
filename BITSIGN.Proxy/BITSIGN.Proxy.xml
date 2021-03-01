@@ -232,6 +232,24 @@
             <param name="id">Identificador da Notificação.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Status">
+            <summary>
+            Análise da situação dos serviços e recursos.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Status.#ctor(System.Uri)">
+            <summary>
+            Inicializa o monitoramento de status dos serviços.
+            </summary>
+            <param name="url">Endereço onde está localizado o relatório de status.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Status.Atualizar(System.Threading.CancellationToken)">
+            <summary>
+            Atualiza o status dos serviços.
+            </summary>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Relatório com o status atual dos serviços e recursos.</returns>
+        </member>
         <member name="T:BITSIGN.Proxy.Conexao">
             <summary>
             Informações necessárias para iniciar a comunicação com o serviço.
@@ -282,6 +300,11 @@
         <member name="P:BITSIGN.Proxy.Conexao.Url">
             <summary>
             Endereço HTTP para o serviço, variando de acordo com o <see cref="P:BITSIGN.Proxy.Conexao.Ambiente"/>.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Conexao.Status">
+            <summary>
+            Endpoint que resume o status atual dos serviços e seus recursos.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Assinante">
@@ -846,6 +869,51 @@
             Total atual de armazenamento utilizado.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.StatusDosServicos">
+            <summary>
+            Relatório com o status geral e de cada serviço.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Status">
+            <summary>
+            Status geral de todos os serviços
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Duracao">
+            <summary>
+            Tempo de duração geral da análise.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servicos">
+            <summary>
+            Relação de serviços com seus respectivos status.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.StatusDosServicos.Servico">
+            <summary>
+            Detalha o status atual de um determinado serviço.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servico.Nome">
+            <summary>
+            Nome do serviço analisado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servico.Descricao">
+            <summary>
+            Descrição gerada pela análise do serviço.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servico.Status">
+            <summary>
+            Status atual do serviço.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servico.Duracao">
+            <summary>
+            Tempo de duração para análise do serviço.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.IConfiguracao">
             <summary>
             Especificação para implementação para extração e uso das configurações.
@@ -1034,6 +1102,11 @@
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Notificacoes">
             <summary>
             API de Notificações.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Status">
+            <summary>
+            API de status dos Serviços.
             </summary>
         </member>
         <member name="M:BITSIGN.Proxy.ProxyDoServico.Dispose">
