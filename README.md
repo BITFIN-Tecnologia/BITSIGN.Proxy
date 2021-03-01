@@ -119,6 +119,8 @@ EXEMPLOS DISPONIVEIS
   07 - AtualizacaoDeConfiguracoes
   08 - RenovacaoDeChave
   09 - NotificacoesDoLote
+  10 - UsoDoAppSettings
+  11 - StatusDosServicos
 INFORME O NUMERO DO EXEMPLO:
 ```
 
@@ -163,6 +165,41 @@ public class Callback
     public string Tags { get; set; }
 }
 ```
+
+## Status dos Serviços
+O _proxy_ também expõe uma propriedade para analisar o status dos serviços e seus recursos associados. Isso permitirá ao cliente que consome as APIs possa criar alguma regra em torno disso, e desabilitar e reabilitar funcionalidades em seu sistema de acordo com a situação atual de cada serviço. A propriedade `Status` está acessível a partir do _proxy_ e através do método `Atualizar` é acessar o relatório com a situação de todos os serviços. Abaixo temos o exemplo de como chamar o método e exibir o relatório:
+
+```csharp
+using (var proxy = new ProxyDoServico(this.Conexao))
+{
+    var relatorio = await proxy.Status.Atualizar(cancellationToken);
+
+    Console.WriteLine($"Status Geral: {relatorio.Status}");
+    Console.WriteLine("--------- SERVIÇOS ---------");
+
+    foreach (var item in relatorio.Servicos)
+    {
+        Console.WriteLine($"Serviço: {item.Nome}");
+        Console.WriteLine($"Status: {item.Status}");
+        Console.WriteLine($"Descrição: {item.Descricao}");
+        Console.WriteLine();
+    }
+}
+```
+```
+Status Geral: Online
+
+--------- SERVIÇOS ---------
+Serviço: Base de Dados
+Status: Online
+Descriçao: Base de Dados Online.
+
+Serviço: NTP.br - Horário de Brasília
+Status: Online
+Descriçao: Horário de Brasília Validado.
+...
+```
+> É importante dizer que o _proxy_, nesta versão, ignora o status atual do serviço, ou seja, mesmo que por algum motivo ele esteja indisponível, a requisição sempre será enviada.
 ---
 
 > #### CONTATOS
