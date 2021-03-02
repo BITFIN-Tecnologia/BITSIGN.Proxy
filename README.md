@@ -180,11 +180,11 @@ using (var proxy = new ProxyDoServico(this.Conexao))
     Console.WriteLine($"Status Geral: {relatorio.Status}");
     Console.WriteLine("--------- SERVIÇOS ---------");
 
-    foreach (var item in relatorio.Servicos)
+    foreach (var s in relatorio.Servicos)
     {
-        Console.WriteLine($"Serviço: {item.Nome}");
-        Console.WriteLine($"Status: {item.Status}");
-        Console.WriteLine($"Mensagem: {item.Mensagem}");
+        Console.WriteLine($"Serviço: {s.Nome}");
+        Console.WriteLine($"Status: {s.Status}");
+        Console.WriteLine($"Mensagem: {s.Mensagem}");
         Console.WriteLine();
     }
 }
