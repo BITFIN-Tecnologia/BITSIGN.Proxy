@@ -181,7 +181,7 @@ using (var proxy = new ProxyDoServico(this.Conexao))
     {
         Console.WriteLine($"Serviço: {item.Nome}");
         Console.WriteLine($"Status: {item.Status}");
-        Console.WriteLine($"Descrição: {item.Descricao}");
+        Console.WriteLine($"Mensagem: {item.Mensagem}");
         Console.WriteLine();
     }
 }
@@ -192,11 +192,11 @@ Status Geral: Online
 --------- SERVIÇOS ---------
 Serviço: Base de Dados
 Status: Online
-Descriçao: Base de Dados Online.
+Mensagem: Base de Dados Online.
 
 Serviço: NTP.br - Horário de Brasília
 Status: Online
-Descriçao: Horário de Brasília Validado.
+Mensagem: Horário de Brasília Validado.
 ...
 ```
 > É importante dizer que o _proxy_, nesta versão, ignora o status atual do serviço, ou seja, mesmo que por algum motivo ele esteja indisponível, a requisição sempre será enviada.
