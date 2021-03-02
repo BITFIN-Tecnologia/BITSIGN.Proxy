@@ -130,6 +130,9 @@ Os _callbacks_ servem para recepcionar algum evento relevante que foi gerado pel
 Abaixo temos a estrutura do objeto, que será serializado em JSON ou XML e entregue no local (`URL`) previamente informado, e o cliente então, pode utilizar a informação como desejar; para entender como o serviço entende que o _callback_ foi entregue e sobre a quantidade de tentativas de entrega, [consulte a documentação](https://www.bitsing.com.br/documentacao#integracaoCallbacks).
 
 ```csharp
+/// <summary>
+/// Classe utilizada para recepcionar os callbacks gerados pela plataforma.
+/// </summary>
 [DebuggerDisplay("{Evento} - Status: {Status}")]
 public class Callback
 {
