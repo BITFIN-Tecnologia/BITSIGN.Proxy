@@ -17,27 +17,18 @@ namespace Testes.Exemplos
             {
                 var relatorio = await proxy.Status.Atualizar(cancellationToken);
 
-                Console.WriteLine($"Status Geral: {Traduzir(relatorio.Status)} - Duração: {relatorio.Duracao}");
+                Console.WriteLine($"Status Geral: {relatorio.Status} - Duração: {relatorio.Duracao}");
                 Console.WriteLine("--------- SERVIÇOS ---------");
 
                 foreach (var item in relatorio.Servicos)
                 {
                     Console.WriteLine($"Serviço: {item.Nome}");
-                    Console.WriteLine($"Status: {Traduzir(item.Status)}");
+                    Console.WriteLine($"Status: {item.Status}");
                     Console.WriteLine($"Mensagem: {item.Mensagem}");
                     Console.WriteLine($"Duração: {item.Duracao}");
                     Console.WriteLine();
                 }
             }
-
-            static string Traduzir(string status) =>
-                status switch
-                {
-                    "Healthy" => "Online",
-                    "Unhealthy" => "Offline",
-                    "Degraded" => "Degradado",
-                    _ => "Indeterminado"
-                };
         }
     }
 }
