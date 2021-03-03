@@ -31,7 +31,7 @@ namespace BITSIGN.Proxy.DTOs
         public string Status { get; set; }
 
         /// <summary>
-        /// Total atual de armazenamento utilizado.
+        /// Total atual de armazenamento utilizado (em bytes).
         /// </summary>
         public long TotalDeArmazenamento { get; set; }
     }

@@ -47,7 +47,7 @@ namespace BITSIGN.Proxy.DTOs
         public decimal ValorExcedente { get; set; }
 
         /// <summary>
-        /// Espaço de armazenamento disponível.
+        /// Espaço de armazenamento disponível (em bytes).
         /// </summary>
         public long TamanhoDeArmazenamento { get; set; }
 

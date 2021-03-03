@@ -846,7 +846,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Plano.TamanhoDeArmazenamento">
             <summary>
-            Espaço de armazenamento disponível.
+            Espaço de armazenamento disponível (em bytes).
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Plano.AnosDeArmazenamento">
@@ -881,7 +881,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.TotalDeArmazenamento">
             <summary>
-            Total atual de armazenamento utilizado.
+            Total atual de armazenamento utilizado (em bytes).
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.StatusDosServicos">
