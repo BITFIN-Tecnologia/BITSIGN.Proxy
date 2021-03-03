@@ -728,6 +728,11 @@
             Relação de documentos adicionados ao lote.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.Observadores">
+            <summary>
+            Relação de observadores que acompanham o processo de assinaturas.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Notificacao">
             <summary>
             Notificação de assinantes e callbacks.
@@ -761,6 +766,16 @@
         <member name="P:BITSIGN.Proxy.DTOs.Notificacao.Assunto">
             <summary>
             O assunto sobre do que se trata a notificação.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Observador">
+            <summary>
+            Observador do processo de assinaturas.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Observador.Email">
+            <summary>
+            Endereço de e-mail para onde a notificação será enviada.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Pacote">
