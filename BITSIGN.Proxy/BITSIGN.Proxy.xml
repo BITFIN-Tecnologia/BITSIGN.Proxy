@@ -198,6 +198,22 @@
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Coleção com as notificações enviadas à todos os assinantes envolvidos no lote.</returns>
         </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Observadores(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Observadores do Lote.
+            </summary>
+            <param name="id">Identificador do Lote.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Coleção com os observadores adicionados no lote.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Anexos(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Anexos do Lote.
+            </summary>
+            <param name="id">Identificador do Lote.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Coleção com os arquivos anexados ao lote.</returns>
+        </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Pacote(System.Guid,System.Threading.CancellationToken)">
             <summary>
             Download do Pacote.
@@ -305,6 +321,26 @@
         <member name="P:BITSIGN.Proxy.Conexao.Status">
             <summary>
             Endpoint que resume o status atual dos serviços e seus recursos.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Anexo">
+            <summary>
+            Arquivo anexo ao lote de assinaturas.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Anexo.NomeDoArquivo">
+            <summary>
+            Nome do arquivo anexo.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Anexo.Descricao">
+            <summary>
+            Breve descrição da finalidade do anexo.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Anexo.Conteudo">
+            <summary>
+            Conteúdo do arquivo anexo.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Assinante">
@@ -733,6 +769,11 @@
             Relação de observadores que acompanham o processo de assinaturas.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.Anexos">
+            <summary>
+            Relação de arquivos anexados ao lote.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Notificacao">
             <summary>
             Notificação de assinantes e callbacks.
@@ -776,6 +817,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.Observador.Email">
             <summary>
             Endereço de e-mail para onde a notificação será enviada.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Observador.Tipo">
+            <summary>
+            Indica o tipo de observador (Global ou Pontual).
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Pacote">

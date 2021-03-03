@@ -17,5 +17,11 @@ namespace BITSIGN.Proxy.DTOs
         /// </summary>
         [XmlAttribute]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Indica o tipo de observador (Global ou Pontual).
+        /// </summary>
+        [XmlAttribute]
+        public string Tipo { get; set; }
     }
 }

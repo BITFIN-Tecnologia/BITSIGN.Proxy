@@ -57,6 +57,11 @@ namespace BITSIGN.Proxy.DTOs
             this.Arquivos = zip;
         }
 
+        internal byte[] Serializar() =>
+            Compactador.Compactar(
+                this.Arquivos.Concat(
+                    this.Lote.Anexos?.Any() ?? false ? Enumerable.Empty<(string, byte[])>() : this.Lote.Anexos.Select(a => ($"anexos/{a.NomeDoArquivo}", a.Conteudo))));
+
         /// <summary>
         /// Indica se o pacote está ou não vazio.
         /// </summary>

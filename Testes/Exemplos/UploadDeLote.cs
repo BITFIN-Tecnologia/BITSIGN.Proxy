@@ -17,7 +17,7 @@ namespace Testes.Exemplos
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
             //Arquivo a ser enviado para coleta de assinatura(s).
-            var arquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao.pdf");
+            //var arquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao.pdf");
 
             //Criação do proxy de comunicação com o serviço.
             using (var proxy = new ProxyDoServico(this.Conexao))
@@ -30,25 +30,27 @@ namespace Testes.Exemplos
                         Entidade = new Entidade()
                         {
                             Nome = "White House - USA",
-                            Documento = "016338212000113"
+                            Documento = "014175773000113",
+                            Email = "contact@whitehouse.com"
                         }
                     },
                     Entidade = new Entidade()
                     {
                         Nome = "White House - USA",
-                        Documento = "016338212000113"
+                        Documento = "014175773000113",
+                        Email = "contact@whitehouse.com"
                     },
                     Documentos = new List<Documento>()
                     {
                         new Documento()
                         {
-                            NomeDoArquivo = "ContratoDeLocacao.pdf",
-                            Descricao = "Contrato de Locação",
+                            NomeDoArquivo = "ContratoDeLocacao1.pdf",
+                            Descricao = "Contrato de Locação 1",
                             Tipo = "Contrato",
                             Tags = "contratoId=123",
                             FormatoDoArquivo = "PDF",
-                            ConteudoOriginal = arquivo,
-                            TamanhoDoArquivo = arquivo.Length,
+                            ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf"),
+                            TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf").Length,
                             PadraoDeAssinatura = "CAdES",
                             PoliticaDeAssinatura = "PA_AD_RB_v2_3",
                             Assinaturas = new List<Assinatura>()
@@ -63,29 +65,33 @@ namespace Testes.Exemplos
                                         {
                                             Entidade = new Entidade()
                                             {
-                                                Nome = "Jack Bauer",
-                                                Documento = "57863748070",
-                                                Email = "jack.bauer@ctu.com"
-                                            },
-                                            Notificar = true,
-                                            Obrigatorio = false
-                                        },
-                                        new Assinante()
-                                        {
-                                            Entidade = new Entidade()
-                                            {
-                                                Nome = "Nina Myers",
-                                                Documento = "88488048025",
-                                                Email = "nina.myers@ctu.com"
+                                                Nome = "Israel Aece",
+                                                Documento = "28387365823",
+                                                Email = "israelaece@yahoo.com.br"
                                             },
                                             Notificar = true,
                                             Obrigatorio = false
                                         }
                                     }
-                                },
+                                }
+                            }
+                        },
+                        new Documento()
+                        {
+                            NomeDoArquivo = "ContratoDeLocacao2.pdf",
+                            Descricao = "Contrato de Locação 2",
+                            Tipo = "Contrato",
+                            Tags = "contratoId=123",
+                            FormatoDoArquivo = "PDF",
+                            ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao2.pdf"),
+                            TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao2.pdf").Length,
+                            PadraoDeAssinatura = "CAdES",
+                            PoliticaDeAssinatura = "PA_AD_RB_v2_3",
+                            Assinaturas = new List<Assinatura>()
+                            {
                                 new Assinatura()
                                 {
-                                    Perfil = "Locatário",
+                                    Perfil = "Locador",
                                     QtdeMinima = 1,
                                     Assinantes = new List<Assinante>()
                                     {
@@ -93,17 +99,60 @@ namespace Testes.Exemplos
                                         {
                                             Entidade = new Entidade()
                                             {
-                                                Nome = "Joe Biden",
-                                                Documento = "94478520097",
-                                                Email = "potus@whitehouse.com"
+                                                Nome = "Israel Aece",
+                                                Documento = "28387365823",
+                                                Email = "israelaece@yahoo.com.br"
                                             },
                                             Notificar = true,
-                                            Obrigatorio = true
+                                            Obrigatorio = false
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        new Documento()
+                        {
+                            NomeDoArquivo = "ContratoDeLocacao3.pdf",
+                            Descricao = "Contrato de Locação 3",
+                            Tipo = "Contrato",
+                            Tags = "contratoId=123",
+                            FormatoDoArquivo = "PDF",
+                            ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao3.pdf"),
+                            TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao3.pdf").Length,
+                            PadraoDeAssinatura = "CAdES",
+                            PoliticaDeAssinatura = "PA_AD_RB_v2_3",
+                            Assinaturas = new List<Assinatura>()
+                            {
+                                new Assinatura()
+                                {
+                                    Perfil = "Locador",
+                                    QtdeMinima = 1,
+                                    Assinantes = new List<Assinante>()
+                                    {
+                                        new Assinante()
+                                        {
+                                            Entidade = new Entidade()
+                                            {
+                                                Nome = "Israel Aece",
+                                                Documento = "28387365823",
+                                                Email = "israelaece@yahoo.com.br"
+                                            },
+                                            Notificar = true,
+                                            Obrigatorio = false
                                         }
                                     }
                                 }
                             }
                         }
+                    },
+                    Observadores = new List<Observador>()
+                    {
+                        new Observador() { Email = "teste@xpto.com.br" },
+                        new Observador() { Email = "xpto@xpto.com.br" }
+                    },
+                    Anexos = new List<Anexo>()
+                    {
+                        new Anexo() { NomeDoArquivo = "Instrucoes.txt", Conteudo = File.ReadAllBytes("Instrucoes.txt"), Descricao = "Descrição sobre o processo." }
                     },
                     Tags = "processo=456"
                 });

@@ -33,7 +33,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Post, "lotes")
             {
-                Content = new ByteArrayContent(Compactador.Compactar(pacote.Arquivos))
+                Content = new ByteArrayContent(pacote.Serializar())
             })
             {
                  return await this.Executar(requisicao, async resposta =>
@@ -119,6 +119,64 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                         resposta.EnsureSuccessStatusCode();
 
                         return await resposta.Content.ReadAs<IEnumerable<DTOs.Notificacao>>(cancellationToken);
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        if (ex.StatusCode == HttpStatusCode.NotFound)
+                            return null;
+
+                        throw;
+                    }
+                }, cancellationToken);
+            }
+        }
+
+        /// <summary>
+        /// Observadores do Lote.
+        /// </summary>
+        /// <param name="id">Identificador do Lote.</param>
+        /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>Coleção com os observadores adicionados no lote.</returns>
+        public async Task<IEnumerable<DTOs.Observador>> Observadores(Guid id, CancellationToken cancellationToken = default)
+        {
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"lotes/{id}/observadores"))
+            {
+                return await this.Executar(requisicao, async resposta =>
+                {
+                    try
+                    {
+                        resposta.EnsureSuccessStatusCode();
+
+                        return await resposta.Content.ReadAs<IEnumerable<DTOs.Observador>>(cancellationToken);
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        if (ex.StatusCode == HttpStatusCode.NotFound)
+                            return null;
+
+                        throw;
+                    }
+                }, cancellationToken);
+            }
+        }
+
+        /// <summary>
+        /// Anexos do Lote.
+        /// </summary>
+        /// <param name="id">Identificador do Lote.</param>
+        /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>Coleção com os arquivos anexados ao lote.</returns>
+        public async Task<IEnumerable<DTOs.Anexo>> Anexos(Guid id, CancellationToken cancellationToken = default)
+        {
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"lotes/{id}/anexos"))
+            {
+                return await this.Executar(requisicao, async resposta =>
+                {
+                    try
+                    {
+                        resposta.EnsureSuccessStatusCode();
+
+                        return await resposta.Content.ReadAs<IEnumerable<DTOs.Anexo>>(cancellationToken);
                     }
                     catch (HttpRequestException ex)
                     {

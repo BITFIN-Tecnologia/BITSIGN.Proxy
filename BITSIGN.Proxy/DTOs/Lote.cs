@@ -69,5 +69,10 @@ namespace BITSIGN.Proxy.DTOs
         /// Relação de observadores que acompanham o processo de assinaturas.
         /// </summary>
         public List<Observador> Observadores { get; set; }
+
+        /// <summary>
+        /// Relação de arquivos anexados ao lote.
+        /// </summary>
+        public List<Anexo> Anexos { get; set; }
     }
 }
