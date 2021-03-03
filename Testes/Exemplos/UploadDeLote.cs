@@ -152,7 +152,7 @@ namespace Testes.Exemplos
                     },
                     Anexos = new List<Anexo>()
                     {
-                        new Anexo() { NomeDoArquivo = "Instrucoes.txt", Conteudo = File.ReadAllBytes("Instrucoes.txt"), Descricao = "Descrição sobre o processo." }
+                        new Anexo() { NomeDoArquivo = "Instrucoes.txt", Conteudo = File.ReadAllBytes("Exemplo/Instrucoes.txt"), Descricao = "Descrição sobre o processo." }
                     },
                     Tags = "processo=456"
                 });

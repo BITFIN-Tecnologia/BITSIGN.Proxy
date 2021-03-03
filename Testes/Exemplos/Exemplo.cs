@@ -17,9 +17,9 @@ namespace Testes.Exemplos
 
         public abstract Task Executar(CancellationToken cancellationToken = default);
 
-        protected Guid CodigoDoContratante { get; } = new Guid("39cf6084-655b-4355-a321-b7dc8d49ce6a");
+        protected Guid CodigoDoContratante { get; } = new Guid("9174a05f-7a5f-4a5f-b3b0-5757fe57a611");
 
-        protected string ChaveDeIntegracao { get; set; } = "Wm1VM05HSXlNRGN0TmpSa09TMDBaVEEwTFdFNFpUSXRZVEE1TmpBNFl6VmtOemsx";
+        protected string ChaveDeIntegracao { get; set; } = "TVRObVpqTXpOV0l0T1dGaVlTMDBaVFU0TFRoaU1HSXRZalkwTURSaU16VTNZVEU1";
 
         protected Conexao Conexao { get; }
     }
