@@ -45,6 +45,7 @@ namespace BITSIGN.Proxy
             this.Financeiro = new Financeiro(proxy);
             this.Configuracoes = new Configuracoes(proxy) { FormatoDeSerializacao = conexao.FormatoDeSerializacao };
             this.Notificacoes = new Notificacoes(proxy);
+            this.Anexos = new Anexos(proxy);
             this.Status = new Status(conexao.Status);
         }
 
@@ -77,6 +78,11 @@ namespace BITSIGN.Proxy
         /// API de Notificações.
         /// </summary>
         public Notificacoes Notificacoes { get; }
+
+        /// <summary>
+        /// API de Anexos.
+        /// </summary>
+        public Anexos Anexos { get; set; }
 
         /// <summary>
         /// API de status dos Serviços.

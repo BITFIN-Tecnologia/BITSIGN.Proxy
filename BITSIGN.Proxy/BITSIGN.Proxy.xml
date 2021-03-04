@@ -54,6 +54,33 @@
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Retorna o objeto do tipo <typeparamref name="T"/> pronto para utilização.</returns>
         </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Anexos">
+            <summary>
+            Documentos anexados ao lote que complementam, instruem ou justificam as assinaturas.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Anexos.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Inicializa a API de anexos.
+            </summary>
+            <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Anexos.Detalhes(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Detalhes do Anexo.
+            </summary>
+            <param name="id">Identificador do Anexo.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Retorna as informações sobre o arquivo anexado ao lote.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Anexos.Download(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Download do conteúdo do arquivo anexado.
+            </summary>
+            <param name="id">Identificador do Anexo.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Conteúdo do arquivo anexado (em bytes).</returns>
+        </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes">
             <summary>
             Ajustes relacionados ao processo operacional das assinaturas digitais, callbacks, etc.
@@ -325,7 +352,7 @@
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Anexo">
             <summary>
-            Arquivo anexo ao lote de assinaturas.
+            Arquivo anexo ao lote de assinaturas com informações complementares.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Anexo.NomeDoArquivo">
@@ -1163,6 +1190,11 @@
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Notificacoes">
             <summary>
             API de Notificações.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Anexos">
+            <summary>
+            API de Anexos.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Status">
