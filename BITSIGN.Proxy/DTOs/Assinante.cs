@@ -31,6 +31,12 @@ namespace BITSIGN.Proxy.DTOs
         public DateTime DataDoStatus { get; set; }
 
         /// <summary>
+        /// Indica quem forneceu a data/hora para a assinatura.
+        /// </summary>
+        [XmlAttribute]
+        public string ProvedorDoTempo { get; set; }
+
+        /// <summary>
         /// Indica se o assinante é ou não obrigatório.
         /// </summary>
         [XmlAttribute]
