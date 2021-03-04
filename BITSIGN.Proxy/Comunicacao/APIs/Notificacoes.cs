@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace BITSIGN.Proxy.Comunicacao.APIs
 {
     /// <summary>
-    /// Manipulação e informações sobre as notificações e callbacks gerados pelo sistema.
+    /// Informações e manipulação de notificações e callbacks.
     /// </summary>
     public class Notificacoes : API
     {

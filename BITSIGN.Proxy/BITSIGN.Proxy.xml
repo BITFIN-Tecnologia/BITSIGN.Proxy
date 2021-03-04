@@ -251,7 +251,7 @@
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Notificacoes">
             <summary>
-            Manipulação e informações sobre as notificações e callbacks gerados pelo sistema.
+            Informações e manipulação de notificações e callbacks.
             </summary>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Notificacoes.#ctor(System.Net.Http.HttpClient)">
