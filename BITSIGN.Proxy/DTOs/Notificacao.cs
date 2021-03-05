@@ -48,5 +48,11 @@ namespace BITSIGN.Proxy.DTOs
         /// </summary>
         [XmlAttribute]
         public string Assunto { get; set; }
+
+        /// <summary>
+        /// Informações contextuais agregadas à notificação.
+        /// </summary>
+        [XmlAttribute]
+        public string Tags { get; set; }
     }
 }
