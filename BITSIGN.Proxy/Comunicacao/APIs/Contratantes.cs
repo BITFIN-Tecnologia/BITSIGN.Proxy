@@ -63,10 +63,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 Content = new StringContent(Serializador.Serializar(contratante.Configuracao, this.FormatoDeSerializacao.ToString()))
             })
             {
-                await Executar(requisicao, resposta =>
-                {
-                    resposta.EnsureSuccessStatusCode();
-                }, cancellationToken);
+                await Executar(requisicao, resposta => resposta.EnsureSuccessStatusCode(), cancellationToken);
             }
         }
 
