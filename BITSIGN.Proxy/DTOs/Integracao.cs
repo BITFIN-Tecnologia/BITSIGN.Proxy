@@ -55,5 +55,10 @@ namespace BITSIGN.Proxy.DTOs
         /// Permite ou não a geração de links para acompanhamento ao vivo do processo de assinaturas dos documentos.
         /// </summary>
         public bool AcompanhamentoAoVivo { get; set; }
+
+        /// <summary>
+        /// Periodicidade para envio de lembrete informando sobre documentos com a assinatura pendente.
+        /// </summary>
+        public string PeriodoParaLembrete { get; set; }
     }
 }
