@@ -9,7 +9,7 @@ namespace BITSIGN.Proxy.DTOs
     /// Configurações referente ao processo operacional e integração.
     /// </summary>
     [DebuggerDisplay("{UrlDeCallback}")]
-    public class Integracao
+    public class Configuracao
     {
         /// <summary>
         /// Url para notificar o contratante dos eventos ocorridos.

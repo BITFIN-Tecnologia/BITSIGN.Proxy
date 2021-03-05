@@ -23,13 +23,13 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <summary>
         /// Atualização de configurações.
         /// </summary>
-        /// <param name="integracao">Objeto com os parâmetros para serem atualizados.</param>
+        /// <param name="configuracao">Objeto com os parâmetros para serem atualizados.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-        public async Task Atualizar(DTOs.Integracao integracao, CancellationToken cancellationToken = default)
+        public async Task Atualizar(DTOs.Configuracao configuracao, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Put, "configuracoes")
             {
-                Content = new StringContent(Serializador.Serializar(integracao, this.FormatoDeSerializacao.ToString()))
+                Content = new StringContent(Serializador.Serializar(configuracao, this.FormatoDeSerializacao.ToString()))
             })
             {
                 await Executar(requisicao, resposta =>

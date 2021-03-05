@@ -92,11 +92,11 @@
             </summary>
             <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.Atualizar(BITSIGN.Proxy.DTOs.Integracao,System.Threading.CancellationToken)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.Atualizar(BITSIGN.Proxy.DTOs.Configuracao,System.Threading.CancellationToken)">
             <summary>
             Atualização de configurações.
             </summary>
-            <param name="integracao">Objeto com os parâmetros para serem atualizados.</param>
+            <param name="configuracao">Objeto com os parâmetros para serem atualizados.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.RenovarChave(System.Threading.CancellationToken)">
@@ -390,6 +390,11 @@
             Data em que o status foi definido.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.ProvedorDoTempo">
+            <summary>
+            Indica quem forneceu a data/hora para a assinatura.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Assinante.Obrigatorio">
             <summary>
             Indica se o assinante é ou não obrigatório.
@@ -479,6 +484,61 @@
         <member name="P:BITSIGN.Proxy.DTOs.Callback.Tags">
             <summary>
             Se a entidade que gerou o callback possuir tags associadas, elas serão informadas nesta propriedade.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Configuracao">
+            <summary>
+            Configurações referente ao processo operacional e integração.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.UrlDeCallback">
+            <summary>
+            Url para notificar o contratante dos eventos ocorridos.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.HeadersDeCallback">
+            <summary>
+            Headers que serão embutidos na requisição quando o callback for enviado ao contratante. Exemplo: AppKey=123;Servico=Assinaturas
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.FormatoDeCallback">
+            <summary>
+            Determina em qual formato será serializado o objeto de callback, pode ser JSON ou XML.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.IPsAutorizados">
+            <summary>
+            Relação de IPs que estão autorizados à consumir a API. Múltiplos IPs são suportados desde que separados por ponto-e-vírgula (;).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.EventosReportados">
+            <summary>
+            Eventos disponíveis para notificação (Financeiro, Pacote, Lote, Documento, Assinatura e Assinante).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.DocumentosDoPacote">
+            <summary>
+            Indica quais documentos (Original, Assinado, Manifesto e Original + Manifesto) devem compor o pacote gerado quando um lote é concluído (assinado).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.PosicaoDoCarimbo">
+            <summary>
+            Indica o local onde será definido o carimbo da assinatura no documento original (Topo, Esquerda, Direita ou Rodapé).)
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.RejeicoesPadroes">
+            <summary>
+            Mensagens predefinidas com os possíveis motivos de rejeição que o assinante poderá selecionar.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.AcompanhamentoAoVivo">
+            <summary>
+            Permite ou não a geração de links para acompanhamento ao vivo do processo de assinaturas dos documentos.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.PeriodoParaLembrete">
+            <summary>
+            Periodicidade para envio de lembrete informando sobre documentos com a assinatura pendente.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Contratante">
@@ -689,56 +749,6 @@
         <member name="P:BITSIGN.Proxy.DTOs.Fechamento.DataDeVencimento">
             <summary>
             Data de vencimento para pagamento.
-            </summary>
-        </member>
-        <member name="T:BITSIGN.Proxy.DTOs.Integracao">
-            <summary>
-            Configurações referente ao processo operacional e integração.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Integracao.UrlDeCallback">
-            <summary>
-            Url para notificar o contratante dos eventos ocorridos.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Integracao.HeadersDeCallback">
-            <summary>
-            Headers que serão embutidos na requisição quando o callback for enviado ao contratante. Exemplo: AppKey=123;Servico=Assinaturas
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Integracao.FormatoDeCallback">
-            <summary>
-            Determina em qual formato será serializado o objeto de callback, pode ser JSON ou XML.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Integracao.IPsAutorizados">
-            <summary>
-            Relação de IPs que estão autorizados à consumir a API. Múltiplos IPs são suportados desde que separados por ponto-e-vírgula (;).
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Integracao.EventosReportados">
-            <summary>
-            Eventos disponíveis para notificação (Financeiro, Pacote, Lote, Documento, Assinatura e Assinante).
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Integracao.DocumentosDoPacote">
-            <summary>
-            Indica quais documentos (Original, Assinado, Manifesto e Original + Manifesto) devem compor o pacote gerado quando um lote é concluído (assinado).
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Integracao.PosicaoDoCarimbo">
-            <summary>
-            Indica o local onde será definido o carimbo da assinatura no documento original (Topo, Esquerda, Direita ou Rodapé).)
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Integracao.RejeicoesPadroes">
-            <summary>
-            Mensagens predefinidas com os possíveis motivos de rejeição que o assinante poderá selecionar.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Integracao.AcompanhamentoAoVivo">
-            <summary>
-            Permite ou não a geração de links para acompanhamento ao vivo do processo de assinaturas dos documentos.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Lote">

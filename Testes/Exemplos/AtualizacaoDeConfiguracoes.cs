@@ -15,7 +15,7 @@ namespace Testes.Exemplos
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                await proxy.Configuracoes.Atualizar(new Integracao()
+                await proxy.Configuracoes.Atualizar(new Configuracao()
                 {
                     AcompanhamentoAoVivo = true,
                     DocumentosDoPacote = "Assinado;Manifesto",
