@@ -24,7 +24,8 @@ namespace Testes
             { 8, new RenovacaoDeChave() },
             { 9, new NotificacoesDoLote() },
             { 10, new UsoDoAppSettings() },
-            { 11, new StatusDosServicos() }
+            { 11, new DadosDoContratante() },
+            { 12, new StatusDosServicos() }
         };
 
         static async Task Main(string[] args)

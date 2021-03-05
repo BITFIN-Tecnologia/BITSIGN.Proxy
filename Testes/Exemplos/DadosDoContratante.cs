@@ -9,18 +9,16 @@ using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
-    public class RenovacaoDeChave : Exemplo
+    public class DadosDoContratante : Exemplo
     {
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                var novaChave = await proxy.Contratantes.RenovarChave(this.CodigoDoContratante, cancellationToken);
+                var contratante = await proxy.Contratantes.Detalhes(this.CodigoDoContratante, cancellationToken);
 
-                Console.WriteLine(novaChave);
-
-                //Armazenar para futuras requisições;
-                this.ChaveDeIntegracao = novaChave;
+                if (contratante != null)
+                    Console.WriteLine(contratante.Entidade.Nome);
             }
         }
     }

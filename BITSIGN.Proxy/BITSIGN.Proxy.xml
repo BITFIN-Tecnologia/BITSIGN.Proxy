@@ -81,28 +81,37 @@
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Conteúdo do arquivo anexado (em bytes).</returns>
         </member>
-        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes">
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Contratantes">
             <summary>
-            Ajustes relacionados ao processo operacional das assinaturas digitais, callbacks, etc.
+            Informações cadastrais e configurações sobre o processo operacional das assinaturas digitais, callbacks, etc.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.#ctor(System.Net.Http.HttpClient)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Contratantes.#ctor(System.Net.Http.HttpClient)">
             <summary>
             Inicializa a API de configurações.
             </summary>
             <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.Atualizar(BITSIGN.Proxy.DTOs.Configuracao,System.Threading.CancellationToken)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Contratantes.Detalhes(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Detalhes do Contratante.
+            </summary>
+            <param name="id">Identificador do Contratante.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Retorna todas as informações cadastrais e configurações.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Contratantes.Atualizar(BITSIGN.Proxy.DTOs.Contratante,System.Threading.CancellationToken)">
             <summary>
             Atualização de configurações.
             </summary>
-            <param name="configuracao">Objeto com os parâmetros para serem atualizados.</param>
+            <param name="contratante">Contratante e suas configurações para atualização.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Configuracoes.RenovarChave(System.Threading.CancellationToken)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Contratantes.RenovarChave(System.Guid,System.Threading.CancellationToken)">
             <summary>
             Renova a chave de integração entre sistemas.
             </summary>
+            <param name="id">Identificador do contratante.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Retornará a nova chave de integração gerada pelo serviço.</returns>
         </member>
@@ -549,6 +558,16 @@
         <member name="P:BITSIGN.Proxy.DTOs.Contratante.Entidade">
             <summary>
             Entidade associada ao contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Contratante.Configuracao">
+            <summary>
+            Configurações do processo operacional das assinaturas e de integração.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Contratante.Observadores">
+            <summary>
+            Observadores globais adicionados ao contratante.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Documento">
@@ -1192,9 +1211,9 @@
             API da área Financeira.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.ProxyDoServico.Configuracoes">
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Contratantes">
             <summary>
-            API de Configurações.
+            API de Contratantes.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Notificacoes">

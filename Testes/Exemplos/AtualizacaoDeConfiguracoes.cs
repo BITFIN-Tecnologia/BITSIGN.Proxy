@@ -15,16 +15,24 @@ namespace Testes.Exemplos
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                await proxy.Configuracoes.Atualizar(new Configuracao()
+                await proxy.Contratantes.Atualizar(new Contratante()
                 {
-                    AcompanhamentoAoVivo = true,
-                    DocumentosDoPacote = "Assinado;Manifesto",
-                    EventosReportados = "Lote",
-                    FormatoDeCallback = "JSON",
-                    HeadersDeCallback = "AppKey=123",
-                    IPsAutorizados = "127.0.0.1",
-                    PosicaoDoCarimbo = "Rodapé",
-                    UrlDeCallback = "https://www.empresa.com.br/assinaturas"
+                    Id = this.CodigoDoContratante,
+                    Entidade = new Entidade()
+                    { 
+                        Nome = "Nome da Empresa Ltda."
+                    },
+                    Configuracao = new Configuracao()
+                    {
+                        AcompanhamentoAoVivo = true,
+                        DocumentosDoPacote = "Assinado;Manifesto",
+                        EventosReportados = "Lote",
+                        FormatoDeCallback = "JSON",
+                        HeadersDeCallback = "AppKey=123",
+                        IPsAutorizados = "127.0.0.1",
+                        PosicaoDoCarimbo = "Rodapé",
+                        UrlDeCallback = "https://www.empresa.com.br/assinaturas"
+                    }
                 }, cancellationToken);
             }
         }
