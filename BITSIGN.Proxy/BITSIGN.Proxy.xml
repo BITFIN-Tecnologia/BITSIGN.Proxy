@@ -865,6 +865,11 @@
             O assunto sobre do que se trata a notificação.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Notificacao.Tags">
+            <summary>
+            Informações contextuais agregadas à notificação.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Observador">
             <summary>
             Observador do processo de assinaturas.
