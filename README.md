@@ -9,15 +9,17 @@ Além da comunicação que já está embutida, a biblioteca também oferece recu
 > Documentação das APIs: [https://www.bitsign.com.br/apis](https://www.bitsign.com.br/apis)
 
 ## Conexão e Autenticação
-A classe que intermedia toda a comunicação é chamada de `ProxyDoServico`. Essa classe recebe em seu construtor os dados necessários para estabelecer a comunicação com os serviços. Todos os parâmetros necessários são informados através da classe `Conexao`, onde o **código do contratante** e o **código de integração** são fornecidos no nomento da criação/contratação; além disso, é neste objeto que também deverá ser informado para qual ambiente as requisições devem ser encaminhadas: **SANDBOX** ou **PRODUÇÃO**.
+A classe que intermedia toda a comunicação é chamada de `ProxyDoServico`. Essa classe recebe em seu construtor os dados necessários para estabelecer a comunicação com os serviços. Todos os parâmetros necessários são informados através da classe `Conexao`, onde o **código do contratante** e o **código de integração** são fornecidos no nomento da criação/contratação; além disso, é neste objeto que também deverá ser informado a versão da API a ser utilizada e para qual ambiente as requisições devem ser encaminhadas: **SANDBOX** ou **PRODUÇÃO**.
 
 ```csharp
+var versao = "v1";
 var codigoDoContratante = new Guid("985e0702-e94a-4954-b7a8-1f28c73c8122");
 var chaveDeIntegracao = "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq";
 
 using (var proxy = new ProxyDoServico(
     new Conexao(
         Ambiente.Sandbox,
+        versao,
         codigoDoContratante,
         chaveDeIntegracao,
         FormatoDeSerializacao.Json)))
