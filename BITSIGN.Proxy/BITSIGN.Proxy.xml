@@ -314,11 +314,12 @@
             <param name="configuracao">Implementação que deve ser utilizada para localização das configurações.</param>
             <exception cref="T:System.ArgumentNullException">Se o parâmetro <paramref name="configuracao"/> for nulo.</exception>
         </member>
-        <member name="M:BITSIGN.Proxy.Conexao.#ctor(BITSIGN.Proxy.Ambiente,System.Guid,System.String,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
+        <member name="M:BITSIGN.Proxy.Conexao.#ctor(BITSIGN.Proxy.Ambiente,System.String,System.Guid,System.String,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
             <summary>
             Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um dos <see cref="T:BITSIGN.Proxy.Ambiente"/>s.
             </summary>
             <param name="ambiente">Ambiente de produção ou de testes (Sandbox).</param>
+            <param name="versao">Versão da API que deve ser utilizada.</param>
             <param name="codigoDoContratante">Código exclusivo do contratante.</param>
             <param name="chaveDeIntegracao">Chave do contratante para integração entre sistemas.</param>
             <param name="formato">Define como será serializado o conteúdo das mensagens trocadas com os serviços. O padrão é <see cref="F:BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao.Json"/>.</param>
@@ -327,6 +328,11 @@
         <member name="P:BITSIGN.Proxy.Conexao.Ambiente">
             <summary>
             Ambiente de Sandbox ou Produção.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Conexao.Versao">
+            <summary>
+            Versão da API.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Conexao.CodigoDoContratante">
@@ -1044,6 +1050,11 @@
         <member name="P:BITSIGN.Proxy.IConfiguracao.Ambiente">
             <summary>
             Ambiente de Sandbox ou Produção.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.IConfiguracao.Versao">
+            <summary>
+            Versão das APIs.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.IConfiguracao.CodigoDoContratante">

@@ -17,6 +17,11 @@ namespace BITSIGN.Proxy
         Ambiente Ambiente { get; }
 
         /// <summary>
+        /// Versão das APIs.
+        /// </summary>
+        string Versao { get; }
+
+        /// <summary>
         /// Código do Contratante.
         /// </summary>
         Guid CodigoDoContratante { get; }

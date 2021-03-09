@@ -30,6 +30,7 @@ namespace Testes.Exemplos
                 var config = ConfigurationManager.AppSettings;
 
                 this.Ambiente = Enum.Parse<Ambiente>(config["BITSIGN.Proxy.Conexao.Ambiente"]);
+                this.Versao = config["BITSIGN.Proxy.Conexao.Versao"];
                 this.CodigoDoContratante = Guid.Parse(config["BITSIGN.Proxy.Conexao.CodigoDoContratante"]);
                 this.ChaveDeIntegracao = config["BITSIGN.Proxy.Conexao.ChaveDeIntegracao"];
                 this.FormatoDeSerializacao = Enum.Parse<FormatoDeSerializacao>(config["BITSIGN.Proxy.Conexao.FormatoDeSerializacao"]);
@@ -37,6 +38,8 @@ namespace Testes.Exemplos
             }
 
             public Ambiente Ambiente { get; init; }
+
+            public string Versao { get; init; }
 
             public Guid CodigoDoContratante { get; init; }
 
