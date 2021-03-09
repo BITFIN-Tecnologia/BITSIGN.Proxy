@@ -43,11 +43,11 @@ namespace BITSIGN.Proxy
         /// <param name="codigoDoContratante">Código exclusivo do contratante.</param>
         /// <param name="chaveDeIntegracao">Chave do contratante para integração entre sistemas.</param>
         /// <param name="formato">Define como será serializado o conteúdo das mensagens trocadas com os serviços. O padrão é <see cref="FormatoDeSerializacao.Json"/>.</param>
-        /// <exception cref="ArgumentException">Se o <paramref name="codigoDoContratante"/> ou o <paramref name="chaveDeIntegracao"/> forem <see cref="Guid.Empty"/>.</exception>
+        /// <exception cref="ArgumentException">Se o <paramref name="codigoDoContratante"/> ou o <paramref name="chaveDeIntegracao"/> forem <see cref="Guid.Empty"/> ou se a <paramref name="versao"/> for vazia.</exception>
         public Conexao(Ambiente ambiente, string versao, Guid codigoDoContratante, string chaveDeIntegracao, FormatoDeSerializacao formato = FormatoDeSerializacao.Json)
         {
             this.Ambiente = ambiente;
-            this.Versao = versao;
+            this.Versao = !string.IsNullOrWhiteSpace(versao) ? versao : throw new ArgumentException("Versão não informada.", nameof(versao));
 
             this.CodigoDoContratante =
                 codigoDoContratante != Guid.Empty ? codigoDoContratante : throw new ArgumentException("Código do Contratante não informado.", nameof(codigoDoContratante));
