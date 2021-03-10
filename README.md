@@ -122,7 +122,9 @@ EXEMPLOS DISPONIVEIS
   08 - RenovacaoDeChave
   09 - NotificacoesDoLote
   10 - UsoDoAppSettings
-  11 - StatusDosServicos
+  11 - DadosDoContratante
+  12 - StatusDosServicos
+  13 - BuscadorDeRecursos
 INFORME O NUMERO DO EXEMPLO:
 ```
 
