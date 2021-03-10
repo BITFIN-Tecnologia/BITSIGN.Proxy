@@ -14,7 +14,7 @@ namespace BITSIGN.Proxy.Logging
     {
         private readonly TextWriter escritor;
         private readonly int qtdeDeMensagensParaFlush;
-        private readonly List<string> mensagens = new List<string>(10);
+        private readonly List<string> mensagens = new(10);
 
         /// <summary>
         /// Inicializa o log com armazenamento das mensagens no sistema de arquivos.

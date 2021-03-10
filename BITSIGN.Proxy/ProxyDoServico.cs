@@ -28,7 +28,7 @@ namespace BITSIGN.Proxy
         {
             this.Conexao = conexao ?? throw new ArgumentNullException(nameof(conexao));
 
-            this.proxy = new HttpClient(new RastreioDaRequisicao(logger, rastreioDeRequisicao))
+            this.proxy = new(new RastreioDaRequisicao(logger, rastreioDeRequisicao))
             {
                 BaseAddress = conexao.Url,
                 DefaultRequestVersion = HttpVersion.Version20,
@@ -40,13 +40,13 @@ namespace BITSIGN.Proxy
             this.proxy.DefaultRequestHeaders.Add(Protocolo.ChaveDeIntegracao, conexao.ChaveDeIntegracao);
             this.proxy.DefaultRequestHeaders.Add("Accept", $"application/{conexao.FormatoDeSerializacao.ToString().ToLower()}");
 
-            this.Lotes = new Lotes(proxy);
-            this.Documentos = new Documentos(proxy);
-            this.Financeiro = new Financeiro(proxy);
-            this.Contratantes = new Contratantes(proxy) { FormatoDeSerializacao = conexao.FormatoDeSerializacao };
-            this.Notificacoes = new Notificacoes(proxy);
-            this.Anexos = new Anexos(proxy);
-            this.Status = new Status(conexao.Status);
+            this.Lotes = new(proxy);
+            this.Documentos = new(proxy);
+            this.Financeiro = new(proxy);
+            this.Contratantes = new(proxy) { FormatoDeSerializacao = conexao.FormatoDeSerializacao };
+            this.Notificacoes = new(proxy);
+            this.Anexos = new(proxy);
+            this.Status = new(conexao.Status);
         }
 
         /// <summary>

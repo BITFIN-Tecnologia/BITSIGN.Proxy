@@ -15,7 +15,7 @@ namespace BITSIGN.Proxy.Utilitarios
         internal static class Json
         {
             internal static string Serializar(object objeto, bool identado = false) =>
-                JsonSerializer.Serialize(objeto, objeto.GetType(), new JsonSerializerOptions()
+                JsonSerializer.Serialize(objeto, objeto.GetType(), new()
                 {
 #if DEBUG
                     WriteIndented = true
@@ -25,7 +25,7 @@ namespace BITSIGN.Proxy.Utilitarios
                 });
 
             internal static T Deserializar<T>(string conteudo) where T : class =>
-                JsonSerializer.Deserialize<T>(conteudo, new JsonSerializerOptions()
+                JsonSerializer.Deserialize<T>(conteudo, new()
                 {
                     PropertyNameCaseInsensitive = true
                 });
@@ -39,7 +39,7 @@ namespace BITSIGN.Proxy.Utilitarios
 
                 using (var ms = new MemoryStream())
                 {
-                    using (var writer = XmlWriter.Create(ms, new XmlWriterSettings()
+                    using (var writer = XmlWriter.Create(ms, new()
                     {
                         Encoding = new UTF8Encoding(false),
 #if DEBUG

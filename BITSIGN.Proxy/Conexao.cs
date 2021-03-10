@@ -12,16 +12,16 @@ namespace BITSIGN.Proxy
     /// </summary>
     public class Conexao
     {
-        private static readonly IDictionary<Ambiente, string> apis = new Dictionary<Ambiente, string>(2)
+        private static readonly Dictionary<Ambiente, string> apis = new(2)
         {
             { Ambiente.Sandbox, "http://localhost:33664/api/{0}/" },
             { Ambiente.Producao, "http://localhost:33664/api/{0}/" },
         };
 
-        private static readonly IDictionary<Ambiente, Uri> status = new Dictionary<Ambiente, Uri>(2)
+        private static readonly Dictionary<Ambiente, Uri> status = new(2)
         {
-            { Ambiente.Sandbox, new Uri("http://localhost:33664/status") },
-            { Ambiente.Producao, new Uri("http://localhost:33664/status") },
+            { Ambiente.Sandbox, new("http://localhost:33664/status") },
+            { Ambiente.Producao, new("http://localhost:33664/status") },
         };
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace BITSIGN.Proxy
         /// <summary>
         /// Endereço HTTP para o serviço, variando de acordo com o <see cref="Ambiente"/>.
         /// </summary>
-        public Uri Url => new Uri(string.Format(apis[this.Ambiente], this.Versao));
+        public Uri Url => new(string.Format(apis[this.Ambiente], this.Versao));
 
         /// <summary>
         /// Endpoint que resume o status atual dos serviços e seus recursos.
