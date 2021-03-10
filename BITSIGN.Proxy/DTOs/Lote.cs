@@ -31,6 +31,12 @@ namespace BITSIGN.Proxy.DTOs
         public DateTime Data { get; set; }
 
         /// <summary>
+        /// Data em que o lote será dado como expirado se não tiver suas assinaturas concluídas ou rejeitadas.
+        /// </summary>
+        [XmlAttribute]
+        public DateTime DataDeExpiracao { get; set; }
+
+        /// <summary>
         /// Tags utilizadas para correlacionar o lote ao sistema do contratante.
         /// </summary>
         [XmlAttribute]

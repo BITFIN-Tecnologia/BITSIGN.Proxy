@@ -40,6 +40,7 @@ namespace Testes.Exemplos
                         Documento = "014175773000113",
                         Email = "contact@whitehouse.com"
                     },
+                    DataDeExpiracao = DateTime.Now.AddDays(10),
                     Documentos = new List<Documento>()
                     {
                         new Documento()

@@ -796,6 +796,11 @@
             Data de criação do lote.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.DataDeExpiracao">
+            <summary>
+            Data em que o lote será dado como expirado se não tiver suas assinaturas concluídas ou rejeitadas.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Lote.Tags">
             <summary>
             Tags utilizadas para correlacionar o lote ao sistema do contratante.
