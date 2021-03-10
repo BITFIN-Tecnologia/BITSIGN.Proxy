@@ -43,9 +43,10 @@ namespace BITSIGN.Proxy
             this.Lotes = new(proxy);
             this.Documentos = new(proxy);
             this.Financeiro = new(proxy);
-            this.Contratantes = new(proxy) { FormatoDeSerializacao = conexao.FormatoDeSerializacao };
+            this.Contratantes = new(proxy, conexao.FormatoDeSerializacao);
             this.Notificacoes = new(proxy);
             this.Anexos = new(proxy);
+            this.Buscador = new(proxy, conexao.FormatoDeSerializacao);
             this.Status = new(conexao.Status);
         }
 
@@ -83,6 +84,11 @@ namespace BITSIGN.Proxy
         /// API de Anexos.
         /// </summary>
         public Anexos Anexos { get; set; }
+
+        /// <summary>
+        /// API de Busca de Recursos.
+        /// </summary>
+        public Buscador Buscador { get; set; }
 
         /// <summary>
         /// API de status dos Serviços.

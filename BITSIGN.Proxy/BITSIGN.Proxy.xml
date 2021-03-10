@@ -81,16 +81,61 @@
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Conteúdo do arquivo anexado (em bytes).</returns>
         </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Buscador">
+            <summary>
+            Buscador avançado de recursos (lotes, documentos, etc.)
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Buscador.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
+            <summary>
+            Inicializa a API de relatórios.
+            </summary>
+            <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="formato">Formato para serialização dos objetos.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Buscador.Lotes(BITSIGN.Proxy.DTOs.ParametrosDeBusca,System.Threading.CancellationToken)">
+            <summary>
+            Relação de Lotes.
+            </summary>
+            <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Relação de Lotes que satisfazem os critérios de busca.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Buscador.Documentos(BITSIGN.Proxy.DTOs.ParametrosDeBusca,System.Threading.CancellationToken)">
+            <summary>
+            Relação de Documentos.
+            </summary>
+            <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Relação de Documentos que satisfazem os critérios de busca.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Buscador.Notificacoes(BITSIGN.Proxy.DTOs.ParametrosDeBusca,System.Threading.CancellationToken)">
+            <summary>
+            Relação de Notificações.
+            </summary>
+            <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Relação de Notificações que satisfazem os critérios de busca.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Buscador.Callbacks(BITSIGN.Proxy.DTOs.ParametrosDeBusca,System.Threading.CancellationToken)">
+            <summary>
+            Relação de Callbacks.
+            </summary>
+            <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Relação de Callbacks que satisfazem os critérios de busca.</returns>
+        </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Contratantes">
             <summary>
             Informações cadastrais e configurações sobre o processo operacional das assinaturas digitais, callbacks, etc.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Contratantes.#ctor(System.Net.Http.HttpClient)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Contratantes.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
             <summary>
             Inicializa a API de configurações.
             </summary>
             <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="formato">Formato para serialização dos objetos.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Contratantes.Detalhes(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -922,6 +967,51 @@
             Relação de arquivos contidos no lote.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.ParametrosDeBusca">
+            <summary>
+            Parametros disponíveis para busca de recursos.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.Status">
+            <summary>
+            Status do Recurso.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.DataInicial">
+            <summary>
+            Data inicial da busca.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.DataFinal">
+            <summary>
+            Data final da busca.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.BaseDaData">
+            <summary>
+            Identifica se o período de data se aplica à data de criação (Criacao) ou do status (Status).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.DocumentoDaEntidade">
+            <summary>
+            Documento (CPF/CNPJ) da Entidade associada ao Lote.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.DocumentoDoAssinante">
+            <summary>
+            Documento (CPF/CNPJ) do Assinante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.Tags">
+            <summary>
+            Tags associadas ao recurso.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.EnderecoDoDestinario">
+            <summary>
+            Endereço do destinatário da notificação.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Plano">
             <summary>
             Detalhe do plano de assinaturas digitais.
@@ -1245,6 +1335,11 @@
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Anexos">
             <summary>
             API de Anexos.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Buscador">
+            <summary>
+            API de Busca de Recursos.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Status">

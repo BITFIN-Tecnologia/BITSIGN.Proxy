@@ -19,8 +19,12 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// Inicializa a API de configurações.
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
-        public Contratantes(HttpClient proxy)
-            : base(proxy) { }
+        /// <param name="formato">Formato para serialização dos objetos.</param>
+        public Contratantes(HttpClient proxy, FormatoDeSerializacao formato)
+            : base(proxy)
+        {
+            this.FormatoDeSerializacao = formato;
+        }
 
         /// <summary>
         /// Detalhes do Contratante.
@@ -82,6 +86,6 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                     cancellationToken);
         }
 
-        internal FormatoDeSerializacao FormatoDeSerializacao { get; init; } = FormatoDeSerializacao.Json;
+        private FormatoDeSerializacao FormatoDeSerializacao { get; init; }
     }
 }

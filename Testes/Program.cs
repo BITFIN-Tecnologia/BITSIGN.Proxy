@@ -25,7 +25,8 @@ namespace Testes
             { 9, new NotificacoesDoLote() },
             { 10, new UsoDoAppSettings() },
             { 11, new DadosDoContratante() },
-            { 12, new StatusDosServicos() }
+            { 12, new StatusDosServicos() },
+            { 13, new BuscadorDeRecursos() }
         };
 
         static async Task Main(string[] args)
