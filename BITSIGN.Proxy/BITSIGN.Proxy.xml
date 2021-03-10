@@ -1014,7 +1014,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Duracao">
             <summary>
-            Tempo de duração geral da análise.
+            Tempo de duração geral da análise em milissegundos.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servicos">
@@ -1044,7 +1044,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servico.Duracao">
             <summary>
-            Tempo de duração para análise do serviço.
+            Tempo de duração para análise do serviço em milissegundos.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.IConfiguracao">

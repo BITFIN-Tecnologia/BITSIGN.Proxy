@@ -19,9 +19,9 @@ namespace BITSIGN.Proxy.DTOs
         public string Status { get; set; }
 
         /// <summary>
-        /// Tempo de duração geral da análise.
+        /// Tempo de duração geral da análise em milissegundos.
         /// </summary>
-        public TimeSpan Duracao { get; set; }
+        public string Duracao { get; set; }
 
         /// <summary>
         /// Relação de serviços com seus respectivos status.
@@ -50,9 +50,9 @@ namespace BITSIGN.Proxy.DTOs
             public string Status { get; set; }
 
             /// <summary>
-            /// Tempo de duração para análise do serviço.
+            /// Tempo de duração para análise do serviço em milissegundos.
             /// </summary>
-            public TimeSpan Duracao { get; set; }
+            public string Duracao { get; set; }
         }
     }
 }

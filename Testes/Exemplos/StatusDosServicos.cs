@@ -17,7 +17,7 @@ namespace Testes.Exemplos
             {
                 var relatorio = await proxy.Status.Atualizar(cancellationToken);
 
-                Console.WriteLine($"Status Geral: {relatorio.Status} - Duração: {relatorio.Duracao}");
+                Console.WriteLine($"Status Geral: {relatorio.Status} - Duração: {relatorio.Duracao} ms");
                 Console.WriteLine("--------- SERVIÇOS ---------");
 
                 foreach (var s in relatorio.Servicos)
@@ -25,7 +25,7 @@ namespace Testes.Exemplos
                     Console.WriteLine($"Serviço: {s.Nome}");
                     Console.WriteLine($"Status: {s.Status}");
                     Console.WriteLine($"Mensagem: {s.Mensagem}");
-                    Console.WriteLine($"Duração: {s.Duracao}");
+                    Console.WriteLine($"Duração: {s.Duracao} ms");
                     Console.WriteLine();
                 }
             }
