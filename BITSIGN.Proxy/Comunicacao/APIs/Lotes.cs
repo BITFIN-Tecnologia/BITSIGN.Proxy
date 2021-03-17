@@ -197,7 +197,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <returns>Um objeto que representa o lote enviado com seus documentos e os arquivos associados.</returns>
         public async Task<DTOs.Pacote> Pacote(Guid id, CancellationToken cancellationToken = default)
         {
-            using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"lotes/{id}"))
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"lotes/{id}/pacote"))
             {
                 return await this.Executar(requisicao, async resposta =>
                 {
