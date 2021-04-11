@@ -8,7 +8,7 @@ namespace BITSIGN.Proxy.Logging
     /// <summary>
     /// Gerador de código de rastreio com base no <see cref="Guid"/>.
     /// </summary>
-    public class RastreioComGuid : IRastreio
+    public sealed class RastreioComGuid : IRastreio
     {
         /// <summary>
         /// Ao gerar, o método <see cref="Guid.NewGuid()"/> é chamado.
