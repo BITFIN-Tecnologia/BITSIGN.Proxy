@@ -3,9 +3,8 @@
 // biblioteca/pacote BITFIN.BITSIGN.Proxy.
 
 using BITSIGN.Proxy;
-using BITSIGN.Proxy.Utilitarios;
+using BITSIGN.Proxy.Configuracoes;
 using System;
-using System.Configuration;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,37 +16,13 @@ namespace Testes.Exemplos
         {
             using (var proxy = new ProxyDoServico(new Conexao(new AppSettings())))
             {
-                //Acesso aos Serviços
+                Console.WriteLine($"Url: {proxy.Conexao.Url}");
+                Console.WriteLine($"CodigoDoContratante: {proxy.Conexao.CodigoDoContratante}");
+                Console.WriteLine($"ChaveDeIntegracao: {proxy.Conexao.ChaveDeIntegracao}");
+                Console.WriteLine($"Ambiente: {proxy.Conexao.Ambiente}");
 
                 await Task.CompletedTask;
             }
-        }
-
-        public class AppSettings : IConfiguracao
-        {
-            public AppSettings()
-            {
-                var config = ConfigurationManager.AppSettings;
-
-                this.Ambiente = Enum.Parse<Ambiente>(config["BITSIGN.Proxy.Conexao.Ambiente"]);
-                this.Versao = config["BITSIGN.Proxy.Conexao.Versao"];
-                this.CodigoDoContratante = Guid.Parse(config["BITSIGN.Proxy.Conexao.CodigoDoContratante"]);
-                this.ChaveDeIntegracao = config["BITSIGN.Proxy.Conexao.ChaveDeIntegracao"];
-                this.FormatoDeSerializacao = Enum.Parse<FormatoDeSerializacao>(config["BITSIGN.Proxy.Conexao.FormatoDeSerializacao"]);
-                this.Timeout = TimeSpan.Parse(config["BITSIGN.Proxy.Conexao.Timeout"]);
-            }
-
-            public Ambiente Ambiente { get; init; }
-
-            public string Versao { get; init; }
-
-            public Guid CodigoDoContratante { get; init; }
-
-            public string ChaveDeIntegracao { get; init; }
-
-            public FormatoDeSerializacao FormatoDeSerializacao { get; init; }
-
-            public TimeSpan Timeout { get; init; }
         }
     }
 }

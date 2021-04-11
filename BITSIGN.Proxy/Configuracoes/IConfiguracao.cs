@@ -4,7 +4,7 @@
 using BITSIGN.Proxy.Utilitarios;
 using System;
 
-namespace BITSIGN.Proxy
+namespace BITSIGN.Proxy.Configuracoes
 {
     /// <summary>
     /// Especificação para implementação para extração e uso das configurações.

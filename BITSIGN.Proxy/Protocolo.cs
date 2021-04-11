@@ -3,11 +3,24 @@
 
 namespace BITSIGN.Proxy
 {
-    internal class Protocolo
+    /// <summary>
+    /// Recursos e parâmetros utilizados para a comunicação com os serviços.
+    /// </summary>
+    public class Protocolo
     {
-        internal const string CodigoDoContratante = "BS-Contratante";
-        internal const string ChaveDeIntegracao = "BS-Token";
+        /// <summary>
+        /// Identifica o código do contratante.
+        /// </summary>
+        public const string CodigoDoContratante = "BS-Contratante";
 
-        internal const string CodigoDeRastreio = "BS-CodigoDeRastreio";
+        /// <summary>
+        /// Identifica a chave de integração (token) gerado para o contrantante.
+        /// </summary>
+        public const string ChaveDeIntegracao = "BS-Token";
+
+        /// <summary>
+        /// Identifica o código utilizado para rastrear as requisições.
+        /// </summary>
+        public const string CodigoDeRastreio = "BS-CodigoDeRastreio";
     }
 }

@@ -352,7 +352,7 @@
             Informações necessárias para iniciar a comunicação com o serviço.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.Conexao.#ctor(BITSIGN.Proxy.IConfiguracao)">
+        <member name="M:BITSIGN.Proxy.Conexao.#ctor(BITSIGN.Proxy.Configuracoes.IConfiguracao)">
             <summary>
             Inicializa a conexão com os dados sendo extraídos de um repositório.
             </summary>
@@ -408,6 +408,81 @@
         <member name="P:BITSIGN.Proxy.Conexao.Status">
             <summary>
             Endpoint que resume o status atual dos serviços e seus recursos.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.Configuracoes.AppSettings">
+            <summary>
+            Abstrai e disponibiliza o acesso às configurações utilizadas pelos serviços.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Configuracoes.AppSettings.#ctor">
+            <summary>
+            Inicializa as configurações extraindo as informações do arquivo app.config.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettings.Ambiente">
+            <summary>
+            Ambiente de Sandbox ou Produção.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettings.Versao">
+            <summary>
+            Versão das APIs.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettings.CodigoDoContratante">
+            <summary>
+            Código do Contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettings.ChaveDeIntegracao">
+            <summary>
+            Chave de Integração gerado para o contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettings.FormatoDeSerializacao">
+            <summary>
+            Formato da serialização das mensagens trocadas com os serviços.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettings.Timeout">
+            <summary>
+            Define o tempo máximo de espera permitido para executar uma requisição.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.Configuracoes.IConfiguracao">
+            <summary>
+            Especificação para implementação para extração e uso das configurações.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Ambiente">
+            <summary>
+            Ambiente de Sandbox ou Produção.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Versao">
+            <summary>
+            Versão das APIs.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.CodigoDoContratante">
+            <summary>
+            Código do Contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.ChaveDeIntegracao">
+            <summary>
+            Chave de Integração gerado para o contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.FormatoDeSerializacao">
+            <summary>
+            Formato da serialização das mensagens trocadas com os serviços.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Timeout">
+            <summary>
+            Define o tempo máximo de espera permitido para executar uma requisição.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Anexo">
@@ -1137,41 +1212,6 @@
             Tempo de duração para análise do serviço em milissegundos.
             </summary>
         </member>
-        <member name="T:BITSIGN.Proxy.IConfiguracao">
-            <summary>
-            Especificação para implementação para extração e uso das configurações.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.IConfiguracao.Ambiente">
-            <summary>
-            Ambiente de Sandbox ou Produção.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.IConfiguracao.Versao">
-            <summary>
-            Versão das APIs.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.IConfiguracao.CodigoDoContratante">
-            <summary>
-            Código do Contratante.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.IConfiguracao.ChaveDeIntegracao">
-            <summary>
-            Chave de Integração gerado para o contratante.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.IConfiguracao.FormatoDeSerializacao">
-            <summary>
-            Formato da serialização das mensagens trocadas com os serviços.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.IConfiguracao.Timeout">
-            <summary>
-            Define o tempo máximo de espera permitido para executar uma requisição.
-            </summary>
-        </member>
         <member name="T:BITSIGN.Proxy.Logging.ILogger">
             <summary>
             Definição para a criação e armazenamento de logs de execução.
@@ -1286,6 +1326,26 @@
         <member name="F:BITSIGN.Proxy.Logging.Severidade.Excecao">
             <summary>
             Uma falha não prevista ocorreu durante a execução.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.Protocolo">
+            <summary>
+            Recursos e parâmetros utilizados para a comunicação com os serviços.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.Protocolo.CodigoDoContratante">
+            <summary>
+            Identifica o código do contratante.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.Protocolo.ChaveDeIntegracao">
+            <summary>
+            Identifica a chave de integração (token) gerado para o contrantante.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.Protocolo.CodigoDeRastreio">
+            <summary>
+            Identifica o código utilizado para rastrear as requisições.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.ProxyDoServico">

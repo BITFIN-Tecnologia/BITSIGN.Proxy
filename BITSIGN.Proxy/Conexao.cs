@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2021 - BITFIN Software Ltda. Todos os Direitos Reservados.
 // Código exclusivo para consumo dos serviços (APIs) da BITSIGN.
 
+using BITSIGN.Proxy.Configuracoes;
 using BITSIGN.Proxy.Utilitarios;
 using System;
 using System.Collections.Generic;

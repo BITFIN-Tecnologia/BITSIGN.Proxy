@@ -86,6 +86,6 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                     cancellationToken);
         }
 
-        private FormatoDeSerializacao FormatoDeSerializacao { get; init; }
+        private FormatoDeSerializacao FormatoDeSerializacao { get; set; }
     }
 }
