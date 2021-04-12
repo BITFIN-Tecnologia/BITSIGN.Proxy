@@ -2,13 +2,18 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0</TargetFrameworks>
     <Authors>BITFIN Software Ltda.</Authors>
-    <Company>BITFIN Software Ltda.BITFIN Software Ltda.</Company>
+    <Company>BITFIN Software Ltda.</Company>
     <Copyright>Copyright 2021</Copyright>
     <Description>Biblioteca .NET para consumo dos serviços (APIs) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>1.0.0.0</Version>
     <RepositoryUrl>https://github.com/BITFIN-Software/BITSIGN.Proxy</RepositoryUrl>
-    <PackageTags>certicados, cades, pades, xades, cms, assinatura, p7s</PackageTags>
+    <PackageTags>api, rest-api, dot-net, icp-brasil, certificados, assinaturas-digitais</PackageTags>
+    <PackageId>BITFIN.BITSIGN.Proxy</PackageId>
+    <PackageProjectUrl>https://www.bitsign.com.br</PackageProjectUrl>
+    <PackageIcon></PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Projetos\BitFin\BITSIGN.Proxy\BITSIGN.Proxy\BITSIGN.Proxy.xml</DocumentationFile>
