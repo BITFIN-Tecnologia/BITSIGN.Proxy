@@ -8,14 +8,14 @@ using System.Configuration;
 namespace BITSIGN.Proxy.Configuracoes
 {
     /// <summary>
-    /// Abstrai e disponibiliza o acesso às configurações utilizadas pelos serviços.
+    /// Configurações baseadas no arquivo app.config (XML).
     /// </summary>
-    public sealed class AppSettings : IConfiguracao
+    public sealed class AppSettingsXml : IConfiguracao
     {
         /// <summary>
         /// Inicializa as configurações extraindo as informações do arquivo app.config.
         /// </summary>
-        public AppSettings()
+        public AppSettingsXml()
         {
             var config = ConfigurationManager.AppSettings;
 
