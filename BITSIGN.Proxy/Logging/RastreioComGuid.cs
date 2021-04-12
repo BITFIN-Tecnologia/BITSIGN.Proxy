@@ -14,6 +14,6 @@ namespace BITSIGN.Proxy.Logging
         /// Ao gerar, o método <see cref="Guid.NewGuid()"/> é chamado.
         /// </summary>
         /// <returns>Retorna um <see cref="Guid"/> em formato <c>string</c>.</returns>
-        public virtual string Gerar() => Guid.NewGuid().ToString();
+        public string Gerar() => Guid.NewGuid().ToString();
     }
 }
