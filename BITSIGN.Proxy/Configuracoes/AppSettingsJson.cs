@@ -25,12 +25,12 @@ namespace BITSIGN.Proxy.Configuracoes
                     .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: true)
                     .Build();
 
-            this.Ambiente = Enum.Parse<Ambiente>(config["BITSIGN.Proxy:Conexao.Ambiente"]);
-            this.Versao = config["BITSIGN.Proxy:Conexao.Versao"];
-            this.CodigoDoContratante = Guid.Parse(config["BITSIGN.Proxy:Conexao.CodigoDoContratante"]);
-            this.ChaveDeIntegracao = config["BITSIGN.Proxy:Conexao.ChaveDeIntegracao"];
-            this.FormatoDeSerializacao = Enum.Parse<FormatoDeSerializacao>(config["BITSIGN.Proxy:Conexao.FormatoDeSerializacao"]);
-            this.Timeout = TimeSpan.Parse(config["BITSIGN.Proxy:Conexao.Timeout"]);
+            this.Ambiente = Enum.Parse<Ambiente>(config["BITSIGN.Proxy:Conexao:Ambiente"]);
+            this.Versao = config["BITSIGN.Proxy:Conexao:Versao"];
+            this.CodigoDoContratante = Guid.Parse(config["BITSIGN.Proxy:Conexao:CodigoDoContratante"]);
+            this.ChaveDeIntegracao = config["BITSIGN.Proxy:Conexao:ChaveDeIntegracao"];
+            this.FormatoDeSerializacao = Enum.Parse<FormatoDeSerializacao>(config["BITSIGN.Proxy:Conexao:FormatoDeSerializacao"]);
+            this.Timeout = TimeSpan.Parse(config["BITSIGN.Proxy:Conexao:Timeout"]);
         }
 
         /// <summary>
