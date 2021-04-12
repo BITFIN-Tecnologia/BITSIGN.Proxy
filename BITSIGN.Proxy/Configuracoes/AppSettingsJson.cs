@@ -11,7 +11,7 @@ namespace BITSIGN.Proxy.Configuracoes
     /// <summary>
     /// Configurações baseadas no arquivo appsettings.json (JSON).
     /// </summary>
-    public class AppSettingsJson : IConfiguracao
+    public sealed class AppSettingsJson : IConfiguracao
     {
         /// <summary>
         /// Inicializa as configurações extraindo as informações do arquivo appsettings.json.
