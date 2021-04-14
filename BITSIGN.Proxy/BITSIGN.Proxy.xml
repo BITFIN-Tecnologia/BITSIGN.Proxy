@@ -841,6 +841,11 @@
             URL para acesso online do manifesto de assinaturas do documento.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.UrlAoVivo">
+            <summary>
+            URL para acesso ao vivo do andamento das assinaturas do documento.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.Assinaturas">
             <summary>
             Relação de assinaturas associadas ao documento.
