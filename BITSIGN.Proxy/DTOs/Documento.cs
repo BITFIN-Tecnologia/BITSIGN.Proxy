@@ -139,6 +139,12 @@ namespace BITSIGN.Proxy.DTOs
         public string UrlDoManifesto { get; set; }
 
         /// <summary>
+        /// URL para acesso ao vivo do andamento das assinaturas do documento.
+        /// </summary>
+        [XmlAttribute]
+        public string UrlAoVivo { get; set; }
+
+        /// <summary>
         /// Relação de assinaturas associadas ao documento.
         /// </summary>
         public List<Assinatura> Assinaturas { get; set; }
