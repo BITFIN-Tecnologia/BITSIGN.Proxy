@@ -19,6 +19,11 @@ namespace BITSIGN.Proxy.DTOs
         public Entidade Entidade { get; set; }
 
         /// <summary>
+        /// Indica que o assinante informado na <see cref="Entidade"/> assina por procuração outorgada pela entidade informada nesta propriedade.
+        /// </summary>
+        public Entidade Outorgante { get; set; }
+
+        /// <summary>
         /// Indica o status atual do assinante.
         /// </summary>
         [XmlAttribute]

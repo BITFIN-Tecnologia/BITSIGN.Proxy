@@ -555,6 +555,11 @@
             Pessoa física ou jurídica definida como assinante.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.Outorgante">
+            <summary>
+            Indica que o assinante informado na <see cref="P:BITSIGN.Proxy.DTOs.Assinante.Entidade"/> assina por procuração outorgada pela entidade informada nesta propriedade.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Assinante.Status">
             <summary>
             Indica o status atual do assinante.
