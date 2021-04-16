@@ -666,6 +666,26 @@
             Se a entidade que gerou o callback possuir tags associadas, elas serão informadas nesta propriedade.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Certificadora">
+            <summary>
+            Informações gerais sobre a certificadora.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Certificadora.Nome">
+            <summary>
+            Nome oficial da certificadora.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Certificadora.Site">
+            <summary>
+            Endereço do site da certificadora.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Certificadora.Email">
+            <summary>
+            Endereço de e-mail da certificadora.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Configuracao">
             <summary>
             Configurações referente ao processo operacional e integração.
