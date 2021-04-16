@@ -98,6 +98,10 @@ namespace BITSIGN.Proxy
         /// <summary>
         /// Encerra e remove os recursos de comunicação utilizados por esta classe.
         /// </summary>
-        public void Dispose() => this.proxy?.Dispose();
+        public void Dispose()
+        {
+            this.proxy?.Dispose();
+            GC.SuppressFinalize(this);
+        }
     }
 }
