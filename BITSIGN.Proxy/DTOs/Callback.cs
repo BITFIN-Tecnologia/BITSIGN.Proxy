@@ -20,7 +20,7 @@ namespace BITSIGN.Proxy.DTOs
         /// <summary>
         /// Identificador da entidade que gerou o callback.
         /// </summary>
-        /// <remarks>Na maioria das vezes será um <see cref="Guid"/>; porém quando se tratar de um assinante, o <see cref="Id"/> será o número de seu documento (CNPJ/CPF).</remarks>
+        /// <remarks>Na maioria das vezes será um <see cref="Guid"/>; porém quando a propriedade <see cref="Evento"/> se tratar de um "Assinante", o <see cref="Id"/> será o número de seu documento (CNPJ/CPF).</remarks>
         public string Id { get; set; }
 
         /// <summary>

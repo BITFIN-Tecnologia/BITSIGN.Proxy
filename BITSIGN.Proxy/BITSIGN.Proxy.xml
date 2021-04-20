@@ -644,7 +644,7 @@
             <summary>
             Identificador da entidade que gerou o callback.
             </summary>
-            <remarks>Na maioria das vezes será um <see cref="T:System.Guid"/>; porém quando se tratar de um assinante, o <see cref="P:BITSIGN.Proxy.DTOs.Callback.Id"/> será o número de seu documento (CNPJ/CPF).</remarks>
+            <remarks>Na maioria das vezes será um <see cref="T:System.Guid"/>; porém quando a propriedade <see cref="P:BITSIGN.Proxy.DTOs.Callback.Evento"/> se tratar de um "Assinante", o <see cref="P:BITSIGN.Proxy.DTOs.Callback.Id"/> será o número de seu documento (CNPJ/CPF).</remarks>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Callback.Status">
             <summary>
