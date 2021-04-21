@@ -40,12 +40,9 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
 
                         return await resposta.Content.ReadAs<DTOs.Anexo>(cancellationToken);
                     }
-                    catch (HttpRequestException ex)
+                    catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
                     {
-                        if (ex.StatusCode == HttpStatusCode.NotFound)
-                            return null;
-
-                        throw;
+                        return null;
                     }
                 }, cancellationToken);
             }
@@ -69,12 +66,9 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
 
                         return await resposta.Content.ReadAsByteArrayAsync(cancellationToken);
                     }
-                    catch (HttpRequestException ex)
+                    catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
                     {
-                        if (ex.StatusCode == HttpStatusCode.NotFound)
-                            return null;
-
-                        throw;
+                        return null;
                     }
                 }, cancellationToken);
             }

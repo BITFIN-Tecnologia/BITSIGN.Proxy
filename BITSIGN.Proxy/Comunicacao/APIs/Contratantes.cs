@@ -44,12 +44,9 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
 
                         return await resposta.Content.ReadAs<DTOs.Contratante>(cancellationToken);
                     }
-                    catch (HttpRequestException ex)
+                    catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
                     {
-                        if (ex.StatusCode == HttpStatusCode.NotFound)
-                            return null;
-
-                        throw;
+                        return null;
                     }
                 }, cancellationToken);
             }
