@@ -52,6 +52,32 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         }
 
         /// <summary>
+        /// Exclusão do Documento.
+        /// </summary>
+        /// <param name="id">Identificador do Documento.</param>
+        /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        public async Task<bool> Excluir(Guid id, CancellationToken cancellationToken = default)
+        {
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Delete, $"documentos/{id}"))
+            {
+                return await this.Executar(requisicao, resposta =>
+                {
+                    try
+                    {
+                        return Task.FromResult(resposta.IsSuccessStatusCode);
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        if (ex.StatusCode == HttpStatusCode.NotFound)
+                            return Task.FromResult(false);
+
+                        throw;
+                    }
+                }, cancellationToken);
+            }
+        }
+
+        /// <summary>
         /// Documento Original.
         /// </summary>
         /// <param name="id">Identificador do Documento.</param>

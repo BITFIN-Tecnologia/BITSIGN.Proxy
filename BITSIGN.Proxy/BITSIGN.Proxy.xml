@@ -179,6 +179,13 @@
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Retorna todas as informações do documento que foi submetido para assinatura.</returns>
         </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Excluir(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Exclusão do Documento.
+            </summary>
+            <param name="id">Identificador do Documento.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Original(System.Guid,System.Threading.CancellationToken)">
             <summary>
             Documento Original.
