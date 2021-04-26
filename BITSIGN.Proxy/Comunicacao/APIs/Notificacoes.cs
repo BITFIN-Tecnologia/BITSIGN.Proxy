@@ -55,7 +55,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         public async Task Replay(Guid id, CancellationToken cancellationToken = default)
         {
-            using (var requisicao = new HttpRequestMessage(HttpMethod.Put, $"notificacoes/{id}/replay"))
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Patch, $"notificacoes/{id}/replay"))
                 await Executar(requisicao, resposta => resposta.EnsureSuccessStatusCode(), cancellationToken);
         }
     }
