@@ -2,7 +2,6 @@
 // Código exclusivo para consumo dos serviços (APIs) da BITSIGN.
 
 using BITSIGN.Proxy.Utilitarios;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -33,8 +32,8 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Relação de Lotes que satisfazem os critérios de busca.</returns>
-        public async Task<IEnumerable<DTOs.Lote>> Lotes(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
-            await Buscar<DTOs.Lote>("lotes", parametros, cancellationToken);
+        public async Task<DTOs.Lotes> Lotes(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
+            await Buscar<DTOs.Lotes>("lotes", parametros, cancellationToken);
 
         /// <summary>
         /// Relação de Documentos.
@@ -42,8 +41,8 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Relação de Documentos que satisfazem os critérios de busca.</returns>
-        public async Task<IEnumerable<DTOs.Documento>> Documentos(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
-            await Buscar<DTOs.Documento>("documentos", parametros, cancellationToken);
+        public async Task<DTOs.Documentos> Documentos(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
+            await Buscar<DTOs.Documentos>("documentos", parametros, cancellationToken);
 
         /// <summary>
         /// Relação de Notificações.
@@ -51,8 +50,8 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Relação de Notificações que satisfazem os critérios de busca.</returns>
-        public async Task<IEnumerable<DTOs.Notificacao>> Notificacoes(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
-            await Buscar<DTOs.Notificacao>("notificacoes", parametros, cancellationToken);
+        public async Task<DTOs.Notificacoes> Notificacoes(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
+            await Buscar<DTOs.Notificacoes>("notificacoes", parametros, cancellationToken);
 
         /// <summary>
         /// Relação de Callbacks.
@@ -60,10 +59,10 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Relação de Callbacks que satisfazem os critérios de busca.</returns>
-        public async Task<IEnumerable<DTOs.Notificacao>> Callbacks(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
-            await Buscar<DTOs.Notificacao>("callbacks", parametros, cancellationToken);
+        public async Task<DTOs.Notificacoes> Callbacks(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
+            await Buscar<DTOs.Notificacoes>("callbacks", parametros, cancellationToken);
 
-        private async Task<IEnumerable<T>> Buscar<T>(string path, DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken) where T : class
+        private async Task<T> Buscar<T>(string path, DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken) where T : class
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Post, $"buscador/{path}")
             {
@@ -74,7 +73,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 {
                     resposta.EnsureSuccessStatusCode();
 
-                    return await resposta.Content.ReadAs<IEnumerable<T>>(cancellationToken);
+                    return await resposta.Content.ReadAs<T>(cancellationToken);
                 }, cancellationToken);
             }
         }

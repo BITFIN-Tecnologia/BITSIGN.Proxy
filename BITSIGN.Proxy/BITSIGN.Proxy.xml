@@ -637,6 +637,37 @@
             Identificador único para o objeto.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Busca`1">
+            <summary>
+            Resultado da consulta realizada através dos buscadores.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Busca`1.Dados">
+            <summary>
+            Dados retornados pela consulta, sub-dividido pela paginação.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Busca`1.Paginador">
+            <summary>
+            Informações sobre a paginação dos dados retornados.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Lotes">
+            <summary>
+            Resultado da consulta de lotes.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Documentos">
+            <summary>
+            Resultado da consulta de documentos.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Notificacoes">
+            <summary>
+            Resultado da consulta de notificações e callbacks.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Callback">
             <summary>
             Classe utilizada para recepcionar os callbacks gerados pela plataforma.
@@ -1119,6 +1150,31 @@
             Relação de arquivos contidos no lote.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Paginacao">
+            <summary>
+            Dados da paginação.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Paginacao.Registros">
+            <summary>
+            Quantidade de registros atingidos pela consulta.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Paginacao.Paginas">
+            <summary>
+            Total de páginas geradas.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Paginacao.RegistrosPorPagina">
+            <summary>
+            Quantidade de registros por página.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Paginacao.PaginaAtual">
+            <summary>
+            Página a qual o resultado se refere.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.ParametrosDeBusca">
             <summary>
             Parametros disponíveis para busca de recursos.
@@ -1162,6 +1218,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.EnderecoDoDestinario">
             <summary>
             Endereço do destinatário da notificação.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.Paginador">
+            <summary>
+            Informações sobre a paginação da consulta.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Plano">

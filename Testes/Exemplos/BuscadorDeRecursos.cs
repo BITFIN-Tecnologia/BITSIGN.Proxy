@@ -15,12 +15,19 @@ namespace Testes.Exemplos
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                foreach (var l in await proxy.Buscador.Lotes(new()
+                var lotes = await proxy.Buscador.Lotes(new()
                 {
                     DataInicial = DateTime.Now.AddDays(-20),
                     DataFinal = DateTime.Now,
-                    BaseDaData = "Criacao"
-                }, cancellationToken))
+                    BaseDaData = "Criacao",
+                    Paginador = new()
+                    {
+                        PaginaAtual = 1,
+                        RegistrosPorPagina = 10
+                    }
+                }, cancellationToken);
+
+                foreach (var l in lotes.Dados)
                 {
                     Console.WriteLine($"Id: {l.Id}");
                     Console.WriteLine($"Data: {l.Data:dd/MM/yyyy}");

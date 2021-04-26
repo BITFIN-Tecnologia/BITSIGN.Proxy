@@ -49,5 +49,10 @@ namespace BITSIGN.Proxy.DTOs
         /// Endereço do destinatário da notificação.
         /// </summary>
         public string EnderecoDoDestinario { get; set; }
+
+        /// <summary>
+        /// Informações sobre a paginação da consulta.
+        /// </summary>
+        public Paginacao Paginador { get; set; }
     }
 }
