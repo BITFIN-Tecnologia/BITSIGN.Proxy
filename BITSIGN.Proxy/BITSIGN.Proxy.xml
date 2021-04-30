@@ -43,6 +43,7 @@
             <param name="requisicao">Mensagem de requisição para o serviço.</param>
             <param name="analiseDeRetorno">Função que analisa o retorno.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.API.Executar``1(System.Net.Http.HttpRequestMessage,System.Func{System.Net.Http.HttpResponseMessage,System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken)">
             <summary>
@@ -52,6 +53,7 @@
             <param name="requisicao">Mensagem de requisição para o serviço.</param>
             <param name="analiseDeRetorno">Função que analisa o retorno e constrói o objeto do tipo <typeparamref name="T"/></param>.
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
             <returns>Retorna o objeto do tipo <typeparamref name="T"/> pronto para utilização.</returns>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Anexos">
@@ -72,6 +74,7 @@
             <param name="id">Identificador do Anexo.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Retorna as informações sobre o arquivo anexado ao lote.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Anexos.Download(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -80,6 +83,7 @@
             <param name="id">Identificador do Anexo.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Conteúdo do arquivo anexado (em bytes).</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Buscador">
             <summary>
@@ -92,6 +96,7 @@
             </summary>
             <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
             <param name="formato">Formato para serialização dos objetos.</param>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Buscador.Lotes(BITSIGN.Proxy.DTOs.ParametrosDeBusca,System.Threading.CancellationToken)">
             <summary>
@@ -100,6 +105,7 @@
             <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Relação de Lotes que satisfazem os critérios de busca.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Buscador.Documentos(BITSIGN.Proxy.DTOs.ParametrosDeBusca,System.Threading.CancellationToken)">
             <summary>
@@ -108,6 +114,7 @@
             <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Relação de Documentos que satisfazem os critérios de busca.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Buscador.Notificacoes(BITSIGN.Proxy.DTOs.ParametrosDeBusca,System.Threading.CancellationToken)">
             <summary>
@@ -116,6 +123,7 @@
             <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Relação de Notificações que satisfazem os critérios de busca.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Buscador.Callbacks(BITSIGN.Proxy.DTOs.ParametrosDeBusca,System.Threading.CancellationToken)">
             <summary>
@@ -124,6 +132,7 @@
             <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Relação de Callbacks que satisfazem os critérios de busca.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Contratantes">
             <summary>
@@ -144,6 +153,7 @@
             <param name="id">Identificador do Contratante.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Retorna todas as informações cadastrais e configurações.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Contratantes.Atualizar(BITSIGN.Proxy.DTOs.Contratante,System.Threading.CancellationToken)">
             <summary>
@@ -151,6 +161,7 @@
             </summary>
             <param name="contratante">Contratante e suas configurações para atualização.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Contratantes.RenovarChave(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -159,6 +170,7 @@
             <param name="id">Identificador do contratante.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Retornará a nova chave de integração gerada pelo serviço.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Documentos">
             <summary>
@@ -178,6 +190,7 @@
             <param name="id">Identificador do Documento.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Retorna todas as informações do documento que foi submetido para assinatura.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Excluir(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -185,6 +198,7 @@
             </summary>
             <param name="id">Identificador do Documento.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Original(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -193,6 +207,7 @@
             <param name="id">Identificador do Documento.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Um <c>array</c> de <see cref="T:System.Byte"/>s que corresponde ao documento original enviado.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Assinado(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -202,6 +217,7 @@
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Um <c>array</c> de <see cref="T:System.Byte"/>s que corresponde ao documento assinado.</returns>
             <remarks>Este arquivo é aquele que possui validade jurídica.</remarks>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Documentos.Manifesto(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -210,6 +226,7 @@
             <param name="id">Identificador do Documento.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Um <c>array</c> de <see cref="T:System.Byte"/>s que corresponde à um arquivo PDF com os detalhes dos assinantes e as características das assinaturas.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Financeiro">
             <summary>
@@ -228,6 +245,7 @@
             </summary>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Coleção contendo os planos contratados, suas respectivas características e o status atual de cada um deles.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Financeiro.Fechamentos(System.Threading.CancellationToken)">
             <summary>
@@ -235,6 +253,7 @@
             </summary>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Coleção contendo a versão resumida dos fechamentos dos últimos 12 meses.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Financeiro.Fechamento(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -243,6 +262,7 @@
             <param name="id">Identificador do Fechamento.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Detalhamento completo do fechamento de um ano/mês específico, incluindo os dados de pagamento.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Lotes">
             <summary>
@@ -262,6 +282,7 @@
             <param name="pacote">O pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>URI onde estará disponível o lote para consulta.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Detalhes(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -270,6 +291,7 @@
             <param name="id">Identificador do Lote.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Retorna todas as informações do lote que foi submetido para o serviço.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Excluir(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -277,6 +299,7 @@
             </summary>
             <param name="id">Identificador do Lote.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Notificacoes(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -285,6 +308,7 @@
             <param name="id">Identificador do Lote.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Coleção com as notificações enviadas à todos os assinantes envolvidos no lote.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Observadores(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -293,6 +317,7 @@
             <param name="id">Identificador do Lote.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Coleção com os observadores adicionados no lote.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Anexos(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -301,6 +326,7 @@
             <param name="id">Identificador do Lote.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Coleção com os arquivos anexados ao lote.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Pacote(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -309,6 +335,7 @@
             <param name="id">Identificador do Lote.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Um objeto que representa o lote enviado com seus documentos e os arquivos associados.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Notificacoes">
             <summary>
@@ -328,6 +355,7 @@
             <param name="id">Identificador da Notificação.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Retorna as informações sobre a notificação e seu status de envio.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Notificacoes.Replay(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -335,6 +363,7 @@
             </summary>
             <param name="id">Identificador da Notificação.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Status">
             <summary>
@@ -353,6 +382,18 @@
             </summary>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Relatório com o status atual dos serviços e recursos.</returns>
+        </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">
+            <summary>
+            Exceção customizada que traduz a <see cref="T:BITSIGN.Proxy.DTOs.Falha"/> em uma exceção.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao.#ctor(System.Net.Http.HttpRequestException,BITSIGN.Proxy.DTOs.Falha)">
+            <summary>
+            Inicializa a exceção
+            </summary>
+            <param name="excecao">Exceção disparada pela plataforma.</param>
+            <param name="falha">Dados customizados da falha que foram informados pelo serviço.</param>
         </member>
         <member name="T:BITSIGN.Proxy.Conexao">
             <summary>
@@ -932,6 +973,26 @@
         <member name="P:BITSIGN.Proxy.DTOs.Entidade.Email">
             <summary>
             Endereço de e-mail da entidade.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Falha">
+            <summary>
+            Representa uma falha ocorrida durante a execução do serviço.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Falha.Mensagem">
+            <summary>
+            Mensagem resumida sobre o problema ocorrido.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Falha.Descricao">
+            <summary>
+            Descreve de forma mais detalhada o motivo da falha.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Falha.Link">
+            <summary>
+            Opcionalmente informa um endereço com informações complementares sobre a falha.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Fechamento">

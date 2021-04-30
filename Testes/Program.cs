@@ -26,7 +26,8 @@ namespace Testes
             { 10, new UsoDoAppSettings() },
             { 11, new DadosDoContratante() },
             { 12, new StatusDosServicos() },
-            { 13, new BuscadorDeRecursos() }
+            { 13, new BuscadorDeRecursos() },
+            { 14, new TratamentoDeErros() }
         };
 
         static async Task Main(string[] args)

@@ -19,6 +19,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
         /// <param name="formato">Formato para serialização dos objetos.</param>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public Buscador(HttpClient proxy, FormatoDeSerializacao formato)
             : base(proxy)
         {
@@ -32,6 +33,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Relação de Lotes que satisfazem os critérios de busca.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<DTOs.Lotes> Lotes(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
             await Buscar<DTOs.Lotes>("lotes", parametros, cancellationToken);
 
@@ -41,6 +43,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Relação de Documentos que satisfazem os critérios de busca.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<DTOs.Documentos> Documentos(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
             await Buscar<DTOs.Documentos>("documentos", parametros, cancellationToken);
 
@@ -50,6 +53,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Relação de Notificações que satisfazem os critérios de busca.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<DTOs.Notificacoes> Notificacoes(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
             await Buscar<DTOs.Notificacoes>("notificacoes", parametros, cancellationToken);
 
@@ -59,6 +63,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="parametros">Parâmetros que serão utilizados para filtrar das consultas.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Relação de Callbacks que satisfazem os critérios de busca.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<DTOs.Notificacoes> Callbacks(DTOs.ParametrosDeBusca parametros, CancellationToken cancellationToken = default) =>
             await Buscar<DTOs.Notificacoes>("callbacks", parametros, cancellationToken);
 

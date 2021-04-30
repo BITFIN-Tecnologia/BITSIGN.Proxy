@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2021 - BITFIN Software Ltda. Todos os Direitos Reservados.
 // Código exclusivo para consumo dos serviços (APIs) da BITSIGN.
 
+using BITSIGN.Proxy.Utilitarios;
 using System;
 using System.Net.Http;
 using System.Threading;
@@ -31,10 +32,20 @@ namespace BITSIGN.Proxy.Comunicacao
         /// <param name="requisicao">Mensagem de requisição para o serviço.</param>
         /// <param name="analiseDeRetorno">Função que analisa o retorno.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         protected virtual async Task Executar(HttpRequestMessage requisicao, Action<HttpResponseMessage> analiseDeRetorno, CancellationToken cancellationToken = default)
         {
             using (var resposta = await this.proxy.SendAsync(requisicao, cancellationToken))
-                analiseDeRetorno(resposta);
+            {
+                try
+                {
+                    analiseDeRetorno(resposta);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new ErroNaRequisicao(ex, await resposta.Content.ReadAs<DTOs.Falha>(cancellationToken));
+                }
+            }
         }
 
         /// <summary>
@@ -44,11 +55,21 @@ namespace BITSIGN.Proxy.Comunicacao
         /// <param name="requisicao">Mensagem de requisição para o serviço.</param>
         /// <param name="analiseDeRetorno">Função que analisa o retorno e constrói o objeto do tipo <typeparamref name="T"/></param>.
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         /// <returns>Retorna o objeto do tipo <typeparamref name="T"/> pronto para utilização.</returns>
         protected virtual async Task<T> Executar<T>(HttpRequestMessage requisicao, Func<HttpResponseMessage, Task<T>> analiseDeRetorno, CancellationToken cancellationToken = default)
         {
             using (var resposta = await this.proxy.SendAsync(requisicao, cancellationToken))
-                return await analiseDeRetorno(resposta);
+            {
+                try
+                {
+                    return await analiseDeRetorno(resposta);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new ErroNaRequisicao(ex, await resposta.Content.ReadAs<DTOs.Falha>(cancellationToken));
+                }
+            }
         }
     }
 }

@@ -28,6 +28,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do Documento.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Retorna todas as informações do documento que foi submetido para assinatura.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<DTOs.Documento> Detalhes(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"documentos/{id}"))
@@ -53,6 +54,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// </summary>
         /// <param name="id">Identificador do Documento.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<bool> Excluir(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Delete, $"documentos/{id}"))
@@ -77,6 +79,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do Documento.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Um <c>array</c> de <see cref="byte"/>s que corresponde ao documento original enviado.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<byte[]> Original(Guid id, CancellationToken cancellationToken = default) =>
             await Executar(id, "original", cancellationToken);
 
@@ -87,6 +90,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Um <c>array</c> de <see cref="byte"/>s que corresponde ao documento assinado.</returns>
         /// <remarks>Este arquivo é aquele que possui validade jurídica.</remarks>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<byte[]> Assinado(Guid id, CancellationToken cancellationToken = default) =>
             await Executar(id, "assinado", cancellationToken);
 
@@ -96,6 +100,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do Documento.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Um <c>array</c> de <see cref="byte"/>s que corresponde à um arquivo PDF com os detalhes dos assinantes e as características das assinaturas.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<byte[]> Manifesto(Guid id, CancellationToken cancellationToken = default) =>
             await Executar(id, "manifesto", cancellationToken);
 

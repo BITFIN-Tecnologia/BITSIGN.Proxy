@@ -28,6 +28,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador da Notificação.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Retorna as informações sobre a notificação e seu status de envio.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<DTOs.Notificacao> Detalhes(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"notificacoes/{id}"))
@@ -53,6 +54,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// </summary>
         /// <param name="id">Identificador da Notificação.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task Replay(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Patch, $"notificacoes/{id}/replay"))

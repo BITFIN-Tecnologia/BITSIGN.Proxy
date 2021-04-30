@@ -32,6 +32,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do Contratante.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Retorna todas as informações cadastrais e configurações.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<DTOs.Contratante> Detalhes(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"contratantes/{id}"))
@@ -57,6 +58,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// </summary>
         /// <param name="contratante">Contratante e suas configurações para atualização.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task Atualizar(DTOs.Contratante contratante, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Put, $"contratantes/{contratante.Id}/configuracoes")
@@ -74,6 +76,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do contratante.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Retornará a nova chave de integração gerada pelo serviço.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<string> RenovarChave(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Patch, $"contratantes/{id}/configuracoes/renovarchave"))

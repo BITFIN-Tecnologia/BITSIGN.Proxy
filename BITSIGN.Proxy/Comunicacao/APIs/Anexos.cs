@@ -28,6 +28,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do Anexo.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Retorna as informações sobre o arquivo anexado ao lote.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<DTOs.Anexo> Detalhes(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"anexos/{id}"))
@@ -54,6 +55,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do Anexo.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Conteúdo do arquivo anexado (em bytes).</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<byte[]> Download(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"anexos/{id}/download"))

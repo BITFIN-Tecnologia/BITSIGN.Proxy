@@ -29,6 +29,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="pacote">O pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>URI onde estará disponível o lote para consulta.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<Uri> Upload(DTOs.Pacote pacote, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Post, "lotes")
@@ -53,6 +54,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do Lote.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Retorna todas as informações do lote que foi submetido para o serviço.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<DTOs.Lote> Detalhes(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"lotes/{id}"))
@@ -78,6 +80,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// </summary>
         /// <param name="id">Identificador do Lote.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<bool> Excluir(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Delete, $"lotes/{id}"))
@@ -102,6 +105,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do Lote.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Coleção com as notificações enviadas à todos os assinantes envolvidos no lote.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<IEnumerable<DTOs.Notificacao>> Notificacoes(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"lotes/{id}/notificacoes"))
@@ -128,6 +132,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do Lote.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Coleção com os observadores adicionados no lote.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<IEnumerable<DTOs.Observador>> Observadores(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"lotes/{id}/observadores"))
@@ -154,6 +159,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do Lote.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Coleção com os arquivos anexados ao lote.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<IEnumerable<DTOs.Anexo>> Anexos(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"lotes/{id}/anexos"))
@@ -180,6 +186,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="id">Identificador do Lote.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Um objeto que representa o lote enviado com seus documentos e os arquivos associados.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<DTOs.Pacote> Pacote(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"lotes/{id}/pacote"))
