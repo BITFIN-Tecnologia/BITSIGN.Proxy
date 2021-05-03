@@ -17,7 +17,10 @@ namespace Testes.Exemplos
     {
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
-            var arquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao.pdf");
+            //Reinicializa o log.
+            File.Delete("Log.txt");
+
+            var arquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf");
 
             //Gera, para cada requisição, um Guid para correlacionar os logs do cliente com o do serviço.
             var geradorDeRastreio = new RastreioComGuid();
@@ -27,89 +30,71 @@ namespace Testes.Exemplos
             {
                 using (var proxy = new ProxyDoServico(this.Conexao, loggerEmArquivo, geradorDeRastreio))
                 {
-                    var pacote = new Pacote(new Lote()
+                    var pacote = new Pacote(new()
                     {
-                        Contratante = new Contratante()
+                        Contratante = new()
                         {
                             Id = this.CodigoDoContratante,
-                            Entidade = new Entidade()
+                            Entidade = new()
                             {
                                 Nome = "White House - USA",
-                                Documento = "016338212000113"
+                                Documento = "031508560000185",
+                                Email = "contact@whitehouse.com"
                             }
                         },
-                        Entidade = new Entidade()
+                        Entidade = new()
                         {
                             Nome = "White House - USA",
-                            Documento = "016338212000113"
+                            Documento = "014175773000113",
+                            Email = "contact@whitehouse.com"
                         },
+                        DataDeExpiracao = DateTime.Now.AddDays(10),
                         Documentos = new List<Documento>()
+                    {
+                        new Documento()
                         {
-                            new Documento()
+                            NomeDoArquivo = "ContratoDeLocacao1.pdf",
+                            Descricao = "Contrato de Locação 1",
+                            Tipo = "Contrato",
+                            Tags = "contratoId=123",
+                            FormatoDoArquivo = "PDF",
+                            ConteudoOriginal = arquivo,
+                            TamanhoDoArquivo = arquivo.Length,
+                            PadraoDeAssinatura = "CAdES",
+                            PoliticaDeAssinatura = "PA_AD_RB_v2_3",
+                            Assinaturas = new List<Assinatura>()
                             {
-                                NomeDoArquivo = "ContratoDeLocacao.pdf",
-                                Descricao = "Contrato de Locação",
-                                Tipo = "Contrato",
-                                Tags = "contratoId=123",
-                                FormatoDoArquivo = "PDF",
-                                ConteudoOriginal = arquivo,
-                                TamanhoDoArquivo = arquivo.Length,
-                                PadraoDeAssinatura = "CAdES",
-                                PoliticaDeAssinatura = "PA_AD_RB_v2_3",
-                                Assinaturas = new List<Assinatura>()
+                                new ()
                                 {
-                                    new Assinatura()
+                                    Perfil = "Locador",
+                                    QtdeMinima = 1,
+                                    Assinantes = new List<Assinante>()
                                     {
-                                        Perfil = "Locador",
-                                        QtdeMinima = 1,
-                                        Assinantes = new List<Assinante>()
+                                        new ()
                                         {
-                                            new Assinante()
+                                            Entidade = new ()
                                             {
-                                                Entidade = new Entidade()
-                                                {
-                                                    Nome = "Jack Bauer",
-                                                    Documento = "57863748070",
-                                                    Email = "jack.bauer@uct.com"
-                                                },
-                                                Notificar = true,
-                                                Obrigatorio = false
+                                                Nome = "Israel Aece",
+                                                Documento = "28387365823",
+                                                Email = "israelaece@yahoo.com.br"
                                             },
-                                            new Assinante()
-                                            {
-                                                Entidade = new Entidade()
-                                                {
-                                                    Nome = "Nina Myers",
-                                                    Documento = "88488048025",
-                                                    Email = "nina.myers@uct.com"
-                                                },
-                                                Notificar = true,
-                                                Obrigatorio = false
-                                            }
-                                        }
-                                    },
-                                    new Assinatura()
-                                    {
-                                        Perfil = "Locatário",
-                                        QtdeMinima = 1,
-                                        Assinantes = new List<Assinante>()
-                                        {
-                                            new Assinante()
-                                            {
-                                                Entidade = new Entidade()
-                                                {
-                                                    Nome = "Joe Biden",
-                                                    Documento = "94478520097",
-                                                    Email = "potus@whitehouse.com"
-                                                },
-                                                Notificar = true,
-                                                Obrigatorio = true
-                                            }
+                                            Notificar = true,
+                                            Obrigatorio = false
                                         }
                                     }
                                 }
                             }
-                        },
+                        }
+                    },
+                        Observadores = new List<Observador>()
+                    {
+                        new() { Email = "teste@xpto.com.br" },
+                        new() { Email = "xpto@xpto.com.br" }
+                    },
+                        Anexos = new List<Anexo>()
+                    {
+                        new() { NomeDoArquivo = "Instrucoes.txt", Conteudo = File.ReadAllBytes("Exemplo/Instrucoes.txt"), Descricao = "Descrição sobre o processo." }
+                    },
                         Tags = "processo=456"
                     });
 

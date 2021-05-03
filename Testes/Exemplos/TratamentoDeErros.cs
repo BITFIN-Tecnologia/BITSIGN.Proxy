@@ -19,19 +19,19 @@ namespace Testes.Exemplos
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                var pacote = new Pacote(new Lote()
+                var pacote = new Pacote(new()
                 {
-                    Contratante = new Contratante()
+                    Contratante = new()
                     {
                         Id = this.CodigoDoContratante,
-                        Entidade = new Entidade()
+                        Entidade = new()
                         {
                             Nome = "White House - USA",
                             Documento = "014175773000113",
                             Email = "contact@whitehouse.com"
                         }
                     },
-                    Entidade = new Entidade()
+                    Entidade = new()
                     {
                         Nome = "White House - USA",
                         Documento = "014175773000113",
@@ -53,15 +53,15 @@ namespace Testes.Exemplos
                             PoliticaDeAssinatura = "PA_AD_RB_v2_3",
                             Assinaturas = new List<Assinatura>()
                             {
-                                new Assinatura()
+                                new()
                                 {
                                     Perfil = "Locador",
                                     QtdeMinima = 1,
                                     Assinantes = new List<Assinante>()
                                     {
-                                        new Assinante()
+                                        new ()
                                         {
-                                            Entidade = new Entidade()
+                                            Entidade = new()
                                             {
                                                 Nome = "Israel Aece",
                                                 Documento = "28387365823",

@@ -16,7 +16,7 @@ namespace Testes.Exemplos
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
                 //Retorna todas as informações de um determinado lote.
-                var lote = await proxy.Lotes.Detalhes(new Guid("06202cf4-281d-46a5-bd81-975c15f58d94"), cancellationToken);
+                var lote = await proxy.Lotes.Detalhes(new("06202cf4-281d-46a5-bd81-975c15f58d94"), cancellationToken);
 
                 if (lote != null)
                 {

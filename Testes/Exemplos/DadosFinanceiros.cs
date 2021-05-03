@@ -32,7 +32,7 @@ namespace Testes.Exemplos
                 }
 
                 //Detalhes sobre o fechamento.
-                var fechamento = await proxy.Financeiro.Fechamento(new Guid("a0ef4f82-91a6-4a28-a9ae-361c3c0a427d"), cancellationToken);
+                var fechamento = await proxy.Financeiro.Fechamento(new("a0ef4f82-91a6-4a28-a9ae-361c3c0a427d"), cancellationToken);
 
                 if (fechamento != null)
                 {

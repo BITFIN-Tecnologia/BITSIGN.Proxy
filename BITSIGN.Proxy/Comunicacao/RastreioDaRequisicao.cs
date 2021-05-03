@@ -75,11 +75,5 @@ namespace BITSIGN.Proxy.Comunicacao
 
         private void Log(string id, Severidade severidade, string mensagem) =>
             this.logger?.Escrever(severidade, $"{id} - {mensagem}");
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-            this.logger?.Dispose();
-        }
     }
 }

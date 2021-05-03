@@ -14,7 +14,7 @@ namespace Testes.Exemplos
     {
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
-            using (var proxy = new ProxyDoServico(new Conexao(new AppSettingsXml())))
+            using (var proxy = new ProxyDoServico(new(new AppSettingsXml())))
             {
                 Console.WriteLine($"Url: {proxy.Conexao.Url}");
                 Console.WriteLine($"CodigoDoContratante: {proxy.Conexao.CodigoDoContratante}");

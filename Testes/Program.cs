@@ -12,7 +12,7 @@ namespace Testes
 {
     class Program
     {
-        private static readonly Dictionary<int, Exemplo> exemplos = new Dictionary<int, Exemplo>()
+        private static readonly Dictionary<int, Exemplo> exemplos = new()
         {
             { 1, new UploadDeLote() },
             { 2, new LogsComDepuracao() },

@@ -15,14 +15,14 @@ namespace Testes.Exemplos
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                await proxy.Contratantes.Atualizar(new Contratante()
+                await proxy.Contratantes.Atualizar(new()
                 {
                     Id = this.CodigoDoContratante,
-                    Entidade = new Entidade()
-                    { 
+                    Entidade = new()
+                    {
                         Nome = "Nome da Empresa Ltda."
                     },
-                    Configuracao = new Configuracao()
+                    Configuracao = new()
                     {
                         AcompanhamentoAoVivo = true,
                         DocumentosDoPacote = "Assinado;Manifesto",

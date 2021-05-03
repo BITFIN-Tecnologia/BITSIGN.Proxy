@@ -17,7 +17,7 @@ namespace Testes.Exemplos
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
                 //Retorna o pacote, contendo o arquivo de manifesto.xml, arquivos originais e assinados.
-                var pacote = await proxy.Lotes.Pacote(new Guid("06202cf4-281d-46a5-bd81-975c15f58d94"), cancellationToken);
+                var pacote = await proxy.Lotes.Pacote(new("06202cf4-281d-46a5-bd81-975c15f58d94"), cancellationToken);
 
                 Console.WriteLine(pacote.Lote.Id);
 

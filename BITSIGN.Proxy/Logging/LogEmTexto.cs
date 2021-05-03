@@ -71,6 +71,8 @@ namespace BITSIGN.Proxy.Logging
         {
             this.Flush();
             this.escritor.Dispose();
+
+            GC.SuppressFinalize(this);
         }
     }
 }
