@@ -57,6 +57,12 @@ namespace BITSIGN.Proxy.DTOs
         public string Hash { get; set; }
 
         /// <summary>
+        /// Indica se o carimbo do tempo é exigido para as assinaturas no documento.
+        /// </summary>
+        [XmlAttribute]
+        public bool CarimboDoTempo { get; set; }
+
+        /// <summary>
         /// Padrão de assinatura (CAdES, PAdES ou XAdES).
         /// </summary>
         [XmlAttribute]
