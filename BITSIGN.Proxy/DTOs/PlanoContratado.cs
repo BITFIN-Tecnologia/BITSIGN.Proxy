@@ -34,5 +34,10 @@ namespace BITSIGN.Proxy.DTOs
         /// Total atual de armazenamento utilizado (em bytes).
         /// </summary>
         public long TotalDeArmazenamento { get; set; }
+
+        /// <summary>
+        /// Indica se está habilitado o carimbo do tempo no plano.
+        /// </summary>
+        public bool CarimboDoTempo { get; set; }
     }
 }
