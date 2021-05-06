@@ -19,8 +19,7 @@ namespace Testes.Exemplos
                 foreach (var pc in await proxy.Financeiro.Planos(cancellationToken))
                 {
                     Console.WriteLine(pc.Plano.Nome);
-                    Console.WriteLine(pc.Plano.FaixaInicial);
-                    Console.WriteLine(pc.Plano.FaixaFinal?.ToString() ?? "Indeterminado");
+                    Console.WriteLine(pc.Plano.Quantidade);
                 }
 
                 //Percorre os últimos 12 fechamentos realizados.

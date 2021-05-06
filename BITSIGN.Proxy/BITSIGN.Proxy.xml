@@ -880,6 +880,11 @@
             Código hash do arquivo original.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.CarimboDoTempo">
+            <summary>
+            Indica se o carimbo do tempo é exigido para as assinaturas no documento.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.PadraoDeAssinatura">
             <summary>
             Padrão de assinatura (CAdES, PAdES ou XAdES).
@@ -1306,14 +1311,9 @@
             Base de Cobrança (por assinatura ou por documento).
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Plano.FaixaInicial">
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.Quantidade">
             <summary>
-            Faixa inicial.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Plano.FaixaFinal">
-            <summary>
-            Faixa final.
+            Quantidade máxima do Plano.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Plano.Valor">
@@ -1326,14 +1326,19 @@
             Valor por assinatura/documento excedente.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Plano.TamanhoDeArmazenamento">
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.ValorMinimo">
             <summary>
-            Espaço de armazenamento disponível (em bytes).
+            Valor mínimo do Plano.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Plano.AnosDeArmazenamento">
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.ValorDoArmazenamento">
             <summary>
-            Período de duração do armazenamento.
+            Valor cobrado pelo armazenamento (por gibabytes).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Plano.ValorDoCarimboDoTempo">
+            <summary>
+            Valor cobrado por carimbo do tempo emitido.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.PlanoContratado">
@@ -1364,6 +1369,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.TotalDeArmazenamento">
             <summary>
             Total atual de armazenamento utilizado (em bytes).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.CarimboDoTempo">
+            <summary>
+            Indica se está habilitado o carimbo do tempo no plano.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.StatusDosServicos">

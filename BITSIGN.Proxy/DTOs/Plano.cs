@@ -8,7 +8,7 @@ namespace BITSIGN.Proxy.DTOs
     /// <summary>
     /// Detalhe do plano de assinaturas digitais.
     /// </summary>
-    [DebuggerDisplay("{Nome,nq} - Faixa Inicial: {FaixaInicial} - Faixa Final: {FaixaFinal}")]
+    [DebuggerDisplay("{Nome,nq} - {Quantidade} {Base,nq}(s)")]
     public class Plano : Base
     {
         /// <summary>
@@ -27,14 +27,9 @@ namespace BITSIGN.Proxy.DTOs
         public string Base { get; set; }
 
         /// <summary>
-        /// Faixa inicial.
+        /// Quantidade máxima do Plano.
         /// </summary>
-        public int FaixaInicial { get; set; }
-
-        /// <summary>
-        /// Faixa final.
-        /// </summary>
-        public int? FaixaFinal { get; set; }
+        public int Quantidade { get; set; }
 
         /// <summary>
         /// Valor por assinatura/documento.
@@ -47,13 +42,18 @@ namespace BITSIGN.Proxy.DTOs
         public decimal ValorExcedente { get; set; }
 
         /// <summary>
-        /// Espaço de armazenamento disponível (em bytes).
+        /// Valor mínimo do Plano.
         /// </summary>
-        public long TamanhoDeArmazenamento { get; set; }
+        public decimal ValorMinimo { get; set; }
 
         /// <summary>
-        /// Período de duração do armazenamento.
+        /// Valor cobrado pelo armazenamento (por gibabytes).
         /// </summary>
-        public int AnosDeArmazenamento { get; set; }
+        public decimal ValorDoArmazenamento { get; set; }
+
+        /// <summary>
+        /// Valor cobrado por carimbo do tempo emitido.
+        /// </summary>
+        public decimal ValorDoCarimboDoTempo { get; set; }
     }
 }
