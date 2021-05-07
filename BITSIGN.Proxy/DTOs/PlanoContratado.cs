@@ -31,6 +31,11 @@ namespace BITSIGN.Proxy.DTOs
         public string Status { get; set; }
 
         /// <summary>
+        /// Quantidade já consumida dentro do mês.
+        /// </summary>
+        public int Quantidade { get; set; }
+
+        /// <summary>
         /// Total atual de armazenamento utilizado (em bytes).
         /// </summary>
         public long TotalDeArmazenamento { get; set; }
