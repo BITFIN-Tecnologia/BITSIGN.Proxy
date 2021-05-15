@@ -5,6 +5,7 @@ using BITSIGN.Proxy.Utilitarios;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,10 +21,11 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
         /// <param name="formato">Formato para serialização dos objetos.</param>
-        public Aplicacoes(HttpClient proxy, FormatoDeSerializacao formato) 
+        public Aplicacoes(HttpClient proxy, FormatoDeSerializacao formato)
             : base(proxy)
         {
             this.FormatoDeSerializacao = formato;
+            this.MimeType = $"application/{formato.ToString().ToLower()}";
         }
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Put, $"aplicacoes/{aplicacao.Id}/configuracoes")
             {
-                Content = new StringContent(Serializador.Serializar(aplicacao, this.FormatoDeSerializacao.ToString()))
+                Content = new StringContent(Serializador.Serializar(aplicacao, this.FormatoDeSerializacao.ToString()), Encoding.UTF8, this.MimeType)
             })
             {
                 await Executar(requisicao, resposta => resposta.EnsureSuccessStatusCode(), cancellationToken);
@@ -87,5 +89,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         }
 
         private FormatoDeSerializacao FormatoDeSerializacao { get; set; }
+
+        private string MimeType { get; init; }
     }
 }

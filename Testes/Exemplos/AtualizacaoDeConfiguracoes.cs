@@ -18,8 +18,8 @@ namespace Testes.Exemplos
             {
                 await proxy.Aplicacoes.Atualizar(new()
                 {
-                    Id = Guid.Parse("41440b4c-280f-40ee-bdce-e6fdc420d1cf"),
-                    Ativa = false,
+                    Id = Guid.Parse("E4005970-F755-4D6D-8F71-F7A4937C5F9D"),
+                    Ativa = true,
                     Configuracao = new()
                     {
                         AcompanhamentoAoVivo = true,
@@ -28,8 +28,7 @@ namespace Testes.Exemplos
                         FormatoDeCallback = "JSON",
                         HeadersDeCallback = "AppKey=123",
                         IPsAutorizados = "127.0.0.1",
-                        PosicaoDoCarimbo = "Rodapé",
-                        UrlDeCallback = "https://www.empresa.com.br/assinaturas"
+                        PosicaoDoCarimbo = "Rodapé"
                     }
                 }, cancellationToken);
             }

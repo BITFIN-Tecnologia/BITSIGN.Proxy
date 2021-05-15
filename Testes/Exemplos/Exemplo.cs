@@ -19,9 +19,9 @@ namespace Testes.Exemplos
 
         protected string Versao { get; } = "v1";
 
-        protected Guid CodigoDoContratante { get; } = new("09900CE6-2DC0-4593-8653-DCE6151C31C8");
+        protected Guid CodigoDoContratante { get; } = new("E99B78CA-2ABA-4FD2-B8DC-30CBCEAAD090");
 
-        protected string ChaveDeIntegracao { get; set; } = "T1RaaU9URXhOekl0T1dNek55MDBOR1ExTFRoaFkyRXRZbU0wWm1FNE5USTBaakJo";
+        protected string ChaveDeIntegracao { get; set; } = "D23D751E7E1F3C0D3BC7C90862C34CEFE8BCD7BC";
 
         protected Conexao Conexao { get; }
     }
