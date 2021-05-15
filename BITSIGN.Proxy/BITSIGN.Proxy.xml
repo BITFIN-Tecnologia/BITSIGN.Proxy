@@ -818,6 +818,11 @@
             Se a entidade que gerou o callback possuir tags associadas, elas serão informadas nesta propriedade.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Callback.AplicacaoId">
+            <summary>
+            Identificador da aplicação à qual o callback está relacionado.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Certificadora">
             <summary>
             Informações gerais sobre a certificadora.
