@@ -4,6 +4,7 @@
 
 using BITSIGN.Proxy;
 using BITSIGN.Proxy.DTOs;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,13 +16,10 @@ namespace Testes.Exemplos
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                await proxy.Contratantes.Atualizar(new()
+                await proxy.Aplicacoes.Atualizar(new()
                 {
-                    Id = this.CodigoDoContratante,
-                    Entidade = new()
-                    {
-                        Nome = "Nome da Empresa Ltda."
-                    },
+                    Id = Guid.Parse("41440b4c-280f-40ee-bdce-e6fdc420d1cf"),
+                    Ativa = false,
                     Configuracao = new()
                     {
                         AcompanhamentoAoVivo = true,

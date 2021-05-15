@@ -3,6 +3,7 @@
 
 using BITSIGN.Proxy.Utilitarios;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -11,20 +12,16 @@ using System.Threading.Tasks;
 namespace BITSIGN.Proxy.Comunicacao.APIs
 {
     /// <summary>
-    /// Informações cadastrais e configurações sobre o processo operacional das assinaturas digitais, callbacks, etc.
+    /// Informações cadastrais e configurações do processo operacional das assinaturas.
     /// </summary>
     public class Contratantes : API
     {
         /// <summary>
-        /// Inicializa a API de configurações.
+        /// Inicializa a API de contratantes.
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
-        /// <param name="formato">Formato para serialização dos objetos.</param>
-        public Contratantes(HttpClient proxy, FormatoDeSerializacao formato)
-            : base(proxy)
-        {
-            this.FormatoDeSerializacao = formato;
-        }
+        public Contratantes(HttpClient proxy)
+            : base(proxy) { }
 
         /// <summary>
         /// Detalhes do Contratante.
@@ -54,38 +51,57 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         }
 
         /// <summary>
-        /// Atualização de configurações.
+        /// Aplicações do Contratante.
         /// </summary>
-        /// <param name="contratante">Contratante e suas configurações para atualização.</param>
+        /// <param name="id">Identificador do Contratante.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>Coleção com as notificações enviadas à todos os assinantes envolvidos no lote.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
-        public async Task Atualizar(DTOs.Contratante contratante, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<DTOs.Aplicacao>> Aplicacoes(Guid id, CancellationToken cancellationToken = default)
         {
-            using (var requisicao = new HttpRequestMessage(HttpMethod.Put, $"contratantes/{contratante.Id}/configuracoes")
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"contratantes/{id}/aplicacoes"))
             {
-                Content = new StringContent(Serializador.Serializar(contratante.Configuracao, this.FormatoDeSerializacao.ToString()))
-            })
-            {
-                await Executar(requisicao, resposta => resposta.EnsureSuccessStatusCode(), cancellationToken);
+                return await this.Executar(requisicao, async resposta =>
+                {
+                    try
+                    {
+                        resposta.EnsureSuccessStatusCode();
+
+                        return await resposta.Content.ReadAs<IEnumerable<DTOs.Aplicacao>>(cancellationToken);
+                    }
+                    catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }, cancellationToken);
             }
         }
 
         /// <summary>
-        /// Renova a chave de integração entre sistemas.
+        /// Observadores do Contratante.
         /// </summary>
-        /// <param name="id">Identificador do contratante.</param>
+        /// <param name="id">Identificador do Contratante.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-        /// <returns>Retornará a nova chave de integração gerada pelo serviço.</returns>
+        /// <returns>Coleção com as notificações enviadas à todos os assinantes envolvidos no lote.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
-        public async Task<string> RenovarChave(Guid id, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<DTOs.Observador>> Observadores(Guid id, CancellationToken cancellationToken = default)
         {
-            using (var requisicao = new HttpRequestMessage(HttpMethod.Patch, $"contratantes/{id}/configuracoes/renovarchave"))
-                return await Executar(
-                    requisicao,
-                    async resposta => await resposta.Content.ReadAsStringAsync(cancellationToken),
-                    cancellationToken);
-        }
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"contratantes/{id}/observadores"))
+            {
+                return await this.Executar(requisicao, async resposta =>
+                {
+                    try
+                    {
+                        resposta.EnsureSuccessStatusCode();
 
-        private FormatoDeSerializacao FormatoDeSerializacao { get; set; }
+                        return await resposta.Content.ReadAs<IEnumerable<DTOs.Observador>>(cancellationToken);
+                    }
+                    catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }, cancellationToken);
+            }
+        }
     }
 }

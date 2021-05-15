@@ -15,7 +15,7 @@ namespace Testes.Exemplos
         {
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                var novaChave = await proxy.Contratantes.RenovarChave(this.CodigoDoContratante, cancellationToken);
+                var novaChave = await proxy.Aplicacoes.RenovarChave(Guid.Parse("ec2fb2dc-82cc-4e0a-be69-8b585393dbce"), cancellationToken);
 
                 Console.WriteLine(novaChave);
 
