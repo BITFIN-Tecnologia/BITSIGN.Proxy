@@ -170,6 +170,11 @@ public class Callback
     /// Se a entidade que gerou o callback possuir tags associadas, elas serão informadas nesta propriedade.
     /// </summary>
     public string Tags { get; set; }
+    
+    /// <summary>
+    /// Identificador da aplicação à qual o callback está relacionado.
+    /// </summary>
+    public Guid AplicacaoId { get; set; }
 }
 ```
 
