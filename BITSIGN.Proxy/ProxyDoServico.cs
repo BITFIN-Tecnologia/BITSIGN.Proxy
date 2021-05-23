@@ -7,6 +7,8 @@ using BITSIGN.Proxy.Logging;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace BITSIGN.Proxy
 {
@@ -36,8 +38,11 @@ namespace BITSIGN.Proxy
                 Timeout = conexao.Timeout
             };
 
-            this.proxy.DefaultRequestHeaders.Add(Protocolo.CodigoDoContratante, conexao.CodigoDoContratante.ToString());
-            this.proxy.DefaultRequestHeaders.Add(Protocolo.ChaveDeIntegracao, conexao.ChaveDeIntegracao);
+            this.proxy.DefaultRequestHeaders.Authorization = 
+                new AuthenticationHeaderValue(
+                    "Basic", 
+                    Convert.ToBase64String(Encoding.UTF8.GetBytes($"{conexao.CodigoDoContratante}:{conexao.ChaveDeIntegracao}")));
+
             this.proxy.DefaultRequestHeaders.Add("Accept", $"application/{conexao.FormatoDeSerializacao.ToString().ToLower()}");
 
             this.Lotes = new(proxy);

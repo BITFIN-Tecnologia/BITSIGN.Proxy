@@ -17,7 +17,7 @@ namespace Testes.Exemplos
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
                 //Retorna todas as informações de um determinado documento, exceto seus arquivos (bytes[]).
-                var documento = await proxy.Documentos.Detalhes(new Guid("aa9076b3-a058-44e2-b776-dca0a1743ce7"), cancellationToken);
+                var documento = await proxy.Documentos.Detalhes(new Guid("0007EF79-EB33-4A31-9FF1-069424192FFF"), cancellationToken);
 
                 if (documento != null)
                 {
