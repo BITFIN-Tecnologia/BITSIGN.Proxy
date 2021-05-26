@@ -1,37 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks>net5.0</TargetFrameworks>
-    <Authors>BITFIN Software Ltda.</Authors>
-    <Company>BITFIN Software Ltda.</Company>
-    <Copyright>Copyright 2021</Copyright>
-    <Description>Biblioteca .NET para consumo dos serviços (APIs) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Description>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0.1</Version>
-    <RepositoryUrl>https://github.com/BITFIN-Software/BITSIGN.Proxy</RepositoryUrl>
-    <PackageTags>api, rest-api, dot-net, icp-brasil, certificados, assinaturas-digitais</PackageTags>
-    <PackageId>BITFIN.BITSIGN.Proxy</PackageId>
-    <PackageProjectUrl>https://www.bitsign.com.br</PackageProjectUrl>
-    <PackageIcon>Social.png</PackageIcon>
-    <RepositoryType>git</RepositoryType>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Projetos\BitFin\BITSIGN.Proxy\BITSIGN.Proxy\BITSIGN.Proxy.xml</DocumentationFile>
-    <LangVersion>9.0</LangVersion>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\Users\Israel Aece\BITFIN Software Ltda\Dev BITFIN - Documents\Projetos\BITFIN\Design\Logotipos\BITFIN\Social.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net5.0</TargetFrameworks>
+        <Authors>BITFIN Software Ltda.</Authors>
+        <Company>BITFIN Software Ltda.</Company>
+        <Copyright>Copyright 2021</Copyright>
+        <Description>Biblioteca .NET para consumo dos serviços (APIs) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Description>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>1.0.0.1</Version>
+        <RepositoryUrl>https://github.com/BITFIN-Software/BITSIGN.Proxy</RepositoryUrl>
+        <PackageTags>api, rest-api, dot-net, icp-brasil, certificados, assinaturas-digitais</PackageTags>
+        <PackageId>BITFIN.BITSIGN.Proxy</PackageId>
+        <PackageProjectUrl>https://www.bitsign.com.br</PackageProjectUrl>
+        <PackageIcon>Icon.png</PackageIcon>
+        <RepositoryType>git</RepositoryType>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <AssemblyVersion>1.0.0.1</AssemblyVersion>
+        <FileVersion>1.0.0.1</FileVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DocumentationFile>C:\Projetos\BitFin\BITSIGN.Proxy\BITSIGN.Proxy\BITSIGN.Proxy.xml</DocumentationFile>
+        <LangVersion>9.0</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Configuration"
+                          Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions"
+                          Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json"
+                          Version="5.0.0" />
+        <PackageReference Include="Newtonsoft.Json"
+                          Version="13.0.1" />
+        <PackageReference Include="System.Configuration.ConfigurationManager"
+                          Version="5.0.0" />
+        <None Include="Icon.png"
+              Pack="true"
+              Visible="false"
+              PackagePath="" />
+    </ItemGroup>
 </Project>
