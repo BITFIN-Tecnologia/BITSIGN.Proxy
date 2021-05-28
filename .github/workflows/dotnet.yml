@@ -20,9 +20,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --configuration Release --no-restore
     - name: Publish  
       uses: brandedoutcast/publish-nuget@v2.5.2  
       with:   
         PROJECT_FILE_PATH: BITSIGN.Proxy/BITSIGN.Proxy.csproj  
-        NUGET_KEY: ${{secrets.NUGET_API_KEY}} 
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
