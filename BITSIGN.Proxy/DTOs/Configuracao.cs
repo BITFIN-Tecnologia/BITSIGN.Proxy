@@ -47,6 +47,11 @@ namespace BITSIGN.Proxy.DTOs
         public string PosicaoDoCarimbo { get; set; }
 
         /// <summary>
+        /// Margens (em pixels) para posicionamento do carimbo da assinatura no documento original.
+        /// </summary>
+        public string MargensDoCarimbo { get; set; }
+
+        /// <summary>
         /// Mensagens predefinidas com os possíveis motivos de rejeição que o assinante poderá selecionar.
         /// </summary>
         public string RejeicoesPadroes { get; set; }
