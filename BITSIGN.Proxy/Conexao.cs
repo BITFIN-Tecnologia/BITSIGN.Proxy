@@ -13,6 +13,7 @@ namespace BITSIGN.Proxy
     /// </summary>
     public class Conexao
     {
+#if DEBUG
         private static readonly Dictionary<Ambiente, string> apis = new(2)
         {
             { Ambiente.Sandbox, "http://localhost:33664/api/{0}/" },
@@ -24,6 +25,19 @@ namespace BITSIGN.Proxy
             { Ambiente.Sandbox, new("http://localhost:33664/status") },
             { Ambiente.Producao, new("http://localhost:33664/status") },
         };
+#else
+        private static readonly Dictionary<Ambiente, string> apis = new(2)
+        {
+            { Ambiente.Sandbox, "https://sandbox.bitsign.com.br/api/{0}/" },
+            { Ambiente.Producao, "https://www.bitsign.com.br/api/{0}/" },
+        };
+
+        private static readonly Dictionary<Ambiente, Uri> status = new(2)
+        {
+            { Ambiente.Sandbox, new("https://sandbox.bitsign.com.br/status") },
+            { Ambiente.Producao, new("https://www.bitsign.com.br/status") },
+        };
+#endif
 
         /// <summary>
         /// Inicializa a conexão com os dados sendo extraídos de um repositório.

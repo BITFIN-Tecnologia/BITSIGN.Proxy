@@ -883,6 +883,11 @@
             Indica o local onde será definido o carimbo da assinatura no documento original (Topo, Esquerda, Direita ou Rodapé).)
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.MargensDoCarimbo">
+            <summary>
+            Margens (em pixels) para posicionamento do carimbo da assinatura no documento original.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Configuracao.RejeicoesPadroes">
             <summary>
             Mensagens predefinidas com os possíveis motivos de rejeição que o assinante poderá selecionar.
