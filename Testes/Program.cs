@@ -27,7 +27,8 @@ namespace Testes
             { 11, new DadosDoContratante() },
             { 12, new StatusDosServicos() },
             { 13, new BuscadorDeRecursos() },
-            { 14, new TratamentoDeErros() }
+            { 14, new TratamentoDeErros() },
+            { 15, new DocumentosComTemplate() }
         };
 
         static async Task Main(string[] args)

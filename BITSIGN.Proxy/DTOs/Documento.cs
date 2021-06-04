@@ -52,6 +52,12 @@ namespace BITSIGN.Proxy.DTOs
         public long TamanhoDoArquivo { get; set; }
 
         /// <summary>
+        /// Nome da Template utilizada para expandir o conteúdo deste arquivo em novos documentos.
+        /// </summary>
+        [XmlAttribute]
+        public string Template { get; set; }
+
+        /// <summary>
         /// Código hash do arquivo original.
         /// </summary>
         public string Hash { get; set; }

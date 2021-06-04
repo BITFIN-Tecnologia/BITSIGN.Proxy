@@ -3,20 +3,25 @@
 // biblioteca/pacote BITFIN.BITSIGN.Proxy.
 
 using BITSIGN.Proxy;
-using BITSIGN.Proxy.Comunicacao;
 using BITSIGN.Proxy.DTOs;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
-    public class TratamentoDeErros : Exemplo
+    public class DocumentosComTemplate : Exemplo
     {
+        private const string Arquivo = @"Id;Numero;Tipo;Valor;Emissao;Vencimento;DataDeDesconto;ValorDeDesconto;NF;NomeDoCedente;DocumentoDoCedente;IEDoCedente;LogrdouroDoCedente;BairroDoCedente;LocalidadeDoCedente;UFDoCedente;CepDoCedente;NomeDoSacado;DocumentoDoSacado;IEDoSacado;LogradouroDoSacado;BairroDoSacado;LocalidadeDoSacado;UFDoSacado;CepDoSacado
+9282;9080/1;DM;10.293,22;04/06/2021;04/07/2021;01/07/2021;200,00;9080;Nome da Empresa Ltda.;20987222000190;1234567;Rua São João, 29;Jd. do Lago;Louveira;SP;13000123;Jack Bauer;22233344400;7654321;Rua da Liberdade, 94;Centro;São Paulo;SP;01001000;
+9282;9080/2;DM;10.293,22;04/06/2021;04/08/2021;01/08/2021;200,00;9080;Nome da Empresa Ltda.;20987222000190;1234567;Rua São João, 29;Jd. do Lago;Louveira;SP;13000123;Jack Bauer;22233344400;7654321;Rua da Liberdade, 94;Centro;São Paulo;SP;01001000";
+
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
+            var arquivo = Encoding.UTF8.GetBytes(Arquivo);
+
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
                 var pacote = new Pacote(new()
@@ -45,24 +50,24 @@ namespace Testes.Exemplos
                     {
                         new Documento()
                         {
-                            NomeDoArquivo = "ContratoDeLocacao1.pdf",
-                            Descricao = "Cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxontrato de Locação 1",
-                            Tipo = "Contrato",
-                            Tags = "contratoId=123",
-                            FormatoDoArquivo = "PDF",
-                            ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf"),
-                            TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf").Length,
+                            NomeDoArquivo = "Duplicatas.csv",
+                            Descricao = "Relação de Duplicatas",
+                            Tipo = "Duplicata",
+                            FormatoDoArquivo = "CSV",
+                            ConteudoOriginal = arquivo,
+                            TamanhoDoArquivo = arquivo.Length,
                             PadraoDeAssinatura = "CAdES",
                             PoliticaDeAssinatura = "PA_AD_RB_v2_3",
+                            Template = "Duplicata",
                             Assinaturas = new List<Assinatura>()
                             {
                                 new()
                                 {
-                                    Perfil = "Locador",
+                                    Perfil = "Representante",
                                     QtdeMinima = 1,
                                     Assinantes = new List<Assinante>()
                                     {
-                                        new ()
+                                        new()
                                         {
                                             Entidade = new()
                                             {
@@ -77,21 +82,18 @@ namespace Testes.Exemplos
                                 }
                             }
                         }
-                    }
+                    },
+                    Tags = "operacao=123"
                 });
 
-                try
-                {
-                    var urlDoLote = await proxy.Lotes.Upload(pacote, cancellationToken);
-                }
-                catch (ErroNaRequisicao ex)
-                {
-                    Console.WriteLine($"Mensagem: {ex.Message}");
-                    Console.WriteLine($"Link: {ex.HelpLink}");
+                var urlDoLote = await proxy.Lotes.Upload(pacote, cancellationToken);
 
-                    foreach (var chave in ex.Data.Keys)
-                        Console.WriteLine($"{chave}: {ex.Data[chave]}");
-                }
+                Console.WriteLine(urlDoLote);
+                Console.WriteLine(pacote.Lote.Id);
+                Console.WriteLine(pacote.Lote.UrlAoVivo);
+
+                //Deverá retornar a mesma quantidade que está no arquivo CSV, que neste caso, são 2.
+                Console.WriteLine(pacote.Lote.QtdeDeDocumentos);
             }
         }
     }

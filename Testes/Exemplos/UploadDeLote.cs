@@ -24,20 +24,23 @@ namespace Testes.Exemplos
             {
                 var pacote = new Pacote(new()
                 {
-                    Contratante = new()
+                    Aplicacao = new()
                     {
-                        Id = this.CodigoDoContratante,
-                        Entidade = new()
+                        Contratante = new()
                         {
-                            Nome = "White House - USA",
-                            Documento = "031508560000185",
-                            Email = "contact@whitehouse.com"
+                            Id = this.CodigoDoContratante,
+                            Entidade = new()
+                            {
+                                Nome = "White House - USA",
+                                Documento = "95038850000195",
+                                Email = "contact@whitehouse.com"
+                            }
                         }
                     },
                     Entidade = new()
                     {
                         Nome = "White House - USA",
-                        Documento = "014175773000113",
+                        Documento = "14175773000113",
                         Email = "contact@whitehouse.com"
                     },
                     DataDeExpiracao = DateTime.Now.AddDays(10),
@@ -66,9 +69,9 @@ namespace Testes.Exemplos
                                         {
                                             Entidade = new()
                                             {
-                                                Nome = "Israel Aece",
-                                                Documento = "28387365823",
-                                                Email = "israelaece@yahoo.com.br"
+                                                Nome = "Jack Bauer",
+                                                Documento = "57863748070",
+                                                Email = "jack.bauer@ctu.com"
                                             },
                                             Notificar = true,
                                             Obrigatorio = false
@@ -100,9 +103,9 @@ namespace Testes.Exemplos
                                         {
                                             Entidade = new()
                                             {
-                                                Nome = "Israel Aece",
-                                                Documento = "28387365823",
-                                                Email = "israelaece@yahoo.com.br"
+                                                Nome = "Jack Bauer",
+                                                Documento = "57863748070",
+                                                Email = "jack.bauer@ctu.com"
                                             },
                                             Notificar = true,
                                             Obrigatorio = false
@@ -134,9 +137,9 @@ namespace Testes.Exemplos
                                         {
                                             Entidade = new()
                                             {
-                                                Nome = "Israel Aece",
-                                                Documento = "28387365823",
-                                                Email = "israelaece@yahoo.com.br"
+                                                Nome = "Jack Bauer",
+                                                Documento = "57863748070",
+                                                Email = "jack.bauer@ctu.com"
                                             },
                                             Notificar = true,
                                             Obrigatorio = false

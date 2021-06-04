@@ -15,9 +15,9 @@ namespace BITSIGN.Proxy.DTOs
     public class Lote : Base
     {
         /// <summary>
-        /// Contratante responsável pelo lote.
+        /// Aplicação à qual o lote deverá ser inserido.
         /// </summary>
-        public Contratante Contratante { get; set; }
+        public Aplicacao Aplicacao { get; set; }
 
         /// <summary>
         /// Entidade associada ao lote.

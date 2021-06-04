@@ -958,6 +958,11 @@
             Tamanho (em bytes) do arquivo.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.Template">
+            <summary>
+            Nome da Template utilizada para expandir o conteúdo deste arquivo em novos documentos.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.Hash">
             <summary>
             Código hash do arquivo original.
@@ -1158,9 +1163,9 @@
             Define a relação de documentos enviados para geração de assinaturas digitais.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Lote.Contratante">
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.Aplicacao">
             <summary>
-            Contratante responsável pelo lote.
+            Aplicação à qual o lote deverá ser inserido.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Lote.Entidade">

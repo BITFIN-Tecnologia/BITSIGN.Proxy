@@ -3,6 +3,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Xml.Serialization;
 
 namespace BITSIGN.Proxy.DTOs
 {
@@ -20,21 +21,25 @@ namespace BITSIGN.Proxy.DTOs
         /// <summary>
         /// Nome da aplicação.
         /// </summary>
+        [XmlAttribute]
         public string Nome { get; set; }
 
         /// <summary>
         /// Breve descrição da aplicação.
         /// </summary>
+        [XmlAttribute]
         public string Descricao { get; set; }
 
         /// <summary>
         /// Indica se a aplicação está ou não ativa.
         /// </summary>
+        [XmlAttribute]
         public bool Ativa { get; set; }
 
         /// <summary>
         /// Data de criação da aplicação.
         /// </summary>
+        [XmlAttribute]
         public DateTime Data { get; set; }
 
         /// <summary>
