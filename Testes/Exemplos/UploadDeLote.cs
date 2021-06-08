@@ -164,8 +164,6 @@ namespace Testes.Exemplos
                 var urlDoLote = await proxy.Lotes.Upload(pacote, cancellationToken);
 
                 Console.WriteLine(urlDoLote);
-                Console.WriteLine(pacote.Lote.Id);
-                Console.WriteLine(pacote.Lote.UrlAoVivo);
             }
         }
     }

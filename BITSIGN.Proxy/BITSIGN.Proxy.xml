@@ -319,7 +319,7 @@
             </summary>
             <param name="pacote">O pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-            <returns>URI onde estará disponível o lote para consulta.</returns>
+            <returns>URI onde estará disponível o lote recém criado para consulta.</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Detalhes(System.Guid,System.Threading.CancellationToken)">

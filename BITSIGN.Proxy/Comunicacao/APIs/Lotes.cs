@@ -28,7 +28,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// </summary>
         /// <param name="pacote">O pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-        /// <returns>URI onde estará disponível o lote para consulta.</returns>
+        /// <returns>URI onde estará disponível o lote recém criado para consulta.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<Uri> Upload(DTOs.Pacote pacote, CancellationToken cancellationToken = default)
         {
@@ -37,13 +37,11 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 Content = new ByteArrayContent(pacote.Serializar())
             })
             {
-                return await this.Executar(requisicao, async resposta =>
+                return await this.Executar(requisicao, resposta =>
                 {
                     resposta.EnsureSuccessStatusCode();
 
-                    pacote.Lote = await resposta.Content.ReadAs<DTOs.Lote>(cancellationToken);
-
-                    return resposta.Headers.Location;
+                    return Task.FromResult(resposta.Headers.Location);
                 }, cancellationToken);
             }
         }
