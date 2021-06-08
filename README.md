@@ -125,6 +125,8 @@ EXEMPLOS DISPONIVEIS
   11 - DadosDoContratante
   12 - StatusDosServicos
   13 - BuscadorDeRecursos
+  14 - TratamentoDeErros
+  15 - DocumentosComTemplate
 INFORME O NUMERO DO EXEMPLO:
 ```
 
