@@ -812,6 +812,7 @@
             <summary>
             Alguma informação complementar relevante para este evento.
             </summary>
+            <remarks>Dependendo da complexidade do callback, esta propriedade pode retornar um objeto serializado para complementar a informação.</remarks>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Callback.Tags">
             <summary>

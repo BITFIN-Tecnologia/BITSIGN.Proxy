@@ -36,6 +36,7 @@ namespace BITSIGN.Proxy.DTOs
         /// <summary>
         /// Alguma informação complementar relevante para este evento.
         /// </summary>
+        /// <remarks>Dependendo da complexidade do callback, esta propriedade pode retornar um objeto serializado para complementar a informação.</remarks>
         public string Complemento { get; set; }
 
         /// <summary>
