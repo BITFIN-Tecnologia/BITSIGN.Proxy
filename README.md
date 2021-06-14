@@ -8,6 +8,8 @@ Além da comunicação que já está embutida, a biblioteca também oferece recu
 
 > Documentação das APIs: [https://www.bitsign.com.br/apis](https://www.bitsign.com.br/apis)
 
+> NUGET: [PM> Install-Package BITFIN.BITSIGN.Proxy](https://www.nuget.org/packages/BITFIN.BITSIGN.Proxy)
+
 ## Conexão e Autenticação
 A classe que intermedia toda a comunicação é chamada de `ProxyDoServico`. Essa classe recebe em seu construtor os dados necessários para estabelecer a comunicação com os serviços. Todos os parâmetros necessários são informados através da classe `Conexao`, onde o **código do contratante** e o **código de integração** são fornecidos no nomento da criação/contratação; além disso, é neste objeto que também deverá ser informado a versão da API a ser utilizada e para qual ambiente as requisições devem ser encaminhadas: **SANDBOX** ou **PRODUÇÃO**.
 
@@ -219,5 +221,5 @@ Mensagem: Horário de Brasília Validado.
 > #### CONTATOS
 >
 > - Site: <https://www.bitsign.com.br>
-> - E-mail: <contato@bitsign.com.br>
->
+> - E-mail Ténico: <dev@bitsign.com.br>
+> - E-mail Comercial: <contato@bitsign.com.br>
