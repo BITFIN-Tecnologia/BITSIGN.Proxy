@@ -44,5 +44,10 @@ namespace BITSIGN.Proxy.DTOs
         /// Indica se está habilitado o carimbo do tempo no plano.
         /// </summary>
         public bool CarimboDoTempo { get; set; }
+
+        /// <summary>
+        /// Quantidade de carimbos já consumido dentro do mês.
+        /// </summary>
+        public int QuantidadeDeCarimbos { get; set; }
     }
 }

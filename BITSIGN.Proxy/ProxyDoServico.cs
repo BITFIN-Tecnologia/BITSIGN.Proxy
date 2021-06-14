@@ -38,9 +38,9 @@ namespace BITSIGN.Proxy
                 Timeout = conexao.Timeout
             };
 
-            this.proxy.DefaultRequestHeaders.Authorization = 
+            this.proxy.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue(
-                    "Basic", 
+                    "Basic",
                     Convert.ToBase64String(Encoding.UTF8.GetBytes($"{conexao.CodigoDoContratante}:{conexao.ChaveDeIntegracao}")));
 
             this.proxy.DefaultRequestHeaders.Add("Accept", $"application/{conexao.FormatoDeSerializacao.ToString().ToLower()}");
@@ -53,6 +53,7 @@ namespace BITSIGN.Proxy
             this.Notificacoes = new(proxy);
             this.Anexos = new(proxy);
             this.Buscador = new(proxy, conexao.FormatoDeSerializacao);
+            this.CarimboDoTempo = new(proxy);
             this.Status = new(conexao.Status);
         }
 
@@ -100,6 +101,11 @@ namespace BITSIGN.Proxy
         /// API de Busca de Recursos.
         /// </summary>
         public Buscador Buscador { get; set; }
+
+        /// <summary>
+        /// API para emissão de carimbos do tempo.
+        /// </summary>
+        public CarimboDoTempo CarimboDoTempo { get; set; }
 
         /// <summary>
         /// API de status dos Serviços.

@@ -172,6 +172,25 @@
             <returns>Relação de Callbacks que satisfazem os critérios de busca.</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.CarimboDoTempo">
+            <summary>
+            Gerador de carimbos do tempo para assinaturas e documentos digitais.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.CarimboDoTempo.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Inicializa a API de carimbos do tempo.
+            </summary>
+            <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.CarimboDoTempo.Emitir(System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Dado um array de bytes representando a assinatura, este método é capaz de gerar o respectivo carimbo do tempo.
+            </summary>
+            <param name="assinatura">Assinatura para qual o carimbo deve ser emitido.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Array de bytes contendo o carimbo do tempo já calculado para a assinatura submetida.</returns>
+        </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Contratantes">
             <summary>
             Informações cadastrais e configurações do processo operacional das assinaturas.
@@ -1470,6 +1489,11 @@
             Indica se está habilitado o carimbo do tempo no plano.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.QuantidadeDeCarimbos">
+            <summary>
+            Quantidade de carimbos já consumido dentro do mês.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.StatusDosServicos">
             <summary>
             Relatório com o status geral e de cada serviço.
@@ -1708,6 +1732,11 @@
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Buscador">
             <summary>
             API de Busca de Recursos.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.CarimboDoTempo">
+            <summary>
+            API para emissão de carimbos do tempo.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Status">
