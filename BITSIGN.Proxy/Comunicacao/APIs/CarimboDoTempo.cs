@@ -32,12 +32,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 Content = new ByteArrayContent(assinatura)
             })
             {
-                return await this.Executar(requisicao, async resposta =>
-                {
-                    resposta.EnsureSuccessStatusCode();
-
-                    return await resposta.Content.ReadAsByteArrayAsync(cancellationToken);
-                }, cancellationToken);
+                return await this.Executar(requisicao, async resposta => await resposta.Content.ReadAsByteArrayAsync(cancellationToken), cancellationToken);
             }
         }
     }

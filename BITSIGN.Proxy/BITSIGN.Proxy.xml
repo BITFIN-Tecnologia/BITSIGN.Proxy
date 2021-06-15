@@ -36,12 +36,11 @@
             </summary>
             <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.API.Executar(System.Net.Http.HttpRequestMessage,System.Action{System.Net.Http.HttpResponseMessage},System.Threading.CancellationToken)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.API.Executar(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
             <summary>
             Configura, envia e captura o retorno da requisição para um determinado serviço.
             </summary>
             <param name="requisicao">Mensagem de requisição para o serviço.</param>
-            <param name="analiseDeRetorno">Função que analisa o retorno.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
@@ -49,7 +48,7 @@
             <summary>
             Configura, envia e captura o retorno da requisição para um determinado serviço.
             </summary>
-            <typeparam name="T">Especifica em tipo o conteúdo de retorno será deserializado.</typeparam>
+            <typeparam name="T">Especifica o tipo em que o conteúdo de retorno deverá ser deserializado.</typeparam>
             <param name="requisicao">Mensagem de requisição para o serviço.</param>
             <param name="analiseDeRetorno">Função que analisa o retorno e constrói o objeto do tipo <typeparamref name="T"/></param>.
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>

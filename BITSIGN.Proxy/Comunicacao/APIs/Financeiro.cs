@@ -68,8 +68,6 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 {
                     try
                     {
-                        resposta.EnsureSuccessStatusCode();
-
                         return await resposta.Content.ReadAs<DTOs.Fechamento>(cancellationToken);
                     }
                     catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)

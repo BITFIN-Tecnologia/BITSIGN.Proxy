@@ -37,12 +37,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 Content = new ByteArrayContent(pacote.Serializar())
             })
             {
-                return await this.Executar(requisicao, resposta =>
-                {
-                    resposta.EnsureSuccessStatusCode();
-
-                    return Task.FromResult(resposta.Headers.Location);
-                }, cancellationToken);
+                return await this.Executar(requisicao, resposta => Task.FromResult(resposta.Headers.Location), cancellationToken);
             }
         }
 
@@ -61,8 +56,6 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 {
                     try
                     {
-                        resposta.EnsureSuccessStatusCode();
-
                         return await resposta.Content.ReadAs<DTOs.Lote>(cancellationToken);
                     }
                     catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
@@ -112,8 +105,6 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 {
                     try
                     {
-                        resposta.EnsureSuccessStatusCode();
-
                         return await resposta.Content.ReadAs<IEnumerable<DTOs.Notificacao>>(cancellationToken);
                     }
                     catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
@@ -139,8 +130,6 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 {
                     try
                     {
-                        resposta.EnsureSuccessStatusCode();
-
                         return await resposta.Content.ReadAs<IEnumerable<DTOs.Observador>>(cancellationToken);
                     }
                     catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
@@ -166,8 +155,6 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 {
                     try
                     {
-                        resposta.EnsureSuccessStatusCode();
-
                         return await resposta.Content.ReadAs<IEnumerable<DTOs.Anexo>>(cancellationToken);
                     }
                     catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
@@ -193,8 +180,6 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 {
                     try
                     {
-                        resposta.EnsureSuccessStatusCode();
-
                         return new DTOs.Pacote(await resposta.Content.ReadAsByteArrayAsync(cancellationToken));
                     }
                     catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)

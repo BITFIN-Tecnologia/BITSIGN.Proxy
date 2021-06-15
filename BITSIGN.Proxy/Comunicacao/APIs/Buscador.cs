@@ -74,12 +74,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 Content = new StringContent(Serializador.Serializar(parametros, this.FormatoDeSerializacao.ToString()), Encoding.UTF8, this.MimeType)
             })
             {
-                return await this.Executar(requisicao, async resposta =>
-                {
-                    resposta.EnsureSuccessStatusCode();
-
-                    return await resposta.Content.ReadAs<T>(cancellationToken);
-                }, cancellationToken);
+                return await this.Executar(requisicao, async resposta => await resposta.Content.ReadAs<T>(cancellationToken), cancellationToken);
             }
         }
 

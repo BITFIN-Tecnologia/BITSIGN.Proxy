@@ -43,8 +43,6 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 {
                     try
                     {
-                        resposta.EnsureSuccessStatusCode();
-
                         return await resposta.Content.ReadAs<DTOs.Aplicacao>(cancellationToken);
                     }
                     catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
@@ -68,7 +66,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 Content = new StringContent(Serializador.Serializar(aplicacao, this.FormatoDeSerializacao.ToString()), Encoding.UTF8, this.MimeType)
             })
             {
-                await Executar(requisicao, resposta => resposta.EnsureSuccessStatusCode(), cancellationToken);
+                await Executar(requisicao, cancellationToken);
             }
         }
 

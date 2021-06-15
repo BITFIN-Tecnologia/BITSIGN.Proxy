@@ -37,8 +37,6 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 {
                     try
                     {
-                        resposta.EnsureSuccessStatusCode();
-
                         return await resposta.Content.ReadAs<DTOs.Notificacao>(cancellationToken);
                     }
                     catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
@@ -58,7 +56,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         public async Task Replay(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Patch, $"notificacoes/{id}/replay"))
-                await Executar(requisicao, resposta => resposta.EnsureSuccessStatusCode(), cancellationToken);
+                await Executar(requisicao, cancellationToken);
         }
     }
 }
