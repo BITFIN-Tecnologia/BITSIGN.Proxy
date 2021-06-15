@@ -221,5 +221,5 @@ Mensagem: Horário de Brasília Validado.
 > #### CONTATOS
 >
 > - Site: <https://www.bitsign.com.br>
-> - E-mail Ténico: <dev@bitsign.com.br>
+> - E-mail Técnico: <dev@bitsign.com.br>
 > - E-mail Comercial: <contato@bitsign.com.br>
