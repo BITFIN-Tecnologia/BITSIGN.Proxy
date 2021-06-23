@@ -14,40 +14,38 @@ namespace BITSIGN.Proxy.Utilitarios
     {
         internal static class Json
         {
+            private static readonly JsonSerializerOptions config = new()
+            {
+                WriteIndented = false,
+                PropertyNameCaseInsensitive = true
+            };
+
             internal static string Serializar(object objeto, bool identado = false) =>
-                JsonSerializer.Serialize(objeto, objeto.GetType(), new()
-                {
-#if DEBUG
-                    WriteIndented = true
-#else
-                    WriteIndented = identado
-#endif
-                });
+                JsonSerializer.Serialize(objeto, objeto.GetType(), !identado ? config : new JsonSerializerOptions(config) { WriteIndented = true });
 
             internal static T Deserializar<T>(string conteudo) where T : class =>
-                JsonSerializer.Deserialize<T>(conteudo, new()
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+                JsonSerializer.Deserialize<T>(conteudo, config);
         }
 
         internal static class Xml
         {
+            private static readonly XmlWriterSettings config = new()
+            {
+                Encoding = new UTF8Encoding(false),
+#if DEBUG
+                Indent = true
+#else
+                Indent = identado
+#endif
+            };
+
             internal static string Serializar(object objeto, string elementoRaiz, bool identado = false)
             {
                 var s = new XmlSerializer(objeto.GetType(), new XmlRootAttribute(elementoRaiz));
 
                 using (var ms = new MemoryStream())
                 {
-                    using (var writer = XmlWriter.Create(ms, new()
-                    {
-                        Encoding = new UTF8Encoding(false),
-#if DEBUG
-                        Indent = true
-#else
-                        Indent = identado
-#endif
-                    }))
+                    using (var writer = XmlWriter.Create(ms, config))
                         s.Serialize(ms, objeto);
 
                     return Encoding.UTF8.GetString(ms.ToArray());

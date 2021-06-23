@@ -4,6 +4,7 @@
 
 using BITSIGN.Proxy;
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,20 +29,23 @@ namespace Testes.Exemplos
                     Console.WriteLine($"Período: {f.Mes:00}/{f.Ano}");
                     Console.WriteLine($"Valor: {f.ValorTotal:N2}");
                     Console.WriteLine($"Status: {f.Status}");
-                }
 
-                //Detalhes sobre o fechamento.
-                var fechamento = await proxy.Financeiro.Fechamento(new("a0ef4f82-91a6-4a28-a9ae-361c3c0a427d"), cancellationToken);
+                    //Detalhes sobre o fechamento.
+                    var fechamento = await proxy.Financeiro.Fechamento(f.Id, cancellationToken);
 
-                if (fechamento != null)
-                {
-                    Console.WriteLine($"Período: {fechamento.Mes:00}/{fechamento.Ano}");
-                    Console.WriteLine($"Valor: {fechamento.ValorTotal:N2}");
-                    Console.WriteLine($"Status: {fechamento.Status}");
-                    Console.WriteLine($"Qtde. de Lotes: {fechamento.QtdeDeLotes}");
-                    Console.WriteLine($"Qtde. de Documentos: {fechamento.QtdeDeDocumentos}");
-                    Console.WriteLine($"Qtde. de Assinaturas: {fechamento.QtdeDeAssinaturas}");
-                    Console.WriteLine($"Plano Contratato: {fechamento.Plano.Nome}");
+                    if (fechamento != null)
+                    {
+                        Console.WriteLine($" - Qtde. de Lotes: {fechamento.QtdeDeLotes}");
+                        Console.WriteLine($" - Qtde. de Documentos: {fechamento.QtdeDeDocumentos}");
+                        Console.WriteLine($" - Qtde. de Assinaturas: {fechamento.QtdeDeAssinaturas}");
+                        Console.WriteLine($" - Plano Contratato: {fechamento.Plano.Nome}");
+
+                        //Demonstrativo do consumo.
+                        var demonstrativo = await proxy.Financeiro.Demonstrativo(f.Id, cancellationToken);
+
+                        if ((demonstrativo?.Length ?? 0) > 0)
+                            File.WriteAllBytes($"{fechamento.Mes:00}-{fechamento.Ano}.pdf", demonstrativo);
+                    }
                 }
             }
         }

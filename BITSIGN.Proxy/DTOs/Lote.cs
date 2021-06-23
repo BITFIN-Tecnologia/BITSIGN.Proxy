@@ -11,7 +11,7 @@ namespace BITSIGN.Proxy.DTOs
     /// <summary>
     /// Define a relação de documentos enviados para geração de assinaturas digitais.
     /// </summary>
-    [DebuggerDisplay("{Data} - {Contratante.Entidade.Nome,nq}")]
+    [DebuggerDisplay("{Data} - {Aplicacao.Contratante.Entidade.Nome,nq}")]
     public class Lote : Base
     {
         /// <summary>

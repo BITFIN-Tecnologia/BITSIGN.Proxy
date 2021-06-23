@@ -11,6 +11,11 @@ namespace BITSIGN.Proxy.DTOs
     public class PlanoContratado
     {
         /// <summary>
+        /// Código do contrato gerado para o plano.
+        /// </summary>
+        public string CodigoDoContrato { get; set; }
+
+        /// <summary>
         /// Plano selecionado na contratação.
         /// </summary>
         public Plano Plano { get; set; }
@@ -29,11 +34,6 @@ namespace BITSIGN.Proxy.DTOs
         /// Indica o status atual da contratação.
         /// </summary>
         public string Status { get; set; }
-
-        /// <summary>
-        /// Quantidade já consumida dentro do mês.
-        /// </summary>
-        public int Quantidade { get; set; }
 
         /// <summary>
         /// Total atual de armazenamento utilizado (em bytes).

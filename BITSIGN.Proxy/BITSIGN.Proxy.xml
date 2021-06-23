@@ -320,6 +320,15 @@
             <returns>Detalhamento completo do fechamento de um ano/mês específico, incluindo os dados de pagamento.</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Financeiro.Demonstrativo(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Demonstrativo Mensal.
+            </summary>
+            <param name="id">Identificador do Fechamento.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Documento (em PDF) que resume o consumo do mês, contendo os valores aplicados de acordo com o plano contratado.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Lotes">
             <summary>
             Envio e gestão dos lotes de documentos para assinatura digital.
@@ -1453,6 +1462,11 @@
             Informações do plano contratado.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.CodigoDoContrato">
+            <summary>
+            Código do contrato gerado para o plano.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.Plano">
             <summary>
             Plano selecionado na contratação.
@@ -1471,11 +1485,6 @@
         <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.Status">
             <summary>
             Indica o status atual da contratação.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.Quantidade">
-            <summary>
-            Quantidade já consumida dentro do mês.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.TotalDeArmazenamento">

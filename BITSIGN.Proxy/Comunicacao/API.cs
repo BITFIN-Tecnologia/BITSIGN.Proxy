@@ -3,6 +3,7 @@
 
 using BITSIGN.Proxy.Utilitarios;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace BITSIGN.Proxy.Comunicacao
                 {
                     resposta.EnsureSuccessStatusCode();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException ex) when (ex.StatusCode is HttpStatusCode.BadRequest)
                 {
                     throw new ErroNaRequisicao(ex, await resposta.Content.ReadAs<DTOs.Falha>(cancellationToken));
                 }
@@ -66,7 +67,7 @@ namespace BITSIGN.Proxy.Comunicacao
 
                     return await analiseDeRetorno(resposta);
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException ex) when (ex.StatusCode is HttpStatusCode.BadRequest)
                 {
                     throw new ErroNaRequisicao(ex, await resposta.Content.ReadAs<DTOs.Falha>(cancellationToken));
                 }

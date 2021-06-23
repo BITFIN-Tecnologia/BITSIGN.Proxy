@@ -77,5 +77,30 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 }, cancellationToken);
             }
         }
+
+        /// <summary>
+        /// Demonstrativo Mensal.
+        /// </summary>
+        /// <param name="id">Identificador do Fechamento.</param>
+        /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>Documento (em PDF) que resume o consumo do mês, contendo os valores aplicados de acordo com o plano contratado.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        public async Task<byte[]> Demonstrativo(Guid id, CancellationToken cancellationToken = default)
+        {
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"financeiro/fechamentos/{id}/demonstrativo"))
+            {
+                return await base.Executar(requisicao, async resposta =>
+                {
+                    try
+                    {
+                        return await resposta.Content.ReadAsByteArrayAsync(cancellationToken);
+                    }
+                    catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }, cancellationToken);
+            }
+        }
     }
 }
