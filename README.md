@@ -72,7 +72,7 @@ using (var log = new LogEmTexto(new StreamWriter("Log.txt", true)))
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - POST /lotes
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Type: ByteArrayContent
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Content-Type: 
-11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Headers: BS-Contratante=985e0702-e94a-4954-b7a8-1f28c73c8122;BS-Token=TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq;BS-CodigoDeRastreio: 2c83d520-138d-45d1-b29c-b9c4bf027ac2;Accept=application/json
+11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Headers: Authorization: TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq;BS-CodigoDeRastreio: 2c83d520-138d-45d1-b29c-b9c4bf027ac2;Accept: application/json
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.Headers: Location=http://localhost:33664/api/lotes/06202cf4-281d-46a5-bd81-975c15f58d94;
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.StatusCode: Created
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.ReasonPhrase: Created
@@ -91,7 +91,7 @@ public class ConsultaDeDocumentos : Exemplo
         using (var proxy = new ProxyDoServico(this.Conexao))
         {
             //Retorna todas as informações de um determinado documento, exceto seus arquivos (bytes[]).
-            var documento = await proxy.Documentos.Detalhes(new Guid("aa9076b3-a058-44e2-b776-dca0a1743ce7"), cancellationToken);
+            var documento = await proxy.Documentos.Detalhes(new("aa9076b3-a058-44e2-b776-dca0a1743ce7"), cancellationToken);
 
             if (documento != null)
             {
