@@ -35,7 +35,7 @@ namespace BITSIGN.Proxy.Utilitarios
 #if DEBUG
                 Indent = true
 #else
-                Indent = identado
+                Indent = false
 #endif
             };
 
