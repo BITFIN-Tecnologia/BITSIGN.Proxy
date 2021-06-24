@@ -12,6 +12,8 @@ namespace BITSIGN.Proxy.Comunicacao
 {
     internal class RastreioDaRequisicao : HttpClientHandler
     {
+        private const string CodigoDeRastreio = "BS-CodigoDeRastreio";
+
         private readonly ILogger logger;
         private readonly IRastreio rastreioDeRequisicao;
 
@@ -26,7 +28,7 @@ namespace BITSIGN.Proxy.Comunicacao
             var id = this.rastreioDeRequisicao?.Gerar() ?? Guid.NewGuid().ToString();
 
             if (this.rastreioDeRequisicao != null)
-                request.Headers.Add(Protocolo.CodigoDeRastreio, id);
+                request.Headers.Add(CodigoDeRastreio, id);
 
             Log(id, Severidade.Info, "INÍCIO DO ESCOPO");
             Log(id, Severidade.Info, $"{request.Method} {request.RequestUri}");
