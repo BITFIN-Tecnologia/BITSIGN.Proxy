@@ -1547,6 +1547,11 @@
             Tempo de duração para análise do serviço em milissegundos.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servico.Informacoes">
+            <summary>
+            Informações complementares sobre os recursos dependentes associados ao serviço.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.Logging.ILogger">
             <summary>
             Definição para a criação e armazenamento de logs de execução.

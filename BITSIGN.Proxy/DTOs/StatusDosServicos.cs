@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2021 - BITFIN Software Ltda. Todos os Direitos Reservados.
 // Código exclusivo para consumo dos serviços (APIs) da BITSIGN.
 
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -53,6 +52,11 @@ namespace BITSIGN.Proxy.DTOs
             /// Tempo de duração para análise do serviço em milissegundos.
             /// </summary>
             public string Duracao { get; set; }
+
+            /// <summary>
+            /// Informações complementares sobre os recursos dependentes associados ao serviço.
+            /// </summary>
+            public IDictionary<string, string> Informacoes { get; set; }
         }
     }
 }
