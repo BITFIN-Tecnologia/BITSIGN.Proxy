@@ -2,12 +2,14 @@
 // Código exclusivo para consumo dos serviços (APIs) da BITSIGN.
 
 using System;
+using System.Diagnostics;
 
 namespace BITSIGN.Proxy.DTOs
 {
     /// <summary>
     /// Dados da nota fiscal emitida referente aos serviços prestados de um mês/ano.
     /// </summary>
+    [DebuggerDisplay("Valor: {Valor} - Número: {Numero,nq}")]
     public class NotaFiscal : Base
     {
         /// <summary>
