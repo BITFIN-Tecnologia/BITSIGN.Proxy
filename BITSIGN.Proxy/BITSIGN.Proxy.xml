@@ -1195,6 +1195,11 @@
             Data de vencimento para pagamento.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.NotaFiscal">
+            <summary>
+            Informações sobre a nota fiscal associada à este fechamento.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Lote">
             <summary>
             Define a relação de documentos enviados para geração de assinaturas digitais.
@@ -1258,6 +1263,46 @@
         <member name="P:BITSIGN.Proxy.DTOs.Lote.Anexos">
             <summary>
             Relação de arquivos anexados ao lote.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.NotaFiscal">
+            <summary>
+            Dados da nota fiscal emitida referente aos serviços prestados de um mês/ano.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.NotaFiscal.Data">
+            <summary>
+            Data de geração da nota fiscal.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.NotaFiscal.DataDoStatus">
+            <summary>
+            Data da emissão/cancelamento (status) da nota fiscal.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.NotaFiscal.Status">
+            <summary>
+            Status da nota fiscal (Gerada, Emitida ou Cancelada).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.NotaFiscal.Valor">
+            <summary>
+            Valor total da nota fiscal.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.NotaFiscal.Numero">
+            <summary>
+            Número atribuído à nota fiscal.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.NotaFiscal.CodigoDeVerificacao">
+            <summary>
+            Código de verificação para validar a autenticidade da nota fiscal junto a prefeitura.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.NotaFiscal.Link">
+            <summary>
+            Link para visualização e validação da nota fiscal emitida.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Notificacao">

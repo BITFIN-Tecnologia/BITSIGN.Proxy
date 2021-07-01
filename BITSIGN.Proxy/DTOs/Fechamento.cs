@@ -81,5 +81,10 @@ namespace BITSIGN.Proxy.DTOs
         /// Data de vencimento para pagamento.
         /// </summary>
         public DateTime DataDeVencimento { get; set; }
+
+        /// <summary>
+        /// Informações sobre a nota fiscal associada à este fechamento.
+        /// </summary>
+        public NotaFiscal NotaFiscal { get; set; }
     }
 }
