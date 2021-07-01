@@ -102,5 +102,30 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 }, cancellationToken);
             }
         }
+
+        /// <summary>
+        /// Nota Fiscal.
+        /// </summary>
+        /// <param name="id">Identificador do Fechamento.</param>
+        /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>Documento (em PDF) com a nota fiscal referente aos serviços prestados, espelhando o demonstrativo de consumo de um mês/ano.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        public async Task<byte[]> NotaFiscal(Guid id, CancellationToken cancellationToken = default)
+        {
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"financeiro/fechamentos/{id}/notafiscal"))
+            {
+                return await base.Executar(requisicao, async resposta =>
+                {
+                    try
+                    {
+                        return await resposta.Content.ReadAsByteArrayAsync(cancellationToken);
+                    }
+                    catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }, cancellationToken);
+            }
+        }
     }
 }
