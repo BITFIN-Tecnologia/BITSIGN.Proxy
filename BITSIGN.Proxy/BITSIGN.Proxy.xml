@@ -704,7 +704,7 @@
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Assinante">
             <summary>
-            Informações do assinante.
+            Informações sobre o assinante.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Assinante.Entidade">
@@ -712,9 +712,9 @@
             Pessoa física ou jurídica definida como assinante.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Assinante.Outorgante">
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.EntidadeVinculada">
             <summary>
-            Indica que o assinante informado na <see cref="P:BITSIGN.Proxy.DTOs.Assinante.Entidade"/> assina por procuração outorgada pela entidade informada nesta propriedade.
+            Indica a entidade e o tipo de vínculo à qual o assinante está associado.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Assinante.Status">
@@ -745,6 +745,21 @@
         <member name="P:BITSIGN.Proxy.DTOs.Assinante.Notificar">
             <summary>
             Indica se o assinante deve ser notificado de que há um novo documento disponível para assinatura.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.EntidadeVinculada">
+            <summary>
+            Informações sobre entidade vinculada ao assinante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.EntidadeVinculada.Entidade">
+            <summary>
+            Dados da Entidade.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.EntidadeVinculada.Tipo">
+            <summary>
+            Tipo de vínculo (representado, outorgante, etc.) em que a <see cref="P:BITSIGN.Proxy.DTOs.EntidadeVinculada.Entidade"/> está associada ao <see cref="T:BITSIGN.Proxy.DTOs.Assinante"/>.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Assinatura">

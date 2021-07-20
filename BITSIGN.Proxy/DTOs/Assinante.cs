@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace BITSIGN.Proxy.DTOs
 {
     /// <summary>
-    /// Informações do assinante.
+    /// Informações sobre o assinante.
     /// </summary>
     [DebuggerDisplay("{Entidade.Nome,nq}")]
     public class Assinante : Base
@@ -19,9 +19,9 @@ namespace BITSIGN.Proxy.DTOs
         public Entidade Entidade { get; set; }
 
         /// <summary>
-        /// Indica que o assinante informado na <see cref="Entidade"/> assina por procuração outorgada pela entidade informada nesta propriedade.
+        /// Indica a entidade e o tipo de vínculo à qual o assinante está associado.
         /// </summary>
-        public Entidade Outorgante { get; set; }
+        public EntidadeVinculada EntidadeVinculada { get; set; }
 
         /// <summary>
         /// Indica o status atual do assinante.
@@ -58,5 +58,23 @@ namespace BITSIGN.Proxy.DTOs
         /// </summary>
         [XmlAttribute]
         public bool Notificar { get; set; }
+    }
+
+    /// <summary>
+    /// Informações sobre entidade vinculada ao assinante.
+    /// </summary>
+    [DebuggerDisplay("{Entidade.Nome,nq} ({Tipo,nq})")]
+    public class EntidadeVinculada
+    {
+        /// <summary>
+        /// Dados da Entidade.
+        /// </summary>
+        public Entidade Entidade { get; set; }
+
+        /// <summary>
+        /// Tipo de vínculo (representado, outorgante, etc.) em que a <see cref="Entidade"/> está associada ao <see cref="Assinante"/>.
+        /// </summary>
+        [XmlAttribute]
+        public string Tipo { get; set; }
     }
 }
