@@ -30,11 +30,12 @@
             Proxy HTTP pré-configurado para comunicação com o serviço.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.API.#ctor(System.Net.Http.HttpClient)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.API.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
             <summary>
             Inicializa a API.
             </summary>
             <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="formato">Formato para serialização dos objetos. O padrão é <see cref="F:BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao.Json"/>.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.API.Executar(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
             <summary>
@@ -54,6 +55,16 @@
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
             <returns>Retorna o objeto do tipo <typeparamref name="T"/> pronto para utilização.</returns>
+        </member>
+        <member name="P:BITSIGN.Proxy.Comunicacao.API.FormatoDeSerializacao">
+            <summary>
+            Formato para serialização dos objetos.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Comunicacao.API.MimeType">
+            <summary>
+            Mime type de acordo com o formato definido na propriedade <see cref="P:BITSIGN.Proxy.Comunicacao.API.FormatoDeSerializacao"/>.
+            </summary>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Anexos">
             <summary>

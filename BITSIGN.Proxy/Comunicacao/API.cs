@@ -24,8 +24,13 @@ namespace BITSIGN.Proxy.Comunicacao
         /// Inicializa a API.
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
-        public API(HttpClient proxy) =>
+        /// <param name="formato">Formato para serialização dos objetos. O padrão é <see cref="FormatoDeSerializacao.Json"/>.</param>
+        public API(HttpClient proxy, FormatoDeSerializacao formato = FormatoDeSerializacao.Json)
+        {
             this.proxy = proxy;
+            this.FormatoDeSerializacao = formato;
+            this.MimeType = $"application/{formato.ToString().ToLower()}";
+        }
 
         /// <summary>
         /// Configura, envia e captura o retorno da requisição para um determinado serviço.
@@ -73,5 +78,15 @@ namespace BITSIGN.Proxy.Comunicacao
                 }
             }
         }
+
+        /// <summary>
+        /// Formato para serialização dos objetos.
+        /// </summary>
+        protected FormatoDeSerializacao FormatoDeSerializacao { get; set; }
+
+        /// <summary>
+        /// Mime type de acordo com o formato definido na propriedade <see cref="FormatoDeSerializacao"/>.
+        /// </summary>
+        protected string MimeType { get; init; }
     }
 }

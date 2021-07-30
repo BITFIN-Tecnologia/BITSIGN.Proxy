@@ -23,11 +23,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
         /// <param name="formato">Formato para serialização dos objetos.</param>
         public Lotes(HttpClient proxy, FormatoDeSerializacao formato)
-            : base(proxy)
-        {
-            this.FormatoDeSerializacao = formato;
-            this.MimeType = $"application/{formato.ToString().ToLower()}";
-        }
+            : base(proxy, formato) { }
 
         /// <summary>
         /// Upload de Documentos.
@@ -222,9 +218,5 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 }, cancellationToken);
             }
         }
-
-        private FormatoDeSerializacao FormatoDeSerializacao { get; set; }
-
-        private string MimeType { get; init; }
     }
 }

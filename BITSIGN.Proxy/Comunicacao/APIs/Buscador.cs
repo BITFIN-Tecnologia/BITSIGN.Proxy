@@ -21,11 +21,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="formato">Formato para serialização dos objetos.</param>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public Buscador(HttpClient proxy, FormatoDeSerializacao formato)
-            : base(proxy)
-        {
-            this.FormatoDeSerializacao = formato;
-            this.MimeType = $"application/{formato.ToString().ToLower()}";
-        }
+            : base(proxy, formato) { }
 
         /// <summary>
         /// Relação de Lotes.
@@ -77,9 +73,5 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 return await this.Executar(requisicao, async resposta => await resposta.Content.ReadAs<T>(cancellationToken), cancellationToken);
             }
         }
-
-        private FormatoDeSerializacao FormatoDeSerializacao { get; init; }
-
-        private string MimeType { get; init; }
     }
 }

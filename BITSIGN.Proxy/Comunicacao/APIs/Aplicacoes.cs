@@ -22,11 +22,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
         /// <param name="formato">Formato para serialização dos objetos.</param>
         public Aplicacoes(HttpClient proxy, FormatoDeSerializacao formato)
-            : base(proxy)
-        {
-            this.FormatoDeSerializacao = formato;
-            this.MimeType = $"application/{formato.ToString().ToLower()}";
-        }
+            : base(proxy, formato) { }
 
         /// <summary>
         /// Detalhes da Aplicação.
@@ -85,9 +81,5 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                     async resposta => await resposta.Content.ReadAsStringAsync(cancellationToken),
                     cancellationToken);
         }
-
-        private FormatoDeSerializacao FormatoDeSerializacao { get; set; }
-
-        private string MimeType { get; init; }
     }
 }
