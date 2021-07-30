@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,8 +21,13 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// Inicializa a API de lotes.
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
-        public Lotes(HttpClient proxy)
-            : base(proxy) { }
+        /// <param name="formato">Formato para serialização dos objetos.</param>
+        public Lotes(HttpClient proxy, FormatoDeSerializacao formato)
+            : base(proxy)
+        {
+            this.FormatoDeSerializacao = formato;
+            this.MimeType = $"application/{formato.ToString().ToLower()}";
+        }
 
         /// <summary>
         /// Upload de Documentos.
@@ -57,6 +63,33 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                     try
                     {
                         return await resposta.Content.ReadAs<DTOs.Lote>(cancellationToken);
+                    }
+                    catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }, cancellationToken);
+            }
+        }
+
+        /// <summary>
+        /// Alteração do Lote.
+        /// </summary>
+        /// <param name="lote">Objeto contendo o lote e suas informações para alteração.</param>
+        /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        public async Task<bool> Alterar(DTOs.Lote lote, CancellationToken cancellationToken = default)
+        {
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Put, $"lote/{lote.Id}")
+            {
+                Content = new StringContent(Serializador.Serializar(lote, this.FormatoDeSerializacao.ToString()), Encoding.UTF8, this.MimeType)
+            })
+            {
+                return await this.Executar(requisicao, resposta =>
+                {
+                    try
+                    {
+                        return Task.FromResult(resposta.IsSuccessStatusCode);
                     }
                     catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
                     {
@@ -189,5 +222,9 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 }, cancellationToken);
             }
         }
+
+        private FormatoDeSerializacao FormatoDeSerializacao { get; set; }
+
+        private string MimeType { get; init; }
     }
 }

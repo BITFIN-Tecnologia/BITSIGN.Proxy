@@ -45,7 +45,7 @@ namespace BITSIGN.Proxy
 
             this.proxy.DefaultRequestHeaders.Add("Accept", $"application/{conexao.FormatoDeSerializacao.ToString().ToLower()}");
 
-            this.Lotes = new(proxy);
+            this.Lotes = new(proxy, conexao.FormatoDeSerializacao);
             this.Documentos = new(proxy);
             this.Financeiro = new(proxy);
             this.Contratantes = new(proxy);

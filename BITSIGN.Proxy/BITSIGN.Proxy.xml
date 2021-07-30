@@ -343,11 +343,12 @@
             Envio e gestão dos lotes de documentos para assinatura digital.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.#ctor(System.Net.Http.HttpClient)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
             <summary>
             Inicializa a API de lotes.
             </summary>
             <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="formato">Formato para serialização dos objetos.</param>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Upload(BITSIGN.Proxy.DTOs.Pacote,System.Threading.CancellationToken)">
             <summary>
@@ -365,6 +366,14 @@
             <param name="id">Identificador do Lote.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Retorna todas as informações do lote que foi submetido para o serviço.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Alterar(BITSIGN.Proxy.DTOs.Lote,System.Threading.CancellationToken)">
+            <summary>
+            Alteração do Lote.
+            </summary>
+            <param name="lote">Objeto contendo o lote e suas informações para alteração.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Excluir(System.Guid,System.Threading.CancellationToken)">
