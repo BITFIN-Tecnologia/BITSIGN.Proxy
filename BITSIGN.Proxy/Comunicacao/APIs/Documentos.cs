@@ -50,8 +50,10 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <summary>
         /// Exclusão do Documento.
         /// </summary>
+        /// <remarks>Depois de excluído, se não houver mais documentos no lote, ele também será removido. A exclusão incidirá a cobrança das assinaturas que já foram, eventualmente, realizadas.</remarks>
         /// <param name="id">Identificador do Documento.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>Se a exclusão for realizada com sucesso, retornará <c>true</c>, caso contrário, <c>false</c>.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<bool> Excluir(Guid id, CancellationToken cancellationToken = default)
         {

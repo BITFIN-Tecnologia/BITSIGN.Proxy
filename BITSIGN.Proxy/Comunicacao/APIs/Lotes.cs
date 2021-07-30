@@ -28,6 +28,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <summary>
         /// Upload de Documentos.
         /// </summary>
+        /// <remarks>Endpoint para o envio do lote de documentos para assinatura. O conteúdo deve ser um arquivo compactado contendo o arquivo <b>manifesto.xml</b> e todos os arquivos mencionados dentro dele que deverão ser assinados digitalmente. Para maiores informações da estrutura deste arquivo e do processo, consulte <see href="https://bitsign.com.br/documentacao#integracaoPacotes">este link</see>. O tamanho do <i>payload</i> não poderá ultrapassar <b>20MB</b>.</remarks>
         /// <param name="pacote">O pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>URI onde estará disponível o lote recém criado para consulta.</returns>
@@ -71,8 +72,10 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <summary>
         /// Alteração do Lote.
         /// </summary>
+        /// <remarks>Para aqueles assinantes que ainda estejam pendentes de assinatura, receberão uma nova notificação.</remarks>
         /// <param name="lote">Objeto contendo o lote e suas informações para alteração.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>Se a alteração for realizada com sucesso, retornará <c>true</c>, caso contrário, <c>false</c>.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<bool> Alterar(DTOs.Lote lote, CancellationToken cancellationToken = default)
         {
@@ -98,8 +101,10 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <summary>
         /// Exclusão do Lote.
         /// </summary>
+        /// <remarks>A exclusão incidirá a cobrança das assinaturas que já foram, eventualmente, realizadas.</remarks>
         /// <param name="id">Identificador do Lote.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>Se a exclusão for realizada com sucesso, retornará <c>true</c>, caso contrário, <c>false</c>.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<bool> Excluir(Guid id, CancellationToken cancellationToken = default)
         {
