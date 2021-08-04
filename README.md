@@ -4,9 +4,9 @@ Biblioteca .NET para consumo dos serviços (APIs) fornecidos pela BITSIGN, recep
 
 Além da comunicação que já está embutida, a biblioteca também oferece recursos para _logging_, correlação de requisições e classes de DTOs (que também são definidas pelas APIs). Isso garantirá uma experiência diferenciada para consumo dos serviços, já que o _proxy_ expõe em sua _interface_ pública, métodos e propriedades que refletem o negócio, que é o de "assinaturas digitais".
 
-> Processo de Assinaturas (visão técnica e operacional): [https://www.bitsign.com.br/documentacao](https://www.bitsign.com.br/documentacao)
+> Processo de Assinaturas (visão técnica e operacional): [https://bitsign.com.br/documentacao](https://bitsign.com.br/documentacao)
 
-> Documentação das APIs: [https://www.bitsign.com.br/apis](https://www.bitsign.com.br/apis)
+> Documentação das APIs: [https://bitsign.com.br/apis](https://bitsign.com.br/apis)
 
 > NUGET: [PM> Install-Package BITFIN.BITSIGN.Proxy](https://www.nuget.org/packages/BITFIN.BITSIGN.Proxy)
 
@@ -135,7 +135,7 @@ INFORME O NUMERO DO EXEMPLO:
 ## Callbacks
 Os _callbacks_ servem para recepcionar algum evento relevante que foi gerado pelo processo de assinaturas. Uma vez que o contratante informa ao serviço que ele deseja receber estas notificações, será necessário informar uma `URL` para que o serviço envie o _callback_. Além da `URL`, você pode optar também em qual formato deseja receber este _callback_, onde o padrão é o formato **JSON** e pode ser alterado para **XML**. 
 
-Abaixo temos a estrutura do objeto, que será serializado em JSON ou XML e entregue no local (`URL`) previamente informado, e o cliente então, pode utilizar a informação como desejar; para entender como o serviço entende que o _callback_ foi entregue e sobre a quantidade de tentativas de entrega, [consulte a documentação](https://www.bitsing.com.br/documentacao#integracaoCallbacks).
+Abaixo temos a estrutura do objeto, que será serializado em JSON ou XML e entregue no local (`URL`) previamente informado, e o cliente então, pode utilizar a informação como desejar; para entender como o serviço entende que o _callback_ foi entregue e sobre a quantidade de tentativas de entrega, [consulte a documentação](https://bitsign.com.br/documentacao#integracaoCallbacks).
 
 ```csharp
 /// <summary>
@@ -221,6 +221,6 @@ Mensagem: Horário de Brasília Validado.
 
 > #### CONTATOS
 >
-> - Site: <https://www.bitsign.com.br>
+> - Site: <https://bitsign.com.br>
 > - E-mail Técnico: <dev@bitsign.com.br>
 > - E-mail Comercial: <contato@bitsign.com.br>
