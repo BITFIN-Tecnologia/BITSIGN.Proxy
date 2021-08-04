@@ -1769,13 +1769,14 @@
             Abstrai toda a comunicação com os serviços (APIs) de assinaturas da BITSIGN.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.ProxyDoServico.#ctor(BITSIGN.Proxy.Conexao,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Logging.IRastreio)">
+        <member name="M:BITSIGN.Proxy.ProxyDoServico.#ctor(BITSIGN.Proxy.Conexao,BITSIGN.Proxy.Logging.ILogger,BITSIGN.Proxy.Logging.IRastreio,System.Net.IWebProxy)">
             <summary>
             Inicializa o proxy.
             </summary>
             <param name="conexao">Dados da conexão com o ambiente.</param>
             <param name="logger">Instância de <see cref="T:BITSIGN.Proxy.Logging.ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
             <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
+            <param name="webProxy">Especifica um proxy para ser utilizado ao realizar as requisições para os serviços.</param>
             <exception cref="T:System.ArgumentNullException">Se a <paramref name="conexao"/> não for informada.</exception>
         </member>
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Conexao">

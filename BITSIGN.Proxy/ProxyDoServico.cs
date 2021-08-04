@@ -25,12 +25,17 @@ namespace BITSIGN.Proxy
         /// <param name="conexao">Dados da conexão com o ambiente.</param>
         /// <param name="logger">Instância de <see cref="ILogger"/> para gestão e armazenamento de logs gerados pelo proxy.</param>
         /// <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
+        /// <param name="webProxy">Especifica um proxy para ser utilizado ao realizar as requisições para os serviços.</param>
         /// <exception cref="ArgumentNullException">Se a <paramref name="conexao"/> não for informada.</exception>
-        public ProxyDoServico(Conexao conexao, ILogger logger = null, IRastreio rastreioDeRequisicao = null)
+        public ProxyDoServico(Conexao conexao, ILogger logger = null, IRastreio rastreioDeRequisicao = null, IWebProxy webProxy = null)
         {
             this.Conexao = conexao ?? throw new ArgumentNullException(nameof(conexao));
 
-            this.proxy = new(new RastreioDaRequisicao(logger, rastreioDeRequisicao))
+            this.proxy = new(new RastreioDaRequisicao(logger, rastreioDeRequisicao)
+            {
+                Proxy = webProxy,
+                UseProxy = webProxy != null
+            })
             {
                 BaseAddress = conexao.Url,
                 DefaultRequestVersion = HttpVersion.Version20,
