@@ -804,6 +804,11 @@
             Quantidade mínima necessária de assinantes para este perfil.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinatura.Ordem">
+            <summary>
+            Indica a ordem em que a coleta das respectivas assinaturas devem ser realizadas sobre o documento.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Assinatura.Status">
             <summary>
             Indica o status atual da assinatura.

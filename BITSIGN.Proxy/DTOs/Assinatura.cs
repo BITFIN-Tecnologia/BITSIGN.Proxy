@@ -27,6 +27,12 @@ namespace BITSIGN.Proxy.DTOs
         public int QtdeMinima { get; set; }
 
         /// <summary>
+        /// Indica a ordem em que a coleta das respectivas assinaturas devem ser realizadas sobre o documento.
+        /// </summary>
+        [XmlAttribute]
+        public int Ordem { get; set; }
+
+        /// <summary>
         /// Indica o status atual da assinatura.
         /// </summary>
         [XmlAttribute]
