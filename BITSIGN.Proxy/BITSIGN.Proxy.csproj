@@ -6,16 +6,16 @@
         <Copyright>Copyright 2021</Copyright>
         <Description>Biblioteca .NET para consumo dos serviços (APIs) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Description>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>1.0.0.14</Version>
+        <Version>1.0.0.15</Version>
         <RepositoryUrl>https://github.com/BITFIN-Software/BITSIGN.Proxy</RepositoryUrl>
         <PackageTags>api, rest-api, dot-net, icp-brasil, certificados, assinaturas-digitais</PackageTags>
         <PackageId>BITFIN.BITSIGN.Proxy</PackageId>
-        <PackageProjectUrl>https://www.bitsign.com.br</PackageProjectUrl>
+        <PackageProjectUrl>https://bitsign.com.br</PackageProjectUrl>
         <PackageIcon>Icon.png</PackageIcon>
         <RepositoryType>git</RepositoryType>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <AssemblyVersion>1.0.0.14</AssemblyVersion>
-        <FileVersion>1.0.0.14</FileVersion>
+        <AssemblyVersion>1.0.0.15</AssemblyVersion>
+        <FileVersion>1.0.0.15</FileVersion>
         <PackageReleaseNotes>Suporte para coleta ordenada de assinaturas.</PackageReleaseNotes>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
