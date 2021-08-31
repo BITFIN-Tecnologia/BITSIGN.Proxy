@@ -55,7 +55,7 @@ namespace Testes.Exemplos
                             FormatoDoArquivo = "PDF",
                             ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf"),
                             TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf").Length,
-                            PadraoDeAssinatura = "CAdES",
+                            PadraoDeAssinatura = Constantes.PadroesDeAssinatura.CAdES,
                             PoliticaDeAssinatura = "PA_AD_RB_v2_3",
                             Assinaturas = new List<Assinatura>()
                             {
@@ -89,7 +89,7 @@ namespace Testes.Exemplos
                             FormatoDoArquivo = "PDF",
                             ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao2.pdf"),
                             TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao2.pdf").Length,
-                            PadraoDeAssinatura = "CAdES",
+                            PadraoDeAssinatura = Constantes.PadroesDeAssinatura.CAdES,
                             PoliticaDeAssinatura = "PA_AD_RB_v2_3",
                             Assinaturas = new List<Assinatura>()
                             {
@@ -123,7 +123,7 @@ namespace Testes.Exemplos
                             FormatoDoArquivo = "PDF",
                             ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao3.pdf"),
                             TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao3.pdf").Length,
-                            PadraoDeAssinatura = "CAdES",
+                            PadraoDeAssinatura = Constantes.PadroesDeAssinatura.CAdES,
                             PoliticaDeAssinatura = "PA_AD_RB_v2_3",
                             Assinaturas = new List<Assinatura>()
                             {

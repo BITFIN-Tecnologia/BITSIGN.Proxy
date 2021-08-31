@@ -6,22 +6,30 @@ using BITSIGN.Proxy;
 using BITSIGN.Proxy.DTOs;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
-    public class DocumentosComTemplate : Exemplo
+    public class PadraoPAdES : Exemplo
     {
-        private const string Arquivo = @"Id;Numero;Tipo;Valor;Emissao;Vencimento;DataDeDesconto;ValorDeDesconto;NF;NomeDoCedente;DocumentoDoCedente;IEDoCedente;LogrdouroDoCedente;BairroDoCedente;LocalidadeDoCedente;UFDoCedente;CepDoCedente;NomeDoSacado;DocumentoDoSacado;IEDoSacado;LogradouroDoSacado;BairroDoSacado;LocalidadeDoSacado;UFDoSacado;CepDoSacado
-9282;9080/1;DM;10.293,22;04/06/2021;04/07/2021;01/07/2021;200,00;9080;Nome da Empresa Ltda.;20987222000190;1234567;Rua São João, 29;Jd. do Lago;Louveira;SP;13000123;Jack Bauer;22233344400;7654321;Rua da Liberdade, 94;Centro;São Paulo;SP;01001000;
-9282;9080/2;DM;10.293,22;04/06/2021;04/08/2021;01/08/2021;200,00;9080;Nome da Empresa Ltda.;20987222000190;1234567;Rua São João, 29;Jd. do Lago;Louveira;SP;13000123;Jack Bauer;22233344400;7654321;Rua da Liberdade, 94;Centro;São Paulo;SP;01001000";
-
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
-            var arquivo = Encoding.UTF8.GetBytes(Arquivo);
+            //Arquivo a ser enviado para coleta de assinatura(s).
+            var arquivo = File.ReadAllBytes("Exemplo/Declaracao.pdf");
 
+            var padraoDeAssinatura = Constantes.PadroesDeAssinatura.PAdES;
+
+            //Posicionamento da assinatura no documento.
+            var posicao = new Posicao()
+            {
+                Pagina = 1,
+                X = 140,
+                Y = 240
+            };
+
+            //Criação do proxy de comunicação com o serviço.
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
                 var pacote = new Pacote(new()
@@ -50,20 +58,19 @@ namespace Testes.Exemplos
                     {
                         new Documento()
                         {
-                            NomeDoArquivo = "Duplicatas.csv",
-                            Descricao = "Relação de Duplicatas",
-                            Tipo = "Duplicata",
-                            FormatoDoArquivo = "CSV",
+                            NomeDoArquivo = "Declaracao.pdf",
+                            Descricao = "Declaração",
+                            Tipo = "Declaração",
+                            Tags = "declaracaoId=123",
+                            FormatoDoArquivo = "PDF",
                             ConteudoOriginal = arquivo,
                             TamanhoDoArquivo = arquivo.Length,
-                            PadraoDeAssinatura = Constantes.PadroesDeAssinatura.CAdES,
-                            PoliticaDeAssinatura = "PA_AD_RB_v2_3",
-                            Template = "Duplicata",
+                            PadraoDeAssinatura = padraoDeAssinatura,
                             Assinaturas = new List<Assinatura>()
                             {
                                 new()
                                 {
-                                    Perfil = "Representante",
+                                    Perfil = "Declarante",
                                     QtdeMinima = 1,
                                     Assinantes = new List<Assinante>()
                                     {
@@ -76,24 +83,20 @@ namespace Testes.Exemplos
                                                 Email = "jack.bauer@ctu.com"
                                             },
                                             Notificar = true,
-                                            Obrigatorio = false
+                                            Obrigatorio = false,
+                                            Posicao = posicao
                                         }
                                     }
                                 }
                             }
                         }
                     },
-                    Tags = "operacao=123"
+                    Tags = "processo=456"
                 });
 
                 var urlDoLote = await proxy.Lotes.Upload(pacote, cancellationToken);
 
                 Console.WriteLine(urlDoLote);
-                Console.WriteLine(pacote.Lote.Id);
-                Console.WriteLine(pacote.Lote.UrlAoVivo);
-
-                //Deverá retornar a mesma quantidade que está no arquivo CSV, que neste caso, são 2.
-                Console.WriteLine(pacote.Lote.QtdeDeDocumentos);
             }
         }
     }

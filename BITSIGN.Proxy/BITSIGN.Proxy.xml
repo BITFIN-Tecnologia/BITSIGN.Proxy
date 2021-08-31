@@ -764,6 +764,11 @@
             Indica se o assinante é ou não obrigatório.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.Posicao">
+            <summary>
+            Posicionamento da assinatura no documento (padrão PAdES).
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Assinante.Observacoes">
             <summary>
             Observações complementares do assinante. Serve para indicar, por exemplo, o motivo de rejeição.
@@ -985,6 +990,31 @@
         <member name="P:BITSIGN.Proxy.DTOs.Configuracao.PeriodoParaLembrete">
             <summary>
             Periodicidade para envio de lembrete informando sobre documentos com a assinatura pendente.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Constantes">
+            <summary>
+            Relação de constantes utilizadas pela biblioteca.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Constantes.PadroesDeAssinatura">
+            <summary>
+            Padrões de assinaturas digitais suportadas.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.PadroesDeAssinatura.CAdES">
+            <summary>
+            CMS Advanced Electronic Signatures.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.PadroesDeAssinatura.PAdES">
+            <summary>
+            PDF Advanced Electronic Signatures.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.PadroesDeAssinatura.XAdES">
+            <summary>
+            XML Advanced Electronic Signatures.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Contratante">
@@ -1601,6 +1631,26 @@
         <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.QuantidadeDeCarimbos">
             <summary>
             Quantidade de carimbos já consumido dentro do mês.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Posicao">
+            <summary>
+            Define a posição no documento PDF onde a assinatura será estampada (padrão PAdES).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Posicao.Pagina">
+            <summary>
+            Número da página onde a assinatura deve ser colocada.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Posicao.X">
+            <summary>
+            Posição no eixo X (horizontal). A referência é rodapé/esquerda.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Posicao.Y">
+            <summary>
+            Posição no eixo Y (vertical). A referência é rodapé/esquerda.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.StatusDosServicos">

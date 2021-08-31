@@ -48,6 +48,11 @@ namespace BITSIGN.Proxy.DTOs
         public bool Obrigatorio { get; set; }
 
         /// <summary>
+        /// Posicionamento da assinatura no documento (padrão PAdES).
+        /// </summary>
+        public virtual Posicao Posicao { get; set; }
+
+        /// <summary>
         /// Observações complementares do assinante. Serve para indicar, por exemplo, o motivo de rejeição.
         /// </summary>
         [XmlAttribute]

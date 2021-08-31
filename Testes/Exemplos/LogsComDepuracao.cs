@@ -63,7 +63,7 @@ namespace Testes.Exemplos
                             FormatoDoArquivo = "PDF",
                             ConteudoOriginal = arquivo,
                             TamanhoDoArquivo = arquivo.Length,
-                            PadraoDeAssinatura = "CAdES",
+                            PadraoDeAssinatura = Constantes.PadroesDeAssinatura.CAdES,
                             PoliticaDeAssinatura = "PA_AD_RB_v2_3",
                             Assinaturas = new List<Assinatura>()
                             {
