@@ -129,6 +129,7 @@ EXEMPLOS DISPONIVEIS
   13 - BuscadorDeRecursos
   14 - TratamentoDeErros
   15 - DocumentosComTemplate
+  16 - PadraoPAdES
 INFORME O NUMERO DO EXEMPLO:
 ```
 
