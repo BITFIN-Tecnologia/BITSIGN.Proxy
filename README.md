@@ -130,6 +130,7 @@ EXEMPLOS DISPONIVEIS
   14 - TratamentoDeErros
   15 - DocumentosComTemplate
   16 - PadraoPAdES
+  17 - VisualizacaoDeDumps
 INFORME O NUMERO DO EXEMPLO:
 ```
 
