@@ -59,6 +59,7 @@ namespace BITSIGN.Proxy
             this.Anexos = new(proxy);
             this.Buscador = new(proxy, conexao.FormatoDeSerializacao);
             this.CarimboDoTempo = new(proxy);
+            this.Dumps = new(proxy, conexao.Ambiente);
             this.Status = new(conexao.Status);
         }
 
@@ -100,17 +101,22 @@ namespace BITSIGN.Proxy
         /// <summary>
         /// API de Anexos.
         /// </summary>
-        public Anexos Anexos { get; set; }
+        public Anexos Anexos { get; }
 
         /// <summary>
         /// API de Busca de Recursos.
         /// </summary>
-        public Buscador Buscador { get; set; }
+        public Buscador Buscador { get; }
 
         /// <summary>
         /// API para emissão de carimbos do tempo.
         /// </summary>
-        public CarimboDoTempo CarimboDoTempo { get; set; }
+        public CarimboDoTempo CarimboDoTempo { get; }
+
+        /// <summary>
+        /// API para visualização de Dumps.
+        /// </summary>
+        public Dumps Dumps { get; }
 
         /// <summary>
         /// API de status dos Serviços.

@@ -297,6 +297,39 @@
             <returns>Um <c>array</c> de <see cref="T:System.Byte"/>s que corresponde à um arquivo PDF com os detalhes dos assinantes e as características das assinaturas.</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Dumps">
+            <summary>
+            Repositório de requisições geradas em ambiente de <see cref="F:BITSIGN.Proxy.Ambiente.Sandbox"/>.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Dumps.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Ambiente)">
+            <summary>
+            Repositório de requisições geradas em ambiente de SANDBOX.
+            </summary>
+            <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+            <param name="ambiente">Ambiente conectado.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Dumps.Relacao(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Relação de Requisições.
+            </summary>
+            <param name="id">Id do repositório, gerado no momento da criação.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Últimos 100 dumps gerados, incluindo suas características.</returns>
+            <exception cref="T:System.InvalidOperationException">Exceção disparada se não estiver em ambiente de <see cref="F:BITSIGN.Proxy.Ambiente.Sandbox"/>.</exception>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Dumps.Conteudo(System.String,System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Conteúdo da Requisição.
+            </summary>
+            <param name="id">Id do repositório, gerado no momento da criação.</param>
+            <param name="requisicaoId">Identificador da requisição gerada.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Uma <see cref="T:System.String"/> representando o conteúdo armazenado.</returns>
+            <exception cref="T:System.InvalidOperationException">Exceção disparada se não estiver em ambiente de <see cref="F:BITSIGN.Proxy.Ambiente.Sandbox"/>.</exception>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Financeiro">
             <summary>
             Detalhamento dos planos contratados, fechamentos e faturas do contratante.
@@ -1162,6 +1195,31 @@
             Relação de assinaturas associadas ao documento.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Dump">
+            <summary>
+            Representa uma requsição gerada em ambiente de SANDBOX.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Dump.RequisicaoId">
+            <summary>
+            Identificador da requisição gerada.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Dump.Data">
+            <summary>
+            Data da criação.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Dump.Formato">
+            <summary>
+            Formato (mime type) do conteúdo.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Dump.Tamanho">
+            <summary>
+            Tamanho (em bytes) do conteúdo.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Entidade">
             <summary>
             Entidade que define os dados de uma pessoa física ou jurídica.
@@ -1882,6 +1940,11 @@
         <member name="P:BITSIGN.Proxy.ProxyDoServico.CarimboDoTempo">
             <summary>
             API para emissão de carimbos do tempo.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Dumps">
+            <summary>
+            API para visualização de Dumps.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Status">

@@ -16,7 +16,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// Inicializa a API de carimbos do tempo.
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
-        public CarimboDoTempo(HttpClient proxy)
+        internal CarimboDoTempo(HttpClient proxy)
             : base(proxy) { }
 
         /// <summary>

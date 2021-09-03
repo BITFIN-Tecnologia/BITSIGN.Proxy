@@ -20,7 +20,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// Inicializa a API de contratantes.
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
-        public Contratantes(HttpClient proxy)
+        internal Contratantes(HttpClient proxy)
             : base(proxy) { }
 
         /// <summary>

@@ -20,7 +20,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
         /// <param name="formato">Formato para serialização dos objetos.</param>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
-        public Buscador(HttpClient proxy, FormatoDeSerializacao formato)
+        internal Buscador(HttpClient proxy, FormatoDeSerializacao formato)
             : base(proxy, formato) { }
 
         /// <summary>

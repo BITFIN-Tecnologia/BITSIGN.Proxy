@@ -20,7 +20,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// Inicializa a API financeira.
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
-        public Financeiro(HttpClient proxy)
+        internal Financeiro(HttpClient proxy)
             : base(proxy) { }
 
         /// <summary>

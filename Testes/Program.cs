@@ -29,7 +29,8 @@ namespace Testes
             { 13, new BuscadorDeRecursos() },
             { 14, new TratamentoDeErros() },
             { 15, new DocumentosComTemplate() },
-            { 16, new PadraoPAdES() }
+            { 16, new PadraoPAdES() },
+            { 17, new VisualizacaoDeDumps() }
         };
 
         static async Task Main(string[] args)

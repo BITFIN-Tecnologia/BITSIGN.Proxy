@@ -20,7 +20,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// Inicializa o monitoramento de status dos serviços.
         /// </summary>
         /// <param name="url">Endereço onde está localizado o relatório de status.</param>
-        public Status(Uri url) =>
+        internal Status(Uri url) =>
             this.url = url;
 
         /// <summary>

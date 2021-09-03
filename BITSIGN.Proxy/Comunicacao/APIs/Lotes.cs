@@ -22,7 +22,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
         /// <param name="formato">Formato para serialização dos objetos.</param>
-        public Lotes(HttpClient proxy, FormatoDeSerializacao formato)
+        internal Lotes(HttpClient proxy, FormatoDeSerializacao formato)
             : base(proxy, formato) { }
 
         /// <summary>

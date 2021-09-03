@@ -21,7 +21,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
         /// <param name="formato">Formato para serialização dos objetos.</param>
-        public Aplicacoes(HttpClient proxy, FormatoDeSerializacao formato)
+        internal Aplicacoes(HttpClient proxy, FormatoDeSerializacao formato)
             : base(proxy, formato) { }
 
         /// <summary>

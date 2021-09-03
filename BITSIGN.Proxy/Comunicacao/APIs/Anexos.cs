@@ -19,7 +19,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// Inicializa a API de anexos.
         /// </summary>
         /// <param name="proxy">Instância da classe <see cref="HttpClient"/> gerada pelo proxy.</param>
-        public Anexos(HttpClient proxy)
+        internal Anexos(HttpClient proxy)
             : base(proxy) { }
 
         /// <summary>
