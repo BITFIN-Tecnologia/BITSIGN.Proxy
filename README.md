@@ -130,6 +130,7 @@ EXEMPLOS DISPONIVEIS
   14 - TratamentoDeErros
   15 - DocumentosComTemplate
   16 - PadraoPAdES
+  17 - VisualizacaoDeDumps
 INFORME O NUMERO DO EXEMPLO:
 ```
 
@@ -183,6 +184,14 @@ public class Callback
     public Guid AplicacaoId { get; set; }
 }
 ```
+### Serviço de Dumps
+Caso não tenha um ambiente definido para _callbacks_, e mesmo assim quer ter a chance de visualizar os eventos gerados pela plataforma, você pode optar por utilizar o **Serviço de Dumps** da BITSIGN. Este serviço permite você criar um ambiente totalmente "descartável" para receber as requisições de _callbacks_, que pode ser útil até que se tenha um ambiente real e de produção para recepcionar estas notificações. Para habilitar este serviço, que está disponível apenas em ambiente de **SANDBOX**, basta ir até as configurações da aplicação e utilizar a opção para gerar o repositório; um link randômico será gerado e você poderá utilizá-lo para visualizar todos os eventos que estão sendo gerados.
+
+> **IMPORTANTE:** Apesar de ser um serviço gratuito, ele está limitado em, no máximo, **100 requisições**; a partir daí, as requisições mais antigas começam a ser sobrescritas. Este recurso deve ser utilizado exclusivamente em ambiente de testes e de validação. O visualizador de dumps está acessível para qualquer um que possua o link. É importante que você o mantenha protegido e, por questões de segurança, quando finalizar os testes, opte por remover todo o conteúdo gerado.
+
+![Serviço de Dumps da BITSIGN](http://bitsign.com.br/Documentacao/Dumps.png)
+
+> Este _proxy_ oferece suporte para interagir com este serviço através da API [Dumps](https://github.com/BITFIN-Software/BITSIGN.Proxy/blob/master/BITSIGN.Proxy/Comunicacao/APIs/Dumps.cs).
 
 ## Status dos Serviços
 O _proxy_ também expõe uma propriedade para analisar o status dos serviços e seus recursos associados. Isso permitirá ao cliente que consome as APIs possa criar alguma regra em torno disso, e desabilitar e reabilitar funcionalidades em seu sistema de acordo com a situação atual de cada serviço. A propriedade `Status` está acessível a partir do _proxy_ e através do método `Atualizar` é acessar o relatório com a situação de todos os serviços. Abaixo temos o exemplo de como chamar o método e exibir o relatório:
