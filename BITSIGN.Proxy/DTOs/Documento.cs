@@ -34,7 +34,7 @@ namespace BITSIGN.Proxy.DTOs
         public string Tipo { get; set; }
 
         /// <summary>
-        /// Nome do arquivo (original) dentro do pacote.
+        /// Nome do arquivo (original).
         /// </summary>
         [XmlAttribute]
         public string NomeDoArquivo { get; set; }
@@ -50,6 +50,11 @@ namespace BITSIGN.Proxy.DTOs
         /// </summary>
         [XmlAttribute]
         public long TamanhoDoArquivo { get; set; }
+
+        /// <summary>
+        /// Parâmetros para download do arquivo.
+        /// </summary>
+        public Download Download { get; set; }
 
         /// <summary>
         /// Nome da Template utilizada para expandir o conteúdo deste arquivo em novos documentos.

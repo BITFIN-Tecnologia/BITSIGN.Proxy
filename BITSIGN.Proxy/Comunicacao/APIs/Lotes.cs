@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,6 +18,9 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
     /// </summary>
     public class Lotes : API
     {
+        private static readonly MediaTypeHeaderValue Zip = new("application/zip");
+        private static readonly MediaTypeHeaderValue Xml = new("application/xml");
+
         /// <summary>
         /// Inicializa a API de lotes.
         /// </summary>
@@ -26,12 +30,33 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
             : base(proxy, formato) { }
 
         /// <summary>
+        /// Upload de Manifesto.
+        /// </summary>
+        /// <remarks>Utilize esta opção quando todos os documentos a serem assinados estão disponíveis através de HTTP[S], que deverão estar informados na propriedade <see cref="DTOs.Documento.Download"/>.</remarks>
+        /// <param name="manifesto"><see cref="String"/> representando o <see cref="DTOs.Lote"/> serializado em formato XML.</param>
+        /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns><see cref="Uri"/> onde estará disponível o lote recém criado para consulta.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        public async Task<Uri> Upload(string manifesto, CancellationToken cancellationToken = default)
+        {
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Post, "lotes")
+            {
+                Content = new StringContent(manifesto)
+            })
+            {
+                requisicao.Content.Headers.ContentType = Xml;
+
+                return await this.Executar(requisicao, resposta => Task.FromResult(resposta.Headers.Location), cancellationToken);
+            }
+        }
+
+        /// <summary>
         /// Upload de Documentos.
         /// </summary>
-        /// <remarks>Endpoint para o envio do lote de documentos para assinatura. O conteúdo deve ser um arquivo compactado contendo o arquivo <b>manifesto.xml</b> e todos os arquivos mencionados dentro dele que deverão ser assinados digitalmente. Para maiores informações da estrutura deste arquivo e do processo, consulte <see href="https://bitsign.com.br/documentacao#integracaoPacotes">este link</see>. O tamanho do <i>payload</i> não poderá ultrapassar <b>20MB</b>.</remarks>
+        /// <remarks>Endpoint para o envio do lote de documentos para assinatura. O conteúdo deve ser um arquivo compactado contendo o arquivo <b>manifesto.xml</b> e todos os arquivos mencionados dentro dele que deverão ser assinados digitalmente. Para maiores informações da estrutura deste arquivo e do processo, consulte <see href="https://bitsign.com.br/documentacao#integracaoPacotes">este link</see>. O tamanho do conteúdo não poderá ultrapassar <b>20MB</b>.</remarks>
         /// <param name="pacote">O pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-        /// <returns>URI onde estará disponível o lote recém criado para consulta.</returns>
+        /// <returns><see cref="Uri"/> onde estará disponível o lote recém criado para consulta.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<Uri> Upload(DTOs.Pacote pacote, CancellationToken cancellationToken = default)
         {
@@ -40,6 +65,8 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 Content = new ByteArrayContent(pacote.Serializar())
             })
             {
+                requisicao.Content.Headers.ContentType = Zip;
+
                 return await this.Executar(requisicao, resposta => Task.FromResult(resposta.Headers.Location), cancellationToken);
             }
         }

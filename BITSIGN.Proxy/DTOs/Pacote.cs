@@ -27,13 +27,14 @@ namespace BITSIGN.Proxy.DTOs
         /// Inicia o pacote com o lote para ser enviado ao serviço.
         /// </summary>
         /// <param name="lote">Lote com os documentos originais para envio e geração de assinaturas.</param>
+        /// <remarks>Aqueles documentos que estiverem com a propriedade <see cref="Documento.ConteudoOriginal"/> preenchida serão embutidos no pacote; alternativamente, informe os dados do arquivo à ser assinado na propriedade <see cref="Documento.Download"/>, e isso indicará ao serviço que deverá realizar o download ao invés de procurar pelo arquivo fisicamente dentro do pacote.</remarks>
         public Pacote(Lote lote)
         {
             this.Lote = lote;
             this.Arquivos =
                 Enumerable.Concat(
                     new[] { (ArquivoDeManifesto, Serializador.EmBytes(Serializador.Xml.Serializar(lote, "Lote"))) },
-                    lote.Documentos.Select(d => (d.NomeDoArquivo, d.ConteudoOriginal)));
+                    lote.Documentos.Where(d => d.ConteudoOriginal?.Length > 0).Select(d => (d.NomeDoArquivo, d.ConteudoOriginal)));
         }
 
         private void Deserializar(byte[] dados)
