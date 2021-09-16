@@ -82,11 +82,11 @@ namespace BITSIGN.Proxy.Comunicacao
         /// <summary>
         /// Formato para serialização dos objetos.
         /// </summary>
-        protected FormatoDeSerializacao FormatoDeSerializacao { get; set; }
+        protected FormatoDeSerializacao FormatoDeSerializacao { get; }
 
         /// <summary>
         /// Mime type de acordo com o formato definido na propriedade <see cref="FormatoDeSerializacao"/>.
         /// </summary>
-        protected string MimeType { get; init; }
+        protected string MimeType { get; }
     }
 }
