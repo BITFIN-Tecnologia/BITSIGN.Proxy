@@ -13,8 +13,8 @@ namespace BITSIGN.Proxy.Logging
     public class LogEmTexto : ILogger
     {
         private readonly TextWriter escritor;
+        private readonly List<string> mensagens;
         private readonly int qtdeDeMensagensParaFlush;
-        private readonly List<string> mensagens = new(10);
 
         /// <summary>
         /// Inicializa o log com armazenamento das mensagens no sistema de arquivos.
@@ -24,6 +24,7 @@ namespace BITSIGN.Proxy.Logging
         public LogEmTexto(TextWriter escritor, int qtdeDeMensagensParaFlush = 10)
         {
             this.escritor = escritor;
+            this.mensagens = new(qtdeDeMensagensParaFlush);
             this.qtdeDeMensagensParaFlush = qtdeDeMensagensParaFlush;
         }
 
