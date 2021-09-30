@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BITSIGN.Proxy\BITSIGN.Proxy.csproj" />
+    <Content Include="bin\Debug\net5.0\Exemplo\NFe.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="bin\Debug\net5.0\Exemplo\" />
+    <ProjectReference Include="..\BITSIGN.Proxy\BITSIGN.Proxy.csproj" />
   </ItemGroup>
 
   <ItemGroup>

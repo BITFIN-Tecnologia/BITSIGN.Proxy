@@ -16,6 +16,81 @@ namespace BITSIGN.Proxy.DTOs
     public class Documento : Base
     {
         /// <summary>
+        /// Tipos de documentos suportados.
+        /// </summary>
+        public class Tipos
+        {
+            /// <summary>
+            /// Aditivo
+            /// </summary>
+            public const string Aditivo = "Aditivo";
+            /// <summary>
+            /// Autorização.
+            /// </summary>
+            public const string Autorizacao = "Autorização";
+            /// <summary>
+            /// Carta de Anuência.
+            /// </summary>
+            public const string CartaDeAnuencia = "Carta de Anuência";
+            /// <summary>
+            /// Carta de Cessão.
+            /// </summary>
+            public const string CartaDeCessao = "Carta de Cessão";
+            /// <summary>
+            /// Carta de Circularização.
+            /// </summary>
+            public const string CartaDeCircularizacao = "Carta de Circularização";
+            /// <summary>
+            /// Confissão de Dívida.
+            /// </summary>
+            public const string ConfissaoDeDivida = "Confissão de Dívida";
+            /// <summary>
+            /// Conhecimento de Transporte.
+            /// </summary>
+            public const string ConhecimentoDeTransporte = "Conhecimento de Transporte";
+            /// <summary>
+            /// Contrato.
+            /// </summary>
+            public const string Contrato = "Contrato";
+            /// <summary>
+            /// Debênture.
+            /// </summary>
+            public const string Debentura = "Debênture";
+            /// <summary>
+            /// Declaração.
+            /// </summary>
+            public const string Declaracao = "Declaração";
+            /// <summary>
+            /// Diploma.
+            /// </summary>
+            public const string Diploma = "Diploma";
+            /// <summary>
+            /// Duplicata.
+            /// </summary>
+            public const string Duplicata = "Duplicata";
+            /// <summary>
+            /// Exame.
+            /// </summary>
+            public const string Exame = "Exame";
+            /// <summary>
+            /// Procuração.
+            /// </summary>
+            public const string Procuracao = "Procuração";
+            /// <summary>
+            /// Nota Fiscal.
+            /// </summary>
+            public const string NotaFiscal = "Nota Fiscal";
+            /// <summary>
+            /// Nota Promissória.
+            /// </summary>
+            public const string NotaPromissoria = "Nota Promissória";
+            /// <summary>
+            /// Termo de Cessão.
+            /// </summary>
+            public const string TermoDeCessao = "Termo de Cessão";
+        }
+
+        /// <summary>
         /// Data de criação do documento.
         /// </summary>
         [XmlAttribute]

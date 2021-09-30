@@ -12,17 +12,17 @@ using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
-    public class PadraoPAdES : Exemplo
+    public class PadraoXAdES : Exemplo
     {
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
             //Arquivo a ser enviado para coleta de assinatura(s).
-            var arquivo = File.ReadAllBytes("Exemplo/Declaracao.pdf");
+            var arquivo = File.ReadAllBytes("Exemplo/NFe.xml");
 
-            var padraoDeAssinatura = Constantes.PadroesDeAssinatura.PAdES;
+            var padraoDeAssinatura = Constantes.PadroesDeAssinatura.XAdES;
 
             //Posicionamento da assinatura no documento.
-            var posicao = new Posicao(1, 140F, 240F);
+            var posicao = new Posicao("Enveloped", "infNFe");
 
             //Criação do proxy de comunicação com o serviço.
             using (var proxy = new ProxyDoServico(this.Conexao))
@@ -53,11 +53,11 @@ namespace Testes.Exemplos
                     {
                         new Documento()
                         {
-                            NomeDoArquivo = "Declaracao.pdf",
-                            Descricao = "Declaração",
-                            Tipo = Documento.Tipos.Declaracao,
+                            NomeDoArquivo = "NFe.xml",
+                            Descricao = "Nota Fiscal",
+                            Tipo = Documento.Tipos.NotaFiscal,
                             Tags = "declaracaoId=123",
-                            FormatoDoArquivo = "PDF",
+                            FormatoDoArquivo = "XML",
                             ConteudoOriginal = arquivo,
                             TamanhoDoArquivo = arquivo.Length,
                             PadraoDeAssinatura = padraoDeAssinatura,
@@ -65,20 +65,32 @@ namespace Testes.Exemplos
                             {
                                 new()
                                 {
-                                    Perfil = "Declarante",
-                                    QtdeMinima = 1,
+                                    Perfil = "Emitente",
+                                    QtdeMinima = 2,
                                     Assinantes = new List<Assinante>()
                                     {
                                         new()
                                         {
                                             Entidade = new()
                                             {
-                                                Nome = "Jack Bauer",
-                                                Documento = "57863748070",
-                                                Email = "jack.bauer@ctu.com"
+                                                Nome = "Israel Aece",
+                                                Documento = "28387365823",
+                                                Email = "israelaece@yahoo.com.br"
                                             },
                                             Notificar = true,
-                                            Obrigatorio = false,
+                                            Obrigatorio = true,
+                                            Posicao = posicao
+                                        },
+                                        new()
+                                        {
+                                            Entidade = new()
+                                            {
+                                                Nome = "Juliano Aece",
+                                                Documento = "32757138847",
+                                                Email = "julianoaece@outlook.com"
+                                            },
+                                            Notificar = true,
+                                            Obrigatorio = true,
                                             Posicao = posicao
                                         }
                                     }

@@ -809,7 +809,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Assinante.Posicao">
             <summary>
-            Posicionamento da assinatura no documento (padrão PAdES).
+            Parâmetros da assinatura no documento (padrão PAdES ou XAdES).
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Assinante.Observacoes">
@@ -1083,6 +1083,96 @@
         <member name="T:BITSIGN.Proxy.DTOs.Documento">
             <summary>
             Documento para assinatura digital.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Documento.Tipos">
+            <summary>
+            Tipos de documentos suportados.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Aditivo">
+            <summary>
+            Aditivo
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Autorizacao">
+            <summary>
+            Autorização.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.CartaDeAnuencia">
+            <summary>
+            Carta de Anuência.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.CartaDeCessao">
+            <summary>
+            Carta de Cessão.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.CartaDeCircularizacao">
+            <summary>
+            Carta de Circularização.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.ConfissaoDeDivida">
+            <summary>
+            Confissão de Dívida.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.ConhecimentoDeTransporte">
+            <summary>
+            Conhecimento de Transporte.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Contrato">
+            <summary>
+            Contrato.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Debentura">
+            <summary>
+            Debênture.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Declaracao">
+            <summary>
+            Declaração.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Diploma">
+            <summary>
+            Diploma.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Duplicata">
+            <summary>
+            Duplicata.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Exame">
+            <summary>
+            Exame.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Procuracao">
+            <summary>
+            Procuração.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.NotaFiscal">
+            <summary>
+            Nota Fiscal.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.NotaPromissoria">
+            <summary>
+            Nota Promissória.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeCessao">
+            <summary>
+            Termo de Cessão.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.Data">
@@ -1725,12 +1815,32 @@
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Posicao">
             <summary>
-            Define a posição no documento PDF onde a assinatura será estampada (padrão PAdES).
+            Informações complementares para os padrões de assinatura PAdES ou XAdES.
             </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.DTOs.Posicao.#ctor">
+            <summary>
+            Construtor útil para o processo de (de)serialização.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.DTOs.Posicao.#ctor(System.String,System.String)">
+            <summary>
+            Assinatura em arquivo XML no padrão XAdES.
+            </summary>
+            <param name="estilo">Estilo do encapsulamento da assinatura XML (Enveloped ou Enveloping).</param>
+            <param name="tag">Nome do elemento no XML que servirá de referência para a assinatura.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.DTOs.Posicao.#ctor(System.Int32,System.Single,System.Single)">
+            <summary>
+            Assinatura em arquivo PDF no padrão PAdES.
+            </summary>
+            <param name="pagina">Número da página do PDF onde a assinatura deverá ser estampada.</param>
+            <param name="x">Posição no eixo X (horizontal). A referência é rodapé/esquerda.</param>
+            <param name="y">Posição no eixo Y (vertical). A referência é rodapé/esquerda.</param>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Posicao.Pagina">
             <summary>
-            Número da página onde a assinatura deve ser colocada.
+            Número da página do PDF onde a assinatura deverá ser estampada.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Posicao.X">
@@ -1742,6 +1852,22 @@
             <summary>
             Posição no eixo Y (vertical). A referência é rodapé/esquerda.
             </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Posicao.Estilo">
+            <summary>
+            Estilo do encapsulamento da assinatura no XML (Enveloped ou Enveloping).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Posicao.Tag">
+            <summary>
+            Elemento no XML que servirá de referência para a assinatura.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.DTOs.Posicao.ToString">
+            <summary>
+            Representação do objeto.
+            </summary>
+            <returns><see cref="T:System.String"/> com as propriedades formatadas de acordo com a finalidade.</returns>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.StatusDosServicos">
             <summary>

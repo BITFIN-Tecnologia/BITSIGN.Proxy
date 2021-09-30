@@ -48,7 +48,7 @@ namespace BITSIGN.Proxy.DTOs
         public bool Obrigatorio { get; set; }
 
         /// <summary>
-        /// Posicionamento da assinatura no documento (padrão PAdES).
+        /// Parâmetros da assinatura no documento (padrão PAdES ou XAdES).
         /// </summary>
         public virtual Posicao Posicao { get; set; }
 

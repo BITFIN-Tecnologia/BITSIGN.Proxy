@@ -52,7 +52,7 @@ namespace Testes.Exemplos
                         {
                             NomeDoArquivo = "Duplicatas.csv",
                             Descricao = "Relação de Duplicatas",
-                            Tipo = "Duplicata",
+                            Tipo = Documento.Tipos.Duplicata,
                             FormatoDoArquivo = "CSV",
                             ConteudoOriginal = arquivo,
                             TamanhoDoArquivo = arquivo.Length,

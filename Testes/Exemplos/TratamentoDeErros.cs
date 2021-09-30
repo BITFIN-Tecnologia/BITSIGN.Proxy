@@ -47,7 +47,7 @@ namespace Testes.Exemplos
                         {
                             NomeDoArquivo = "ContratoDeLocacao1.pdf",
                             Descricao = "Cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxontrato de Locação 1",
-                            Tipo = "Contrato",
+                            Tipo = Documento.Tipos.Contrato,
                             Tags = "contratoId=123",
                             FormatoDoArquivo = "PDF",
                             ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf"),

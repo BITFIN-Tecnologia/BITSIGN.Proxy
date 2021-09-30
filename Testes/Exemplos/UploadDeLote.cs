@@ -50,79 +50,11 @@ namespace Testes.Exemplos
                         {
                             NomeDoArquivo = "ContratoDeLocacao1.pdf",
                             Descricao = "Contrato de Locação 1",
-                            Tipo = "Contrato",
+                            Tipo = Documento.Tipos.Contrato,
                             Tags = "contratoId=123",
                             FormatoDoArquivo = "PDF",
                             ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf"),
                             TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf").Length,
-                            PadraoDeAssinatura = Constantes.PadroesDeAssinatura.CAdES,
-                            PoliticaDeAssinatura = "PA_AD_RB_v2_3",
-                            Assinaturas = new List<Assinatura>()
-                            {
-                                new()
-                                {
-                                    Perfil = "Locador",
-                                    QtdeMinima = 1,
-                                    Assinantes = new List<Assinante>()
-                                    {
-                                        new()
-                                        {
-                                            Entidade = new()
-                                            {
-                                                Nome = "Jack Bauer",
-                                                Documento = "57863748070",
-                                                Email = "jack.bauer@ctu.com"
-                                            },
-                                            Notificar = true,
-                                            Obrigatorio = false
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        new Documento()
-                        {
-                            NomeDoArquivo = "ContratoDeLocacao2.pdf",
-                            Descricao = "Contrato de Locação 2",
-                            Tipo = "Contrato",
-                            Tags = "contratoId=123",
-                            FormatoDoArquivo = "PDF",
-                            ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao2.pdf"),
-                            TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao2.pdf").Length,
-                            PadraoDeAssinatura = Constantes.PadroesDeAssinatura.CAdES,
-                            PoliticaDeAssinatura = "PA_AD_RB_v2_3",
-                            Assinaturas = new List<Assinatura>()
-                            {
-                                new()
-                                {
-                                    Perfil = "Locador",
-                                    QtdeMinima = 1,
-                                    Assinantes = new List<Assinante>()
-                                    {
-                                        new()
-                                        {
-                                            Entidade = new()
-                                            {
-                                                Nome = "Jack Bauer",
-                                                Documento = "57863748070",
-                                                Email = "jack.bauer@ctu.com"
-                                            },
-                                            Notificar = true,
-                                            Obrigatorio = false
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        new Documento()
-                        {
-                            NomeDoArquivo = "ContratoDeLocacao3.pdf",
-                            Descricao = "Contrato de Locação 3",
-                            Tipo = "Contrato",
-                            Tags = "contratoId=123",
-                            FormatoDoArquivo = "PDF",
-                            ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao3.pdf"),
-                            TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao3.pdf").Length,
                             PadraoDeAssinatura = Constantes.PadroesDeAssinatura.CAdES,
                             PoliticaDeAssinatura = "PA_AD_RB_v2_3",
                             Assinaturas = new List<Assinatura>()
