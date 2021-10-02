@@ -80,60 +80,6 @@ using (var log = new LogEmTexto(new StreamWriter("Log.txt", true)))
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.Content-Type: application/json; charset=utf-8
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - FIM DO ESCOPO
 ```
-## Exemplos
-Para os principais cenários, foi incluído neste mesmo repositório, um projeto chamado de `Testes`, onde cada exemplo faz o consumo de um serviço, parametrizando de acordo com a necessidade de cada um, envia ao respectivo serviço e trata o retorno devolvido, que simplesmente exibe as informações em tela. Abaixo está um dos exemplos que compõem o projeto de `Testes`. Consulte o projeto para os demais exemplos.
-
-```csharp
-public class ConsultaDeDocumentos : Exemplo
-{
-    public override async Task Executar(CancellationToken cancellationToken = default)
-    {
-        using (var proxy = new ProxyDoServico(this.Conexao))
-        {
-            //Retorna todas as informações de um determinado documento, exceto seus arquivos (bytes[]).
-            var documento = await proxy.Documentos.Detalhes(new("aa9076b3-a058-44e2-b776-dca0a1743ce7"), cancellationToken);
-
-            if (documento != null)
-            {
-                Console.WriteLine($"Status: {documento.Status}");
-
-                //Individualmente, cada método a seguir retorna: arquivo origninal, assinado e o manifesto.
-                File.WriteAllBytes(documento.NomeDoArquivo, await proxy.Documentos.Original(documento.Id));
-
-                if (documento.Status == "Assinado")
-                {
-                    File.WriteAllBytes(documento.NomeDoArquivoAssinado, await proxy.Documentos.Assinado(documento.Id));
-                    File.WriteAllBytes(documento.NomeDoArquivoDeManifesto, await proxy.Documentos.Manifesto(documento.Id));
-                }
-            }
-        }
-    }
-}
-```
-O projeto de `Testes` é do tipo `Console`, o que quer dizer que você poderá executá-lo. Ao fazer isso, uma relação dos exemplos disponíveis será listado. Basta você digitar o número que corresponde ao serviço para que ele seja executado. Só é importante configurar os parâmetros de acordo com o que deseja testar.
-
-```
-EXEMPLOS DISPONIVEIS
-  01 - UploadDeLote
-  02 - LogsComDepuracao
-  03 - ConsultaDeLotes
-  04 - ConsultaDeDocumentos
-  05 - DownloadDePacote
-  06 - DadosFinanceiros
-  07 - AtualizacaoDeConfiguracoes
-  08 - RenovacaoDeChave
-  09 - NotificacoesDoLote
-  10 - UsoDoAppSettings
-  11 - DadosDoContratante
-  12 - StatusDosServicos
-  13 - BuscadorDeRecursos
-  14 - TratamentoDeErros
-  15 - DocumentosComTemplate
-  16 - PadraoPAdES
-  17 - VisualizacaoDeDumps
-INFORME O NUMERO DO EXEMPLO:
-```
-
 ## Callbacks
 Os _callbacks_ servem para recepcionar algum evento relevante que foi gerado pelo processo de assinaturas. Uma vez que o contratante informa ao serviço que ele deseja receber estas notificações, será necessário informar uma `URL` para que o serviço envie o _callback_. Além da `URL`, você pode optar também em qual formato deseja receber este _callback_, onde o padrão é o formato **JSON** e pode ser alterado para **XML**. 
 
@@ -228,7 +174,59 @@ Mensagem: Horário de Brasília Validado.
 ```
 > É importante dizer que o _proxy_, nesta versão, ignora o status atual do serviço, ou seja, mesmo que por algum motivo ele esteja indisponível, a requisição sempre será enviada.
 ---
+## Exemplos
+Para os principais cenários, foi incluído neste mesmo repositório, um projeto chamado de `Testes`, onde cada exemplo faz o consumo de um serviço, parametrizando de acordo com a necessidade de cada um, envia ao respectivo serviço e trata o retorno devolvido, que simplesmente exibe as informações em tela. Abaixo está um dos exemplos que compõem o projeto de `Testes`. Consulte o projeto para os demais exemplos.
 
+```csharp
+public class ConsultaDeDocumentos : Exemplo
+{
+    public override async Task Executar(CancellationToken cancellationToken = default)
+    {
+        using (var proxy = new ProxyDoServico(this.Conexao))
+        {
+            //Retorna todas as informações de um determinado documento, exceto seus arquivos (bytes[]).
+            var documento = await proxy.Documentos.Detalhes(new("aa9076b3-a058-44e2-b776-dca0a1743ce7"), cancellationToken);
+
+            if (documento != null)
+            {
+                Console.WriteLine($"Status: {documento.Status}");
+
+                //Individualmente, cada método a seguir retorna: arquivo origninal, assinado e o manifesto.
+                File.WriteAllBytes(documento.NomeDoArquivo, await proxy.Documentos.Original(documento.Id));
+
+                if (documento.Status == "Assinado")
+                {
+                    File.WriteAllBytes(documento.NomeDoArquivoAssinado, await proxy.Documentos.Assinado(documento.Id));
+                    File.WriteAllBytes(documento.NomeDoArquivoDeManifesto, await proxy.Documentos.Manifesto(documento.Id));
+                }
+            }
+        }
+    }
+}
+```
+O projeto de `Testes` é do tipo `Console`, o que quer dizer que você poderá executá-lo. Ao fazer isso, uma relação dos exemplos disponíveis será listado. Basta você digitar o número que corresponde ao serviço para que ele seja executado. Só é importante configurar os parâmetros de acordo com o que deseja testar.
+
+```
+EXEMPLOS DISPONIVEIS
+  01 - UploadDeLote
+  02 - LogsComDepuracao
+  03 - ConsultaDeLotes
+  04 - ConsultaDeDocumentos
+  05 - DownloadDePacote
+  06 - DadosFinanceiros
+  07 - AtualizacaoDeConfiguracoes
+  08 - RenovacaoDeChave
+  09 - NotificacoesDoLote
+  10 - UsoDoAppSettings
+  11 - DadosDoContratante
+  12 - StatusDosServicos
+  13 - BuscadorDeRecursos
+  14 - TratamentoDeErros
+  15 - DocumentosComTemplate
+  16 - PadraoPAdES
+  17 - VisualizacaoDeDumps
+INFORME O NUMERO DO EXEMPLO:
+```
 > #### CONTATOS
 >
 > - Site: <https://bitsign.com.br>
