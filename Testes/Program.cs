@@ -14,24 +14,25 @@ namespace Testes
     {
         private static readonly Dictionary<int, Exemplo> exemplos = new()
         {
-            { 1, new UploadDeLote() },
-            { 2, new LogsComDepuracao() },
-            { 3, new ConsultaDeLotes() },
-            { 4, new ConsultaDeDocumentos() },
-            { 5, new DownloadDePacote() },
-            { 6, new DadosFinanceiros() },
-            { 7, new AtualizacaoDeConfiguracoes() },
-            { 8, new RenovacaoDeChave() },
-            { 9, new NotificacoesDoLote() },
-            { 10, new UsoDoAppSettings() },
-            { 11, new DadosDoContratante() },
-            { 12, new StatusDosServicos() },
-            { 13, new BuscadorDeRecursos() },
-            { 14, new TratamentoDeErros() },
-            { 15, new DocumentosComTemplate() },
-            { 16, new PadraoPAdES() },
-            { 17, new PadraoXAdES() },
-            { 18, new VisualizacaoDeDumps() }
+            { 1, new UploadDePacote() },
+            { 2, new UploadDeLote() },
+            { 3, new LogsComDepuracao() },
+            { 4, new ConsultaDeLotes() },
+            { 5, new ConsultaDeDocumentos() },
+            { 6, new DownloadDePacote() },
+            { 7, new DadosFinanceiros() },
+            { 8, new AtualizacaoDeConfiguracoes() },
+            { 9, new RenovacaoDeChave() },
+            { 10, new NotificacoesDoLote() },
+            { 11, new UsoDoAppSettings() },
+            { 12, new DadosDoContratante() },
+            { 13, new StatusDosServicos() },
+            { 14, new BuscadorDeRecursos() },
+            { 15, new TratamentoDeErros() },
+            { 16, new DocumentosComTemplate() },
+            { 17, new PadraoPAdES() },
+            { 18, new PadraoXAdES() },
+            { 19, new VisualizacaoDeDumps() }
         };
 
         static async Task Main(string[] args)

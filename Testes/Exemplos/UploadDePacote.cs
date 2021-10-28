@@ -6,19 +6,23 @@ using BITSIGN.Proxy;
 using BITSIGN.Proxy.DTOs;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Testes.Exemplos
 {
-    public class UploadDeLote : Exemplo
+    public class UploadDePacote : Exemplo
     {
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
+            //Arquivo a ser enviado para coleta de assinatura(s).
+            //var arquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao.pdf");
+
             //Criação do proxy de comunicação com o serviço.
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                var lote = new Lote()
+                var pacote = new Pacote(new()
                 {
                     Aplicacao = new()
                     {
@@ -49,10 +53,8 @@ namespace Testes.Exemplos
                             Tipo = Documento.Tipos.Contrato,
                             Tags = "contratoId=123",
                             FormatoDoArquivo = "PDF",
-                            Download = new ()
-                            {
-                                Url = "http://localhost:33664/documentacao/BITSIGN-Instalacao-Web.pdf"
-                            },
+                            ConteudoOriginal = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf"),
+                            TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf").Length,
                             PadraoDeAssinatura = Constantes.PadroesDeAssinatura.CAdES,
                             PoliticaDeAssinatura = "PA_AD_RB_v2_3",
                             Assinaturas = new List<Assinatura>()
@@ -79,10 +81,19 @@ namespace Testes.Exemplos
                             }
                         }
                     },
+                    Observadores = new List<Observador>()
+                    {
+                        new() { Email = "teste@xpto.com.br" },
+                        new() { Email = "xpto@xpto.com.br" }
+                    },
+                    Anexos = new List<Anexo>()
+                    {
+                        new() { NomeDoArquivo = "Instrucoes.txt", Conteudo = File.ReadAllBytes("Exemplo/Instrucoes.txt"), Descricao = "Descrição sobre o processo." }
+                    },
                     Tags = "processo=456"
-                };
+                });
 
-                var urlDoLote = await proxy.Lotes.Upload(lote, cancellationToken);
+                var urlDoLote = await proxy.Lotes.Upload(pacote, cancellationToken);
 
                 Console.WriteLine(urlDoLote);
             }

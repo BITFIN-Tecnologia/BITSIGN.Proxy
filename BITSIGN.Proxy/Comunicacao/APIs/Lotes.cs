@@ -19,7 +19,6 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
     public class Lotes : API
     {
         private static readonly MediaTypeHeaderValue Zip = new("application/zip");
-        private static readonly MediaTypeHeaderValue Xml = new("application/xml");
 
         /// <summary>
         /// Inicializa a API de lotes.
@@ -30,31 +29,31 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
             : base(proxy, formato) { }
 
         /// <summary>
-        /// Upload de Manifesto.
+        /// Upload de Lote.
         /// </summary>
         /// <remarks>Utilize esta opção quando todos os documentos a serem assinados estão disponíveis através de HTTP[S], que deverão estar informados na propriedade <see cref="DTOs.Documento.Download"/>.</remarks>
-        /// <param name="manifesto"><see cref="String"/> representando o <see cref="DTOs.Lote"/> serializado em formato XML.</param>
+        /// <param name="lote">Lote contendo os documentos que devem ser encaminhados para assinatura.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns><see cref="Uri"/> onde estará disponível o lote recém criado para consulta.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
-        public async Task<Uri> Upload(string manifesto, CancellationToken cancellationToken = default)
+        public async Task<Uri> Upload(DTOs.Lote lote, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Post, "lotes")
             {
-                Content = new StringContent(manifesto)
+                Content = new StringContent(Serializador.Serializar(lote, this.FormatoDeSerializacao, "Lote"))
             })
             {
-                requisicao.Content.Headers.ContentType = Xml;
+                requisicao.Content.Headers.ContentType = this.MimeType;
 
                 return await this.Executar(requisicao, resposta => Task.FromResult(resposta.Headers.Location), cancellationToken);
             }
         }
 
         /// <summary>
-        /// Upload de Documentos.
+        /// Upload de Pacote.
         /// </summary>
-        /// <remarks>Endpoint para o envio do lote de documentos para assinatura. O conteúdo deve ser um arquivo compactado contendo o arquivo <b>manifesto.xml</b> e todos os arquivos mencionados dentro dele que deverão ser assinados digitalmente. Para maiores informações da estrutura deste arquivo e do processo, consulte <see href="https://bitsign.com.br/documentacao#integracaoPacotes">este link</see>. O tamanho do conteúdo não poderá ultrapassar <b>20MB</b>.</remarks>
-        /// <param name="pacote">O pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
+        /// <remarks>Endpoint para o envio do lote de documentos para assinatura. O conteúdo deve ser um arquivo compactado contendo o arquivo de manifesto e todos os arquivos mencionados dentro dele que deverão ser assinados digitalmente. Para maiores informações da estrutura deste arquivo e do processo, consulte <see href="https://bitsign.com.br/documentacao#integracaoPacotes">este link</see>. O tamanho do conteúdo não poderá ultrapassar <b>20MB</b>.</remarks>
+        /// <param name="pacote">Pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns><see cref="Uri"/> onde estará disponível o lote recém criado para consulta.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
@@ -108,7 +107,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Put, $"lote/{lote.Id}")
             {
-                Content = new StringContent(Serializador.Serializar(lote, this.FormatoDeSerializacao.ToString()), Encoding.UTF8, this.MimeType)
+                Content = new StringContent(Serializador.Serializar(lote, this.FormatoDeSerializacao), Encoding.UTF8, this.MimeType.MediaType)
             })
             {
                 return await this.Executar(requisicao, resposta =>

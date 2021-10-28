@@ -59,7 +59,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Put, $"aplicacoes/{aplicacao.Id}/configuracoes")
             {
-                Content = new StringContent(Serializador.Serializar(aplicacao, this.FormatoDeSerializacao.ToString()), Encoding.UTF8, this.MimeType)
+                Content = new StringContent(Serializador.Serializar(aplicacao, this.FormatoDeSerializacao), Encoding.UTF8, this.MimeType.MediaType)
             })
             {
                 await Executar(requisicao, cancellationToken);

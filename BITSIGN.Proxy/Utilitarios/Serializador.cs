@@ -61,8 +61,8 @@ namespace BITSIGN.Proxy.Utilitarios
             }
         }
 
-        internal static string Serializar(object objeto, string formato, string elementoRaiz = null) =>
-            formato.Contains(FormatoDeSerializacao.Json.ToString(), StringComparison.InvariantCultureIgnoreCase) ? Json.Serializar(objeto) : Xml.Serializar(objeto, elementoRaiz);
+        internal static string Serializar(object objeto, FormatoDeSerializacao formato, string elementoRaiz = null) =>
+            formato == FormatoDeSerializacao.Json ? Json.Serializar(objeto) : Xml.Serializar(objeto, elementoRaiz);
 
         internal static T Deserializar<T>(string conteudo, string formato, string elementoRaiz = null) where T : class =>
             formato.Contains(FormatoDeSerializacao.Json.ToString(), StringComparison.InvariantCultureIgnoreCase) ? Json.Deserializar<T>(conteudo) : Xml.Deserializar<T>(conteudo, elementoRaiz);

@@ -27,6 +27,11 @@ namespace BITSIGN.Proxy.DTOs
         public string FormatoDeCallback { get; set; }
 
         /// <summary>
+        /// Especifica o formato em que será serializado o manifesto no momento da geração do pacote, podendo ser JSON ou XML.
+        /// </summary>
+        public string FormatoDoManifesto { get; set; }
+
+        /// <summary>
         /// Relação de IPs que estão autorizados à consumir a API. Múltiplos IPs são suportados desde que separados por ponto-e-vírgula (;).
         /// </summary>
         public string IPsAutorizados { get; set; }

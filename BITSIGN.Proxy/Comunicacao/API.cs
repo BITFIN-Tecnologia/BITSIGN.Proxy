@@ -5,6 +5,7 @@ using BITSIGN.Proxy.Utilitarios;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -29,7 +30,7 @@ namespace BITSIGN.Proxy.Comunicacao
         {
             this.proxy = proxy;
             this.FormatoDeSerializacao = formato;
-            this.MimeType = $"application/{formato.ToString().ToLower()}";
+            this.MimeType = new MediaTypeWithQualityHeaderValue($"application/{formato.ToString().ToLower()}");
         }
 
         /// <summary>
@@ -40,6 +41,8 @@ namespace BITSIGN.Proxy.Comunicacao
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         protected virtual async Task Executar(HttpRequestMessage requisicao, CancellationToken cancellationToken = default)
         {
+            requisicao.Headers.Accept.Add(this.MimeType);
+
             using (var resposta = await this.proxy.SendAsync(requisicao, cancellationToken))
             {
                 try
@@ -64,6 +67,8 @@ namespace BITSIGN.Proxy.Comunicacao
         /// <returns>Retorna o objeto do tipo <typeparamref name="T"/> pronto para utilização.</returns>
         protected virtual async Task<T> Executar<T>(HttpRequestMessage requisicao, Func<HttpResponseMessage, Task<T>> analiseDeRetorno, CancellationToken cancellationToken = default)
         {
+            requisicao.Headers.Accept.Add(this.MimeType);
+
             using (var resposta = await this.proxy.SendAsync(requisicao, cancellationToken))
             {
                 try
@@ -87,6 +92,6 @@ namespace BITSIGN.Proxy.Comunicacao
         /// <summary>
         /// Mime type de acordo com o formato definido na propriedade <see cref="FormatoDeSerializacao"/>.
         /// </summary>
-        protected string MimeType { get; init; }
+        protected MediaTypeWithQualityHeaderValue MimeType { get; init; }
     }
 }

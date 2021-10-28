@@ -67,7 +67,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Post, $"buscador/{path}")
             {
-                Content = new StringContent(Serializador.Serializar(parametros, this.FormatoDeSerializacao.ToString()), Encoding.UTF8, this.MimeType)
+                Content = new StringContent(Serializador.Serializar(parametros, this.FormatoDeSerializacao), Encoding.UTF8, this.MimeType.MediaType)
             })
             {
                 return await this.Executar(requisicao, async resposta => await resposta.Content.ReadAs<T>(cancellationToken), cancellationToken);
