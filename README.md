@@ -224,7 +224,8 @@ EXEMPLOS DISPONIVEIS
   14 - TratamentoDeErros
   15 - DocumentosComTemplate
   16 - PadraoPAdES
-  17 - VisualizacaoDeDumps
+  17 - PadraoXAdES
+  18 - VisualizacaoDeDumps
 INFORME O NUMERO DO EXEMPLO:
 ```
 > #### CONTATOS
