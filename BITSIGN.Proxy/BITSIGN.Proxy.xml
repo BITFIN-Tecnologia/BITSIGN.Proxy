@@ -1180,6 +1180,11 @@
             Termo de Cessão.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeGarantia">
+            <summary>
+            Termo de Cessão.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.Data">
             <summary>
             Data de criação do documento.
