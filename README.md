@@ -233,3 +233,4 @@ INFORME O NUMERO DO EXEMPLO:
 > - Site: <https://bitsign.com.br>
 > - E-mail Técnico: <dev@bitsign.com.br>
 > - E-mail Comercial: <contato@bitsign.com.br>
+> - Telefone (+ WhatsApp): (19) 9.9901-1065
