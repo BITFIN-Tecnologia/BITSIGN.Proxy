@@ -1015,6 +1015,11 @@
             Indica quais documentos (Original, Assinado, Manifesto e Original + Manifesto) devem compor o pacote gerado quando um lote é concluído (assinado).
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Configuracao.DocumentosPermitidos">
+            <summary>
+            Permite restringir os tipos de documentos que serão adicionados à aplicação. Os tipos estão definidos em <see cref="T:BITSIGN.Proxy.DTOs.Documento.Tipos"/>.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Configuracao.PosicaoDoCarimbo">
             <summary>
             Indica o local onde será definido o carimbo da assinatura no documento original (Topo, Esquerda, Direita ou Rodapé).)

@@ -47,6 +47,11 @@ namespace BITSIGN.Proxy.DTOs
         public string DocumentosDoPacote { get; set; }
 
         /// <summary>
+        /// Permite restringir os tipos de documentos que serão adicionados à aplicação. Os tipos estão definidos em <see cref="Documento.Tipos"/>.
+        /// </summary>
+        public string DocumentosPermitidos { get; set; }
+
+        /// <summary>
         /// Indica o local onde será definido o carimbo da assinatura no documento original (Topo, Esquerda, Direita ou Rodapé).)
         /// </summary>
         public string PosicaoDoCarimbo { get; set; }
