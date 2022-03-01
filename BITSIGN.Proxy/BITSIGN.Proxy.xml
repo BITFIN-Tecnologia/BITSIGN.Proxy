@@ -1376,6 +1376,11 @@
             Endereço de e-mail da entidade.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Entidade.Telefone">
+            <summary>
+            Número do telefone celular associado à entidade.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Falha">
             <summary>
             Representa uma falha ocorrida durante a execução do serviço.

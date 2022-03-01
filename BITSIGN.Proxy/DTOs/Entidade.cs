@@ -29,5 +29,11 @@ namespace BITSIGN.Proxy.DTOs
         /// </summary>
         [XmlAttribute]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Número do telefone celular associado à entidade.
+        /// </summary>
+        [XmlAttribute]
+        public string Telefone { get; set; }
     }
 }
