@@ -83,6 +83,11 @@ namespace BITSIGN.Proxy.DTOs
         public DateTime DataDeVencimento { get; set; }
 
         /// <summary>
+        /// Valores vigentes do plano contratatado.
+        /// </summary>
+        public ValoresVigentes Valores { get; set; }
+
+        /// <summary>
         /// Informações sobre a nota fiscal associada à este fechamento.
         /// </summary>
         public NotaFiscal NotaFiscal { get; set; }

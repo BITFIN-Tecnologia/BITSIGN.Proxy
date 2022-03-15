@@ -49,5 +49,10 @@ namespace BITSIGN.Proxy.DTOs
         /// Quantidade de carimbos já consumido dentro do mês.
         /// </summary>
         public int QuantidadeDeCarimbos { get; set; }
+
+        /// <summary>
+        /// Valores vigentes do plano contratatado.
+        /// </summary>
+        public ValoresVigentes Valores { get; set; }
     }
 }

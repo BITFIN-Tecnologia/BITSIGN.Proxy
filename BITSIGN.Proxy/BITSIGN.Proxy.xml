@@ -1471,6 +1471,11 @@
             Data de vencimento para pagamento.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Fechamento.Valores">
+            <summary>
+            Valores vigentes do plano contratatado.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Fechamento.NotaFiscal">
             <summary>
             Informações sobre a nota fiscal associada à este fechamento.
@@ -1833,6 +1838,11 @@
             Quantidade de carimbos já consumido dentro do mês.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.PlanoContratado.Valores">
+            <summary>
+            Valores vigentes do plano contratatado.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Posicao">
             <summary>
             Informações complementares para os padrões de assinatura PAdES ou XAdES.
@@ -1937,6 +1947,36 @@
         <member name="P:BITSIGN.Proxy.DTOs.StatusDosServicos.Servico.Informacoes">
             <summary>
             Informações complementares sobre os recursos dependentes associados ao serviço.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.ValoresVigentes">
+            <summary>
+            Valores vigentes do plano contratatado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ValoresVigentes.Valor">
+            <summary>
+            Valor por assinatura/documento.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ValoresVigentes.ValorExcedente">
+            <summary>
+            Valor por item que exceda a quantidade do Plano.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ValoresVigentes.ValorMinimo">
+            <summary>
+            Valor mínimo do Plano.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ValoresVigentes.ValorDoArmazenamento">
+            <summary>
+            Valor cobrado pelo armazenamento (por gibabytes).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ValoresVigentes.ValorDoCarimboDoTempo">
+            <summary>
+            Valor cobrado por carimbo do tempo emitido.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.Logging.ILogger">
