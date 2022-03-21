@@ -43,6 +43,11 @@ namespace BITSIGN.Proxy.DTOs
         public string Tags { get; set; }
 
         /// <summary>
+        /// Estrutura para organização em diretórios virtuais.
+        /// </summary>
+        public string Diretorio { get; set; }
+
+        /// <summary>
         /// Totaliza a quantidade de documentos deste lote.
         /// </summary>
         [XmlAttribute]

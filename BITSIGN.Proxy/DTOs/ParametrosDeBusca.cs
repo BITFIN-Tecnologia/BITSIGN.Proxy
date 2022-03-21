@@ -46,6 +46,11 @@ namespace BITSIGN.Proxy.DTOs
         public string Tags { get; set; }
 
         /// <summary>
+        /// Diretório virtual onde está localizado o lote.
+        /// </summary>
+        public string Diretorio { get; set; }
+
+        /// <summary>
         /// Endereço do destinatário da notificação.
         /// </summary>
         public string EnderecoDoDestinario { get; set; }

@@ -1511,6 +1511,11 @@
             Tags utilizadas para correlacionar o lote ao sistema do contratante.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.Diretorio">
+            <summary>
+            Estrutura para organização em diretórios virtuais.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Lote.QtdeDeDocumentos">
             <summary>
             Totaliza a quantidade de documentos deste lote.
@@ -1731,6 +1736,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.Tags">
             <summary>
             Tags associadas ao recurso.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.Diretorio">
+            <summary>
+            Diretório virtual onde está localizado o lote.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.ParametrosDeBusca.EnderecoDoDestinario">

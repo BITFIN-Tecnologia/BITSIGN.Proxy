@@ -79,7 +79,8 @@ namespace Testes.Exemplos
                             }
                         }
                     },
-                    Tags = "processo=456"
+                    Tags = "processo=456",
+                    Diretorio = "formalizacao/contratos"
                 };
 
                 var urlDoLote = await proxy.Lotes.Upload(lote, cancellationToken);
