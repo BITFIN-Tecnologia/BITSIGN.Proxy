@@ -446,6 +446,16 @@
             <returns>Se a reabertura for realizada com sucesso, retornará <c>true</c>, caso contrário, <c>false</c>.</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Notificar(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Notificação de Assinantes
+            </summary>
+            <remarks>Cria e enfileira a notificação para os assinantes que ainda estão pendentes de assinatura em um determinado lote.</remarks>
+            <param name="id">Identificador do Lote.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Se a reabertura for realizada com sucesso, retornará <c>true</c>, caso contrário, <c>false</c>.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Excluir(System.Guid,System.Threading.CancellationToken)">
             <summary>
             Exclusão do Lote.

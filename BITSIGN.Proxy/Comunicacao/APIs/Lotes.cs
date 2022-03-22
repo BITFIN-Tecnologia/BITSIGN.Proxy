@@ -155,6 +155,32 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         }
 
         /// <summary>
+        /// Notificação de Assinantes
+        /// </summary>
+        /// <remarks>Cria e enfileira a notificação para os assinantes que ainda estão pendentes de assinatura em um determinado lote.</remarks>
+        /// <param name="id">Identificador do Lote.</param>
+        /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>Se a reabertura for realizada com sucesso, retornará <c>true</c>, caso contrário, <c>false</c>.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        public async Task<bool> Notificar(Guid id, CancellationToken cancellationToken = default)
+        {
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"lotes/{id}/notificar"))
+            {
+                return await this.Executar(requisicao, resposta =>
+                {
+                    try
+                    {
+                        return Task.FromResult(resposta.IsSuccessStatusCode);
+                    }
+                    catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }, cancellationToken);
+            }
+        }
+
+        /// <summary>
         /// Exclusão do Lote.
         /// </summary>
         /// <remarks>A exclusão incidirá a cobrança das assinaturas que já foram, eventualmente, realizadas.</remarks>
