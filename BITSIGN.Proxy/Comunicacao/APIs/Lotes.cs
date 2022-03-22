@@ -98,16 +98,46 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <summary>
         /// Alteração do Lote.
         /// </summary>
-        /// <remarks>Para aqueles assinantes que ainda estejam pendentes de assinatura, receberão uma nova notificação.</remarks>
+        /// <remarks>Possibilita a alteração de informações de um determinado lote.</remarks>
         /// <param name="lote">Objeto contendo o lote e suas informações para alteração.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns>Se a alteração for realizada com sucesso, retornará <c>true</c>, caso contrário, <c>false</c>.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         public async Task<bool> Alterar(DTOs.Lote lote, CancellationToken cancellationToken = default)
         {
-            using (var requisicao = new HttpRequestMessage(HttpMethod.Put, $"lote/{lote.Id}")
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Put, $"lotes/{lote.Id}")
             {
                 Content = new StringContent(Serializador.Serializar(lote, this.FormatoDeSerializacao), Encoding.UTF8, this.MimeType.MediaType)
+            })
+            {
+                return await this.Executar(requisicao, resposta =>
+                {
+                    try
+                    {
+                        return Task.FromResult(resposta.IsSuccessStatusCode);
+                    }
+                    catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }, cancellationToken);
+            }
+        }
+
+        /// <summary>
+        /// Reabertura do Lote.
+        /// </summary>
+        /// <remarks>Reabre o lote para a coleta das assinaturas faltantes. Assinantes que estejam pendentes serão notificados.</remarks>
+        /// <param name="id">Identificador do Lote.</param>
+        /// <param name="dataDeExpiracao">Nova data de expiração do lote.</param>
+        /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>Se a reabertura for realizada com sucesso, retornará <c>true</c>, caso contrário, <c>false</c>.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        public async Task<bool> Reabrir(Guid id, DateTime dataDeExpiracao, CancellationToken cancellationToken = default)
+        {
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Patch, $"lotes/{id}/reabrir")
+            {
+                Content = new StringContent(Serializador.Serializar(new DTOs.Lote() { Id = id, DataDeExpiracao = dataDeExpiracao }, this.FormatoDeSerializacao), Encoding.UTF8, this.MimeType.MediaType)
             })
             {
                 return await this.Executar(requisicao, resposta =>

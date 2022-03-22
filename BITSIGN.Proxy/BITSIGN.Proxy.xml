@@ -429,10 +429,21 @@
             <summary>
             Alteração do Lote.
             </summary>
-            <remarks>Para aqueles assinantes que ainda estejam pendentes de assinatura, receberão uma nova notificação.</remarks>
+            <remarks>Possibilita a alteração de informações de um determinado lote.</remarks>
             <param name="lote">Objeto contendo o lote e suas informações para alteração.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Se a alteração for realizada com sucesso, retornará <c>true</c>, caso contrário, <c>false</c>.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Reabrir(System.Guid,System.DateTime,System.Threading.CancellationToken)">
+            <summary>
+            Reabertura do Lote.
+            </summary>
+            <remarks>Reabre o lote para a coleta das assinaturas faltantes. Assinantes que estejam pendentes serão notificados.</remarks>
+            <param name="id">Identificador do Lote.</param>
+            <param name="dataDeExpiracao">Nova data de expiração do lote.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Se a reabertura for realizada com sucesso, retornará <c>true</c>, caso contrário, <c>false</c>.</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Excluir(System.Guid,System.Threading.CancellationToken)">
