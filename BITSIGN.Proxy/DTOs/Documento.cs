@@ -165,6 +165,12 @@ namespace BITSIGN.Proxy.DTOs
         public string PoliticaDeAssinatura { get; set; }
 
         /// <summary>
+        /// Indica se as assinaturas serão anexadas ao próprio documento. O padrão é <see cref="bool">true</see>.
+        /// </summary>
+        [XmlAttribute]
+        public bool AssinaturaAnexada { get; set; } = true;
+
+        /// <summary>
         /// Tags utilizadas para correlacionar o documento ao sistema do contratante.
         /// </summary>
         [XmlAttribute]

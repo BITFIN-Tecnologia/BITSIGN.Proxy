@@ -1271,6 +1271,11 @@
             Política de assinatura utilizada.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.AssinaturaAnexada">
+            <summary>
+            Indica se as assinaturas serão anexadas ao próprio documento. O padrão é <see cref="T:System.Boolean">true</see>.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.Tags">
             <summary>
             Tags utilizadas para correlacionar o documento ao sistema do contratante.

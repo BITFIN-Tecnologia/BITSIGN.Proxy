@@ -57,6 +57,7 @@ namespace Testes.Exemplos
                             TamanhoDoArquivo = File.ReadAllBytes("Exemplo/ContratoDeLocacao1.pdf").Length,
                             PadraoDeAssinatura = Constantes.PadroesDeAssinatura.CAdES,
                             PoliticaDeAssinatura = "PA_AD_RB_v2_3",
+                            AssinaturaAnexada = true,
                             Assinaturas = new List<Assinatura>()
                             {
                                 new()
