@@ -247,6 +247,12 @@ namespace BITSIGN.Proxy.DTOs
         public string UrlAoVivo { get; set; }
 
         /// <summary>
+        /// Número utilizado para ordenar o documento durante a exibição ao(s) assinante(s).
+        /// </summary>
+        [XmlAttribute]
+        public int Ordenacao { get; set; }
+
+        /// <summary>
         /// Relação de assinaturas associadas ao documento.
         /// </summary>
         public List<Assinatura> Assinaturas { get; set; }

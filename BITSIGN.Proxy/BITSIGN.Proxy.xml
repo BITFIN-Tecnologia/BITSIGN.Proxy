@@ -1336,6 +1336,11 @@
             URL para acesso ao vivo do andamento das assinaturas do documento.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.Ordenacao">
+            <summary>
+            Número utilizado para ordenar o documento durante a exibição ao(s) assinante(s).
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.Assinaturas">
             <summary>
             Relação de assinaturas associadas ao documento.
