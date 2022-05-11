@@ -208,29 +208,31 @@ O projeto de `Testes` é do tipo `Console`, o que quer dizer que você poderá e
 
 ```
 EXEMPLOS DISPONIVEIS
-  01 - UploadDeLote
-  02 - LogsComDepuracao
-  03 - ConsultaDeLotes
-  04 - ConsultaDeDocumentos
-  05 - DownloadDePacote
-  06 - DadosFinanceiros
-  07 - AtualizacaoDeConfiguracoes
-  08 - RenovacaoDeChave
-  09 - NotificacoesDoLote
-  10 - UsoDoAppSettings
-  11 - DadosDoContratante
-  12 - StatusDosServicos
-  13 - BuscadorDeRecursos
-  14 - TratamentoDeErros
-  15 - DocumentosComTemplate
-  16 - PadraoPAdES
-  17 - PadraoXAdES
-  18 - VisualizacaoDeDumps
+  01 - UploadDePacote
+  02 - UploadDeLote
+  03 - LogsComDepuracao
+  04 - ConsultaDeLotes
+  05 - ConsultaDeDocumentos
+  06 - DownloadDePacote
+  07 - DadosFinanceiros
+  08 - AtualizacaoDeConfiguracoes
+  09 - RenovacaoDeChave
+  10 - NotificacoesDoLote
+  11 - UsoDoAppSettings
+  12 - DadosDoContratante
+  13 - StatusDosServicos
+  14 - BuscadorDeRecursos
+  15 - TratamentoDeErros
+  16 - DocumentosComTemplate
+  17 - PadraoPAdES
+  18 - PadraoXAdES
+  19 - VisualizacaoDeDumps
+  
 INFORME O NUMERO DO EXEMPLO:
 ```
 > #### CONTATOS
 >
 > - Site: <https://bitsign.com.br>
-> - E-mail Técnico: <dev@bitsign.com.br>
+> - E-mail Técnico: <dev@bitfin.com.br>
 > - E-mail Comercial: <contato@bitsign.com.br>
-> - Telefone (+ WhatsApp): (19) 9.9901-1065
+> - Telefone (+WhatsApp): +55 (19) 9.9901-1065
