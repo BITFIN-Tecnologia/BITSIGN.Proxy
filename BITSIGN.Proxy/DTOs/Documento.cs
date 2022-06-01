@@ -73,10 +73,6 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string Exame = "Exame";
             /// <summary>
-            /// Procuração.
-            /// </summary>
-            public const string Procuracao = "Procuração";
-            /// <summary>
             /// Nota Fiscal.
             /// </summary>
             public const string NotaFiscal = "Nota Fiscal";
@@ -84,6 +80,14 @@ namespace BITSIGN.Proxy.DTOs
             /// Nota Promissória.
             /// </summary>
             public const string NotaPromissoria = "Nota Promissória";
+            /// <summary>
+            /// Procuração.
+            /// </summary>
+            public const string Procuracao = "Procuração";
+            /// <summary>
+            /// Rescisão.
+            /// </summary>
+            public const string Rescisao = "Rescisão";
             /// <summary>
             /// Termo de Cessão.
             /// </summary>

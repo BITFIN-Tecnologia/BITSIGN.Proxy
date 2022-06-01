@@ -893,6 +893,11 @@
             Coleção de assinantes associados à assinatura.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinatura.Posicoes">
+            <summary>
+            Posicionamento das assinaturas no documento PDF (padrão PAdES).
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Base">
             <summary>
             Classe com recursos comuns para os DTOs.
@@ -1186,11 +1191,6 @@
             Exame.
             </summary>
         </member>
-        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Procuracao">
-            <summary>
-            Procuração.
-            </summary>
-        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.NotaFiscal">
             <summary>
             Nota Fiscal.
@@ -1199,6 +1199,16 @@
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.NotaPromissoria">
             <summary>
             Nota Promissória.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Procuracao">
+            <summary>
+            Procuração.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Rescisao">
+            <summary>
+            Rescisão.
             </summary>
         </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeCessao">

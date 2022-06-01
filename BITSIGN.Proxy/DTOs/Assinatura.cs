@@ -48,5 +48,10 @@ namespace BITSIGN.Proxy.DTOs
         /// Coleção de assinantes associados à assinatura.
         /// </summary>
         public List<Assinante> Assinantes { get; set; }
+
+        /// <summary>
+        /// Posicionamento das assinaturas no documento PDF (padrão PAdES).
+        /// </summary>
+        public List<Posicao> Posicoes { get; set; }
     }
 }
