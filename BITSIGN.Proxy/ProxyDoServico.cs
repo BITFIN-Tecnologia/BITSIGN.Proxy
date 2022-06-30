@@ -60,6 +60,7 @@ namespace BITSIGN.Proxy
             this.Buscador = new(proxy, conexao.FormatoDeSerializacao);
             this.CarimboDoTempo = new(proxy);
             this.Dumps = new(proxy, conexao.Ambiente);
+            this.Certificados = new(proxy, conexao.FormatoDeSerializacao);
             this.Status = new(conexao.Status);
         }
 
@@ -117,6 +118,11 @@ namespace BITSIGN.Proxy
         /// API para visualização de Dumps.
         /// </summary>
         public Dumps Dumps { get; }
+
+        /// <summary>
+        /// API de Certificados.
+        /// </summary>
+        public Certificados Certificados { get; }
 
         /// <summary>
         /// API de status dos Serviços.

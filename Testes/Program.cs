@@ -32,7 +32,8 @@ namespace Testes
             { 16, new DocumentosComTemplate() },
             { 17, new PadraoPAdES() },
             { 18, new PadraoXAdES() },
-            { 19, new VisualizacaoDeDumps() }
+            { 19, new VisualizacaoDeDumps() },
+            { 20, new ValidandoCertificado() }
         };
 
         static async Task Main(string[] args)
