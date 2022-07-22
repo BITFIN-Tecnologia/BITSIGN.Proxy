@@ -80,6 +80,9 @@ using (var log = new LogEmTexto(new StreamWriter("Log.txt", true)))
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.Content-Type: application/json; charset=utf-8
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - FIM DO ESCOPO
 ```
+
+> **Correlação com a Resposta:** Por fim, quando este código estiver presente na requisição, a BITSIGN o devolverá, também, através do mesmo _header_ na resposta; com isso, a aplicação consumidora poderá realizar alguma consistência sobre ele, como correlacionar as mensagens, armazenamento de _logs_, etc.
+
 ## Callbacks
 Os _callbacks_ servem para recepcionar algum evento relevante que foi gerado pelo processo de assinaturas. Uma vez que o contratante informa ao serviço que ele deseja receber estas notificações, será necessário informar uma `URL` para que o serviço envie o _callback_. Além da `URL`, você pode optar também em qual formato deseja receber este _callback_, onde o padrão é o formato **JSON** e pode ser alterado para **XML**. 
 
