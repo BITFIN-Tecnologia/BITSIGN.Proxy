@@ -6,7 +6,7 @@ Além da comunicação que já está embutida, a biblioteca também oferece recu
 
 > Processo de Assinaturas (visão técnica e operacional): [https://bitsign.com.br/documentacao](https://bitsign.com.br/documentacao)
 
-> Documentação das APIs: [https://bitsign.com.br/apis](https://bitsign.com.br/apis)
+> Documentação das APIs: [https://bitsign.com.br/documentacao/apis](https://bitsign.com.br/documentacao/apis)
 
 > NUGET: [PM> Install-Package BITFIN.BITSIGN.Proxy](https://www.nuget.org/packages/BITFIN.BITSIGN.Proxy)
 
@@ -227,6 +227,7 @@ EXEMPLOS DISPONIVEIS
   17 - PadraoPAdES
   18 - PadraoXAdES
   19 - VisualizacaoDeDumps
+  20 - ValidandoCertificado
   
 INFORME O NUMERO DO EXEMPLO:
 ```
