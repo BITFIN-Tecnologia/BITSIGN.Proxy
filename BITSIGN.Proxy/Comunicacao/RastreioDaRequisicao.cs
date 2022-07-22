@@ -12,7 +12,7 @@ namespace BITSIGN.Proxy.Comunicacao
 {
     internal class RastreioDaRequisicao : HttpClientHandler
     {
-        private const string CodigoDeRastreio = "BS-CodigoDeRastreio";
+        private const string CodigoDeRastreio = "BS-Tracking";
 
         private readonly ILogger logger;
         private readonly IRastreio rastreioDeRequisicao;
