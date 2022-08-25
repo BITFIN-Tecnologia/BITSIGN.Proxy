@@ -89,6 +89,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string Rescisao = "Rescisão";
             /// <summary>
+            /// Termo de Adesão.
+            /// </summary>
+            public const string TermoDeAdesao = "Termo de Adesão";
+            /// <summary>
             /// Termo de Cessão.
             /// </summary>
             public const string TermoDeCessao = "Termo de Cessão";
@@ -96,6 +100,10 @@ namespace BITSIGN.Proxy.DTOs
             /// Termo de Cessão.
             /// </summary>
             public const string TermoDeGarantia = "Termo de Garantia";
+            /// <summary>
+            /// Termo de Titularidade.
+            /// </summary>
+            public const string TermoDeTitularidade = "Termo de Titularidade";
         }
 
         /// <summary>
@@ -213,29 +221,25 @@ namespace BITSIGN.Proxy.DTOs
         /// <summary>
         /// Conteúdo do arquivo original.
         /// </summary>
-        [XmlIgnore]
-        [JsonIgnore]
+        [XmlIgnore, JsonIgnore]
         public byte[] ConteudoOriginal { get; set; }
 
         /// <summary>
         /// Conteúdo do arquivo assinado.
         /// </summary>
-        [XmlIgnore]
-        [JsonIgnore]
+        [XmlIgnore, JsonIgnore]
         public byte[] ConteudoAssinado { get; set; }
 
         /// <summary>
         /// Conteúdo do arquivo de manifesto de assinaturas.
         /// </summary>
-        [XmlIgnore]
-        [JsonIgnore]
+        [XmlIgnore, JsonIgnore]
         public byte[] ConteudoDoManifesto { get; set; }
 
         /// <summary>
         /// Conteúdo do arquivo original com o manifesto de assinaturas incluído.
         /// </summary>
-        [XmlIgnore]
-        [JsonIgnore]
+        [XmlIgnore, JsonIgnore]
         public byte[] ConteudoDoOrginalComManifesto { get; set; }
 
         /// <summary>

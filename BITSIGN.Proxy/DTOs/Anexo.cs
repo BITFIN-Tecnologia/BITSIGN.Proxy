@@ -2,6 +2,7 @@
 // Código exclusivo para consumo dos serviços (APIs) da BITSIGN.
 
 using System.Diagnostics;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace BITSIGN.Proxy.DTOs
@@ -27,7 +28,7 @@ namespace BITSIGN.Proxy.DTOs
         /// <summary>
         /// Conteúdo do arquivo anexo.
         /// </summary>
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public byte[] Conteudo { get; set; }
     }
 }

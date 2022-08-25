@@ -2,85 +2,84 @@
 // Código exclusivo para consumo dos serviços (APIs) da BITSIGN.
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace BITSIGN.Proxy.DTOs
 {
     /// <summary>
-    /// Resultado da análise realizada sobre o certificado.
+    /// Informações sobre o certificado digital.
     /// </summary>
     [DebuggerDisplay("{Thumbprint,nq}")]
-    public class ResultadoDaAnalise
+    public class Certificado : Base
     {
         /// <summary>
-        /// Data da análise.
+        /// Data de cadastro na plataforma.
         /// </summary>
         public DateTime Data { get; set; }
 
         /// <summary>
-        /// Data de referência para validação da expiração.
-        /// </summary>
-        public DateTime DataDeReferencia { get; set; }
-
-        /// <summary>
-        /// Nome (ou razão social) do proprietário.
+        /// Nome da entidade (Pessoa Física ou Jurídica) proprietária do certificado.
         /// </summary>
         public string NomeDoProprietario { get; set; }
 
         /// <summary>
-        /// CNPJ/CPF do proprietário.
+        /// Documento da entidade (CPF ou CNPJ) proprietária do certificado.
         /// </summary>
         public string DocumentoDoProprietario { get; set; }
 
         /// <summary>
-        /// A1, A2, A3 ou A4.
+        /// E-mail associado ao certificado (RFC 822).
+        /// </summary>
+        public string EmailDoProprietario { get; set; }
+
+        /// <summary>
+        /// Série encontrada no certificado (A1, A2, A3 e A4)."
         /// </summary>
         public string Serie { get; set; }
 
         /// <summary>
-        /// Nome completo do certificado.
+        /// Identificação sobre a entidade para qual o certificado foi emitido.
         /// </summary>
         public string Subject { get; set; }
 
         /// <summary>
-        /// Entidade emissora.
+        /// Nome da Autoridade Certificadora, emissora do certificado.
         /// </summary>
         public string Emissor { get; set; }
 
         /// <summary>
-        /// Identificador.
+        /// Hash sobre as propriedades do certificado.
         /// </summary>
         public string Thumbprint { get; set; }
 
         /// <summary>
-        /// Número de Série.
+        /// Número atribuído pela Autoridade Certificadora, emissora do certificado.
         /// </summary>
         public string NumeroDeSerie { get; set; }
 
         /// <summary>
-        /// Início da validade.
+        /// Data de início de sua validade.
         /// </summary>
         public DateTime DataDeValidadeInicial { get; set; }
 
         /// <summary>
-        /// Final da validade.
+        /// Data final de sua validade.
         /// </summary>
         public DateTime DataDeValidadeFinal { get; set; }
 
         /// <summary>
         /// Versão.
         /// </summary>
-        public int Versao { get; set; }
+        public int? Versao { get; set; }
 
         /// <summary>
-        /// Indica se atende as exigências para realização da assinatura digital.
+        /// Indica se o certificado está revogado.
         /// </summary>
-        public bool Valido { get; set; }
+        public bool Revogado { get; set; }
 
         /// <summary>
-        /// Mensagens geradas pela análise.
+        /// Data em que o certificado foi revogado.
         /// </summary>
-        public IEnumerable<string> Mensagens { get; set; }
+        public DateTime? DataDeRevogacao { get; set; }
     }
 }

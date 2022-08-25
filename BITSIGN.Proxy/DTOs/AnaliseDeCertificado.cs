@@ -8,7 +8,7 @@ namespace BITSIGN.Proxy.DTOs
     /// <summary>
     /// Instruções para análise do certificado.
     /// </summary>
-    public class Analise
+    public class AnaliseDeCertificado
     {
         /// <summary>
         /// Arquivo *.cer ou *.pfx codificado em Base64.

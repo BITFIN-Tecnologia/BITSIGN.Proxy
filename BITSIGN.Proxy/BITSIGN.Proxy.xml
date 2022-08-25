@@ -214,13 +214,61 @@
             <param name="formato">Formato para serialização dos objetos.</param>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
-        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Certificados.Validar(BITSIGN.Proxy.DTOs.Analise,System.Threading.CancellationToken)">
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Certificados.Emitir(BITSIGN.Proxy.DTOs.EmissaoDeCertificado,System.Threading.CancellationToken)">
+            <summary>
+            Emissão de Certificado.
+            </summary>
+            <param name="parametros">Informações para emissão do certificado.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Arquivo PFX codificado em Base64.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Certificados.TermoDeTitularidade(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Titularidade do Certificado.
+            </summary>
+            <param name="id">Identificador do Certificado.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Arquivo PDF com o Termo de Titularidade.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Certificados.Revogar(System.Guid,BITSIGN.Proxy.DTOs.RevogacaoDeCertificado,System.Threading.CancellationToken)">
+            <summary>
+            Revogação de Certificado.
+            </summary>
+            <param name="id">Identificador do Certificado.</param>
+            <param name="parametros">Dados complementares para revogar o certificado.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns></returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Certificados.Validar(BITSIGN.Proxy.DTOs.AnaliseDeCertificado,System.Threading.CancellationToken)">
             <summary>
             Validação de Certificado.
             </summary>
             <param name="analise">Parâmetros para análise do certificado.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Informações sobre o certificado e status de validação.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Certificados.Validar(System.Threading.CancellationToken)">
+            <summary>
+            Relação de Certificados Emitidos.
+            </summary>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Certificados Emitidos.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Certificados.Cadeia(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            "Cadeia Privada de Certificação.
+            </summary>
+            <param name="id">Identificador da Cadeia Privada (Organização).</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Certificados Raiz e Intermediário(s) em formato P7B.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Certificados.Crl(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Repositório de Certificados Revogados.
+            </summary>
+            <param name="alias">Alias da Organização que deseja baixar a relação de certificados revogados.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Arquivo CRL.</returns>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Contratantes">
             <summary>
@@ -248,7 +296,16 @@
             </summary>
             <param name="id">Identificador do Contratante.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-            <returns>Coleção com as notificações enviadas à todos os assinantes envolvidos no lote.</returns>
+            <returns>Relação de Aplicações criadas pelo contratante.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Contratantes.Organizacoes(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Organizações do Contratante.
+            </summary>
+            <param name="id">Identificador do Contratante.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Relação de Organizações criadas pelo contratante.</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Contratantes.Observadores(System.Guid,System.Threading.CancellationToken)">
@@ -257,7 +314,7 @@
             </summary>
             <param name="id">Identificador do Contratante.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-            <returns>Coleção com as notificações enviadas à todos os assinantes envolvidos no lote.</returns>
+            <returns>Relação de Observadores globais criados pelo contratante.</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Documentos">
@@ -759,27 +816,27 @@
             Define o tempo máximo de espera permitido para executar uma requisição.
             </summary>
         </member>
-        <member name="T:BITSIGN.Proxy.DTOs.Analise">
+        <member name="T:BITSIGN.Proxy.DTOs.AnaliseDeCertificado">
             <summary>
             Instruções para análise do certificado.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Analise.Certificado">
+        <member name="P:BITSIGN.Proxy.DTOs.AnaliseDeCertificado.Certificado">
             <summary>
             Arquivo *.cer ou *.pfx codificado em Base64.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Analise.DataDeReferencia">
+        <member name="P:BITSIGN.Proxy.DTOs.AnaliseDeCertificado.DataDeReferencia">
             <summary>
             Data de referência para validação da expiração.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Analise.Senha">
+        <member name="P:BITSIGN.Proxy.DTOs.AnaliseDeCertificado.Senha">
             <summary>
             Senha para acessar a chave privada (quando houver).
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Analise.ValidaChavePrivada">
+        <member name="P:BITSIGN.Proxy.DTOs.AnaliseDeCertificado.ValidaChavePrivada">
             <summary>
             Indica se deve validar a presença da chave privada.
             </summary>
@@ -1027,6 +1084,81 @@
             Identificador da aplicação à qual o callback está relacionado.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Certificado">
+            <summary>
+            Informações sobre o certificado digital.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.Data">
+            <summary>
+            Data de cadastro na plataforma.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.NomeDoProprietario">
+            <summary>
+            Nome da entidade (Pessoa Física ou Jurídica) proprietária do certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.DocumentoDoProprietario">
+            <summary>
+            Documento da entidade (CPF ou CNPJ) proprietária do certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.EmailDoProprietario">
+            <summary>
+            E-mail associado ao certificado (RFC 822).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.Serie">
+            <summary>
+            Série encontrada no certificado (A1, A2, A3 e A4)."
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.Subject">
+            <summary>
+            Identificação sobre a entidade para qual o certificado foi emitido.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.Emissor">
+            <summary>
+            Nome da Autoridade Certificadora, emissora do certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.Thumbprint">
+            <summary>
+            Hash sobre as propriedades do certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.NumeroDeSerie">
+            <summary>
+            Número atribuído pela Autoridade Certificadora, emissora do certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.DataDeValidadeInicial">
+            <summary>
+            Data de início de sua validade.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.DataDeValidadeFinal">
+            <summary>
+            Data final de sua validade.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.Versao">
+            <summary>
+            Versão.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.Revogado">
+            <summary>
+            Indica se o certificado está revogado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Certificado.DataDeRevogacao">
+            <summary>
+            Data em que o certificado foi revogado.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Certificadora">
             <summary>
             Informações gerais sobre a certificadora.
@@ -1257,6 +1389,11 @@
             Rescisão.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeAdesao">
+            <summary>
+            Termo de Adesão.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeCessao">
             <summary>
             Termo de Cessão.
@@ -1265,6 +1402,11 @@
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeGarantia">
             <summary>
             Termo de Cessão.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeTitularidade">
+            <summary>
+            Termo de Titularidade.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.Data">
@@ -1441,6 +1583,56 @@
         <member name="P:BITSIGN.Proxy.DTOs.Dump.Tamanho">
             <summary>
             Tamanho (em bytes) do conteúdo.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Emissao">
+            <summary>
+            Informações sobre a emissão do certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Emissao.Data">
+            <summary>
+            Data em que foi emitido o certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Emissao.Certificado">
+            <summary>
+            Dados do certificado (final) emitido para as entidades subordinadas.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.EmissaoDeCertificado">
+            <summary>
+            Parâmetros para emissão de certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.EmissaoDeCertificado.OrganizacaoId">
+            <summary>
+            Identificador da Unidade Organizacional (OU).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.EmissaoDeCertificado.NomeDoProprietario">
+            <summary>
+            Nome da entidade (Pessoa Física ou Jurídica) proprietária do certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.EmissaoDeCertificado.DocumentoDoProprietario">
+            <summary>
+            Documento da entidade (CPF ou CNPJ) proprietária do certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.EmissaoDeCertificado.EmailDoProprietario">
+            <summary>
+            E-mail associado ao certificado (RFC 822).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.EmissaoDeCertificado.DataDeValidade">
+            <summary>
+            Data/hora final da validade do certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.EmissaoDeCertificado.Senha">
+            <summary>
+            Senha para geração do arquivo PFX.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Entidade">
@@ -1733,6 +1925,41 @@
             Indica o tipo de observador (Global ou Pontual).
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Organizacao">
+            <summary>
+            Unidade Organizacional (OU) para emissão de certificados de cadeia privada.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Organizacao.Contratante">
+            <summary>
+            Contrante proprietário da organização.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Organizacao.Alias">
+            <summary>
+            Alias que identifica unicamente a organização.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Organizacao.Descricao">
+            <summary>
+            Descrição de uso e finalidade da organização.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Organizacao.Data">
+            <summary>
+            Data de criação da organização.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Organizacao.Certificado">
+            <summary>
+            Dados do certificado emitido para a organização.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Organizacao.Emissoes">
+            <summary>
+            Relação de certificados emitidos nesta organização.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Pacote">
             <summary>
             Classe que abstrai a complexidade para criação dos pacotes de lotes e documentos que são enviados e recebidos.
@@ -1996,79 +2223,94 @@
             </summary>
             <returns><see cref="T:System.String"/> com as propriedades formatadas de acordo com a finalidade.</returns>
         </member>
-        <member name="T:BITSIGN.Proxy.DTOs.ResultadoDaAnalise">
+        <member name="T:BITSIGN.Proxy.DTOs.ResultadoDaAnaliseDeCertificado">
             <summary>
             Resultado da análise realizada sobre o certificado.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.Data">
+        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnaliseDeCertificado.Data">
             <summary>
             Data da análise.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.DataDeReferencia">
+        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnaliseDeCertificado.DataDeReferencia">
             <summary>
             Data de referência para validação da expiração.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.NomeDoProprietario">
+        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnaliseDeCertificado.Certificado">
             <summary>
-            Nome (ou razão social) do proprietário.
+            Informações sobre o certificado digital.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.DocumentoDoProprietario">
-            <summary>
-            CNPJ/CPF do proprietário.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.Serie">
-            <summary>
-            A1, A2, A3 ou A4.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.Subject">
-            <summary>
-            Nome completo do certificado.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.Emissor">
-            <summary>
-            Entidade emissora.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.Thumbprint">
-            <summary>
-            Identificador.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.NumeroDeSerie">
-            <summary>
-            Número de Série.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.DataDeValidadeInicial">
-            <summary>
-            Início da validade.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.DataDeValidadeFinal">
-            <summary>
-            Final da validade.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.Versao">
-            <summary>
-            Versão.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.Valido">
+        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnaliseDeCertificado.Valido">
             <summary>
             Indica se atende as exigências para realização da assinatura digital.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnalise.Mensagens">
+        <member name="P:BITSIGN.Proxy.DTOs.ResultadoDaAnaliseDeCertificado.Mensagens">
             <summary>
             Mensagens geradas pela análise.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado">
+            <summary>
+            Parâmetros para revogação de certificado.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado.ComprometimentoDaChavePrivada">
+            <summary>
+            Comprometimento da Chave Privada.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado.EncerramentoDeRelacionamento">
+            <summary>
+            Encerramento de Relacionamento.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado.CertificadoSubstituido">
+            <summary>
+            Certificado Substituído.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado.InterrupcaoDasAtividades">
+            <summary>
+            Interrupção das Atividades.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado.EsquecimentoDaSenhaDeInstalacao">
+            <summary>
+            Esquecimento da Senha de Instalação.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado.EmitidoIndevidamente">
+            <summary>
+            Emitido Indevidamente.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado.DadosIncorrretos">
+            <summary>
+            Dados Incorrretos.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado.OutroMotivo">
+            <summary>
+            Outro Motivo.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado.OrganizacaoId">
+            <summary>
+            Identificador da Unidade Organizacional (OU).
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado.Motivo">
+            <summary>
+            Comprometimento da Chave Privada, Encerramento de Relacionamento, Certificado Substituído, Interrupção das Atividades, Esquecimento da Senha de Instalação, Emitido Indevidamente, Dados Incorrretos, Outro Motivo.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.RevogacaoDeCertificado.Complemento">
+            <summary>
+            Complemento para justificativa do motivo de revogação.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.StatusDosServicos">

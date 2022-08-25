@@ -33,7 +33,8 @@ namespace Testes
             { 17, new PadraoPAdES() },
             { 18, new PadraoXAdES() },
             { 19, new VisualizacaoDeDumps() },
-            { 20, new ValidandoCertificado() }
+            { 20, new ValidandoCertificado() },
+            { 21, new EmissaoDeCertificados() }
         };
 
         static async Task Main(string[] args)

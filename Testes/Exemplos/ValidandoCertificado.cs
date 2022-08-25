@@ -29,8 +29,8 @@ namespace Testes.Exemplos
                 if (resultado != null)
                 {
                     Console.WriteLine($"Válido: {resultado.Valido}");
-                    Console.WriteLine($"Nome: {resultado.NomeDoProprietario}");
-                    Console.WriteLine($"Documento: {resultado.DocumentoDoProprietario}");
+                    Console.WriteLine($"Nome: {resultado.Certificado.NomeDoProprietario}");
+                    Console.WriteLine($"Documento: {resultado.Certificado.DocumentoDoProprietario}");
                 }
             }
         }
