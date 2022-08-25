@@ -231,6 +231,7 @@ EXEMPLOS DISPONIVEIS
   18 - PadraoXAdES
   19 - VisualizacaoDeDumps
   20 - ValidandoCertificado
+  21 - EmissaoDeCertificados
   
 INFORME O NUMERO DO EXEMPLO:
 ```
