@@ -13,6 +13,16 @@ namespace BITSIGN.Proxy.DTOs
     public class Observador : Base
     {
         /// <summary>
+        /// Indica que o observador está associado à um lote/documento específico.
+        /// </summary>
+        public const string Pontual = "Pontual";
+
+        /// <summary>
+        /// Indica que o observador estará associados à todos os lotes/documentos do contratante.
+        /// </summary>
+        public const string Global = "Global";
+
+        /// <summary>
         /// Endereço de e-mail para onde a notificação será enviada.
         /// </summary>
         [XmlAttribute]

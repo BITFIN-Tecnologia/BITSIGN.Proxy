@@ -91,14 +91,14 @@ namespace Testes.Exemplos
                         }
                     },
                         Observadores = new List<Observador>()
-                    {
-                        new() { Email = "teste@xpto.com.br" },
-                        new() { Email = "xpto@xpto.com.br" }
-                    },
+                        {
+                            new() { Email = "teste@xpto.com.br", Tipo = Observador.Pontual },
+                            new() { Email = "xpto@xpto.com.br", Tipo = Observador.Pontual }
+                        },
                         Anexos = new List<Anexo>()
-                    {
-                        new() { NomeDoArquivo = "Instrucoes.txt", Conteudo = File.ReadAllBytes("Exemplo/Instrucoes.txt"), Descricao = "Descrição sobre o processo." }
-                    },
+                        {
+                            new() { NomeDoArquivo = "Instrucoes.txt", Conteudo = File.ReadAllBytes("Exemplo/Instrucoes.txt"), Descricao = "Descrição sobre o processo." }
+                        },
                         Tags = "processo=456"
                     });
 

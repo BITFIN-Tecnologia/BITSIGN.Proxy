@@ -1915,6 +1915,16 @@
             Observador do processo de assinaturas.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Observador.Pontual">
+            <summary>
+            Indica que o observador está associado à um lote/documento específico.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Observador.Global">
+            <summary>
+            Indica que o observador estará associados à todos os lotes/documentos do contratante.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Observador.Email">
             <summary>
             Endereço de e-mail para onde a notificação será enviada.
