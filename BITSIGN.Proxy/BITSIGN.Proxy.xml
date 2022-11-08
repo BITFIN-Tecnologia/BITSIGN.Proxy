@@ -220,7 +220,7 @@
             </summary>
             <param name="parametros">Informações para emissão do certificado.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-            <returns>Arquivo PFX codificado em Base64.</returns>
+            <returns>Arquivo PFX/CER codificado em Base64.</returns>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Certificados.TermoDeTitularidade(System.Guid,System.Threading.CancellationToken)">
             <summary>
@@ -625,6 +625,36 @@
             </summary>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
             <returns>Relatório com o status atual dos serviços e recursos.</returns>
+        </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Uploads">
+            <summary>
+            Armazenamento de arquivos para posterior assinatura.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Uploads.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Inicializa a API de uploads.
+            </summary>
+            <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Uploads.Enviar(System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Upload de Arquivos.
+            </summary>
+            <param name="nomeDoArquivo">Nome do Arquivo.</param>
+            <param name="conteudoDoArquivo">Conteúdo do Arquivo.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Dados do arquivo armazenado.</returns>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Uploads.Download(System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Download de Arquivos.
+            </summary>
+            <param name="id">Identificador do Arquivo.</param>
+            <param name="nomeDoArquivo">Nome do Arquivo enviado.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Conteúdo do Arquivo (em bytes).</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">
             <summary>
@@ -1096,7 +1126,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Certificado.NomeDoProprietario">
             <summary>
-            Nome da entidade (Pessoa Física ou Jurídica) proprietária do certificado.
+            Nome da entidade (Pessoa Física ou Jurídica) proprietária do certificado ou do domínio quando se tratar de SSL.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Certificado.DocumentoDoProprietario">
@@ -1329,6 +1359,26 @@
             Carta de Circularização.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.CedulaDeCreditoExportacao">
+            <summary>
+            Cédula de Crédito à Exportação.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.CedulaDeCreditoBancario">
+            <summary>
+            Cédula de Crédito Bancário.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.CedulaDeCreditoImobiliario">
+            <summary>
+            Cédula de Crédito Imobiliário.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.CedulaDeCreditoRural">
+            <summary>
+            Cédula de Crédito Rural.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.ConfissaoDeDivida">
             <summary>
             Confissão de Dívida.
@@ -1344,7 +1394,7 @@
             Contrato.
             </summary>
         </member>
-        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Debentura">
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Debenture">
             <summary>
             Debênture.
             </summary>
@@ -1364,9 +1414,19 @@
             Duplicata.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.FichaCadastral">
+            <summary>
+            Ficha Cadastral.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Exame">
             <summary>
             Exame.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.NotaDeCreditoExportacao">
+            <summary>
+            Nota de Crédito à Exportação.
             </summary>
         </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.NotaFiscal">
@@ -1379,9 +1439,34 @@
             Nota Promissória.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.NotaPromissoriaRural">
+            <summary>
+            Nota Promissória Rural.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Procuracao">
             <summary>
             Procuração.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Prontuario">
+            <summary>
+            Prontuário.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Proposta">
+            <summary>
+            Proposta.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Receituario">
+            <summary>
+            Receituário.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Recibo">
+            <summary>
+            Recibo.
             </summary>
         </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Rescisao">
@@ -1449,9 +1534,14 @@
             Nome da Template utilizada para expandir o conteúdo deste arquivo em novos documentos.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.Algoritmo">
+            <summary>
+            Algoritmo utilizado para geração do hash do arquivo original.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.Hash">
             <summary>
-            Código hash do arquivo original.
+            Código hash (codificado em hexadecimal) do arquivo original.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.CarimboDoTempo">
@@ -1551,7 +1641,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Download.Url">
             <summary>
-            Endereço HTTP de onde o arquivo deverá ser baixado (através do método GET).
+            Endereço HTTP de onde o arquivo deverá ser baixado (através do método GET). Opcionalmente, poderá utilizar a API de Uploads.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Download.Headers">
@@ -1612,7 +1702,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.EmissaoDeCertificado.NomeDoProprietario">
             <summary>
-            Nome da entidade (Pessoa Física ou Jurídica) proprietária do certificado.
+            Nome da entidade (Pessoa Física ou Jurídica) proprietária do certificado ou do domínio quando se tratar de SSL.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.EmissaoDeCertificado.DocumentoDoProprietario">
@@ -1628,6 +1718,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.EmissaoDeCertificado.DataDeValidade">
             <summary>
             Data/hora final da validade do certificado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.EmissaoDeCertificado.Csr">
+            <summary>
+            Solicitação (Certificate Signing Request) para geração do certificado SSL.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.EmissaoDeCertificado.Senha">
@@ -1953,6 +2048,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.Organizacao.Descricao">
             <summary>
             Descrição de uso e finalidade da organização.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Organizacao.Pais">
+            <summary>
+            Sigla do país em que a organização está vinculada (ISO 3166-1 alfa-2).
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Organizacao.Data">
@@ -2373,6 +2473,36 @@
             Informações complementares sobre os recursos dependentes associados ao serviço.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Upload">
+            <summary>
+            Informações sobre o arquivo armazenado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Upload.NomeDoArquivo">
+            <summary>
+            Nome do arquivo.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Upload.FormatoDoArquivo">
+            <summary>
+            Formato do arquivo.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Upload.Data">
+            <summary>
+            Data do envio do arquivo.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Upload.DataDeExpiracao">
+            <summary>
+            Data limite em que o arquivo estará disponível.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Upload.Url">
+            <summary>
+            Local onde o arquivo está disponível para download.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.ValoresVigentes">
             <summary>
             Valores vigentes do plano contratatado.
@@ -2597,6 +2727,11 @@
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Status">
             <summary>
             API de status dos Serviços.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Uploads">
+            <summary>
+            API de upload de Arquivos.
             </summary>
         </member>
         <member name="M:BITSIGN.Proxy.ProxyDoServico.Dispose">

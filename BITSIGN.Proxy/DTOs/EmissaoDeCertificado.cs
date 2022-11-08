@@ -18,7 +18,7 @@ namespace BITSIGN.Proxy.DTOs
         public Guid OrganizacaoId { get; set; }
 
         /// <summary>
-        /// Nome da entidade (Pessoa Física ou Jurídica) proprietária do certificado.
+        /// Nome da entidade (Pessoa Física ou Jurídica) proprietária do certificado ou do domínio quando se tratar de SSL.
         /// </summary>
         public string NomeDoProprietario { get; set; }
 
@@ -36,6 +36,11 @@ namespace BITSIGN.Proxy.DTOs
         /// Data/hora final da validade do certificado.
         /// </summary>
         public DateTime DataDeValidade { get; set; }
+
+        /// <summary>
+        /// Solicitação (Certificate Signing Request) para geração do certificado SSL.
+        /// </summary>
+        public string Csr { get; set; }
 
         /// <summary>
         /// Senha para geração do arquivo PFX.

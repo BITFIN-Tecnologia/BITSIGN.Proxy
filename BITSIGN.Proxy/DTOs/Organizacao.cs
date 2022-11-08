@@ -29,7 +29,13 @@ namespace BITSIGN.Proxy.DTOs
         /// Descrição de uso e finalidade da organização.
         /// </summary>
         [XmlAttribute]
-        public virtual string Descricao { get; set; }
+        public string Descricao { get; set; }
+
+        /// <summary>
+        /// Sigla do país em que a organização está vinculada (ISO 3166-1 alfa-2).
+        /// </summary>
+        [XmlAttribute]
+        public string Pais { get; set; }
 
         /// <summary>
         /// Data de criação da organização.

@@ -50,7 +50,7 @@ namespace BITSIGN.Proxy.DTOs
         /// <summary>
         /// Parâmetros da assinatura no documento (padrão PAdES ou XAdES).
         /// </summary>
-        public virtual Posicao Posicao { get; set; }
+        public Posicao Posicao { get; set; }
 
         /// <summary>
         /// Observações complementares do assinante. Serve para indicar, por exemplo, o motivo de rejeição.

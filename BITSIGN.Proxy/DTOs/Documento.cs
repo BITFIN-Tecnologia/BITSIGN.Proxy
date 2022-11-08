@@ -41,6 +41,22 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string CartaDeCircularizacao = "Carta de Circularização";
             /// <summary>
+            /// Cédula de Crédito à Exportação.
+            /// </summary>
+            public const string CedulaDeCreditoExportacao = "Cédula de Crédito à Exportação";
+            /// <summary>
+            /// Cédula de Crédito Bancário.
+            /// </summary>
+            public const string CedulaDeCreditoBancario = "Cédula de Crédito Bancário";
+            /// <summary>
+            /// Cédula de Crédito Imobiliário.
+            /// </summary>
+            public const string CedulaDeCreditoImobiliario = "Cédula de Crédito Imobiliário";
+            /// <summary>
+            /// Cédula de Crédito Rural.
+            /// </summary>
+            public const string CedulaDeCreditoRural = "Cédula de Crédito Rural";
+            /// <summary>
             /// Confissão de Dívida.
             /// </summary>
             public const string ConfissaoDeDivida = "Confissão de Dívida";
@@ -55,7 +71,7 @@ namespace BITSIGN.Proxy.DTOs
             /// <summary>
             /// Debênture.
             /// </summary>
-            public const string Debentura = "Debênture";
+            public const string Debenture = "Debênture";
             /// <summary>
             /// Declaração.
             /// </summary>
@@ -69,9 +85,17 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string Duplicata = "Duplicata";
             /// <summary>
+            /// Ficha Cadastral.
+            /// </summary>
+            public const string FichaCadastral = "Ficha Cadastral";
+            /// <summary>
             /// Exame.
             /// </summary>
             public const string Exame = "Exame";
+            /// <summary>
+            /// Nota de Crédito à Exportação.
+            /// </summary>
+            public const string NotaDeCreditoExportacao = "Nota de Crédito à Exportação";
             /// <summary>
             /// Nota Fiscal.
             /// </summary>
@@ -81,9 +105,29 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string NotaPromissoria = "Nota Promissória";
             /// <summary>
+            /// Nota Promissória Rural.
+            /// </summary>
+            public const string NotaPromissoriaRural = "Nota Promissória Rural";
+            /// <summary>
             /// Procuração.
             /// </summary>
             public const string Procuracao = "Procuração";
+            /// <summary>
+            /// Prontuário.
+            /// </summary>
+            public const string Prontuario = "Prontuário";
+            /// <summary>
+            /// Proposta.
+            /// </summary>
+            public const string Proposta = "Proposta";
+            /// <summary>
+            /// Receituário.
+            /// </summary>
+            public const string Receituario = "Receituário";
+            /// <summary>
+            /// Recibo.
+            /// </summary>
+            public const string Recibo = "Recibo";
             /// <summary>
             /// Rescisão.
             /// </summary>
@@ -154,7 +198,12 @@ namespace BITSIGN.Proxy.DTOs
         public string Template { get; set; }
 
         /// <summary>
-        /// Código hash do arquivo original.
+        /// Algoritmo utilizado para geração do hash do arquivo original.
+        /// </summary>
+        public string Algoritmo { get; set; }
+
+        /// <summary>
+        /// Código hash (codificado em hexadecimal) do arquivo original.
         /// </summary>
         public string Hash { get; set; }
 

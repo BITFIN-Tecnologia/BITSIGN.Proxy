@@ -30,7 +30,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// </summary>
         /// <param name="parametros">Informações para emissão do certificado.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-        /// <returns>Arquivo PFX codificado em Base64.</returns>
+        /// <returns>Arquivo PFX/CER codificado em Base64.</returns>
         public async Task<string> Emitir(DTOs.EmissaoDeCertificado parametros, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Post, "certificados/emitir")

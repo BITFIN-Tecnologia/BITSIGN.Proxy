@@ -13,7 +13,7 @@ namespace BITSIGN.Proxy.DTOs
     public class Download
     {
         /// <summary>
-        /// Endereço HTTP de onde o arquivo deverá ser baixado (através do método GET).
+        /// Endereço HTTP de onde o arquivo deverá ser baixado (através do método GET). Opcionalmente, poderá utilizar a API de Uploads.
         /// </summary>
         [XmlAttribute]
         public string Url { get; set; }

@@ -18,7 +18,7 @@ namespace BITSIGN.Proxy.DTOs
         public DateTime Data { get; set; }
 
         /// <summary>
-        /// Nome da entidade (Pessoa Física ou Jurídica) proprietária do certificado.
+        /// Nome da entidade (Pessoa Física ou Jurídica) proprietária do certificado ou do domínio quando se tratar de SSL.
         /// </summary>
         public string NomeDoProprietario { get; set; }
 

@@ -62,6 +62,7 @@ namespace BITSIGN.Proxy
             this.Dumps = new(proxy, conexao.Ambiente);
             this.Certificados = new(proxy, conexao.FormatoDeSerializacao);
             this.Status = new(conexao.Status);
+            this.Uploads = new(proxy);
         }
 
         /// <summary>
@@ -128,6 +129,11 @@ namespace BITSIGN.Proxy
         /// API de status dos Serviços.
         /// </summary>
         public Status Status { get; }
+
+        /// <summary>
+        /// API de upload de Arquivos.
+        /// </summary>
+        public Uploads Uploads { get; }
 
         /// <summary>
         /// Encerra e remove os recursos de comunicação utilizados por esta classe.
