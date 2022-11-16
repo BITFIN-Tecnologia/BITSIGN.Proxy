@@ -1339,6 +1339,11 @@
             Aditivo
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Apolice">
+            <summary>
+            Apólice.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Autorizacao">
             <summary>
             Autorização.

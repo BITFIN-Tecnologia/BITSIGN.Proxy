@@ -25,6 +25,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string Aditivo = "Aditivo";
             /// <summary>
+            /// Apólice.
+            /// </summary>
+            public const string Apolice = "Apólice";
+            /// <summary>
             /// Autorização.
             /// </summary>
             public const string Autorizacao = "Autorização";
