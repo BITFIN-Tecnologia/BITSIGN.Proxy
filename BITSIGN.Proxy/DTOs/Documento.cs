@@ -33,6 +33,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string Autorizacao = "Autorização";
             /// <summary>
+            /// Balanço.
+            /// </summary>
+            public const string Balanco = "Balanço";
+            /// <summary>
             /// Carta de Anuência.
             /// </summary>
             public const string CartaDeAnuencia = "Carta de Anuência";
@@ -89,13 +93,21 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string Duplicata = "Duplicata";
             /// <summary>
-            /// Ficha Cadastral.
+            /// Endividamento.
             /// </summary>
-            public const string FichaCadastral = "Ficha Cadastral";
+            public const string Endividamento = "Endividamento";
             /// <summary>
             /// Exame.
             /// </summary>
             public const string Exame = "Exame";
+            /// <summary>
+            /// Faturamento.
+            /// </summary>
+            public const string Faturamento = "Faturamento";
+            /// <summary>
+            /// Ficha Cadastral.
+            /// </summary>
+            public const string FichaCadastral = "Ficha Cadastral";
             /// <summary>
             /// Nota de Crédito à Exportação.
             /// </summary>
