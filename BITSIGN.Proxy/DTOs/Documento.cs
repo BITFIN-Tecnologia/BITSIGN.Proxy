@@ -216,6 +216,7 @@ namespace BITSIGN.Proxy.DTOs
         /// <summary>
         /// Algoritmo utilizado para geração do hash do arquivo original.
         /// </summary>
+        [XmlAttribute]
         public string Algoritmo { get; set; }
 
         /// <summary>

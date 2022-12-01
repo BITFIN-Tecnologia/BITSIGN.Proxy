@@ -1349,6 +1349,11 @@
             Autorização.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Balanco">
+            <summary>
+            Balanço.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.CartaDeAnuencia">
             <summary>
             Carta de Anuência.
@@ -1419,14 +1424,24 @@
             Duplicata.
             </summary>
         </member>
-        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.FichaCadastral">
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Endividamento">
             <summary>
-            Ficha Cadastral.
+            Endividamento.
             </summary>
         </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Exame">
             <summary>
             Exame.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Faturamento">
+            <summary>
+            Faturamento.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.FichaCadastral">
+            <summary>
+            Ficha Cadastral.
             </summary>
         </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.NotaDeCreditoExportacao">
