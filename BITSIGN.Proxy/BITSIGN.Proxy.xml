@@ -13,7 +13,7 @@
             <summary>
             Ambiente destinado exclusivamente para testes de implementação e integração.
             </summary>
-            <remarks>O ambiente de Sandbox é um "espelho" do ambiente de PRODUÇÃO, com exceção de que as assinaturas realizadas não são efetivamente válidas.</remarks>
+            <remarks>O ambiente de Sandbox é um "espelho" do ambiente de Produção, com exceção de que as assinaturas realizadas não são efetivamente válidas.</remarks>
         </member>
         <member name="F:BITSIGN.Proxy.Ambiente.Producao">
             <summary>

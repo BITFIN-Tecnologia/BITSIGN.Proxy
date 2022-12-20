@@ -11,7 +11,7 @@ namespace BITSIGN.Proxy
         /// <summary>
         /// Ambiente destinado exclusivamente para testes de implementação e integração.
         /// </summary>
-        /// <remarks>O ambiente de Sandbox é um "espelho" do ambiente de PRODUÇÃO, com exceção de que as assinaturas realizadas não são efetivamente válidas.</remarks>
+        /// <remarks>O ambiente de Sandbox é um "espelho" do ambiente de Produção, com exceção de que as assinaturas realizadas não são efetivamente válidas.</remarks>
         Sandbox = 0,
         /// <summary>
         /// Esta opção indica que as requisições serão encaminhadas para ambiente de Produção, e estarão sujeitas à cobrança e aos encargos do plano contratado.
