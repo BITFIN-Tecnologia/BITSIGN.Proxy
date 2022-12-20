@@ -29,13 +29,13 @@ namespace BITSIGN.Proxy
         private static readonly Dictionary<Ambiente, string> apis = new(2)
         {
             { Ambiente.Sandbox, "https://sandbox.bitsign.com.br/api/{0}/" },
-            { Ambiente.Producao, "https://www.bitsign.com.br/api/{0}/" },
+            { Ambiente.Producao, "https://bitsign.com.br/api/{0}/" },
         };
 
         private static readonly Dictionary<Ambiente, Uri> status = new(2)
         {
             { Ambiente.Sandbox, new("https://sandbox.bitsign.com.br/status") },
-            { Ambiente.Producao, new("https://www.bitsign.com.br/status") },
+            { Ambiente.Producao, new("https://bitsign.com.br/status") },
         };
 #endif
 
