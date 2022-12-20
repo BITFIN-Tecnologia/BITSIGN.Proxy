@@ -20,6 +20,11 @@
             Esta opção indica que as requisições serão encaminhadas para ambiente de Produção, e estarão sujeitas à cobrança e aos encargos do plano contratado.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.Ambiente.Local">
+            <summary>
+            Utilizado quando a solução está hospedada localmente (on-premise).
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.API">
             <summary>
             Classe base que define os recursos necessários para comunicação com a API remota.
@@ -678,13 +683,14 @@
             Inicializa a conexão com os dados sendo extraídos de um repositório.
             </summary>
             <param name="configuracao">Implementação que deve ser utilizada para localização das configurações.</param>
+            <remarks>Permite delegar toda a configuração para um arquivo externo, permitindo a alteração sem necessidade de recompilar. Este construtor também deve ser utilizado se estiver utilizando o ambiente <see cref="F:BITSIGN.Proxy.Ambiente.Local"/>, já que será necessário customizar o endereço onde os serviços estarão hospedados.</remarks>
             <exception cref="T:System.ArgumentNullException">Se o parâmetro <paramref name="configuracao"/> for nulo.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Conexao.#ctor(BITSIGN.Proxy.Ambiente,System.String,System.Guid,System.String,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
             <summary>
-            Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um dos <see cref="T:BITSIGN.Proxy.Ambiente"/>s.
+            Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um o ambiente de <see cref="F:BITSIGN.Proxy.Ambiente.Producao"/> ou de <see cref="F:BITSIGN.Proxy.Ambiente.Sandbox"/>.
             </summary>
-            <param name="ambiente">Ambiente de produção ou de testes (Sandbox).</param>
+            <param name="ambiente">Ambiente de testes (Sandbox), produção ou local.</param>
             <param name="versao">Versão da API que deve ser utilizada.</param>
             <param name="codigoDoContratante">Código exclusivo do contratante.</param>
             <param name="chaveDeIntegracao">Chave do contratante para integração entre sistemas.</param>
@@ -693,7 +699,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.Conexao.Ambiente">
             <summary>
-            Ambiente de Sandbox ou Produção.
+            Ambiente, Sandbox, Produção ou Local.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Conexao.Versao">
@@ -723,7 +729,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.Conexao.Url">
             <summary>
-            Endereço HTTP para o serviço, variando de acordo com o <see cref="P:BITSIGN.Proxy.Conexao.Ambiente"/>.
+            Endereço base (HTTP) onde as APIs estão hospedadas, que varia de acordo com o <see cref="P:BITSIGN.Proxy.Conexao.Ambiente"/>.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Conexao.Status">
@@ -744,6 +750,16 @@
         <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Ambiente">
             <summary>
             Ambiente de Sandbox ou Produção.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Url">
+            <summary>
+            Endereço base (HTTP) das APIs. Somente é utilizado quando a solução estiver hospedada localmente.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Status">
+            <summary>
+            Endpoint que resume o status atual dos serviços e seus recursos. Somente é utilizado quando a solução estiver hospedada localmente.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Versao">
@@ -786,6 +802,16 @@
             Ambiente de Sandbox ou Produção.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Url">
+            <summary>
+            Endereço base (HTTP) das APIs. Somente é utilizado quando a solução estiver hospedada localmente.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Status">
+            <summary>
+            Endpoint que resume o status atual dos serviços e seus recursos. Somente é utilizado quando a solução estiver hospedada localmente.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Versao">
             <summary>
             Versão das APIs.
@@ -818,7 +844,17 @@
         </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Ambiente">
             <summary>
-            Ambiente de Sandbox ou Produção.
+            Ambiente de Sandbox, Produção ou Local.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Url">
+            <summary>
+            Endereço base (HTTP) das APIs. Somente é utilizado quando a solução estiver hospedada localmente.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Status">
+            <summary>
+            Endpoint que resume o status atual dos serviços e seus recursos. Somente é utilizado quando a solução estiver hospedada localmente.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Versao">

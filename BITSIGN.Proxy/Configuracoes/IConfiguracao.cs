@@ -12,9 +12,19 @@ namespace BITSIGN.Proxy.Configuracoes
     public interface IConfiguracao
     {
         /// <summary>
-        /// Ambiente de Sandbox ou Produção.
+        /// Ambiente de Sandbox, Produção ou Local.
         /// </summary>
         Ambiente Ambiente { get; }
+
+        /// <summary>
+        /// Endereço base (HTTP) das APIs. Somente é utilizado quando a solução estiver hospedada localmente.
+        /// </summary>
+        Uri Url { get; }
+
+        /// <summary>
+        /// Endpoint que resume o status atual dos serviços e seus recursos. Somente é utilizado quando a solução estiver hospedada localmente.
+        /// </summary>
+        Uri Status { get; }
 
         /// <summary>
         /// Versão das APIs.

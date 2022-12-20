@@ -13,47 +13,37 @@ namespace BITSIGN.Proxy
     /// </summary>
     public class Conexao
     {
-#if DEBUG
-        private static readonly Dictionary<Ambiente, string> apis = new(2)
-        {
-            { Ambiente.Sandbox, "http://localhost:33664/api/{0}/" },
-            { Ambiente.Producao, "http://localhost:33664/api/{0}/" },
-        };
-
-        private static readonly Dictionary<Ambiente, Uri> status = new(2)
-        {
-            { Ambiente.Sandbox, new("http://localhost:33664/status") },
-            { Ambiente.Producao, new("http://localhost:33664/status") },
-        };
-#else
-        private static readonly Dictionary<Ambiente, string> apis = new(2)
+        private static readonly Dictionary<Ambiente, string> apis = new(3)
         {
             { Ambiente.Sandbox, "https://sandbox.bitsign.com.br/api/{0}/" },
             { Ambiente.Producao, "https://bitsign.com.br/api/{0}/" },
+            { Ambiente.Local, "http://localhost:33664/api/{0}/" }
         };
 
-        private static readonly Dictionary<Ambiente, Uri> status = new(2)
+        private static readonly Dictionary<Ambiente, Uri> status = new(3)
         {
             { Ambiente.Sandbox, new("https://sandbox.bitsign.com.br/status") },
             { Ambiente.Producao, new("https://bitsign.com.br/status") },
+            { Ambiente.Local, new("http://localhost:33664/status") }
         };
-#endif
 
         /// <summary>
         /// Inicializa a conexão com os dados sendo extraídos de um repositório.
         /// </summary>
         /// <param name="configuracao">Implementação que deve ser utilizada para localização das configurações.</param>
+        /// <remarks>Permite delegar toda a configuração para um arquivo externo, permitindo a alteração sem necessidade de recompilar. Este construtor também deve ser utilizado se estiver utilizando o ambiente <see cref="Ambiente.Local"/>, já que será necessário customizar o endereço onde os serviços estarão hospedados.</remarks>
         /// <exception cref="ArgumentNullException">Se o parâmetro <paramref name="configuracao"/> for nulo.</exception>
         public Conexao(IConfiguracao configuracao)
             : this(configuracao.Ambiente, configuracao.Versao, configuracao.CodigoDoContratante, configuracao.ChaveDeIntegracao, configuracao.FormatoDeSerializacao)
         {
             this.Timeout = configuracao.Timeout;
+            this.ConfigurarUrls(configuracao.Ambiente, configuracao.Url, configuracao.Status);
         }
 
         /// <summary>
-        /// Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um dos <see cref="Proxy.Ambiente"/>s.
+        /// Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um o ambiente de <see cref="Ambiente.Producao"/> ou de <see cref="Ambiente.Sandbox"/>.
         /// </summary>
-        /// <param name="ambiente">Ambiente de produção ou de testes (Sandbox).</param>
+        /// <param name="ambiente">Ambiente de testes (Sandbox), produção ou local.</param>
         /// <param name="versao">Versão da API que deve ser utilizada.</param>
         /// <param name="codigoDoContratante">Código exclusivo do contratante.</param>
         /// <param name="chaveDeIntegracao">Chave do contratante para integração entre sistemas.</param>
@@ -61,6 +51,9 @@ namespace BITSIGN.Proxy
         /// <exception cref="ArgumentException">Se o <paramref name="codigoDoContratante"/> ou o <paramref name="chaveDeIntegracao"/> forem <see cref="Guid.Empty"/> ou se a <paramref name="versao"/> for vazia.</exception>
         public Conexao(Ambiente ambiente, string versao, Guid codigoDoContratante, string chaveDeIntegracao, FormatoDeSerializacao formato = FormatoDeSerializacao.Json)
         {
+            if (ambiente == Ambiente.Local)
+                throw new ArgumentException("Para inicializar a conexão com a solução hospedada localmente, utilize o construtor que recebe a instância de IConfiguracao, para que possa customizar a Url dos serviços.", nameof(ambiente));
+
             this.Ambiente = ambiente;
             this.Versao = !string.IsNullOrWhiteSpace(versao) ? versao : throw new ArgumentException("Versão não informada.", nameof(versao));
 
@@ -71,10 +64,17 @@ namespace BITSIGN.Proxy
                 !string.IsNullOrWhiteSpace(chaveDeIntegracao) ? chaveDeIntegracao : throw new ArgumentException("Chave de Integração não informada.", nameof(chaveDeIntegracao));
 
             this.FormatoDeSerializacao = formato;
+            this.ConfigurarUrls(ambiente);
+        }
+
+        private void ConfigurarUrls(Ambiente ambiente, Uri url = null, Uri status = null)
+        {
+            this.Url = url != null && ambiente == Ambiente.Local ? url : new(string.Format(apis[this.Ambiente], this.Versao));
+            this.Status = status != null && ambiente == Ambiente.Local ? status : Conexao.status[this.Ambiente];
         }
 
         /// <summary>
-        /// Ambiente de Sandbox ou Produção.
+        /// Ambiente, Sandbox, Produção ou Local.
         /// </summary>
         public Ambiente Ambiente { get; }
 
@@ -104,13 +104,13 @@ namespace BITSIGN.Proxy
         public TimeSpan Timeout { get; init; } = TimeSpan.FromSeconds(100);
 
         /// <summary>
-        /// Endereço HTTP para o serviço, variando de acordo com o <see cref="Ambiente"/>.
+        /// Endereço base (HTTP) onde as APIs estão hospedadas, que varia de acordo com o <see cref="Ambiente"/>.
         /// </summary>
-        public Uri Url => new(string.Format(apis[this.Ambiente], this.Versao));
+        public Uri Url { get; private set; }
 
         /// <summary>
         /// Endpoint que resume o status atual dos serviços e seus recursos.
         /// </summary>
-        public Uri Status => status[this.Ambiente];
+        public Uri Status { get; private set; }
     }
 }

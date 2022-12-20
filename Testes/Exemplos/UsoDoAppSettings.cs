@@ -16,10 +16,10 @@ namespace Testes.Exemplos
         {
             using (var proxy = new ProxyDoServico(new(new AppSettingsXml())))
             {
+                Console.WriteLine($"Ambiente: {proxy.Conexao.Ambiente}");
                 Console.WriteLine($"Url: {proxy.Conexao.Url}");
                 Console.WriteLine($"CodigoDoContratante: {proxy.Conexao.CodigoDoContratante}");
                 Console.WriteLine($"ChaveDeIntegracao: {proxy.Conexao.ChaveDeIntegracao}");
-                Console.WriteLine($"Ambiente: {proxy.Conexao.Ambiente}");
 
                 await Task.CompletedTask;
             }

@@ -20,6 +20,8 @@ namespace BITSIGN.Proxy.Configuracoes
             var config = ConfigurationManager.AppSettings;
 
             this.Ambiente = Enum.Parse<Ambiente>(config["BITSIGN.Proxy.Conexao.Ambiente"]);
+            this.Url = new(config["BITSIGN.Proxy.Conexao.Url"]);
+            this.Status = new(config["BITSIGN.Proxy.Conexao.Status"]);
             this.Versao = config["BITSIGN.Proxy.Conexao.Versao"];
             this.CodigoDoContratante = Guid.Parse(config["BITSIGN.Proxy.Conexao.CodigoDoContratante"]);
             this.ChaveDeIntegracao = config["BITSIGN.Proxy.Conexao.ChaveDeIntegracao"];
@@ -31,6 +33,16 @@ namespace BITSIGN.Proxy.Configuracoes
         /// Ambiente de Sandbox ou Produção.
         /// </summary>
         public Ambiente Ambiente { get; init; }
+
+        /// <summary>
+        /// Endereço base (HTTP) das APIs. Somente é utilizado quando a solução estiver hospedada localmente.
+        /// </summary>
+        public Uri Url { get; init; }
+
+        /// <summary>
+        /// Endpoint que resume o status atual dos serviços e seus recursos. Somente é utilizado quando a solução estiver hospedada localmente.
+        /// </summary>
+        public Uri Status { get; init; }
 
         /// <summary>
         /// Versão das APIs.

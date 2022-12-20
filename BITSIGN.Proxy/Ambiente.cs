@@ -16,6 +16,10 @@ namespace BITSIGN.Proxy
         /// <summary>
         /// Esta opção indica que as requisições serão encaminhadas para ambiente de Produção, e estarão sujeitas à cobrança e aos encargos do plano contratado.
         /// </summary>
-        Producao = 1
+        Producao = 1,
+        /// <summary>
+        /// Utilizado quando a solução está hospedada localmente (on-premise).
+        /// </summary>
+        Local = 2
     }
 }
