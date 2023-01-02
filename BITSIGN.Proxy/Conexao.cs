@@ -34,8 +34,10 @@ namespace BITSIGN.Proxy
         /// <remarks>Permite delegar toda a configuração para um arquivo externo, permitindo a alteração sem necessidade de recompilar. Este construtor também deve ser utilizado se estiver utilizando o ambiente <see cref="Ambiente.Local"/>, já que será necessário customizar o endereço onde os serviços estarão hospedados.</remarks>
         /// <exception cref="ArgumentNullException">Se o parâmetro <paramref name="configuracao"/> for nulo.</exception>
         public Conexao(IConfiguracao configuracao)
-            : this(configuracao.Ambiente, configuracao.Versao, configuracao.CodigoDoContratante, configuracao.ChaveDeIntegracao, configuracao.FormatoDeSerializacao)
         {
+            if (configuracao == null)
+                throw new ArgumentNullException(nameof(configuracao));
+
             this.Inicializar(configuracao.Ambiente, configuracao.Versao, configuracao.CodigoDoContratante, configuracao.ChaveDeIntegracao, configuracao.FormatoDeSerializacao, configuracao.Timeout);
             this.ConfigurarAmbiente(configuracao.Ambiente, configuracao.Url, configuracao.Status);
         }
