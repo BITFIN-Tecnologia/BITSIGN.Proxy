@@ -36,8 +36,8 @@ namespace BITSIGN.Proxy
         public Conexao(IConfiguracao configuracao)
             : this(configuracao.Ambiente, configuracao.Versao, configuracao.CodigoDoContratante, configuracao.ChaveDeIntegracao, configuracao.FormatoDeSerializacao)
         {
-            this.Timeout = configuracao.Timeout;
-            this.ConfigurarUrls(configuracao.Ambiente, configuracao.Url, configuracao.Status);
+            this.Inicializar(configuracao.Ambiente, configuracao.Versao, configuracao.CodigoDoContratante, configuracao.ChaveDeIntegracao, configuracao.FormatoDeSerializacao, configuracao.Timeout);
+            this.ConfigurarAmbiente(configuracao.Ambiente, configuracao.Url, configuracao.Status);
         }
 
         /// <summary>
@@ -54,7 +54,11 @@ namespace BITSIGN.Proxy
             if (ambiente == Ambiente.Local)
                 throw new ArgumentException("Para inicializar a conexão com a solução hospedada localmente, utilize o construtor que recebe a instância de IConfiguracao, para que possa customizar a Url dos serviços.", nameof(ambiente));
 
-            this.Ambiente = ambiente;
+            Inicializar(ambiente, versao, codigoDoContratante, chaveDeIntegracao, formato);
+        }
+
+        private void Inicializar(Ambiente ambiente, string versao, Guid codigoDoContratante, string chaveDeIntegracao, FormatoDeSerializacao formato, TimeSpan? timeout = null)
+        {
             this.Versao = !string.IsNullOrWhiteSpace(versao) ? versao : throw new ArgumentException("Versão não informada.", nameof(versao));
 
             this.CodigoDoContratante =
@@ -63,12 +67,14 @@ namespace BITSIGN.Proxy
             this.ChaveDeIntegracao =
                 !string.IsNullOrWhiteSpace(chaveDeIntegracao) ? chaveDeIntegracao : throw new ArgumentException("Chave de Integração não informada.", nameof(chaveDeIntegracao));
 
+            this.Timeout = timeout ?? TimeSpan.FromSeconds(100);
             this.FormatoDeSerializacao = formato;
-            this.ConfigurarUrls(ambiente);
+            this.ConfigurarAmbiente(ambiente);
         }
 
-        private void ConfigurarUrls(Ambiente ambiente, Uri url = null, Uri status = null)
+        private void ConfigurarAmbiente(Ambiente ambiente, Uri url = null, Uri status = null)
         {
+            this.Ambiente = ambiente;
             this.Url = url != null && ambiente == Ambiente.Local ? url : new(string.Format(apis[this.Ambiente], this.Versao));
             this.Status = status != null && ambiente == Ambiente.Local ? status : Conexao.status[this.Ambiente];
         }
@@ -76,32 +82,32 @@ namespace BITSIGN.Proxy
         /// <summary>
         /// Ambiente, Sandbox, Produção ou Local.
         /// </summary>
-        public Ambiente Ambiente { get; }
+        public Ambiente Ambiente { get; private set; }
 
         /// <summary>
         /// Versão da API.
         /// </summary>
-        public string Versao { get; }
+        public string Versao { get; private set; }
 
         /// <summary>
         /// Código do Contratante.
         /// </summary>
-        public Guid CodigoDoContratante { get; }
+        public Guid CodigoDoContratante { get; private set; }
 
         /// <summary>
         /// Chave de Integração gerado para o contratante.
         /// </summary>
-        public string ChaveDeIntegracao { get; }
+        public string ChaveDeIntegracao { get; private set; }
 
         /// <summary>
         /// Formato da serialização das mensagens trocadas com os serviços.
         /// </summary>
-        public FormatoDeSerializacao FormatoDeSerializacao { get; }
+        public FormatoDeSerializacao FormatoDeSerializacao { get; private set; }
 
         /// <summary>
         /// Define o tempo máximo de espera permitido para executar uma requisição. O tempo padrão é de 100 segundos.
         /// </summary>
-        public TimeSpan Timeout { get; init; } = TimeSpan.FromSeconds(100);
+        public TimeSpan Timeout { get; private set; }
 
         /// <summary>
         /// Endereço base (HTTP) onde as APIs estão hospedadas, que varia de acordo com o <see cref="Ambiente"/>.
