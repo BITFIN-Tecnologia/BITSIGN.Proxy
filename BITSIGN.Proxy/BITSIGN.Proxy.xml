@@ -486,7 +486,7 @@
             <remarks>Utilize esta opção quando todos os documentos a serem assinados estão disponíveis através de HTTP[S], que deverão estar informados na propriedade <see cref="P:BITSIGN.Proxy.DTOs.Documento.Download"/>.</remarks>
             <param name="lote">Lote contendo os documentos que devem ser encaminhados para assinatura.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-            <returns><see cref="T:System.Uri"/> onde estará disponível o lote recém criado para consulta.</returns>
+            <returns><see cref="T:System.Tuple`2"/> informando a URL onde o lote criado está acessível e o Id do mesmo.</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Upload(BITSIGN.Proxy.DTOs.Pacote,System.Threading.CancellationToken)">
@@ -496,7 +496,7 @@
             <remarks>Endpoint para o envio do lote de documentos para assinatura. O conteúdo deve ser um arquivo compactado contendo o arquivo de manifesto e todos os arquivos mencionados dentro dele que deverão ser assinados digitalmente. Para maiores informações da estrutura deste arquivo e do processo, consulte <see href="https://bitsign.com.br/documentacao#integracaoPacotes">este link</see>. O tamanho do conteúdo não poderá ultrapassar <b>20MB</b>.</remarks>
             <param name="pacote">Pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
             <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-            <returns><see cref="T:System.Uri"/> onde estará disponível o lote recém criado para consulta.</returns>
+            <returns><see cref="T:System.Tuple`2"/> informando a URL onde o lote criado está acessível e o Id do mesmo.</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.Detalhes(System.Guid,System.Threading.CancellationToken)">

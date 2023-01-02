@@ -34,9 +34,9 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <remarks>Utilize esta opção quando todos os documentos a serem assinados estão disponíveis através de HTTP[S], que deverão estar informados na propriedade <see cref="DTOs.Documento.Download"/>.</remarks>
         /// <param name="lote">Lote contendo os documentos que devem ser encaminhados para assinatura.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-        /// <returns><see cref="Uri"/> onde estará disponível o lote recém criado para consulta.</returns>
+        /// <returns><see cref="Tuple{T1, T2}"/> informando a URL onde o lote criado está acessível e o Id do mesmo.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
-        public async Task<Uri> Upload(DTOs.Lote lote, CancellationToken cancellationToken = default)
+        public async Task<(Uri Url, Guid Id)> Upload(DTOs.Lote lote, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Post, "lotes")
             {
@@ -45,7 +45,12 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
             {
                 requisicao.Content.Headers.ContentType = this.MimeType;
 
-                return await this.Executar(requisicao, resposta => Task.FromResult(resposta.Headers.Location), cancellationToken);
+                return await this.Executar(requisicao, async resposta =>
+                {
+                    var info = Serializador.Deserializar<Dictionary<string, string>>(await resposta.Content.ReadAsStringAsync(cancellationToken), this.FormatoDeSerializacao.ToString());
+
+                    return (resposta.Headers.Location, Guid.Parse(info["id"]));
+                }, cancellationToken);
             }
         }
 
@@ -55,9 +60,9 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <remarks>Endpoint para o envio do lote de documentos para assinatura. O conteúdo deve ser um arquivo compactado contendo o arquivo de manifesto e todos os arquivos mencionados dentro dele que deverão ser assinados digitalmente. Para maiores informações da estrutura deste arquivo e do processo, consulte <see href="https://bitsign.com.br/documentacao#integracaoPacotes">este link</see>. O tamanho do conteúdo não poderá ultrapassar <b>20MB</b>.</remarks>
         /// <param name="pacote">Pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
-        /// <returns><see cref="Uri"/> onde estará disponível o lote recém criado para consulta.</returns>
+        /// <returns><see cref="Tuple{T1, T2}"/> informando a URL onde o lote criado está acessível e o Id do mesmo.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
-        public async Task<Uri> Upload(DTOs.Pacote pacote, CancellationToken cancellationToken = default)
+        public async Task<(Uri Url, Guid Id)> Upload(DTOs.Pacote pacote, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Post, "lotes")
             {
@@ -66,7 +71,12 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
             {
                 requisicao.Content.Headers.ContentType = Zip;
 
-                return await this.Executar(requisicao, resposta => Task.FromResult(resposta.Headers.Location), cancellationToken);
+                return await this.Executar(requisicao, async resposta =>
+                {
+                    var info = Serializador.Deserializar<Dictionary<string, string>>(await resposta.Content.ReadAsStringAsync(cancellationToken), this.FormatoDeSerializacao.ToString());
+
+                    return (resposta.Headers.Location, Guid.Parse(info["id"]));
+                }, cancellationToken);
             }
         }
 

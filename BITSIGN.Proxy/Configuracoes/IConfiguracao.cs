@@ -19,12 +19,12 @@ namespace BITSIGN.Proxy.Configuracoes
         /// <summary>
         /// Endereço base (HTTP) das APIs. Somente é utilizado quando a solução estiver hospedada localmente.
         /// </summary>
-        Uri Url { get; }
+        string Url { get; }
 
         /// <summary>
         /// Endpoint que resume o status atual dos serviços e seus recursos. Somente é utilizado quando a solução estiver hospedada localmente.
         /// </summary>
-        Uri Status { get; }
+        string Status { get; }
 
         /// <summary>
         /// Versão das APIs.

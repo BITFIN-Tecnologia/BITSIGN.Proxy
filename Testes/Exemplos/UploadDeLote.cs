@@ -84,9 +84,10 @@ namespace Testes.Exemplos
                     Diretorio = "formalizacao/contratos"
                 };
 
-                var urlDoLote = await proxy.Lotes.Upload(lote, cancellationToken);
+                var info = await proxy.Lotes.Upload(lote, cancellationToken);
 
-                Console.WriteLine(urlDoLote);
+                Console.WriteLine($"Url: {info.Url}");
+                Console.WriteLine($"Id:  {info.Id}");
             }
         }
     }
