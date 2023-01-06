@@ -13,36 +13,31 @@ namespace BITSIGN.Proxy.DTOs
     /// </summary>
     public class Pacote
     {
-        private const string ArquivoDeManifesto = "manifesto.xml";
+        private const string ArquivoDeManifesto = "Manifesto.{0}";
 
-        internal Pacote(byte[] dados)
+        internal Pacote(byte[] dados, FormatoDeSerializacao formatoDeSerializacao)
         {
             this.Vazio = (dados?.Length ?? 0) == 0;
 
             if (!this.Vazio)
-                Deserializar(dados);
+                Deserializar(dados, formatoDeSerializacao);
         }
 
-        /// <summary>
-        /// Inicia o pacote com o lote para ser enviado ao serviço.
-        /// </summary>
-        /// <param name="lote">Lote com os documentos originais para envio e geração de assinaturas.</param>
-        /// <remarks>Aqueles documentos que estiverem com a propriedade <see cref="Documento.ConteudoOriginal"/> preenchida serão embutidos no pacote; alternativamente, informe os dados do arquivo à ser assinado na propriedade <see cref="Documento.Download"/>, e isso indicará ao serviço que deverá realizar o download ao invés de procurar pelo arquivo fisicamente dentro do pacote.</remarks>
-        public Pacote(Lote lote)
+        internal Pacote(Lote lote, FormatoDeSerializacao formatoDeSerializacao = FormatoDeSerializacao.Json)
         {
             this.Lote = lote;
             this.Arquivos =
                 Enumerable.Concat(
-                    new[] { (ArquivoDeManifesto, Serializador.EmBytes(Serializador.Xml.Serializar(lote, "Lote"))) },
+                    new[] { (string.Format(ArquivoDeManifesto, formatoDeSerializacao.ToString().ToLower()), Serializador.EmBytes(Serializador.Serializar(lote, formatoDeSerializacao, "Lote"))) },
                     lote.Documentos.Where(d => d.ConteudoOriginal?.Length > 0).Select(d => (d.NomeDoArquivo, d.ConteudoOriginal)));
         }
 
-        private void Deserializar(byte[] dados)
+        private void Deserializar(byte[] dados, FormatoDeSerializacao formatoDeSerializacao)
         {
             var zip = Compactador.Descompactar(dados);
-            var manifesto = zip.FirstOrDefault(arquivo => string.Compare(arquivo.nome, ArquivoDeManifesto, true) == 0);
+            var manifesto = zip.FirstOrDefault(arquivo => string.Compare(arquivo.nome, string.Format(ArquivoDeManifesto, formatoDeSerializacao.ToString().ToLower()), true) == 0);
 
-            var lote = Serializador.Xml.Deserializar<List<Lote>>(Encoding.UTF8.GetString(manifesto.conteudo), "Lotes").First();
+            var lote = Serializador.Deserializar<List<Lote>>(Encoding.UTF8.GetString(manifesto.conteudo), formatoDeSerializacao.ToString(), "Lotes").First();
 
             foreach (var documento in lote.Documentos)
             {

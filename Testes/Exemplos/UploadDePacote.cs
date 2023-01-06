@@ -22,7 +22,7 @@ namespace Testes.Exemplos
             //Criação do proxy de comunicação com o serviço.
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                var pacote = new Pacote(new()
+                var pacote = proxy.CriarPacote(new()
                 {
                     Aplicacao = new()
                     {
