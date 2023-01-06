@@ -66,15 +66,6 @@ namespace BITSIGN.Proxy
         }
 
         /// <summary>
-        /// Inicia o pacote com o lote para ser enviado ao serviço.
-        /// </summary>
-        /// <param name="lote">Lote com os documentos originais para envio e geração de assinaturas.</param>
-        /// <returns>Instância da classe <see cref="DTOs.Pacote"/> representando o conteúdo à ser enviado para o serviço.</returns>
-        /// <remarks>Aqueles documentos que estiverem com a propriedade <see cref="DTOs.Documento.ConteudoOriginal"/> preenchida serão embutidos no pacote; alternativamente, informe os dados do arquivo à ser assinado na propriedade <see cref="DTOs.Documento.Download"/>, e isso indicará ao serviço que deverá realizar o download ao invés de procurar pelo arquivo fisicamente dentro do pacote.</remarks>
-        public DTOs.Pacote CriarPacote(DTOs.Lote lote) =>
-            new(lote, this.Conexao.FormatoDeSerializacao);
-
-        /// <summary>
         /// Dados de conexão com um dos <see cref="Ambiente"/>s disponíveis.
         /// </summary>
         public Conexao Conexao { get; }

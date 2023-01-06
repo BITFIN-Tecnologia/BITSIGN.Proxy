@@ -306,7 +306,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
                 {
                     try
                     {
-                        return new DTOs.Pacote(await resposta.Content.ReadAsByteArrayAsync(cancellationToken), this.FormatoDeSerializacao);
+                        return new DTOs.Pacote(await resposta.Content.ReadAsByteArrayAsync(cancellationToken));
                     }
                     catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
                     {

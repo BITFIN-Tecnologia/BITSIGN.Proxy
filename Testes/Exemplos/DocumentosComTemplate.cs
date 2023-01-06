@@ -24,7 +24,7 @@ namespace Testes.Exemplos
 
             using (var proxy = new ProxyDoServico(this.Conexao))
             {
-                var pacote = proxy.CriarPacote(new()
+                var pacote = new Pacote(new()
                 {
                     Aplicacao = new()
                     {

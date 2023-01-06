@@ -2131,6 +2131,14 @@
             Classe que abstrai a complexidade para criação dos pacotes de lotes e documentos que são enviados e recebidos.
             </summary>
         </member>
+        <member name="M:BITSIGN.Proxy.DTOs.Pacote.#ctor(BITSIGN.Proxy.DTOs.Lote,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
+            <summary>
+            Inicia o pacote com o lote para ser enviado ao serviço.
+            </summary>
+            <param name="lote">Lote com os documentos originais para envio e geração de assinaturas.</param>
+            <param name="formatoDeSerializacao">Formato em que será serializado o manifesto.</param>
+            <remarks>Aqueles documentos que estiverem com a propriedade <see cref="P:BITSIGN.Proxy.DTOs.Documento.ConteudoOriginal"/> preenchida serão embutidos no pacote; alternativamente, informe os dados do arquivo à ser assinado na propriedade <see cref="P:BITSIGN.Proxy.DTOs.Documento.Download"/>, e isso indicará ao serviço que deverá realizar o download ao invés de procurar pelo arquivo fisicamente dentro do pacote.</remarks>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Pacote.Vazio">
             <summary>
             Indica se o pacote está ou não vazio.
@@ -2712,14 +2720,6 @@
             <param name="rastreioDeRequisicao">Gerador de códigos de rastreio de requisições.</param>
             <param name="webProxy">Especifica um proxy para ser utilizado ao realizar as requisições para os serviços.</param>
             <exception cref="T:System.ArgumentNullException">Se a <paramref name="conexao"/> não for informada.</exception>
-        </member>
-        <member name="M:BITSIGN.Proxy.ProxyDoServico.CriarPacote(BITSIGN.Proxy.DTOs.Lote)">
-            <summary>
-            Inicia o pacote com o lote para ser enviado ao serviço.
-            </summary>
-            <param name="lote">Lote com os documentos originais para envio e geração de assinaturas.</param>
-            <returns>Instância da classe <see cref="T:BITSIGN.Proxy.DTOs.Pacote"/> representando o conteúdo à ser enviado para o serviço.</returns>
-            <remarks>Aqueles documentos que estiverem com a propriedade <see cref="P:BITSIGN.Proxy.DTOs.Documento.ConteudoOriginal"/> preenchida serão embutidos no pacote; alternativamente, informe os dados do arquivo à ser assinado na propriedade <see cref="P:BITSIGN.Proxy.DTOs.Documento.Download"/>, e isso indicará ao serviço que deverá realizar o download ao invés de procurar pelo arquivo fisicamente dentro do pacote.</remarks>
         </member>
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Conexao">
             <summary>
