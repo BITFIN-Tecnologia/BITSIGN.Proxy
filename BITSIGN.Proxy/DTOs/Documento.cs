@@ -65,6 +65,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string CedulaDeCreditoRural = "Cédula de Crédito Rural";
             /// <summary>
+            /// Cédula de Produtor Rural.
+            /// </summary>
+            public const string CedulaDeProdutorRural = "Cédula de Produtor Rural";
+            /// <summary>
             /// Confissão de Dívida.
             /// </summary>
             public const string ConfissaoDeDivida = "Confissão de Dívida";
@@ -109,6 +113,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string FichaCadastral = "Ficha Cadastral";
             /// <summary>
+            /// Laudo Técnico.
+            /// </summary>
+            public const string LaudoTecnico = "Laudo Técnico";
+            /// <summary>
             /// Nota de Crédito à Exportação.
             /// </summary>
             public const string NotaDeCreditoExportacao = "Nota de Crédito à Exportação";
@@ -144,6 +152,10 @@ namespace BITSIGN.Proxy.DTOs
             /// Recibo.
             /// </summary>
             public const string Recibo = "Recibo";
+            /// <summary>
+            /// Registro de Ponto.
+            /// </summary>
+            public const string RegistroDePonto = "Registro de Ponto";
             /// <summary>
             /// Rescisão.
             /// </summary>

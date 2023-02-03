@@ -1340,6 +1340,67 @@
             XML Advanced Electronic Signatures.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Constantes.Politicas">
+            <summary>
+            Relação de políticas suportadas pela BITSIGN.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil">
+            <summary>
+            Relação de políticas vigentes da ICP-Brasil.
+            </summary>
+            <remarks>Para maiores informações, consulte a área exclusiva no <see href="https://www.gov.br/iti/pt-br/assuntos/repositorio/artefatos-de-assinatura-digital">ITI</see>.</remarks>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil.CAdES_PA_AD_RB_v2_2">
+            <summary>
+            <see href="http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_2.der">http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_2.der</see>
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil.CAdES_PA_AD_RB_v2_3">
+            <summary>
+            <see href="http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_3.der">http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_3.der</see>
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil.CAdES_PA_AD_RT_v2_2">
+            <summary>
+            <see href="http://politicas.icpbrasil.gov.br/PA_AD_RT_v2_2.der">http://politicas.icpbrasil.gov.br/PA_AD_RT_v2_2.der</see>
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil.CAdES_PA_AD_RT_v2_3">
+            <summary>
+            <see href="http://politicas.icpbrasil.gov.br/PA_AD_RT_v2_3.der">http://politicas.icpbrasil.gov.br/PA_AD_RT_v2_3.der</see>
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil.PAdES_PA_AD_RB_v1_0">
+            <summary>
+            <see href="http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RB_v1_0.der">http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RB_v1_0.der</see>
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil.PAdES_PA_AD_RB_v1_1">
+            <summary>
+            <see href="http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RB_v1_1.der">http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RB_v1_1.der</see>
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil.PAdES_PA_AD_RT_v1_0">
+            <summary>
+            <see href="http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RT_v1_0.der">http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RT_v1_0.der</see>
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil.PAdES_PA_AD_RT_v1_1">
+            <summary>
+            <see href="http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RT_v1_1.der">http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RT_v1_1.der</see>
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil.XAdES_PA_AD_RB_v2_3">
+            <summary>
+            <see href="http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_3.xml">http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_3.xml</see>
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil.XAdES_PA_AD_RB_v2_4">
+            <summary>
+            <see href="http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_4.xml">http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_4.xml</see>
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Contratante">
             <summary>
             Empresa ou Pessoa Física que possui contrato para assinaturas digitais.
@@ -1425,6 +1486,11 @@
             Cédula de Crédito Rural.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.CedulaDeProdutorRural">
+            <summary>
+            Cédula de Produtor Rural.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.ConfissaoDeDivida">
             <summary>
             Confissão de Dívida.
@@ -1480,6 +1546,11 @@
             Ficha Cadastral.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.LaudoTecnico">
+            <summary>
+            Laudo Técnico.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.NotaDeCreditoExportacao">
             <summary>
             Nota de Crédito à Exportação.
@@ -1523,6 +1594,11 @@
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Recibo">
             <summary>
             Recibo.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.RegistroDePonto">
+            <summary>
+            Registro de Ponto.
             </summary>
         </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Rescisao">

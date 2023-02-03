@@ -28,5 +28,59 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string XAdES = nameof(XAdES);
         }
+
+        /// <summary>
+        /// Relação de políticas suportadas pela BITSIGN.
+        /// </summary>
+        public class Politicas
+        {
+            /// <summary>
+            /// Relação de políticas vigentes da ICP-Brasil.
+            /// </summary>
+            /// <remarks>Para maiores informações, consulte a área exclusiva no <see href="https://www.gov.br/iti/pt-br/assuntos/repositorio/artefatos-de-assinatura-digital">ITI</see>.</remarks>
+            public class ICPBrasil
+            {
+                /// <summary>
+                /// <see href="http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_2.der">http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_2.der</see>
+                /// </summary>
+                public const string CAdES_PA_AD_RB_v2_2 = "PA_AD_RB_v2_2";
+                /// <summary>
+                /// <see href="http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_3.der">http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_3.der</see>
+                /// </summary>
+                public const string CAdES_PA_AD_RB_v2_3 = "PA_AD_RB_v2_3";
+                /// <summary>
+                /// <see href="http://politicas.icpbrasil.gov.br/PA_AD_RT_v2_2.der">http://politicas.icpbrasil.gov.br/PA_AD_RT_v2_2.der</see>
+                /// </summary>
+                public const string CAdES_PA_AD_RT_v2_2 = "PA_AD_RT_v2_2";
+                /// <summary>
+                /// <see href="http://politicas.icpbrasil.gov.br/PA_AD_RT_v2_3.der">http://politicas.icpbrasil.gov.br/PA_AD_RT_v2_3.der</see>
+                /// </summary>
+                public const string CAdES_PA_AD_RT_v2_3 = "PA_AD_RT_v2_3";
+                /// <summary>
+                /// <see href="http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RB_v1_0.der">http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RB_v1_0.der</see>
+                /// </summary>
+                public const string PAdES_PA_AD_RB_v1_0 = "PA_PAdES_AD_RB_v1_0";
+                /// <summary>
+                /// <see href="http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RB_v1_1.der">http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RB_v1_1.der</see>
+                /// </summary>
+                public const string PAdES_PA_AD_RB_v1_1 = "PA_PAdES_AD_RB_v1_1";
+                /// <summary>
+                /// <see href="http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RT_v1_0.der">http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RT_v1_0.der</see>
+                /// </summary>
+                public const string PAdES_PA_AD_RT_v1_0 = "PA_PAdES_AD_RT_v1_0";
+                /// <summary>
+                /// <see href="http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RT_v1_1.der">http://politicas.icpbrasil.gov.br/PA_PAdES_AD_RT_v1_1.der</see>
+                /// </summary>
+                public const string PAdES_PA_AD_RT_v1_1 = "PA_PAdES_AD_RT_v1_1";
+                /// <summary>
+                /// <see href="http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_3.xml">http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_3.xml</see>
+                /// </summary>
+                public const string XAdES_PA_AD_RB_v2_3 = "PA_AD_RB_v2_3";
+                /// <summary>
+                /// <see href="http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_4.xml">http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_4.xml</see>
+                /// </summary>
+                public const string XAdES_PA_AD_RB_v2_4 = "PA_AD_RB_v2_4";
+            }
+        }
     }
 }
