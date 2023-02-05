@@ -1401,6 +1401,24 @@
             <see href="http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_4.xml">http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_4.xml</see>
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Constantes.Politicas.Templates">
+            <summary>
+            Templates suportados para expansão de documentos.
+            </summary>
+            <remarks>
+            Para maiores detalhes sobre esta funcionalidade, consulte: <see href="https://bitsign.com.br/documentacao#integracaoTemplates">https://bitsign.com.br/documentacao#integracaoTemplates</see>.
+            </remarks>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.Templates.Duplicata">
+            <summary>
+            Modelo para emissão de duplicatas mercantis ou de serviço.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Politicas.Templates.Zip">
+            <summary>
+            Extrai e assina os documentos do arquivo compactado.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Contratante">
             <summary>
             Empresa ou Pessoa Física que possui contrato para assinaturas digitais.

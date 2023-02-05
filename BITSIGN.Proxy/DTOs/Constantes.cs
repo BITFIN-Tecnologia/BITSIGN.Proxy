@@ -81,6 +81,25 @@ namespace BITSIGN.Proxy.DTOs
                 /// </summary>
                 public const string XAdES_PA_AD_RB_v2_4 = "PA_AD_RB_v2_4";
             }
+
+            /// <summary>
+            /// Templates suportados para expansão de documentos.
+            /// </summary>
+            /// <remarks>
+            /// Para maiores detalhes sobre esta funcionalidade, consulte: <see href="https://bitsign.com.br/documentacao#integracaoTemplates">https://bitsign.com.br/documentacao#integracaoTemplates</see>.
+            /// </remarks>
+            public class Templates
+            {
+                /// <summary>
+                /// Modelo para emissão de duplicatas mercantis ou de serviço.
+                /// </summary>
+                public const string Duplicata = "BITSIGN.Duplicata";
+
+                /// <summary>
+                /// Extrai e assina os documentos do arquivo compactado.
+                /// </summary>
+                public const string Zip = "BITSIGN.Zip";
+            }
         }
     }
 }
