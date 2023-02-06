@@ -15,7 +15,7 @@
         <RepositoryType>git</RepositoryType>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <AssemblyVersion>1.1.0.9</AssemblyVersion>
-        <FileVersion>1.1.0.8</FileVersion>
+        <FileVersion>1.1.0.9</FileVersion>
         <PackageReleaseNotes>Criação de Ambiente.Local, que permite a solução ser hospedada localmente (on-premise).</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
