@@ -222,6 +222,7 @@ namespace BITSIGN.Proxy.DTOs
         /// <summary>
         /// Nome da Template utilizada para expandir o conteúdo deste arquivo em novos documentos.
         /// </summary>
+        /// <remarks>As opções disponíveis estão disponíveis em <see cref="Constantes.Templates"/>.</remarks>
         [XmlAttribute]
         public string Template { get; set; }
 
@@ -243,7 +244,7 @@ namespace BITSIGN.Proxy.DTOs
         public bool CarimboDoTempo { get; set; }
 
         /// <summary>
-        /// Padrão de assinatura (CAdES, PAdES ou XAdES).
+        /// Padrão de assinatura (<see cref="Constantes.PadroesDeAssinatura.CAdES"/>, <see cref="Constantes.PadroesDeAssinatura.PAdES"/> ou <see cref="Constantes.PadroesDeAssinatura.XAdES"/>).
         /// </summary>
         [XmlAttribute]
         public string PadraoDeAssinatura { get; set; }
@@ -251,6 +252,7 @@ namespace BITSIGN.Proxy.DTOs
         /// <summary>
         /// Política de assinatura utilizada.
         /// </summary>
+        /// <remarks>As opções suportadas estão disponíveis através da classe <see cref="Constantes.Politicas"/>.</remarks>
         [XmlAttribute]
         public string PoliticaDeAssinatura { get; set; }
 

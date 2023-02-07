@@ -1683,6 +1683,7 @@
             <summary>
             Nome da Template utilizada para expandir o conteúdo deste arquivo em novos documentos.
             </summary>
+            <remarks>As opções disponíveis estão disponíveis em <see cref="T:BITSIGN.Proxy.DTOs.Constantes.Templates"/>.</remarks>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.Algoritmo">
             <summary>
@@ -1701,13 +1702,14 @@
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.PadraoDeAssinatura">
             <summary>
-            Padrão de assinatura (CAdES, PAdES ou XAdES).
+            Padrão de assinatura (<see cref="F:BITSIGN.Proxy.DTOs.Constantes.PadroesDeAssinatura.CAdES"/>, <see cref="F:BITSIGN.Proxy.DTOs.Constantes.PadroesDeAssinatura.PAdES"/> ou <see cref="F:BITSIGN.Proxy.DTOs.Constantes.PadroesDeAssinatura.XAdES"/>).
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.PoliticaDeAssinatura">
             <summary>
             Política de assinatura utilizada.
             </summary>
+            <remarks>As opções suportadas estão disponíveis através da classe <see cref="T:BITSIGN.Proxy.DTOs.Constantes.Politicas"/>.</remarks>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Documento.AssinaturaAnexada">
             <summary>
