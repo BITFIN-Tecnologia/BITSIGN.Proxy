@@ -57,16 +57,27 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         /// <summary>
         /// Upload de Pacote.
         /// </summary>
-        /// <remarks>Endpoint para o envio do lote de documentos para assinatura. O conteúdo deve ser um arquivo compactado contendo o arquivo de manifesto e todos os arquivos mencionados dentro dele que deverão ser assinados digitalmente. Para maiores informações da estrutura deste arquivo e do processo, consulte <see href="https://bitsign.com.br/documentacao#integracaoPacotes">este link</see>. O tamanho do conteúdo não poderá ultrapassar <b>20MB</b>.</remarks>
+        /// <remarks>Endpoint para o envio do lote de documentos para assinatura, representado pela instância da classe <see cref="DTOs.Pacote"/>. Para maiores informações da estrutura deste arquivo e do processo, consulte <see href="https://bitsign.com.br/documentacao#integracaoPacotes">este link</see>. O tamanho do conteúdo não poderá ultrapassar 20MB.</remarks>
         /// <param name="pacote">Pacote contendo o lote e os respectivos documentos que devem ser encaminhados para assinatura.</param>
         /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
         /// <returns><see cref="Tuple{T1, T2}"/> informando a URL onde o lote criado está acessível e o Id do mesmo.</returns>
         /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
-        public async Task<(Uri Url, Guid Id)> Upload(DTOs.Pacote pacote, CancellationToken cancellationToken = default)
+        public async Task<(Uri Url, Guid Id)> Upload(DTOs.Pacote pacote, CancellationToken cancellationToken = default) =>
+            await Upload(pacote.Serializar(), cancellationToken);
+
+        /// <summary>
+        /// Upload de Pacote.
+        /// </summary>
+        /// <remarks>Endpoint para o envio do lote de documentos para assinatura. O conteúdo deve ser um arquivo compactado contendo o arquivo de manifesto e todos os arquivos mencionados dentro dele que deverão ser assinados digitalmente. Para maiores informações da estrutura deste arquivo e do processo, consulte <see href="https://bitsign.com.br/documentacao#integracaoPacotes">este link</see>. O tamanho do arquivo não poderá ultrapassar 20MB.</remarks>
+        /// <param name="pacote">Arquivo em formato ZIP contendo o pacote.</param>
+        /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns><see cref="Tuple{T1, T2}"/> informando a URL onde o lote criado está acessível e o Id do mesmo.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        public async Task<(Uri Url, Guid Id)> Upload(byte[] pacote, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Post, "lotes")
             {
-                Content = new ByteArrayContent(pacote.Serializar())
+                Content = new ByteArrayContent(pacote)
             })
             {
                 requisicao.Content.Headers.ContentType = Zip;
