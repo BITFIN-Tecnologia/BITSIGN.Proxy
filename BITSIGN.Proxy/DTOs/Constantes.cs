@@ -101,5 +101,21 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string Zip = "BITSIGN.Zip";
         }
+
+        /// <summary>
+        /// Estilos suportados para assinatura em arquivos XML utilizando o Padrão <see cref="PadroesDeAssinatura.XAdES"/>.
+        /// </summary>
+        public class EstilosXml
+        {
+            /// <summary>
+            /// A assinatura é incluída como um subelemento do elemento que está sendo assinado.
+            /// </summary>
+            public const string Enveloped = "Enveloped";
+
+            /// <summary>
+            /// O elemento assinado é envolvido pela assinatura.
+            /// </summary>
+            public const string Enveloping = "Enveloping";
+        }
     }
 }

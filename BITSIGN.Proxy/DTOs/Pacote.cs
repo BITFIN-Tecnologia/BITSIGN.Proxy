@@ -62,6 +62,7 @@ namespace BITSIGN.Proxy.DTOs
 
             this.Lote = lote;
             this.Arquivos = zip;
+            this.Conteudo = dados;
         }
 
         internal byte[] Serializar() =>
@@ -78,6 +79,11 @@ namespace BITSIGN.Proxy.DTOs
         /// Lote de documentos com seus respectivos arquivos.
         /// </summary>
         public Lote Lote { get; internal set; }
+
+        /// <summary>
+        /// Conteúdo utilizado para materializar/gerar os dados (<see cref="Lote"/> e os <see cref="Arquivos"/>).
+        /// </summary>
+        public byte[] Conteudo { get; private set; }
 
         /// <summary>
         /// Relação de arquivos contidos no lote.

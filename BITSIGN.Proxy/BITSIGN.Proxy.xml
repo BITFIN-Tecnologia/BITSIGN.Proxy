@@ -1429,6 +1429,21 @@
             Extrai e assina os documentos do arquivo compactado.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Constantes.EstilosXml">
+            <summary>
+            Estilos suportados para assinatura em arquivos XML utilizando o Padrão <see cref="F:BITSIGN.Proxy.DTOs.Constantes.PadroesDeAssinatura.XAdES"/>.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.EstilosXml.Enveloped">
+            <summary>
+            A assinatura é incluída como um subelemento do elemento que está sendo assinado.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.EstilosXml.Enveloping">
+            <summary>
+            O elemento assinado é envolvido pela assinatura.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Contratante">
             <summary>
             Empresa ou Pessoa Física que possui contrato para assinaturas digitais.
@@ -2253,6 +2268,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.Pacote.Lote">
             <summary>
             Lote de documentos com seus respectivos arquivos.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Pacote.Conteudo">
+            <summary>
+            Conteúdo utilizado para materializar/gerar os dados (<see cref="P:BITSIGN.Proxy.DTOs.Pacote.Lote"/> e os <see cref="P:BITSIGN.Proxy.DTOs.Pacote.Arquivos"/>).
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Pacote.Arquivos">

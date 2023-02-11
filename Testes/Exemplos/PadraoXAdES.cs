@@ -22,7 +22,7 @@ namespace Testes.Exemplos
             var padraoDeAssinatura = Constantes.PadroesDeAssinatura.XAdES;
 
             //Posicionamento da assinatura no documento.
-            var posicao = new Posicao("Enveloped", "infNFe");
+            var posicao = new Posicao(Constantes.EstilosXml.Enveloped, "infNFe");
 
             //Criação do proxy de comunicação com o serviço.
             using (var proxy = new ProxyDoServico(this.Conexao))
