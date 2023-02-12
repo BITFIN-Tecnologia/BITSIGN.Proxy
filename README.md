@@ -1,12 +1,12 @@
 # BITSIGN.Proxy
-###### Comunicação com as APIs de Assinaturas Digitais
-Biblioteca .NET para consumo dos serviços (APIs) fornecidos pela BITSIGN, recepção de _callbacks_ e demais recursos para a integração entre sistemas. Essa biblioteca abstrai toda a complexidade de comunicação com o protocolo HTTP, simplificando o consumo pelos clientes, que acessarão as classes e métodos que refletem exatamente a documentação da API, não havendo a necessidade de lidar diretamente com código referente à infraestrutura.
+###### Comunicação com as API's de Assinaturas Digitais
+Biblioteca .NET para consumo dos serviços (API's) fornecidos pela BITSIGN, recepção de _callbacks_ e demais recursos para a integração entre sistemas. Essa biblioteca abstrai toda a complexidade de comunicação com o protocolo HTTP, simplificando o consumo pelos clientes, que acessarão as classes e métodos que refletem exatamente a documentação da API, não havendo a necessidade de lidar diretamente com código referente à infraestrutura.
 
-Além da comunicação que já está embutida, a biblioteca também oferece recursos para _logging_, correlação de requisições e classes de DTOs (que também são definidas pelas APIs). Isso garantirá uma experiência diferenciada para consumo dos serviços, já que o _proxy_ expõe em sua _interface_ pública, métodos e propriedades que refletem o negócio, que é o de "assinaturas digitais".
+Além da comunicação que já está embutida, a biblioteca também oferece recursos para _logging_, correlação de requisições e classes de DTOs (que também são definidas pelas API's). Isso garantirá uma experiência diferenciada para consumo dos serviços, já que o _proxy_ expõe em sua _interface_ pública, métodos e propriedades que refletem o negócio, que é o de "assinaturas digitais".
 
 > Processo de Assinaturas (visão técnica e operacional): [https://bitsign.com.br/documentacao](https://bitsign.com.br/documentacao)
 
-> Documentação das APIs: [https://bitsign.com.br/documentacao/apis](https://bitsign.com.br/documentacao/apis)
+> Documentação das API's: [https://bitsign.com.br/documentacao/apis](https://bitsign.com.br/documentacao/apis)
 
 > NUGET: [PM> Install-Package BITFIN.BITSIGN.Proxy](https://www.nuget.org/packages/BITFIN.BITSIGN.Proxy)
 
@@ -26,7 +26,7 @@ using (var proxy = new ProxyDoServico(
         chaveDeIntegracao,
         FormatoDeSerializacao.Json)))
 {
-    //consumo dos serviços (APIs)
+    //consumo dos serviços (API's)
 }
 ```
 
@@ -46,7 +46,7 @@ using (var log = new LogEmTexto(new StreamWriter("Log.txt", true)))
 {
     using (var proxy = new ProxyDoServico(this.Conexao, log))
     {
-        //consumo dos serviços (APIs)
+        //consumo dos serviços (API's)
     }
 }
 
@@ -62,7 +62,7 @@ using (var log = new LogEmTexto(new StreamWriter("Log.txt", true)))
 {
     using (var proxy = new ProxyDoServico(this.Conexao, log, new RastreioComGuid()))
     {
-        //consumo dos serviços (APIs)
+        //consumo dos serviços (API's)
     }
 }
 ```
@@ -143,7 +143,7 @@ Caso não tenha um ambiente definido para _callbacks_, e mesmo assim quer ter a 
 > Este _proxy_ oferece suporte para interagir com este serviço através da API [Dumps](https://github.com/BITFIN-Software/BITSIGN.Proxy/blob/master/BITSIGN.Proxy/Comunicacao/APIs/Dumps.cs).
 
 ## Status dos Serviços
-O _proxy_ também expõe uma propriedade para analisar o status dos serviços e seus recursos associados. Isso permitirá ao cliente que consome as APIs possa criar alguma regra em torno disso, e desabilitar e reabilitar funcionalidades em seu sistema de acordo com a situação atual de cada serviço. A propriedade `Status` está acessível a partir do _proxy_ e através do método `Atualizar` é acessar o relatório com a situação de todos os serviços. Abaixo temos o exemplo de como chamar o método e exibir o relatório:
+O _proxy_ também expõe uma propriedade para analisar o status dos serviços e seus recursos associados. Isso permitirá ao cliente que consome as API's possa criar alguma regra em torno disso, e desabilitar e reabilitar funcionalidades em seu sistema de acordo com a situação atual de cada serviço. A propriedade `Status` está acessível a partir do _proxy_ e através do método `Atualizar` é acessar o relatório com a situação de todos os serviços. Abaixo temos o exemplo de como chamar o método e exibir o relatório:
 
 ```csharp
 using (var proxy = new ProxyDoServico(this.Conexao))
