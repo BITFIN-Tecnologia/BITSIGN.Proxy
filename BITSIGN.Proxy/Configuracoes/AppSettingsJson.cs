@@ -16,6 +16,20 @@ namespace BITSIGN.Proxy.Configuracoes
         /// <summary>
         /// Inicializa as configurações extraindo as informações do arquivo appsettings.json.
         /// </summary>
+        /// <example>
+        /// <code>
+        ///"BITSIGN.Proxy": {
+        ///  "Conexao": {
+        ///    "Ambiente": "Sandbox",
+        ///    "Versao": "v1",
+        ///    "CodigoDoContratante": "985e0702-e94a-4954-b7a8-1f28c73c8122",
+        ///    "ChaveDeIntegracao": "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq",
+        ///    "FormatoDeSerializacao": "Json",
+        ///    "Timeout": "00:00:10"
+        ///  }
+        ///}
+        /// </code>
+        /// </example>
         public AppSettingsJson()
         {
             var config = 

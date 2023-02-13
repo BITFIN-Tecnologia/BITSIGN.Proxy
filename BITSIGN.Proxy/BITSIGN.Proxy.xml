@@ -753,9 +753,23 @@
             </summary>
         </member>
         <member name="M:BITSIGN.Proxy.Configuracoes.AppSettingsJson.#ctor">
-            <summary>
-            Inicializa as configurações extraindo as informações do arquivo appsettings.json.
-            </summary>
+             <summary>
+             Inicializa as configurações extraindo as informações do arquivo appsettings.json.
+             </summary>
+             <example>
+             <code>
+            "BITSIGN.Proxy": {
+              "Conexao": {
+                "Ambiente": "Sandbox",
+                "Versao": "v1",
+                "CodigoDoContratante": "985e0702-e94a-4954-b7a8-1f28c73c8122",
+                "ChaveDeIntegracao": "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq",
+                "FormatoDeSerializacao": "Json",
+                "Timeout": "00:00:10"
+              }
+            }
+             </code>
+             </example>
         </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Ambiente">
             <summary>
@@ -806,6 +820,24 @@
             <summary>
             Inicializa as configurações extraindo as informações do arquivo app.config.
             </summary>
+            <example>
+            <code>
+            <appSettings>
+                <add key="BITSIGN.Proxy.Conexao.Ambiente"
+                        value="Sandbox" />
+                <add key="BITSIGN.Proxy.Conexao.Versao"
+                        value="v1" />
+                <add key="BITSIGN.Proxy.Conexao.CodigoDoContratante"
+                        value="985e0702-e94a-4954-b7a8-1f28c73c8122" />
+                <add key="BITSIGN.Proxy.Conexao.ChaveDeIntegracao"
+                        value="TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq" />
+                <add key="BITSIGN.Proxy.Conexao.FormatoDeSerializacao"
+                        value="Json" />
+                <add key="BITSIGN.Proxy.Conexao.Timeout"
+                        value="00:00:10" />
+            </appSettings>
+            </code>
+            </example>
         </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Ambiente">
             <summary>

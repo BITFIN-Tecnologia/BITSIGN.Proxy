@@ -15,6 +15,24 @@ namespace BITSIGN.Proxy.Configuracoes
         /// <summary>
         /// Inicializa as configurações extraindo as informações do arquivo app.config.
         /// </summary>
+        /// <example>
+        /// <code>
+        /// <appSettings>
+        ///     <add key="BITSIGN.Proxy.Conexao.Ambiente"
+        ///             value="Sandbox" />
+        ///     <add key="BITSIGN.Proxy.Conexao.Versao"
+        ///             value="v1" />
+        ///     <add key="BITSIGN.Proxy.Conexao.CodigoDoContratante"
+        ///             value="985e0702-e94a-4954-b7a8-1f28c73c8122" />
+        ///     <add key="BITSIGN.Proxy.Conexao.ChaveDeIntegracao"
+        ///             value="TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq" />
+        ///     <add key="BITSIGN.Proxy.Conexao.FormatoDeSerializacao"
+        ///             value="Json" />
+        ///     <add key="BITSIGN.Proxy.Conexao.Timeout"
+        ///             value="00:00:10" />
+        /// </appSettings>
+        /// </code>
+        /// </example>
         public AppSettingsXml()
         {
             var config = ConfigurationManager.AppSettings;
