@@ -1621,6 +1621,11 @@
             Ficha Cadastral.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.FonteDeDados">
+            <summary>
+            Fonte de Dados.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.LaudoTecnico">
             <summary>
             Laudo Técnico.

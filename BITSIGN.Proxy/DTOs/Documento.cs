@@ -113,6 +113,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string FichaCadastral = "Ficha Cadastral";
             /// <summary>
+            /// Fonte de Dados.
+            /// </summary>
+            public const string FonteDeDados = "Fonte de Dados";
+            /// <summary>
             /// Laudo Técnico.
             /// </summary>
             public const string LaudoTecnico = "Laudo Técnico";
