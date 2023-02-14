@@ -31,5 +31,10 @@ namespace BITSIGN.Proxy.DTOs
         /// Tamanho (em bytes) do conteúdo.
         /// </summary>
         public int Tamanho { get; set; }
+
+        /// <summary>
+        /// Cabeçalhos da requisição.
+        /// </summary>
+        public string Cabecalho { get; set; }
     }
 }

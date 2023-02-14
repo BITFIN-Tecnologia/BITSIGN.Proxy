@@ -1889,6 +1889,11 @@
             Tamanho (em bytes) do conteúdo.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Dump.Cabecalho">
+            <summary>
+            Cabeçalhos da requisição.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Emissao">
             <summary>
             Informações sobre a emissão do certificado.
@@ -2122,6 +2127,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.Lote.UrlAoVivo">
             <summary>
             URL para acesso ao vivo do andamento das assinaturas de todos os documentos do lote.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.FalhaDeProcessamento">
+            <summary>
+            Detalhes da falha que ocorreu durante o processamento. Quando configurado, ela também é reportada via callbacks.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Lote.Documentos">

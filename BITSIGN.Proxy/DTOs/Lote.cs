@@ -72,6 +72,12 @@ namespace BITSIGN.Proxy.DTOs
         public string UrlAoVivo { get; set; }
 
         /// <summary>
+        /// Detalhes da falha que ocorreu durante o processamento. Quando configurado, ela também é reportada via callbacks.
+        /// </summary>
+        [XmlAttribute]
+        public string FalhaDeProcessamento { get; set; }
+
+        /// <summary>
         /// Relação de documentos adicionados ao lote.
         /// </summary>
         public List<Documento> Documentos { get; set; }
