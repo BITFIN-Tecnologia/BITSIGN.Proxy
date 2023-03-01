@@ -63,6 +63,7 @@ namespace BITSIGN.Proxy
             this.Certificados = new(proxy, conexao.FormatoDeSerializacao);
             this.Status = new(conexao.Status);
             this.Uploads = new(proxy);
+            this.Utilitarios = new(proxy);
         }
 
         /// <summary>
@@ -134,6 +135,11 @@ namespace BITSIGN.Proxy
         /// API de upload de Arquivos.
         /// </summary>
         public Uploads Uploads { get; }
+
+        /// <summary>
+        /// API de Utilitários.
+        /// </summary>
+        public Comunicacao.APIs.Utilitarios Utilitarios { get; }
 
         /// <summary>
         /// Encerra e remove os recursos de comunicação utilizados por esta classe.

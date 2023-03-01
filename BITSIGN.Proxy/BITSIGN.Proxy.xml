@@ -671,6 +671,26 @@
             <returns>Conteúdo do Arquivo (em bytes).</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
+        <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Utilitarios">
+            <summary>
+            Funcionalidades periféricas para documentos e assinaturas.
+            </summary>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Utilitarios.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Inicializa a API de utilitários.
+            </summary>
+            <param name="proxy">Instância da classe <see cref="T:System.Net.Http.HttpClient"/> gerada pelo proxy.</param>
+        </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Utilitarios.Conformidade(System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Conformidade de PDF.
+            </summary>
+            <param name="nomeDoArquivo">Nome do Arquivo.</param>
+            <param name="conteudo">Conteúdo do Arquivo.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Dados da análise de conformidade.</returns>
+        </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">
             <summary>
             Exceção customizada que traduz a <see cref="T:BITSIGN.Proxy.DTOs.Falha"/> em uma exceção.
@@ -1355,6 +1375,26 @@
         <member name="P:BITSIGN.Proxy.DTOs.Configuracao.PeriodoParaLembrete">
             <summary>
             Periodicidade para envio de lembrete informando sobre documentos com a assinatura pendente.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Conformidade">
+            <summary>
+            Análise de Conformidade ao padrão PDF/A.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Conformidade.NomeDoArquivo">
+            <summary>
+            Nome do arquivo analisado.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Conformidade.Padrao">
+            <summary>
+            Padrão de Conformidade.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Conformidade.Compativel">
+            <summary>
+            Indica se o arquivo é compatível com o padrão PDF/A.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Constantes">
@@ -2962,6 +3002,11 @@
         <member name="P:BITSIGN.Proxy.ProxyDoServico.Uploads">
             <summary>
             API de upload de Arquivos.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.ProxyDoServico.Utilitarios">
+            <summary>
+            API de Utilitários.
             </summary>
         </member>
         <member name="M:BITSIGN.Proxy.ProxyDoServico.Dispose">
