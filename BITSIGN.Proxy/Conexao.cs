@@ -77,8 +77,8 @@ namespace BITSIGN.Proxy
         private void ConfigurarAmbiente(Ambiente ambiente, string url = null, string status = null)
         {
             this.Ambiente = ambiente;
-            this.Url = url != null && ambiente == Ambiente.Local ? new($"{url}/{this.Versao}/") : new(string.Format(apis[this.Ambiente], this.Versao));
-            this.Status = status != null && ambiente == Ambiente.Local ? new(status) : Conexao.status[this.Ambiente];
+            this.Url = !string.IsNullOrWhiteSpace(url) && ambiente == Ambiente.Local ? new($"{url}/{this.Versao}/") : new(string.Format(apis[this.Ambiente], this.Versao));
+            this.Status = !string.IsNullOrWhiteSpace(status) && ambiente == Ambiente.Local ? new(status) : Conexao.status[this.Ambiente];
         }
 
         /// <summary>
