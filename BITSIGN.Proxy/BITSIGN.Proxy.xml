@@ -1402,6 +1402,21 @@
             Relação de constantes utilizadas pela biblioteca.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Constantes.ModelosDeAssinatura">
+            <summary>
+            Modelos de identificação e coleta de assinaturas.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.ModelosDeAssinatura.Digital">
+            <summary>
+            O assinante deverá apresentar o certificado digital para identificação e posterior assinatura.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.ModelosDeAssinatura.Eletronica">
+            <summary>
+            O assinante deverá confirmar seus dados para identificação e posterior assinatura.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Constantes.PadroesDeAssinatura">
             <summary>
             Padrões de assinaturas digitais suportadas.

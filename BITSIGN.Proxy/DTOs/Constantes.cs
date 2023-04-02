@@ -9,6 +9,21 @@ namespace BITSIGN.Proxy.DTOs
     public class Constantes
     {
         /// <summary>
+        /// Modelos de identificação e coleta de assinaturas.
+        /// </summary>
+        public class ModelosDeAssinatura
+        {
+            /// <summary>
+            /// O assinante deverá apresentar o certificado digital para identificação e posterior assinatura.
+            /// </summary>
+            public const string Digital = "D";
+            /// <summary>
+            /// O assinante deverá confirmar seus dados para identificação e posterior assinatura.
+            /// </summary>
+            public const string Eletronica = "E";
+        }
+
+        /// <summary>
         /// Padrões de assinaturas digitais suportadas.
         /// </summary>
         public class PadroesDeAssinatura
