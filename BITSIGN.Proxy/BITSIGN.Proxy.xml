@@ -1994,6 +1994,11 @@
             Entidade que define os dados de uma pessoa física ou jurídica.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Entidade.FormatoDaData">
+            <summary>
+            Formato de serialização da data de nascimento ou fundação da entidade.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Entidade.Nome">
             <summary>
             Nome completo da entidade.
@@ -2012,6 +2017,16 @@
         <member name="P:BITSIGN.Proxy.DTOs.Entidade.Telefone">
             <summary>
             Número do telefone celular associado à entidade.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Entidade.DataDeNascimentoOuFundacao">
+            <summary>
+            Data de Nascimento (para Pessoa Física) ou Data de Fundação (para Pessoa Jurídica) em formato yyyy-MM-dd.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Entidade.NascimentoOuFundacao">
+            <summary>
+            Data de Nascimento (para Pessoa Física) ou Data de Fundação (para Pessoa Jurídica) em formato yyyy-MM-dd.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Falha">
