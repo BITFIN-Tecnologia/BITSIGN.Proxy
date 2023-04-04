@@ -1691,6 +1691,11 @@
             Laudo Técnico.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Manifesto">
+            <summary>
+            Manifesto.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.NotaDeCreditoExportacao">
             <summary>
             Nota de Crédito à Exportação.

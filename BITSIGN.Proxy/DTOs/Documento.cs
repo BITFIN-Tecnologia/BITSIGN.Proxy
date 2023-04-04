@@ -121,6 +121,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string LaudoTecnico = "Laudo Técnico";
             /// <summary>
+            /// Manifesto.
+            /// </summary>
+            public const string Manifesto = "Manifesto";
+            /// <summary>
             /// Nota de Crédito à Exportação.
             /// </summary>
             public const string NotaDeCreditoExportacao = "Nota de Crédito à Exportação";
