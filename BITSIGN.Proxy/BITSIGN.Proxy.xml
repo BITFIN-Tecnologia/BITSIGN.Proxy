@@ -1074,6 +1074,11 @@
             Indica se o assinante deve ser notificado de que há um novo documento disponível para assinatura.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.Mensagem">
+            <summary>
+            Mensagem customizada (e opcional) que é enviada juntamente com a notificação ao assinante.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.EntidadeVinculada">
             <summary>
             Informações sobre entidade vinculada ao assinante.

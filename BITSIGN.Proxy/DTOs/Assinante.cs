@@ -63,6 +63,12 @@ namespace BITSIGN.Proxy.DTOs
         /// </summary>
         [XmlAttribute]
         public bool Notificar { get; set; }
+
+        /// <summary>
+        /// Mensagem customizada (e opcional) que é enviada juntamente com a notificação ao assinante.
+        /// </summary>
+        [XmlElement]
+        public string Mensagem { get; set; }
     }
 
     /// <summary>
