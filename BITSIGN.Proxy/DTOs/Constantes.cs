@@ -16,11 +16,11 @@ namespace BITSIGN.Proxy.DTOs
             /// <summary>
             /// O assinante deverá apresentar o certificado digital para identificação e posterior assinatura.
             /// </summary>
-            public const string Digital = "D";
+            public const char Digital = 'D';
             /// <summary>
             /// O assinante deverá confirmar seus dados para identificação e posterior assinatura.
             /// </summary>
-            public const string Eletronica = "E";
+            public const char Eletronica = 'E';
         }
 
         /// <summary>
