@@ -8,7 +8,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Version>1.1.0.16</Version>
         <RepositoryUrl>https://github.com/BITFIN-Software/BITSIGN.Proxy</RepositoryUrl>
-        <PackageTags>api, rest-api, dot-net, icp-brasil, certificados, assinaturas-digitais, cades, pades, xades</PackageTags>
+        <PackageTags>api, rest-api, dot-net, icp-brasil, certificados, assinaturas-digitais, assinaturas-eletronicas, cades, pades, xades</PackageTags>
         <PackageId>BITFIN.BITSIGN.Proxy</PackageId>
         <PackageProjectUrl>https://bitsign.com.br</PackageProjectUrl>
         <PackageIcon>Icon.png</PackageIcon>
