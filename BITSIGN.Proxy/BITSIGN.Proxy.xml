@@ -469,7 +469,7 @@
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Lotes">
             <summary>
-            Envio e gestão dos lotes de documentos para assinatura digital.
+            Envio e gestão dos lotes de documentos para assinatura.
             </summary>
         </member>
         <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Lotes.#ctor(System.Net.Http.HttpClient,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
@@ -1034,6 +1034,11 @@
             Pessoa física ou jurídica definida como assinante.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.Autenticacao">
+            <summary>
+            Determina o tipo de identificação do assinante. Opções disponíveis: Certificado, Token por E-mail, Token por SMS ou Token por WhatsApp.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Assinante.EntidadeVinculada">
             <summary>
             Indica a entidade e o tipo de vínculo à qual o assinante está associado.
@@ -1077,6 +1082,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.Assinante.Mensagem">
             <summary>
             Mensagem customizada (e opcional) que é enviada juntamente com a notificação ao assinante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Assinante.Evidencias">
+            <summary>
+            Informações coletadas que evidenciam o assinante e o local onde a assinatura foi realizada.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.EntidadeVinculada">
@@ -1407,6 +1417,16 @@
             Relação de constantes utilizadas pela biblioteca.
             </summary>
         </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Constantes.Idiomas">
+            <summary>
+            Idioma em que o assinador (Web ou Móvel) será apresentado.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.Idiomas.PortuguesDoBrasil">
+            <summary>
+            Português do Brasil.
+            </summary>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Constantes.ModelosDeAssinatura">
             <summary>
             Modelos de identificação e coleta de assinaturas.
@@ -1420,6 +1440,31 @@
         <member name="F:BITSIGN.Proxy.DTOs.Constantes.ModelosDeAssinatura.Eletronica">
             <summary>
             O assinante deverá confirmar seus dados para identificação e posterior assinatura.
+            </summary>
+        </member>
+        <member name="T:BITSIGN.Proxy.DTOs.Constantes.TiposDeAutenticacao">
+            <summary>
+            Tipos de autenticação do assinante.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.TiposDeAutenticacao.CertificadoDigital">
+            <summary>
+            Necessário a utilização de um certificado digital válido para assinatura.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.TiposDeAutenticacao.Email">
+            <summary>
+            Token gerado e enviado por E-mail e que deverá ser informado para assinatura.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.TiposDeAutenticacao.SMS">
+            <summary>
+            Token gerado e enviado por SMS e que deverá ser informado para assinatura.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Constantes.TiposDeAutenticacao.WhatsApp">
+            <summary>
+            Token gerado e enviado por WhatsApp e que deverá ser informado para assinatura.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Constantes.PadroesDeAssinatura">
@@ -1584,6 +1629,11 @@
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Balanco">
             <summary>
             Balanço.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Boletim">
+            <summary>
+            Boletim.
             </summary>
         </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.CartaDeAnuencia">
@@ -2041,7 +2091,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Entidade.Telefone">
             <summary>
-            Número do telefone celular associado à entidade.
+            Número do telefone celular associado à entidade. Formato: (##) #.####-####. Exemplo: (19) 9.1111-2222.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Entidade.DataDeNascimentoOuFundacao">
@@ -2052,6 +2102,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.Entidade.NascimentoOuFundacao">
             <summary>
             Data de Nascimento (para Pessoa Física) ou Data de Fundação (para Pessoa Jurídica) em formato yyyy-MM-dd.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Entidade.Idioma">
+            <summary>
+            Idioma em que o assinador (Web ou Móvel) será apresentado. Opções Disponíveis: "pt-br".
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.Falha">
@@ -2162,6 +2217,11 @@
         <member name="P:BITSIGN.Proxy.DTOs.Lote.Aplicacao">
             <summary>
             Aplicação à qual o lote deverá ser inserido.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.ModeloDeAssinatura">
+            <summary>
+            Modelo de assinatura que deve ser aplicada (D = Digital, E = Eletrônica).
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Lote.Entidade">

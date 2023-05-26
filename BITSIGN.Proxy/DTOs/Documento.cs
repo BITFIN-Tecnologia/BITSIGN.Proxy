@@ -37,6 +37,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string Balanco = "Balanço";
             /// <summary>
+            /// Boletim.
+            /// </summary>
+            public const string Boletim = "Boletim";
+            /// <summary>
             /// Carta de Anuência.
             /// </summary>
             public const string CartaDeAnuencia = "Carta de Anuência";

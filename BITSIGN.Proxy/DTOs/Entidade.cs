@@ -40,7 +40,7 @@ namespace BITSIGN.Proxy.DTOs
         public string Email { get; set; }
 
         /// <summary>
-        /// Número do telefone celular associado à entidade.
+        /// Número do telefone celular associado à entidade. Formato: (##) #.####-####. Exemplo: (19) 9.1111-2222.
         /// </summary>
         [XmlAttribute]
         public string Telefone { get; set; }
@@ -69,5 +69,11 @@ namespace BITSIGN.Proxy.DTOs
         /// </summary>
         [XmlAttribute]
         public string NascimentoOuFundacao { get; set; }
+
+        /// <summary>
+        /// Idioma em que o assinador (Web ou Móvel) será apresentado. Opções Disponíveis: "pt-br".
+        /// </summary>
+        [XmlAttribute]
+        public string Idioma { get; set; }
     }
 }

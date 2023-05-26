@@ -9,6 +9,17 @@ namespace BITSIGN.Proxy.DTOs
     public class Constantes
     {
         /// <summary>
+        /// Idioma em que o assinador (Web ou Móvel) será apresentado.
+        /// </summary>
+        internal class Idiomas
+        {
+            /// <summary>
+            /// Português do Brasil.
+            /// </summary>
+            internal const string PortuguesDoBrasil = "pt-br";
+        }
+
+        /// <summary>
         /// Modelos de identificação e coleta de assinaturas.
         /// </summary>
         public class ModelosDeAssinatura
@@ -16,11 +27,34 @@ namespace BITSIGN.Proxy.DTOs
             /// <summary>
             /// O assinante deverá apresentar o certificado digital para identificação e posterior assinatura.
             /// </summary>
-            public const char Digital = 'D';
+            public const string Digital = "D";
             /// <summary>
             /// O assinante deverá confirmar seus dados para identificação e posterior assinatura.
             /// </summary>
-            public const char Eletronica = 'E';
+            public const string Eletronica = "E";
+        }
+
+        /// <summary>
+        /// Tipos de autenticação do assinante.
+        /// </summary>
+        public class TiposDeAutenticacao
+        {
+            /// <summary>
+            /// Necessário a utilização de um certificado digital válido para assinatura.
+            /// </summary>
+            public const string CertificadoDigital = "Certificado";
+            /// <summary>
+            /// Token gerado e enviado por E-mail e que deverá ser informado para assinatura.
+            /// </summary>
+            public const string Email = "Token por E-mail";
+            /// <summary>
+            /// Token gerado e enviado por SMS e que deverá ser informado para assinatura.
+            /// </summary>
+            public const string SMS = "Token por SMS";
+            /// <summary>
+            /// Token gerado e enviado por WhatsApp e que deverá ser informado para assinatura.
+            /// </summary>
+            public const string WhatsApp = "Token por WhatsApp";
         }
 
         /// <summary>

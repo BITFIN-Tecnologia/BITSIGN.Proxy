@@ -19,6 +19,11 @@ namespace BITSIGN.Proxy.DTOs
         public Entidade Entidade { get; set; }
 
         /// <summary>
+        /// Determina o tipo de identificação do assinante. Opções disponíveis: Certificado, Token por E-mail, Token por SMS ou Token por WhatsApp.
+        /// </summary>
+        public string Autenticacao { get; set; }
+
+        /// <summary>
         /// Indica a entidade e o tipo de vínculo à qual o assinante está associado.
         /// </summary>
         public EntidadeVinculada EntidadeVinculada { get; set; }
@@ -69,6 +74,12 @@ namespace BITSIGN.Proxy.DTOs
         /// </summary>
         [XmlElement]
         public string Mensagem { get; set; }
+
+        /// <summary>
+        /// Informações coletadas que evidenciam o assinante e o local onde a assinatura foi realizada.
+        /// </summary>
+        [XmlElement]
+        public string Evidencias { get; set; }
     }
 
     /// <summary>

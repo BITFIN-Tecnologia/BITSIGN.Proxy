@@ -33,6 +33,7 @@ namespace Testes.Exemplos
                             }
                         }
                     },
+                    ModeloDeAssinatura = Constantes.ModelosDeAssinatura.Digital,
                     Entidade = new()
                     {
                         Nome = "White House - USA",
@@ -72,6 +73,7 @@ namespace Testes.Exemplos
                                                 Documento = "57863748070",
                                                 Email = "jack.bauer@ctu.com"
                                             },
+                                            Autenticacao = Constantes.TiposDeAutenticacao.CertificadoDigital,
                                             Notificar = true,
                                             Obrigatorio = false
                                         }

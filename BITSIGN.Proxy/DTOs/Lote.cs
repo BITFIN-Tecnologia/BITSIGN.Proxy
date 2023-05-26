@@ -20,6 +20,11 @@ namespace BITSIGN.Proxy.DTOs
         public Aplicacao Aplicacao { get; set; }
 
         /// <summary>
+        /// Modelo de assinatura que deve ser aplicada (D = Digital, E = Eletrônica).
+        /// </summary>
+        public string ModeloDeAssinatura { get; set; }
+
+        /// <summary>
         /// Entidade associada ao lote.
         /// </summary>
         public Entidade Entidade { get; set; }

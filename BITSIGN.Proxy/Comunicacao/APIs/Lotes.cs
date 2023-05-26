@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace BITSIGN.Proxy.Comunicacao.APIs
 {
     /// <summary>
-    /// Envio e gestão dos lotes de documentos para assinatura digital.
+    /// Envio e gestão dos lotes de documentos para assinatura.
     /// </summary>
     public class Lotes : API
     {

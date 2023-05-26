@@ -42,6 +42,7 @@ namespace Testes.Exemplos
                             }
                         }
                     },
+                    ModeloDeAssinatura = Constantes.ModelosDeAssinatura.Digital,
                     Entidade = new()
                     {
                         Nome = "White House - USA",
@@ -66,29 +67,18 @@ namespace Testes.Exemplos
                                 new()
                                 {
                                     Perfil = "Emitente",
-                                    QtdeMinima = 2,
+                                    QtdeMinima = 1,
                                     Assinantes = new List<Assinante>()
                                     {
                                         new()
                                         {
                                             Entidade = new()
                                             {
-                                                Nome = "Israel Aece",
-                                                Documento = "28387365823",
-                                                Email = "israelaece@yahoo.com.br"
+                                                Nome = "Jack Bauer",
+                                                Documento = "57863748070",
+                                                Email = "jack.bauer@ctu.com"
                                             },
-                                            Notificar = true,
-                                            Obrigatorio = true,
-                                            Posicao = posicao
-                                        },
-                                        new()
-                                        {
-                                            Entidade = new()
-                                            {
-                                                Nome = "Juliano Aece",
-                                                Documento = "32757138847",
-                                                Email = "julianoaece@outlook.com"
-                                            },
+                                            Autenticacao = Constantes.TiposDeAutenticacao.CertificadoDigital,
                                             Notificar = true,
                                             Obrigatorio = true,
                                             Posicao = posicao
