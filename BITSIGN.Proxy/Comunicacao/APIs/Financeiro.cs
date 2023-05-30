@@ -33,7 +33,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, "financeiro/planos"))
                 return await Executar(
-                    requisicao, 
+                    requisicao,
                     async resposta => await resposta.Content.ReadAs<IEnumerable<DTOs.PlanoContratado>>(cancellationToken),
                     cancellationToken);
         }
@@ -48,7 +48,7 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, "financeiro/fechamentos"))
                 return await Executar(
-                    requisicao, 
+                    requisicao,
                     async resposta => await resposta.Content.ReadAs<IEnumerable<DTOs.Fechamento>>(cancellationToken),
                     cancellationToken);
         }
@@ -113,6 +113,31 @@ namespace BITSIGN.Proxy.Comunicacao.APIs
         public async Task<byte[]> NotaFiscal(Guid id, CancellationToken cancellationToken = default)
         {
             using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"financeiro/fechamentos/{id}/notafiscal"))
+            {
+                return await base.Executar(requisicao, async resposta =>
+                {
+                    try
+                    {
+                        return await resposta.Content.ReadAsByteArrayAsync(cancellationToken);
+                    }
+                    catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }, cancellationToken);
+            }
+        }
+
+        /// <summary>
+        /// Boleto para Pagamento.
+        /// </summary>
+        /// <param name="id">Identificador do Fechamento.</param>
+        /// <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+        /// <returns>Documento (em PDF) com o boleto para pagamento referente ao consumo de um determinado mês/ano.</returns>
+        /// <exception cref="ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        public async Task<byte[]> Boleto(Guid id, CancellationToken cancellationToken = default)
+        {
+            using (var requisicao = new HttpRequestMessage(HttpMethod.Get, $"financeiro/fechamentos/{id}/boleto"))
             {
                 return await base.Executar(requisicao, async resposta =>
                 {

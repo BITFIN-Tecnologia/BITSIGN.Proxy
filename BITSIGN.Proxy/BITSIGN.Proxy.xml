@@ -467,6 +467,15 @@
             <returns>Documento (em PDF) com a nota fiscal referente aos serviços prestados, espelhando o demonstrativo de consumo de um mês/ano.</returns>
             <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
         </member>
+        <member name="M:BITSIGN.Proxy.Comunicacao.APIs.Financeiro.Boleto(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Boleto para Pagamento.
+            </summary>
+            <param name="id">Identificador do Fechamento.</param>
+            <param name="cancellationToken">Instrução para eventual cancelamento da requisição.</param>
+            <returns>Documento (em PDF) com o boleto para pagamento referente ao consumo de um determinado mês/ano.</returns>
+            <exception cref="T:BITSIGN.Proxy.Comunicacao.ErroNaRequisicao">Exceção disparada se alguma falha ocorrer durante a requisição ou em seu processamento.</exception>
+        </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.APIs.Lotes">
             <summary>
             Envio e gestão dos lotes de documentos para assinatura.
