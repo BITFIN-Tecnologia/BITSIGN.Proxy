@@ -1,5 +1,5 @@
 # BITSIGN.Proxy
-###### Comunicação com as API's de Assinaturas Digitais
+###### Comunicação com as API's de Assinaturas Digitais e Eletrônicas
 Biblioteca .NET para consumo dos serviços (API's) fornecidos pela BITSIGN, recepção de _callbacks_ e demais recursos para a integração entre sistemas. Essa biblioteca abstrai toda a complexidade de comunicação com o protocolo HTTP, simplificando o consumo pelos clientes, que acessarão as classes e métodos que refletem exatamente a documentação da API, não havendo a necessidade de lidar diretamente com código referente à infraestrutura.
 
 Além da comunicação que já está embutida, a biblioteca também oferece recursos para _logging_, correlação de requisições e classes de DTOs (que também são definidas pelas API's). Isso garantirá uma experiência diferenciada para consumo dos serviços, já que o _proxy_ expõe em sua _interface_ pública, métodos e propriedades que refletem o negócio, que é o de "assinaturas digitais".
