@@ -137,5 +137,10 @@ namespace BITSIGN.Proxy
         /// Endpoint que resume o status atual dos serviços e seus recursos.
         /// </summary>
         public Uri Status { get; private set; }
+
+        /// <summary>
+        /// Retorno o <see cref="Nome"/> da conexão.
+        /// </summary>
+        public override string ToString() => this.Nome;
     }
 }
