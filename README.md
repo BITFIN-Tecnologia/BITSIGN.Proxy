@@ -17,6 +17,7 @@ A classe que intermedia toda a comunicação é chamada de `ProxyDoServico`. Ess
 var nome = "Aplicação Xpto";
 var versao = "v1";
 var codigoDoContratante = new Guid("985e0702-e94a-4954-b7a8-1f28c73c8122");
+var codigoDaAplicacao = new Guid("98b4307e-51d4-4f2f-88da-cbb23b903db5");
 var chaveDeIntegracao = "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq";
 
 using (var proxy = new ProxyDoServico(
@@ -25,6 +26,7 @@ using (var proxy = new ProxyDoServico(
         Ambiente.Sandbox,
         versao,
         codigoDoContratante,
+        codigoDaAplicacao,
         chaveDeIntegracao,
         FormatoDeSerializacao.Json)))
 {
