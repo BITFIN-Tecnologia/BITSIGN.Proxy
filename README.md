@@ -11,15 +11,17 @@ Além da comunicação que já está embutida, a biblioteca também oferece recu
 > NUGET: [PM> Install-Package BITFIN.BITSIGN.Proxy](https://www.nuget.org/packages/BITFIN.BITSIGN.Proxy)
 
 ## Conexão e Autenticação
-A classe que intermedia toda a comunicação é chamada de `ProxyDoServico`. Essa classe recebe em seu construtor os dados necessários para estabelecer a comunicação com os serviços. Todos os parâmetros necessários são informados através da classe `Conexao`, onde o **código do contratante** e o **código de integração** são fornecidos no nomento da criação/contratação; além disso, é neste objeto que também deverá ser informado a versão da API a ser utilizada e para qual ambiente as requisições devem ser encaminhadas: **SANDBOX** ou **PRODUÇÃO**.
+A classe que intermedia toda a comunicação é chamada de `ProxyDoServico`. Essa classe recebe em seu construtor os dados necessários para estabelecer a comunicação com os serviços. Todos os parâmetros necessários são informados através da classe `Conexao`, onde o **código do contratante**, **código da aplicação** e o **código de integração** são fornecidos no nomento da criação/contratação; além disso, é neste objeto que também deverá ser informado a versão da API a ser utilizada e para qual ambiente as requisições devem ser encaminhadas: **SANDBOX** ou **PRODUÇÃO**.
 
 ```csharp
+var nome = "Aplicação Xpto";
 var versao = "v1";
 var codigoDoContratante = new Guid("985e0702-e94a-4954-b7a8-1f28c73c8122");
 var chaveDeIntegracao = "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq";
 
 using (var proxy = new ProxyDoServico(
     new Conexao(
+        nome,
         Ambiente.Sandbox,
         versao,
         codigoDoContratante,
@@ -29,6 +31,8 @@ using (var proxy = new ProxyDoServico(
     //consumo dos serviços (API's)
 }
 ```
+
+> A classe `Conexao` está associada, exclusivamente, à uma única aplicação; pelo fato do _proxy_ receber a conexão em seu construtor, ele só poderá manipular os serviços (API's) referente aquela aplicação. Serão necessárias múltiplas instâncias do _proxy_ caso necessite, simultaneamente, interagir com mais de uma aplicação.
 
 O _proxy_ é também encarregado de configurar a autenticação da conexão, nomeando e anexando os _headers_ exigidos pelo serviço para identificar quem é o cliente que está consumindo. Por fim, ainda há o formato de serialização em que o _proxy_ irá operar. Por padrão, ele utilizará o formato **JSON**, mas através do enumerador `FormatoDeSerializacao` é possível alternar para o formato **XML**.
 
