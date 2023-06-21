@@ -34,6 +34,7 @@ namespace Testes.Exemplos
                     {
                         Aplicacao = new()
                         {
+                            Id = this.CodigoDaAplicacao,
                             Contratante = new()
                             {
                                 Id = this.CodigoDoContratante,

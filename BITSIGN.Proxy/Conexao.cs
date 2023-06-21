@@ -38,36 +38,43 @@ namespace BITSIGN.Proxy
             if (configuracao == null)
                 throw new ArgumentNullException(nameof(configuracao));
 
-            this.Inicializar(configuracao.Ambiente, configuracao.Versao, configuracao.CodigoDoContratante, configuracao.ChaveDeIntegracao, configuracao.FormatoDeSerializacao, configuracao.Timeout);
+            this.Inicializar(configuracao.Nome, configuracao.Ambiente, configuracao.Versao, configuracao.CodigoDoContratante, configuracao.CodigoDaAplicacao, configuracao.ChaveDeIntegracao, configuracao.FormatoDeSerializacao, configuracao.Timeout);
             this.ConfigurarAmbiente(configuracao.Ambiente, configuracao.Url, configuracao.Status);
         }
 
         /// <summary>
         /// Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um o ambiente de <see cref="Ambiente.Producao"/> ou de <see cref="Ambiente.Sandbox"/>.
         /// </summary>
+        /// <param name="nome">Identifica à qual aplicação se refere a conexão.</param>
         /// <param name="ambiente">Ambiente de testes (Sandbox), produção ou local.</param>
         /// <param name="versao">Versão da API que deve ser utilizada.</param>
         /// <param name="codigoDoContratante">Código exclusivo do contratante.</param>
-        /// <param name="chaveDeIntegracao">Chave do contratante para integração entre sistemas.</param>
+        /// <param name="codigoDaAplicacao">Código identificador da Aplicação.</param>
+        /// <param name="chaveDeIntegracao">Chave de integração da Aplicação.</param>
         /// <param name="formato">Define como será serializado o conteúdo das mensagens trocadas com os serviços. O padrão é <see cref="FormatoDeSerializacao.Json"/>.</param>
         /// <exception cref="ArgumentException">Se o <paramref name="codigoDoContratante"/> ou o <paramref name="chaveDeIntegracao"/> forem <see cref="Guid.Empty"/> ou se a <paramref name="versao"/> for vazia.</exception>
-        public Conexao(Ambiente ambiente, string versao, Guid codigoDoContratante, string chaveDeIntegracao, FormatoDeSerializacao formato = FormatoDeSerializacao.Json)
+        public Conexao(string nome, Ambiente ambiente, string versao, Guid codigoDoContratante, Guid codigoDaAplicacao, string chaveDeIntegracao, FormatoDeSerializacao formato = FormatoDeSerializacao.Json)
         {
             if (ambiente == Ambiente.Local)
                 throw new ArgumentException("Para inicializar a conexão com a solução hospedada localmente, utilize o construtor que recebe a instância de IConfiguracao, para que possa customizar a Url dos serviços.", nameof(ambiente));
 
-            Inicializar(ambiente, versao, codigoDoContratante, chaveDeIntegracao, formato);
+            Inicializar(nome, ambiente, versao, codigoDoContratante, codigoDaAplicacao, chaveDeIntegracao, formato);
         }
 
-        private void Inicializar(Ambiente ambiente, string versao, Guid codigoDoContratante, string chaveDeIntegracao, FormatoDeSerializacao formato, TimeSpan? timeout = null)
+        private void Inicializar(string nome, Ambiente ambiente, string versao, Guid codigoDoContratante, Guid codigoDaAplicacao, string chaveDeIntegracao, FormatoDeSerializacao formato, TimeSpan? timeout = null)
         {
+            this.Nome = !string.IsNullOrWhiteSpace(nome) ? nome : "Conexão Principal";
+
             this.Versao = !string.IsNullOrWhiteSpace(versao) ? versao : throw new ArgumentException("Versão não informada.", nameof(versao));
 
             this.CodigoDoContratante =
                 codigoDoContratante != Guid.Empty ? codigoDoContratante : throw new ArgumentException("Código do Contratante não informado.", nameof(codigoDoContratante));
 
+            this.CodigoDaAplicacao =
+                codigoDaAplicacao != Guid.Empty ? codigoDaAplicacao : throw new ArgumentException("Código da Aplicação não informado.", nameof(codigoDaAplicacao));
+
             this.ChaveDeIntegracao =
-                !string.IsNullOrWhiteSpace(chaveDeIntegracao) ? chaveDeIntegracao : throw new ArgumentException("Chave de Integração não informada.", nameof(chaveDeIntegracao));
+                !string.IsNullOrWhiteSpace(chaveDeIntegracao) ? chaveDeIntegracao : throw new ArgumentException("Chave de integração não informada.", nameof(chaveDeIntegracao));
 
             this.Timeout = timeout ?? TimeSpan.FromSeconds(100);
             this.FormatoDeSerializacao = formato;
@@ -80,6 +87,11 @@ namespace BITSIGN.Proxy
             this.Url = !string.IsNullOrWhiteSpace(url) && ambiente == Ambiente.Local ? new($"{url}/{this.Versao}/") : new(string.Format(apis[this.Ambiente], this.Versao));
             this.Status = !string.IsNullOrWhiteSpace(status) && ambiente == Ambiente.Local ? new(status) : Conexao.status[this.Ambiente];
         }
+
+        /// <summary>
+        /// Identifica à qual aplicação se refere a conexão.
+        /// </summary>
+        public string Nome { get; private set; }
 
         /// <summary>
         /// Ambiente, Sandbox, Produção ou Local.
@@ -95,6 +107,11 @@ namespace BITSIGN.Proxy
         /// Código do Contratante.
         /// </summary>
         public Guid CodigoDoContratante { get; private set; }
+
+        /// <summary>
+        /// Código identificador da Aplicação.
+        /// </summary>
+        public Guid CodigoDaAplicacao { get; private set; }
 
         /// <summary>
         /// Chave de Integração gerado para o contratante.

@@ -12,6 +12,11 @@ namespace BITSIGN.Proxy.Configuracoes
     public interface IConfiguracao
     {
         /// <summary>
+        /// Identifica à qual aplicação se refere a conexão.
+        /// </summary>
+        string Nome { get; }
+
+        /// <summary>
         /// Ambiente de Sandbox, Produção ou Local.
         /// </summary>
         Ambiente Ambiente { get; }
@@ -37,7 +42,12 @@ namespace BITSIGN.Proxy.Configuracoes
         Guid CodigoDoContratante { get; }
 
         /// <summary>
-        /// Chave de Integração gerado para o contratante.
+        /// Código identificador da Aplicação.
+        /// </summary>
+        Guid CodigoDaAplicacao { get; }
+
+        /// <summary>
+        /// Chave de integração da Aplicação.
         /// </summary>
         string ChaveDeIntegracao { get; }
 

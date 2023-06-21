@@ -13,13 +13,23 @@ namespace Testes.Exemplos
     public abstract class Exemplo
     {
         public Exemplo() =>
-            this.Conexao = new Conexao(Ambiente.Sandbox, this.Versao, this.CodigoDoContratante, this.ChaveDeIntegracao, FormatoDeSerializacao.Json);
+            this.Conexao =
+                new(
+                    "Testes", 
+                    Ambiente.Sandbox, 
+                    this.Versao, 
+                    this.CodigoDoContratante, 
+                    this.CodigoDaAplicacao, 
+                    this.ChaveDeIntegracao, 
+                    FormatoDeSerializacao.Json);
 
         public abstract Task Executar(CancellationToken cancellationToken = default);
 
         protected string Versao { get; } = "v1";
 
         protected Guid CodigoDoContratante { get; } = new("A5AA424C-D37F-4231-B2B5-85D45DF4C31E");
+
+        protected Guid CodigoDaAplicacao { get; } = new("A5AA424C-D37F-4231-B2B5-85D45DF4C31E");
 
         protected string ChaveDeIntegracao { get; set; } = "A50D9BCA34E780F5D12AAC57AD9E51EIA90B3001";
 

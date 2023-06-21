@@ -725,16 +725,23 @@
             <remarks>Permite delegar toda a configuração para um arquivo externo, permitindo a alteração sem necessidade de recompilar. Este construtor também deve ser utilizado se estiver utilizando o ambiente <see cref="F:BITSIGN.Proxy.Ambiente.Local"/>, já que será necessário customizar o endereço onde os serviços estarão hospedados.</remarks>
             <exception cref="T:System.ArgumentNullException">Se o parâmetro <paramref name="configuracao"/> for nulo.</exception>
         </member>
-        <member name="M:BITSIGN.Proxy.Conexao.#ctor(BITSIGN.Proxy.Ambiente,System.String,System.Guid,System.String,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
+        <member name="M:BITSIGN.Proxy.Conexao.#ctor(System.String,BITSIGN.Proxy.Ambiente,System.String,System.Guid,System.Guid,System.String,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
             <summary>
             Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um o ambiente de <see cref="F:BITSIGN.Proxy.Ambiente.Producao"/> ou de <see cref="F:BITSIGN.Proxy.Ambiente.Sandbox"/>.
             </summary>
+            <param name="nome">Identifica à qual aplicação se refere a conexão.</param>
             <param name="ambiente">Ambiente de testes (Sandbox), produção ou local.</param>
             <param name="versao">Versão da API que deve ser utilizada.</param>
             <param name="codigoDoContratante">Código exclusivo do contratante.</param>
-            <param name="chaveDeIntegracao">Chave do contratante para integração entre sistemas.</param>
+            <param name="codigoDaAplicacao">Código identificador da Aplicação.</param>
+            <param name="chaveDeIntegracao">Chave de integração da Aplicação.</param>
             <param name="formato">Define como será serializado o conteúdo das mensagens trocadas com os serviços. O padrão é <see cref="F:BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao.Json"/>.</param>
             <exception cref="T:System.ArgumentException">Se o <paramref name="codigoDoContratante"/> ou o <paramref name="chaveDeIntegracao"/> forem <see cref="F:System.Guid.Empty"/> ou se a <paramref name="versao"/> for vazia.</exception>
+        </member>
+        <member name="P:BITSIGN.Proxy.Conexao.Nome">
+            <summary>
+            Identifica à qual aplicação se refere a conexão.
+            </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Conexao.Ambiente">
             <summary>
@@ -749,6 +756,11 @@
         <member name="P:BITSIGN.Proxy.Conexao.CodigoDoContratante">
             <summary>
             Código do Contratante.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Conexao.CodigoDaAplicacao">
+            <summary>
+            Código identificador da Aplicação.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Conexao.ChaveDeIntegracao">
@@ -789,9 +801,11 @@
              <code>
             "BITSIGN.Proxy": {
               "Conexao": {
+                "Nome": "Aplicação Xpto",
                 "Ambiente": "Sandbox",
                 "Versao": "v1",
                 "CodigoDoContratante": "985e0702-e94a-4954-b7a8-1f28c73c8122",
+                "CodigoDaAplicacao": "98b4307e-51d4-4f2f-88da-cbb23b903db5",
                 "ChaveDeIntegracao": "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq",
                 "FormatoDeSerializacao": "Json",
                 "Timeout": "00:00:10"
@@ -799,6 +813,11 @@
             }
              </code>
              </example>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Nome">
+            <summary>
+            Identifica à qual aplicação se refere a conexão.
+            </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Ambiente">
             <summary>
@@ -825,9 +844,14 @@
             Código do Contratante.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.CodigoDaAplicacao">
+            <summary>
+            Código identificador da Aplicação.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.ChaveDeIntegracao">
             <summary>
-            Chave de Integração gerado para o contratante.
+            Chave de integração da Aplicação.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.FormatoDeSerializacao">
@@ -852,12 +876,16 @@
             <example>
             <code>
             <appSettings>
+                <add key="BITSIGN.Proxy.Conexao.Nome"
+                        value="Aplicação Xpto" />
                 <add key="BITSIGN.Proxy.Conexao.Ambiente"
                         value="Sandbox" />
                 <add key="BITSIGN.Proxy.Conexao.Versao"
                         value="v1" />
                 <add key="BITSIGN.Proxy.Conexao.CodigoDoContratante"
                         value="985e0702-e94a-4954-b7a8-1f28c73c8122" />
+                <add key="BITSIGN.Proxy.Conexao.CodigoDaAplicacao"
+                        value="98b4307e-51d4-4f2f-88da-cbb23b903db5" />
                 <add key="BITSIGN.Proxy.Conexao.ChaveDeIntegracao"
                         value="TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq" />
                 <add key="BITSIGN.Proxy.Conexao.FormatoDeSerializacao"
@@ -867,6 +895,11 @@
             </appSettings>
             </code>
             </example>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Nome">
+            <summary>
+            Identifica à qual aplicação se refere a conexão.
+            </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Ambiente">
             <summary>
@@ -893,9 +926,14 @@
             Código do Contratante.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.CodigoDaAplicacao">
+            <summary>
+            Código identificador da Aplicação.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.ChaveDeIntegracao">
             <summary>
-            Chave de Integração gerado para o contratante.
+            Chave de integração da Aplicação.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.FormatoDeSerializacao">
@@ -911,6 +949,11 @@
         <member name="T:BITSIGN.Proxy.Configuracoes.IConfiguracao">
             <summary>
             Especificação para implementação para extração e uso das configurações.
+            </summary>
+        </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Nome">
+            <summary>
+            Identifica à qual aplicação se refere a conexão.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Ambiente">
@@ -938,9 +981,14 @@
             Código do Contratante.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.CodigoDaAplicacao">
+            <summary>
+            Código identificador da Aplicação.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.ChaveDeIntegracao">
             <summary>
-            Chave de Integração gerado para o contratante.
+            Chave de integração da Aplicação.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.FormatoDeSerializacao">
