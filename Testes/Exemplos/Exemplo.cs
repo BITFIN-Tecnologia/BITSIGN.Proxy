@@ -27,11 +27,11 @@ namespace Testes.Exemplos
 
         protected string Versao { get; } = "v1";
 
-        protected Guid CodigoDoContratante { get; } = new("A5AA424C-D37F-4231-B2B5-85D45DF4C31E");
+        protected Guid CodigoDoContratante { get; } = new("985e0702-e94a-4954-b7a8-1f28c73c8122");
 
-        protected Guid CodigoDaAplicacao { get; } = new("A5AA424C-D37F-4231-B2B5-85D45DF4C31E");
+        protected Guid CodigoDaAplicacao { get; } = new("98b4307e-51d4-4f2f-88da-cbb23b903db5");
 
-        protected string ChaveDeIntegracao { get; set; } = "A50D9BCA34E780F5D12AAC57AD9E51EIA90B3001";
+        protected string ChaveDeIntegracao { get; set; } = "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq";
 
         protected Conexao Conexao { get; }
     }
