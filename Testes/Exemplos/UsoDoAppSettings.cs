@@ -3,7 +3,6 @@
 // biblioteca/pacote BITFIN.BITSIGN.Proxy.
 
 using BITSIGN.Proxy;
-using BITSIGN.Proxy.Configuracoes;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,7 +13,7 @@ namespace Testes.Exemplos
     {
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
-            using (var proxy = new ProxyDoServico(new(new AppSettingsXml())))
+            using (var proxy = new ProxyDoServico(this.Conexao))
             {
                 Console.WriteLine($"Ambiente: {proxy.Conexao.Ambiente}");
                 Console.WriteLine($"Url: {proxy.Conexao.Url}");

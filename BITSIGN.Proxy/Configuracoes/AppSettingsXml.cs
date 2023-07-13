@@ -3,6 +3,7 @@
 
 using BITSIGN.Proxy.Utilitarios;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 
 namespace BITSIGN.Proxy.Configuracoes
@@ -10,7 +11,7 @@ namespace BITSIGN.Proxy.Configuracoes
     /// <summary>
     /// Configurações baseadas no arquivo app.config (XML).
     /// </summary>
-    public sealed class AppSettingsXml : IConfiguracao
+    public sealed class AppSettingsXml : Configuracao
     {
         /// <summary>
         /// Inicializa as configurações extraindo as informações do arquivo app.config.
@@ -41,66 +42,18 @@ namespace BITSIGN.Proxy.Configuracoes
         {
             var config = ConfigurationManager.AppSettings;
 
-            this.Nome = config["BITSIGN.Proxy.Conexao.Nome"];
-            this.Ambiente = Enum.Parse<Ambiente>(config["BITSIGN.Proxy.Conexao.Ambiente"]);
-            this.Url = config["BITSIGN.Proxy.Conexao.Url"];
-            this.Status = config["BITSIGN.Proxy.Conexao.Status"];
-            this.Versao = config["BITSIGN.Proxy.Conexao.Versao"];
-            this.CodigoDoContratante = Guid.Parse(config["BITSIGN.Proxy.Conexao.CodigoDoContratante"]);
-            this.CodigoDaAplicacao = Guid.Parse(config["BITSIGN.Proxy.Conexao.CodigoDaAplicacao"]);
-            this.ChaveDeIntegracao = config["BITSIGN.Proxy.Conexao.ChaveDeIntegracao"];
-            this.FormatoDeSerializacao = Enum.Parse<FormatoDeSerializacao>(config["BITSIGN.Proxy.Conexao.FormatoDeSerializacao"]);
-            this.Timeout = TimeSpan.Parse(config["BITSIGN.Proxy.Conexao.Timeout"]);
+            this.Conexoes = new[]
+            {
+                new Conexao(
+                    config["BITSIGN.Proxy.Conexao.Nome"],
+                    Enum.Parse<Ambiente>(config["BITSIGN.Proxy.Conexao.Ambiente"]),
+                    config["BITSIGN.Proxy.Conexao.Versao"],
+                    Guid.Parse(config["BITSIGN.Proxy.Conexao.CodigoDoContratante"]),
+                    Guid.Parse(config["BITSIGN.Proxy.Conexao.CodigoDaAplicacao"]),
+                    config["BITSIGN.Proxy.Conexao.ChaveDeIntegracao"],
+                    Enum.Parse<FormatoDeSerializacao>(config["BITSIGN.Proxy.Conexao.FormatoDeSerializacao"]),
+                    TimeSpan.Parse(config["BITSIGN.Proxy.Conexao.Timeout"]))
+            };
         }
-
-        /// <summary>
-        /// Identifica à qual aplicação se refere a conexão.
-        /// </summary>
-        public string Nome { get; init; }
-
-        /// <summary>
-        /// Ambiente de Sandbox ou Produção.
-        /// </summary>
-        public Ambiente Ambiente { get; init; }
-
-        /// <summary>
-        /// Endereço base (HTTP) das APIs. Somente é utilizado quando a solução estiver hospedada localmente.
-        /// </summary>
-        public string Url { get; init; }
-
-        /// <summary>
-        /// Endpoint que resume o status atual dos serviços e seus recursos. Somente é utilizado quando a solução estiver hospedada localmente.
-        /// </summary>
-        public string Status { get; init; }
-
-        /// <summary>
-        /// Versão das APIs.
-        /// </summary>
-        public string Versao { get; init; }
-
-        /// <summary>
-        /// Código do Contratante.
-        /// </summary>
-        public Guid CodigoDoContratante { get; init; }
-
-        /// <summary>
-        /// Código identificador da Aplicação.
-        /// </summary>
-        public Guid CodigoDaAplicacao { get; init; }
-
-        /// <summary>
-        /// Chave de integração da Aplicação.
-        /// </summary>
-        public string ChaveDeIntegracao { get; init; }
-
-        /// <summary>
-        /// Formato da serialização das mensagens trocadas com os serviços.
-        /// </summary>
-        public FormatoDeSerializacao FormatoDeSerializacao { get; init; }
-
-        /// <summary>
-        /// Define o tempo máximo de espera permitido para executar uma requisição.
-        /// </summary>
-        public TimeSpan Timeout { get; init; }
     }
 }

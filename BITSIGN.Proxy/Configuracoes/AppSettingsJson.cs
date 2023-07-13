@@ -4,103 +4,82 @@
 using BITSIGN.Proxy.Utilitarios;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace BITSIGN.Proxy.Configuracoes
 {
     /// <summary>
     /// Configurações baseadas no arquivo appsettings.json (JSON).
     /// </summary>
-    public sealed class AppSettingsJson : IConfiguracao
+    public sealed class AppSettingsJson : Configuracao
     {
         /// <summary>
         /// Inicializa as configurações extraindo as informações do arquivo appsettings.json.
         /// </summary>
         /// <example>
         /// <code>
-        ///"BITSIGN.Proxy": {
-        ///  "Conexao": {
-        ///    "Nome": "Aplicação Xpto",
-        ///    "Ambiente": "Sandbox",
-        ///    "Versao": "v1",
-        ///    "CodigoDoContratante": "985e0702-e94a-4954-b7a8-1f28c73c8122",
-        ///    "CodigoDaAplicacao": "98b4307e-51d4-4f2f-88da-cbb23b903db5",
-        ///    "ChaveDeIntegracao": "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq",
-        ///    "FormatoDeSerializacao": "Json",
-        ///    "Timeout": "00:00:10"
+        ///{
+        ///  "BITSIGN.Proxy": {
+        ///    "Conexoes": [
+        ///      {
+        ///        "Nome": "Aplicação Xpto 1",
+        ///        "Ambiente": "Sandbox",
+        ///        "Versao": "v1",
+        ///        "CodigoDoContratante": "985e0702-e94a-4954-b7a8-1f28c73c8122",
+        ///        "CodigoDaAplicacao": "98b4307e-51d4-4f2f-88da-cbb23b903db5",
+        ///        "ChaveDeIntegracao": "TWpZd00yTXpPVGN...zWkRVM01qTmhNR0Zq",
+        ///        "FormatoDeSerializacao": "Json",
+        ///        "Timeout": "00:00:10"
+        ///      },
+        ///      {
+        ///        "Nome": "Aplicação Xpto 2",
+        ///        "Ambiente": "Sandbox",
+        ///        "Versao": "v1",
+        ///        "CodigoDoContratante": "985e0702-e94a-4954-b7a8-1f28c73c8122",
+        ///        "CodigoDaAplicacao": "d867b917-3564-4839-a9f0-1fccf4af1852",
+        ///        "ChaveDeIntegracao": "zWkRVM01qTmhNR0Zq...TWpZd00yTXpPVGN",
+        ///        "FormatoDeSerializacao": "Xml",
+        ///        "Timeout": "00:00:20"
+        ///      }
+        ///    ]
         ///  }
         ///}
         /// </code>
         /// </example>
         public AppSettingsJson()
         {
-            var config = 
+            var config =
                 new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("appsettings.json")
                     .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: true)
                     .Build();
 
-            this.Nome = config["BITSIGN.Proxy:Conexao:Nome"];
-            this.Ambiente = Enum.Parse<Ambiente>(config["BITSIGN.Proxy:Conexao:Ambiente"]);
-            this.Url = config["BITSIGN.Proxy:Conexao:Url"];
-            this.Status = config["BITSIGN.Proxy:Conexao:Status"];
-            this.Versao = config["BITSIGN.Proxy:Conexao:Versao"];
-            this.CodigoDoContratante = Guid.Parse(config["BITSIGN.Proxy:Conexao:CodigoDoContratante"]);
-            this.CodigoDaAplicacao = Guid.Parse(config["BITSIGN.Proxy:Conexao:CodigoDaAplicacao"]);
-            this.ChaveDeIntegracao = config["BITSIGN.Proxy:Conexao:ChaveDeIntegracao"];
-            this.FormatoDeSerializacao = Enum.Parse<FormatoDeSerializacao>(config["BITSIGN.Proxy:Conexao:FormatoDeSerializacao"]);
-            this.Timeout = TimeSpan.Parse(config["BITSIGN.Proxy:Conexao:Timeout"]);
+            var conexoes =
+                from c in config.GetSection("BITSIGN.Proxy:Conexoes").GetChildren()
+                select new Conexao(
+                    c["Nome"],
+                    Enum.Parse<Ambiente>(c["Ambiente"]),
+                    c["Versao"],
+                    Guid.Parse(c["CodigoDoContratante"]),
+                    Guid.Parse(c["CodigoDaAplicacao"]),
+                    c["ChaveDeIntegracao"],
+                    Enum.Parse<FormatoDeSerializacao>(c["FormatoDeSerializacao"]),
+                    TimeSpan.Parse(c["Timeout"]));
+
+            if (VerificarDuplicidades(conexoes, out var nome))
+                throw new InvalidOperationException($"Existem duas ou mais conexões com o nome \"{nome}\".");
+
+            this.Conexoes = conexoes;
         }
 
-        /// <summary>
-        /// Identifica à qual aplicação se refere a conexão.
-        /// </summary>
-        public string Nome { get; init; }
+        private static bool VerificarDuplicidades(IEnumerable<Conexao> conexoes, out string nome)
+        {
+            nome = conexoes.GroupBy(c => c.Nome).FirstOrDefault(c => c.Count() > 1)?.Key;
 
-        /// <summary>
-        /// Ambiente de Sandbox ou Produção.
-        /// </summary>
-        public Ambiente Ambiente { get; init; }
-
-        /// <summary>
-        /// Endereço base (HTTP) das APIs. Somente é utilizado quando a solução estiver hospedada localmente.
-        /// </summary>
-        public string Url { get; init; }
-
-        /// <summary>
-        /// Endpoint que resume o status atual dos serviços e seus recursos. Somente é utilizado quando a solução estiver hospedada localmente.
-        /// </summary>
-        public string Status { get; init; }
-
-        /// <summary>
-        /// Versão das APIs.
-        /// </summary>
-        public string Versao { get; init; }
-
-        /// <summary>
-        /// Código do Contratante.
-        /// </summary>
-        public Guid CodigoDoContratante { get; init; }
-
-        /// <summary>
-        /// Código identificador da Aplicação.
-        /// </summary>
-        public Guid CodigoDaAplicacao { get; init; }
-
-        /// <summary>
-        /// Chave de integração da Aplicação.
-        /// </summary>
-        public string ChaveDeIntegracao { get; init; }
-
-        /// <summary>
-        /// Formato da serialização das mensagens trocadas com os serviços.
-        /// </summary>
-        public FormatoDeSerializacao FormatoDeSerializacao { get; init; }
-
-        /// <summary>
-        /// Define o tempo máximo de espera permitido para executar uma requisição.
-        /// </summary>
-        public TimeSpan Timeout { get; init; }
+            return nome != null;
+        }
     }
 }

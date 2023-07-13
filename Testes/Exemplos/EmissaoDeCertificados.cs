@@ -3,7 +3,6 @@
 // biblioteca/pacote BITFIN.BITSIGN.Proxy.
 
 using BITSIGN.Proxy;
-using BITSIGN.Proxy.Configuracoes;
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
@@ -16,7 +15,7 @@ namespace Testes.Exemplos
     {
         public override async Task Executar(CancellationToken cancellationToken = default)
         {
-            using (var proxy = new ProxyDoServico(new(new AppSettingsXml())))
+            using (var proxy = new ProxyDoServico(this.Conexao))
             {
                 var senha = "P@$$w0rd";
 

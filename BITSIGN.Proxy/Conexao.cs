@@ -1,16 +1,17 @@
 ﻿// Copyright (c) 2021 - BITFIN Software Ltda. Todos os Direitos Reservados.
 // Código exclusivo para consumo dos serviços (APIs) da BITSIGN.
 
-using BITSIGN.Proxy.Configuracoes;
 using BITSIGN.Proxy.Utilitarios;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace BITSIGN.Proxy
 {
     /// <summary>
     /// Informações necessárias para iniciar a comunicação com o serviço.
     /// </summary>
+    [DebuggerDisplay("{Nome,nq}")]
     public class Conexao
     {
         private static readonly Dictionary<Ambiente, string> apis = new(3)
@@ -28,21 +29,6 @@ namespace BITSIGN.Proxy
         };
 
         /// <summary>
-        /// Inicializa a conexão com os dados sendo extraídos de um repositório.
-        /// </summary>
-        /// <param name="configuracao">Implementação que deve ser utilizada para localização das configurações.</param>
-        /// <remarks>Permite delegar toda a configuração para um arquivo externo, permitindo a alteração sem necessidade de recompilar. Este construtor também deve ser utilizado se estiver utilizando o ambiente <see cref="Ambiente.Local"/>, já que será necessário customizar o endereço onde os serviços estarão hospedados.</remarks>
-        /// <exception cref="ArgumentNullException">Se o parâmetro <paramref name="configuracao"/> for nulo.</exception>
-        public Conexao(IConfiguracao configuracao)
-        {
-            if (configuracao == null)
-                throw new ArgumentNullException(nameof(configuracao));
-
-            this.Inicializar(configuracao.Nome, configuracao.Ambiente, configuracao.Versao, configuracao.CodigoDoContratante, configuracao.CodigoDaAplicacao, configuracao.ChaveDeIntegracao, configuracao.FormatoDeSerializacao, configuracao.Timeout);
-            this.ConfigurarAmbiente(configuracao.Ambiente, configuracao.Url, configuracao.Status);
-        }
-
-        /// <summary>
         /// Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um o ambiente de <see cref="Ambiente.Producao"/> ou de <see cref="Ambiente.Sandbox"/>.
         /// </summary>
         /// <param name="nome">Identifica à qual aplicação se refere a conexão.</param>
@@ -52,13 +38,14 @@ namespace BITSIGN.Proxy
         /// <param name="codigoDaAplicacao">Código identificador da Aplicação.</param>
         /// <param name="chaveDeIntegracao">Chave de integração da Aplicação.</param>
         /// <param name="formato">Define como será serializado o conteúdo das mensagens trocadas com os serviços. O padrão é <see cref="FormatoDeSerializacao.Json"/>.</param>
+        /// <param name="timeout">Define o tempo máximo de espera permitido para executar uma requisição. O tempo padrão é de 100 segundos.</param>
         /// <exception cref="ArgumentException">Se o <paramref name="codigoDoContratante"/> ou o <paramref name="chaveDeIntegracao"/> forem <see cref="Guid.Empty"/> ou se a <paramref name="versao"/> for vazia.</exception>
-        public Conexao(string nome, Ambiente ambiente, string versao, Guid codigoDoContratante, Guid codigoDaAplicacao, string chaveDeIntegracao, FormatoDeSerializacao formato = FormatoDeSerializacao.Json)
+        public Conexao(string nome, Ambiente ambiente, string versao, Guid codigoDoContratante, Guid codigoDaAplicacao, string chaveDeIntegracao, FormatoDeSerializacao formato = FormatoDeSerializacao.Json, TimeSpan? timeout = null)
         {
             if (ambiente == Ambiente.Local)
                 throw new ArgumentException("Para inicializar a conexão com a solução hospedada localmente, utilize o construtor que recebe a instância de IConfiguracao, para que possa customizar a Url dos serviços.", nameof(ambiente));
 
-            Inicializar(nome, ambiente, versao, codigoDoContratante, codigoDaAplicacao, chaveDeIntegracao, formato);
+            Inicializar(nome, ambiente, versao, codigoDoContratante, codigoDaAplicacao, chaveDeIntegracao, formato, timeout);
         }
 
         private void Inicializar(string nome, Ambiente ambiente, string versao, Guid codigoDoContratante, Guid codigoDaAplicacao, string chaveDeIntegracao, FormatoDeSerializacao formato, TimeSpan? timeout = null)

@@ -22,7 +22,7 @@
         </member>
         <member name="F:BITSIGN.Proxy.Ambiente.Local">
             <summary>
-            Utilizado quando a solução está hospedada localmente (on-premise).
+            Utilizado quando a solução está hospedada localmente (on-premises).
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.Comunicacao.API">
@@ -717,15 +717,7 @@
             Informações necessárias para iniciar a comunicação com o serviço.
             </summary>
         </member>
-        <member name="M:BITSIGN.Proxy.Conexao.#ctor(BITSIGN.Proxy.Configuracoes.IConfiguracao)">
-            <summary>
-            Inicializa a conexão com os dados sendo extraídos de um repositório.
-            </summary>
-            <param name="configuracao">Implementação que deve ser utilizada para localização das configurações.</param>
-            <remarks>Permite delegar toda a configuração para um arquivo externo, permitindo a alteração sem necessidade de recompilar. Este construtor também deve ser utilizado se estiver utilizando o ambiente <see cref="F:BITSIGN.Proxy.Ambiente.Local"/>, já que será necessário customizar o endereço onde os serviços estarão hospedados.</remarks>
-            <exception cref="T:System.ArgumentNullException">Se o parâmetro <paramref name="configuracao"/> for nulo.</exception>
-        </member>
-        <member name="M:BITSIGN.Proxy.Conexao.#ctor(System.String,BITSIGN.Proxy.Ambiente,System.String,System.Guid,System.Guid,System.String,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
+        <member name="M:BITSIGN.Proxy.Conexao.#ctor(System.String,BITSIGN.Proxy.Ambiente,System.String,System.Guid,System.Guid,System.String,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao,System.Nullable{System.TimeSpan})">
             <summary>
             Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um o ambiente de <see cref="F:BITSIGN.Proxy.Ambiente.Producao"/> ou de <see cref="F:BITSIGN.Proxy.Ambiente.Sandbox"/>.
             </summary>
@@ -736,6 +728,7 @@
             <param name="codigoDaAplicacao">Código identificador da Aplicação.</param>
             <param name="chaveDeIntegracao">Chave de integração da Aplicação.</param>
             <param name="formato">Define como será serializado o conteúdo das mensagens trocadas com os serviços. O padrão é <see cref="F:BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao.Json"/>.</param>
+            <param name="timeout">Define o tempo máximo de espera permitido para executar uma requisição. O tempo padrão é de 100 segundos.</param>
             <exception cref="T:System.ArgumentException">Se o <paramref name="codigoDoContratante"/> ou o <paramref name="chaveDeIntegracao"/> forem <see cref="F:System.Guid.Empty"/> ou se a <paramref name="versao"/> for vazia.</exception>
         </member>
         <member name="P:BITSIGN.Proxy.Conexao.Nome">
@@ -804,70 +797,34 @@
              </summary>
              <example>
              <code>
-            "BITSIGN.Proxy": {
-              "Conexao": {
-                "Nome": "Aplicação Xpto",
-                "Ambiente": "Sandbox",
-                "Versao": "v1",
-                "CodigoDoContratante": "985e0702-e94a-4954-b7a8-1f28c73c8122",
-                "CodigoDaAplicacao": "98b4307e-51d4-4f2f-88da-cbb23b903db5",
-                "ChaveDeIntegracao": "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq",
-                "FormatoDeSerializacao": "Json",
-                "Timeout": "00:00:10"
+            {
+              "BITSIGN.Proxy": {
+                "Conexoes": [
+                  {
+                    "Nome": "Aplicação Xpto 1",
+                    "Ambiente": "Sandbox",
+                    "Versao": "v1",
+                    "CodigoDoContratante": "985e0702-e94a-4954-b7a8-1f28c73c8122",
+                    "CodigoDaAplicacao": "98b4307e-51d4-4f2f-88da-cbb23b903db5",
+                    "ChaveDeIntegracao": "TWpZd00yTXpPVGN...zWkRVM01qTmhNR0Zq",
+                    "FormatoDeSerializacao": "Json",
+                    "Timeout": "00:00:10"
+                  },
+                  {
+                    "Nome": "Aplicação Xpto 2",
+                    "Ambiente": "Sandbox",
+                    "Versao": "v1",
+                    "CodigoDoContratante": "985e0702-e94a-4954-b7a8-1f28c73c8122",
+                    "CodigoDaAplicacao": "d867b917-3564-4839-a9f0-1fccf4af1852",
+                    "ChaveDeIntegracao": "zWkRVM01qTmhNR0Zq...TWpZd00yTXpPVGN",
+                    "FormatoDeSerializacao": "Xml",
+                    "Timeout": "00:00:20"
+                  }
+                ]
               }
             }
              </code>
              </example>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Nome">
-            <summary>
-            Identifica à qual aplicação se refere a conexão.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Ambiente">
-            <summary>
-            Ambiente de Sandbox ou Produção.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Url">
-            <summary>
-            Endereço base (HTTP) das APIs. Somente é utilizado quando a solução estiver hospedada localmente.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Status">
-            <summary>
-            Endpoint que resume o status atual dos serviços e seus recursos. Somente é utilizado quando a solução estiver hospedada localmente.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Versao">
-            <summary>
-            Versão das APIs.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.CodigoDoContratante">
-            <summary>
-            Código do Contratante.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.CodigoDaAplicacao">
-            <summary>
-            Código identificador da Aplicação.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.ChaveDeIntegracao">
-            <summary>
-            Chave de integração da Aplicação.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.FormatoDeSerializacao">
-            <summary>
-            Formato da serialização das mensagens trocadas com os serviços.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsJson.Timeout">
-            <summary>
-            Define o tempo máximo de espera permitido para executar uma requisição.
-            </summary>
         </member>
         <member name="T:BITSIGN.Proxy.Configuracoes.AppSettingsXml">
             <summary>
@@ -901,109 +858,22 @@
             </code>
             </example>
         </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Nome">
+        <member name="T:BITSIGN.Proxy.Configuracoes.Configuracao">
             <summary>
-            Identifica à qual aplicação se refere a conexão.
+            Base para arquivos de configuração.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Ambiente">
+        <member name="M:BITSIGN.Proxy.Configuracoes.Configuracao.Conexao(System.String)">
             <summary>
-            Ambiente de Sandbox ou Produção.
+            Retorna a conexão correspondente ao seu nome (<see cref="P:BITSIGN.Proxy.Conexao.Nome"/>).
             </summary>
+            <param name="nome">Nome da aplicação.</param>
+            <returns>Objeto <see cref="T:BITSIGN.Proxy.Conexao"/> correspodente.</returns>
+            <exception cref="T:System.ArgumentNullException">Caso o nome da conexão seja nulo ou vazio.</exception>
         </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Url">
+        <member name="P:BITSIGN.Proxy.Configuracoes.Configuracao.Conexoes">
             <summary>
-            Endereço base (HTTP) das APIs. Somente é utilizado quando a solução estiver hospedada localmente.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Status">
-            <summary>
-            Endpoint que resume o status atual dos serviços e seus recursos. Somente é utilizado quando a solução estiver hospedada localmente.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Versao">
-            <summary>
-            Versão das APIs.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.CodigoDoContratante">
-            <summary>
-            Código do Contratante.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.CodigoDaAplicacao">
-            <summary>
-            Código identificador da Aplicação.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.ChaveDeIntegracao">
-            <summary>
-            Chave de integração da Aplicação.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.FormatoDeSerializacao">
-            <summary>
-            Formato da serialização das mensagens trocadas com os serviços.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.AppSettingsXml.Timeout">
-            <summary>
-            Define o tempo máximo de espera permitido para executar uma requisição.
-            </summary>
-        </member>
-        <member name="T:BITSIGN.Proxy.Configuracoes.IConfiguracao">
-            <summary>
-            Especificação para implementação para extração e uso das configurações.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Nome">
-            <summary>
-            Identifica à qual aplicação se refere a conexão.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Ambiente">
-            <summary>
-            Ambiente de Sandbox, Produção ou Local.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Url">
-            <summary>
-            Endereço base (HTTP) das APIs. Somente é utilizado quando a solução estiver hospedada localmente.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Status">
-            <summary>
-            Endpoint que resume o status atual dos serviços e seus recursos. Somente é utilizado quando a solução estiver hospedada localmente.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Versao">
-            <summary>
-            Versão das APIs.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.CodigoDoContratante">
-            <summary>
-            Código do Contratante.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.CodigoDaAplicacao">
-            <summary>
-            Código identificador da Aplicação.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.ChaveDeIntegracao">
-            <summary>
-            Chave de integração da Aplicação.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.FormatoDeSerializacao">
-            <summary>
-            Formato da serialização das mensagens trocadas com os serviços.
-            </summary>
-        </member>
-        <member name="P:BITSIGN.Proxy.Configuracoes.IConfiguracao.Timeout">
-            <summary>
-            Define o tempo máximo de espera permitido para executar uma requisição.
+            Relação de conexões configuradas.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.DTOs.AnaliseDeCertificado">

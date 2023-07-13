@@ -18,7 +18,7 @@ namespace BITSIGN.Proxy
         /// </summary>
         Producao = 1,
         /// <summary>
-        /// Utilizado quando a solução está hospedada localmente (on-premise).
+        /// Utilizado quando a solução está hospedada localmente (on-premises).
         /// </summary>
         Local = 2
     }
