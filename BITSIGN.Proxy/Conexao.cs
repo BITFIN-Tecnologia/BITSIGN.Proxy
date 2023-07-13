@@ -139,7 +139,7 @@ namespace BITSIGN.Proxy
         public Uri Status { get; private set; }
 
         /// <summary>
-        /// Retorno o <see cref="Nome"/> da conexão.
+        /// Retorna o <see cref="Nome"/> da conexão.
         /// </summary>
         public override string ToString() => this.Nome;
     }

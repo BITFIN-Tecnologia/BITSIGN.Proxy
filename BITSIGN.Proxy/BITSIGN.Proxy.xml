@@ -790,7 +790,7 @@
         </member>
         <member name="M:BITSIGN.Proxy.Conexao.ToString">
             <summary>
-            Retorno o <see cref="P:BITSIGN.Proxy.Conexao.Nome"/> da conexão.
+            Retorna o <see cref="P:BITSIGN.Proxy.Conexao.Nome"/> da conexão.
             </summary>
         </member>
         <member name="T:BITSIGN.Proxy.Configuracoes.AppSettingsJson">
