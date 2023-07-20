@@ -29,7 +29,7 @@ namespace BITSIGN.Proxy
         };
 
         /// <summary>
-        /// Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um o ambiente de <see cref="Ambiente.Producao"/> ou de <see cref="Ambiente.Sandbox"/>.
+        /// Inicializa a conexão com o mínimo necessário para estabelecer a comunicação com um determinado <see cref="Proxy.Ambiente"/>.
         /// </summary>
         /// <param name="nome">Identifica à qual aplicação se refere a conexão.</param>
         /// <param name="ambiente">Ambiente de testes (Sandbox), produção ou local.</param>
@@ -41,14 +41,6 @@ namespace BITSIGN.Proxy
         /// <param name="timeout">Define o tempo máximo de espera permitido para executar uma requisição. O tempo padrão é de 100 segundos.</param>
         /// <exception cref="ArgumentException">Se o <paramref name="codigoDoContratante"/> ou o <paramref name="chaveDeIntegracao"/> forem <see cref="Guid.Empty"/> ou se a <paramref name="versao"/> for vazia.</exception>
         public Conexao(string nome, Ambiente ambiente, string versao, Guid codigoDoContratante, Guid codigoDaAplicacao, string chaveDeIntegracao, FormatoDeSerializacao formato = FormatoDeSerializacao.Json, TimeSpan? timeout = null)
-        {
-            if (ambiente == Ambiente.Local)
-                throw new ArgumentException("Para inicializar a conexão com a solução hospedada localmente, utilize o construtor que recebe a instância de IConfiguracao, para que possa customizar a Url dos serviços.", nameof(ambiente));
-
-            Inicializar(nome, ambiente, versao, codigoDoContratante, codigoDaAplicacao, chaveDeIntegracao, formato, timeout);
-        }
-
-        private void Inicializar(string nome, Ambiente ambiente, string versao, Guid codigoDoContratante, Guid codigoDaAplicacao, string chaveDeIntegracao, FormatoDeSerializacao formato, TimeSpan? timeout = null)
         {
             this.Nome = !string.IsNullOrWhiteSpace(nome) ? nome : "Conexão Principal";
 
@@ -63,16 +55,12 @@ namespace BITSIGN.Proxy
             this.ChaveDeIntegracao =
                 !string.IsNullOrWhiteSpace(chaveDeIntegracao) ? chaveDeIntegracao : throw new ArgumentException("Chave de integração não informada.", nameof(chaveDeIntegracao));
 
-            this.Timeout = timeout ?? TimeSpan.FromSeconds(100);
             this.FormatoDeSerializacao = formato;
-            this.ConfigurarAmbiente(ambiente);
-        }
+            this.Timeout = timeout ?? TimeSpan.FromSeconds(100);
 
-        private void ConfigurarAmbiente(Ambiente ambiente, string url = null, string status = null)
-        {
             this.Ambiente = ambiente;
-            this.Url = !string.IsNullOrWhiteSpace(url) && ambiente == Ambiente.Local ? new($"{url}/{this.Versao}/") : new(string.Format(apis[this.Ambiente], this.Versao));
-            this.Status = !string.IsNullOrWhiteSpace(status) && ambiente == Ambiente.Local ? new(status) : Conexao.status[this.Ambiente];
+            this.Url = new(string.Format(apis[ambiente], this.Versao));
+            this.Status = status[ambiente];
         }
 
         /// <summary>

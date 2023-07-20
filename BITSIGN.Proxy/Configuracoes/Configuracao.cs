@@ -16,7 +16,7 @@ namespace BITSIGN.Proxy.Configuracoes
         /// Retorna a conexão correspondente ao seu nome (<see cref="Conexao.Nome"/>).
         /// </summary>
         /// <param name="nome">Nome da aplicação.</param>
-        /// <returns>Objeto <see cref="Proxy.Conexao"/> correspodente.</returns>
+        /// <returns>Objeto <see cref="Proxy.Conexao"/> correspodente. Nulo será retornado se não houver uma conexão com o nome informado.</returns>
         /// <exception cref="ArgumentNullException">Caso o nome da conexão seja nulo ou vazio.</exception>
         public Conexao Conexao(string nome)
         {
