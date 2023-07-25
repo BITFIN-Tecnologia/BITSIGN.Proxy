@@ -16,7 +16,7 @@
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <AssemblyVersion>1.1.0.21</AssemblyVersion>
         <FileVersion>1.1.0.21</FileVersion>
-        <PackageReleaseNotes>Removendo a possibilidade de parametrizar as URLs.</PackageReleaseNotes>
+        <PackageReleaseNotes>Geração do cabeçalho Authorization a partir da conexão.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Title>Biblioteca .NET para consumo dos serviços (API's) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Title>
     </PropertyGroup>
