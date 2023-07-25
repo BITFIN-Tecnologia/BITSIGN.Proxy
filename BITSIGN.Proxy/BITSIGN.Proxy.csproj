@@ -4,7 +4,7 @@
         <Authors>BITFIN Software Ltda.</Authors>
         <Company>BITFIN Software Ltda.</Company>
         <Copyright>Copyright 2022</Copyright>
-        <Description>Biblioteca .NET para consumo dos serviços (APIs) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Description>
+        <Description>Biblioteca .NET para consumo dos serviços (API's) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Description>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Version>1.1.0.20</Version>
         <RepositoryUrl>https://github.com/BITFIN-Software/BITSIGN.Proxy</RepositoryUrl>
@@ -18,6 +18,7 @@
         <FileVersion>1.1.0.20</FileVersion>
         <PackageReleaseNotes>Removendo a possibilidade de parametrizar as URLs.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <Title>Biblioteca .NET para consumo dos serviços (APIs) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Title>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <DocumentationFile>C:\Projetos\BitFin\BITSIGN.Proxy\BITSIGN.Proxy\BITSIGN.Proxy.xml</DocumentationFile>
