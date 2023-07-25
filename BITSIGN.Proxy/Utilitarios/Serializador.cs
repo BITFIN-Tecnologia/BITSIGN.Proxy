@@ -56,7 +56,7 @@ namespace BITSIGN.Proxy.Utilitarios
             {
                 var s = new XmlSerializer(typeof(T), new XmlRootAttribute(elementoRaiz));
 
-                using (var ms = new MemoryStream(EmBytes(conteudo)))
+                using (var ms = new MemoryStream(conteudo.EmBytes()))
                     return s.Deserialize(ms) as T;
             }
         }
@@ -66,7 +66,5 @@ namespace BITSIGN.Proxy.Utilitarios
 
         internal static T Deserializar<T>(string conteudo, string formato, string elementoRaiz = null) where T : class =>
             formato.Contains(FormatoDeSerializacao.Json.ToString(), StringComparison.InvariantCultureIgnoreCase) ? Json.Deserializar<T>(conteudo) : Xml.Deserializar<T>(conteudo, elementoRaiz);
-
-        internal static byte[] EmBytes(this string conteudo) => Encoding.UTF8.GetBytes(conteudo);
     }
 }

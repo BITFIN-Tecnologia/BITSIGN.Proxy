@@ -38,7 +38,7 @@ namespace BITSIGN.Proxy.DTOs
             this.Lote = lote;
             this.Arquivos =
                 Enumerable.Concat(
-                    new[] { (formatoDeSerializacao == FormatoDeSerializacao.Json ? ManifestoJson : ManifestoXml, Serializador.EmBytes(Serializador.Serializar(lote, formatoDeSerializacao, "Lote"))) },
+                    new[] { (formatoDeSerializacao == FormatoDeSerializacao.Json ? ManifestoJson : ManifestoXml, Serializador.Serializar(lote, formatoDeSerializacao, "Lote").EmBytes()) },
                     lote.Documentos.Where(d => d.ConteudoOriginal?.Length > 0).Select(d => (d.NomeDoArquivo, d.ConteudoOriginal)));
         }
 

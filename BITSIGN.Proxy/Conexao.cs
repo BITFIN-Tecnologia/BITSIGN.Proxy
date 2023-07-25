@@ -117,5 +117,15 @@ namespace BITSIGN.Proxy
         /// Retorna o <see cref="Nome"/> da conexão.
         /// </summary>
         public override string ToString() => this.Nome;
+
+        /// <summary>
+        /// Retorna a conexão em formato do header Authorization.
+        /// </summary>
+        /// <param name="comLabel">Indica se deve incluir a chave Authorization. O padrão é <c>true</c>.</param>
+        /// <returns><see cref="String"/> representando a respectiva conexão.</returns>
+        public string GerarCabecalho(bool comLabel = true) =>
+            comLabel ?
+                $"Autorization:Basic {$"{this.CodigoDoContratante}:{this.ChaveDeIntegracao}".EmBase64()}" :
+                $"{$"{this.CodigoDoContratante}:{this.ChaveDeIntegracao}".EmBase64()}";
     }
 }

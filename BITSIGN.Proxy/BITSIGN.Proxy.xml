@@ -786,6 +786,13 @@
             Retorna o <see cref="P:BITSIGN.Proxy.Conexao.Nome"/> da conexão.
             </summary>
         </member>
+        <member name="M:BITSIGN.Proxy.Conexao.GerarCabecalho(System.Boolean)">
+            <summary>
+            Retorna a conexão em formato do header Authorization.
+            </summary>
+            <param name="comLabel">Indica se deve incluir a chave Authorization. O padrão é <c>true</c>.</param>
+            <returns><see cref="T:System.String"/> representando a respectiva conexão.</returns>
+        </member>
         <member name="T:BITSIGN.Proxy.Configuracoes.AppSettingsJson">
             <summary>
             Configurações baseadas no arquivo appsettings.json (JSON).
