@@ -18,7 +18,7 @@
         <FileVersion>1.1.0.20</FileVersion>
         <PackageReleaseNotes>Removendo a possibilidade de parametrizar as URLs.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <Title>Biblioteca .NET para consumo dos serviços (APIs) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Title>
+        <Title>Biblioteca .NET para consumo dos serviços (API's) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Title>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <DocumentationFile>C:\Projetos\BitFin\BITSIGN.Proxy\BITSIGN.Proxy\BITSIGN.Proxy.xml</DocumentationFile>
