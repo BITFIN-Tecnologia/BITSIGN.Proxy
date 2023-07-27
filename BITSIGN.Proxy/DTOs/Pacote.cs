@@ -39,13 +39,13 @@ namespace BITSIGN.Proxy.DTOs
             this.Arquivos =
                 Enumerable.Concat(
                     new[] { (formatoDeSerializacao == FormatoDeSerializacao.Json ? ManifestoJson : ManifestoXml, Serializador.Serializar(lote, formatoDeSerializacao, "Lote").EmBytes()) },
-                    lote.Documentos.Where(d => d.ConteudoOriginal?.Length > 0).Select(d => (d.NomeDoArquivo, d.ConteudoOriginal)));
+                    lote.Documentos.Where(d => d.ConteudoOriginal?.Length > 0).Select(static d => (d.NomeDoArquivo, d.ConteudoOriginal)));
         }
 
         private void Deserializar(byte[] dados)
         {
             var zip = Compactador.Descompactar(dados);
-            var manifesto = zip.FirstOrDefault(arquivo => Manifestos.Contains(arquivo.nome, StringComparer.CurrentCultureIgnoreCase));
+            var manifesto = zip.FirstOrDefault(static arquivo => Manifestos.Contains(arquivo.nome, StringComparer.CurrentCultureIgnoreCase));
             var formatoDeSerializacao = string.Compare(manifesto.nome, ManifestoJson, true) == 0 ? FormatoDeSerializacao.Json : FormatoDeSerializacao.Xml;
 
             var lote = Serializador.Deserializar<List<Lote>>(Encoding.UTF8.GetString(manifesto.conteudo), formatoDeSerializacao.ToString(), "Lotes").First();
@@ -68,7 +68,7 @@ namespace BITSIGN.Proxy.DTOs
         internal byte[] Serializar() =>
             Compactador.Compactar(
                 this.Arquivos.Concat(
-                    !(this.Lote.Anexos?.Any() ?? false) ? Enumerable.Empty<(string, byte[])>() : this.Lote.Anexos.Select(a => ($"anexos/{a.NomeDoArquivo}", a.Conteudo))));
+                    !(this.Lote.Anexos?.Any() ?? false) ? Enumerable.Empty<(string, byte[])>() : this.Lote.Anexos.Select(static a => ($"anexos/{a.NomeDoArquivo}", a.Conteudo))));
 
         /// <summary>
         /// Indica se o pacote está ou não vazio.

@@ -77,7 +77,7 @@ namespace BITSIGN.Proxy.Configuracoes
 
         private static bool VerificarDuplicidades(IEnumerable<Conexao> conexoes, out string nome)
         {
-            nome = conexoes.GroupBy(c => c.Nome).FirstOrDefault(c => c.Count() > 1)?.Key;
+            nome = conexoes.GroupBy(static c => c.Nome).FirstOrDefault(static c => c.Count() > 1)?.Key;
 
             return nome != null;
         }
