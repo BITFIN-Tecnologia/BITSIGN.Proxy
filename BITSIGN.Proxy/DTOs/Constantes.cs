@@ -11,7 +11,7 @@ namespace BITSIGN.Proxy.DTOs
         /// <summary>
         /// Idioma em que o assinador (Web ou Móvel) será apresentado.
         /// </summary>
-        internal class Idiomas
+        public class Idiomas
         {
             /// <summary>
             /// Português do Brasil.
