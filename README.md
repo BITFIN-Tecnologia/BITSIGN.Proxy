@@ -18,7 +18,7 @@ var nome = "Aplicação Xpto";
 var versao = "v1";
 var codigoDoContratante = new Guid("985e0702-e94a-4954-b7a8-1f28c73c8122");
 var codigoDaAplicacao = new Guid("98b4307e-51d4-4f2f-88da-cbb23b903db5");
-var chaveDeIntegracao = "TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq";
+var chaveDeIntegracao = "TWpZd00yTXpPVGN...zWkRVM01qTmhNR0Zq";
 
 using (var proxy = new ProxyDoServico(
     new Conexao(
@@ -78,7 +78,7 @@ using (var log = new LogEmTexto(new StreamWriter("Log.txt", true)))
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - POST /lotes
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Type: ByteArrayContent
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Content-Type: 
-11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Headers: Authorization: TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq;BS-Tracking: 2c83d520-138d-45d1-b29c-b9c4bf027ac2;Accept: application/json
+11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Request.Headers: Authorization: TWpZd00yTXpPVGN...zWkRVM01qTmhNR0Zq;BS-Tracking: 2c83d520-138d-45d1-b29c-b9c4bf027ac2;Accept: application/json
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.Headers: Location=http://localhost:33664/api/lotes/06202cf4-281d-46a5-bd81-975c15f58d94;
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.StatusCode: Created
 11/02/2021 20:52:57 - Info - 2c83d520-138d-45d1-b29c-b9c4bf027ac2 - Response.ReasonPhrase: Created
