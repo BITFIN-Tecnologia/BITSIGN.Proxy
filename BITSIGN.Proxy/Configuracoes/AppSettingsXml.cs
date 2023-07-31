@@ -3,18 +3,17 @@
 
 using BITSIGN.Proxy.Utilitarios;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 
 namespace BITSIGN.Proxy.Configuracoes
 {
     /// <summary>
-    /// Configurações baseadas no arquivo app.config (XML).
+    /// Configurações baseadas no arquivo app/web.config (XML).
     /// </summary>
     public sealed class AppSettingsXml : Configuracao
     {
         /// <summary>
-        /// Inicializa as configurações extraindo as informações do arquivo app.config.
+        /// Inicializa as configurações extraindo as informações do arquivo app/web.config.
         /// </summary>
         /// <example>
         /// <code>
@@ -30,7 +29,7 @@ namespace BITSIGN.Proxy.Configuracoes
         ///     <add key="BITSIGN.Proxy.Conexao.CodigoDaAplicacao"
         ///             value="98b4307e-51d4-4f2f-88da-cbb23b903db5" />
         ///     <add key="BITSIGN.Proxy.Conexao.ChaveDeIntegracao"
-        ///             value="TWpZd00yTXpPVGN0TmpFMk9TMDBaRGRqTFdFMk1XTXROR1kzWkRVM01qTmhNR0Zq" />
+        ///             value="TWpZd00yTXpPVGN...zWkRVM01qTmhNR0Zq" />
         ///     <add key="BITSIGN.Proxy.Conexao.FormatoDeSerializacao"
         ///             value="Json" />
         ///     <add key="BITSIGN.Proxy.Conexao.Timeout"
