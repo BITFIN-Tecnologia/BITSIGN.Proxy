@@ -1755,9 +1755,14 @@
             Termo de Cessão.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeConfidencialidade">
+            <summary>
+            Termo de Confidencialidade.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeGarantia">
             <summary>
-            Termo de Cessão.
+            Termo de Garantia.
             </summary>
         </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeTitularidade">
