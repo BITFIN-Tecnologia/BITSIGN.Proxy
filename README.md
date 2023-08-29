@@ -247,5 +247,5 @@ INFORME O NUMERO DO EXEMPLO:
 >
 > - Site: <https://bitsign.com.br>
 > - E-mail Técnico: <dev@bitfin.com.br>
-> - E-mail Comercial: <contato@bitsign.com.br>
+> - E-mail Comercial: <comercial@bitfin.com.br>
 > - Telefone (+WhatsApp): +55 (19) 9.9901-1065
