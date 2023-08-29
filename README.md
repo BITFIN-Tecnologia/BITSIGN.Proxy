@@ -242,6 +242,7 @@ EXEMPLOS DISPONIVEIS
   
 INFORME O NUMERO DO EXEMPLO:
 ```
+---
 > #### CONTATOS
 >
 > - Site: <https://bitsign.com.br>
