@@ -125,7 +125,7 @@ namespace BITSIGN.Proxy
         /// <returns><see cref="String"/> representando a respectiva conexão.</returns>
         public string GerarCabecalho(bool comLabel = true) =>
             comLabel ?
-                $"Autorization:Basic {$"{this.CodigoDoContratante}:{this.ChaveDeIntegracao}".EmBase64()}" :
+                $"Authorization:Basic {$"{this.CodigoDoContratante}:{this.ChaveDeIntegracao}".EmBase64()}" :
                 $"{$"{this.CodigoDoContratante}:{this.ChaveDeIntegracao}".EmBase64()}";
     }
 }
