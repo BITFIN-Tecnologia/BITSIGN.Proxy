@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net5.0</TargetFrameworks>
-        <Authors>BITFIN Software Ltda.</Authors>
-        <Company>BITFIN Software Ltda.</Company>
+        <Authors>BITFIN Tecnologia Ltda.</Authors>
+        <Company>BITFIN Tecnologia Ltda.</Company>
         <Copyright>Copyright 2022</Copyright>
         <Description>Biblioteca .NET para consumo dos serviços (API's) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Description>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

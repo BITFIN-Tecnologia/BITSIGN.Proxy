@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 - BITFIN Software Ltda. Todos os Direitos Reservados.
+﻿// Copyright (c) 2021 - BITFIN Tecnologia Ltda. Todos os Direitos Reservados.
 // Código exclusivo para consumo dos serviços (APIs) da BITSIGN.
 
 using System.Collections.Generic;

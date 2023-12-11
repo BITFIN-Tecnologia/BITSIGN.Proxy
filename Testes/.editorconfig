@@ -9,4 +9,4 @@ indent_style = space
 indent_size = 2
 
 [*.cs]
-file_header_template = Copyright (c) 2021 - BITFIN Software Ltda. Todos os Direitos Reservados.\nCódigo de exemplo de consumo dos serviços (APIs) da BITSIGN utilizando a\nbiblioteca/pacote BITFIN.BITSIGN.Proxy.
+file_header_template = Copyright (c) 2021 - BITFIN Tecnologia Ltda. Todos os Direitos Reservados.\nCódigo de exemplo de consumo dos serviços (APIs) da BITSIGN utilizando a\nbiblioteca/pacote BITFIN.BITSIGN.Proxy.
