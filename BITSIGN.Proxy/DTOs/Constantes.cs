@@ -1,6 +1,8 @@
 ﻿// Copyright (c) 2021 - BITFIN Tecnologia Ltda. Todos os Direitos Reservados.
 // Código exclusivo para consumo dos serviços (APIs) da BITSIGN.
 
+using System;
+
 namespace BITSIGN.Proxy.DTOs
 {
     /// <summary>
@@ -129,6 +131,20 @@ namespace BITSIGN.Proxy.DTOs
                 /// <see href="http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_4.xml">http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_4.xml</see>
                 /// </summary>
                 public const string XAdES_PA_AD_RB_v2_4 = "PA_AD_RB_v2_4";
+
+                /// <summary>
+                /// Política ICP-Brasil de acordo com o padrão de assinatura.
+                /// </summary>
+                /// <param name="padraoDeAssinatura">CAdES, PAdES ou XAdES.</param>
+                /// <returns>Política mais recente implementada pela Plataforma.</returns>
+                public static string Padrao(string padraoDeAssinatura) =>
+                    padraoDeAssinatura switch
+                    {
+                        PadroesDeAssinatura.CAdES => CAdES_PA_AD_RB_v2_3,
+                        PadroesDeAssinatura.PAdES => PAdES_PA_AD_RB_v1_1,
+                        PadroesDeAssinatura.XAdES => XAdES_PA_AD_RB_v2_4,
+                        _ => throw new ArgumentException($"O padrão de assinatura informado ({padraoDeAssinatura}) não representa um valor válido. Escolhe entre: {PadroesDeAssinatura.CAdES}, {PadroesDeAssinatura.PAdES} ou {PadroesDeAssinatura.XAdES}.", nameof(padraoDeAssinatura))
+                    };
             }
         }
 

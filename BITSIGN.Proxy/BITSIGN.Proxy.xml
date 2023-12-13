@@ -1526,6 +1526,13 @@
             <see href="http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_4.xml">http://politicas.icpbrasil.gov.br/PA_AD_RB_v2_4.xml</see>
             </summary>
         </member>
+        <member name="M:BITSIGN.Proxy.DTOs.Constantes.Politicas.ICPBrasil.Padrao(System.String)">
+            <summary>
+            Política ICP-Brasil de acordo com o padrão de assinatura.
+            </summary>
+            <param name="padraoDeAssinatura">CAdES, PAdES ou XAdES.</param>
+            <returns>Política mais recente implementada pela Plataforma.</returns>
+        </member>
         <member name="T:BITSIGN.Proxy.DTOs.Constantes.Templates">
             <summary>
             Templates suportados para expansão de documentos.

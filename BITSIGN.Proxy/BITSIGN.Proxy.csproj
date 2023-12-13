@@ -6,7 +6,7 @@
         <Copyright>Copyright 2022</Copyright>
         <Description>Biblioteca .NET para consumo dos serviços (API's) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Description>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>1.1.0.23</Version>
+        <Version>1.1.0.24</Version>
         <RepositoryUrl>https://github.com/BITFIN-Software/BITSIGN.Proxy</RepositoryUrl>
         <PackageTags>api, rest-api, dot-net, icp-brasil, certificados, assinaturas-digitais, assinaturas-eletronicas, cades, pades, xades</PackageTags>
         <PackageId>BITFIN.BITSIGN.Proxy</PackageId>
@@ -14,9 +14,9 @@
         <PackageIcon>Icon.png</PackageIcon>
         <RepositoryType>git</RepositoryType>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <AssemblyVersion>1.1.0.23</AssemblyVersion>
-        <FileVersion>1.1.0.23</FileVersion>
-        <PackageReleaseNotes>Ajustes na geração do header Authorization. Externalizando o nome do arquivo complementar, recebendo-o, opcionalmente, através do construtor.</PackageReleaseNotes>
+        <AssemblyVersion>1.1.0.24</AssemblyVersion>
+        <FileVersion>1.1.0.24</FileVersion>
+        <PackageReleaseNotes>Método para retornar a política padrão de acordo com o padrão de assinatura.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Title>Biblioteca .NET para consumo dos serviços (API's) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Title>
     </PropertyGroup>
