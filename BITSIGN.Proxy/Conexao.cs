@@ -69,7 +69,7 @@ namespace BITSIGN.Proxy
         public string Nome { get; private set; }
 
         /// <summary>
-        /// Ambiente, Sandbox, Produção ou Local.
+        /// Sandbox, Produção ou Local.
         /// </summary>
         public Ambiente Ambiente { get; private set; }
 
