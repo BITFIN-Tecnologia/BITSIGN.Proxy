@@ -30,7 +30,7 @@ namespace Testes.Exemplos
             {
                 using (var proxy = new ProxyDoServico(this.Conexao, loggerEmArquivo, geradorDeRastreio))
                 {
-                    var pacote = new Pacote(new()
+                    var pacote = new Pacote(new Lote()
                     {
                         Aplicacao = new()
                         {

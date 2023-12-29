@@ -738,7 +738,7 @@
         </member>
         <member name="P:BITSIGN.Proxy.Conexao.Ambiente">
             <summary>
-            Ambiente, Sandbox, Produção ou Local.
+            Sandbox, Produção ou Local.
             </summary>
         </member>
         <member name="P:BITSIGN.Proxy.Conexao.Versao">
@@ -2434,6 +2434,13 @@
             Classe que abstrai a complexidade para criação dos pacotes de lotes e documentos que são enviados e recebidos.
             </summary>
         </member>
+        <member name="M:BITSIGN.Proxy.DTOs.Pacote.#ctor(System.Byte[])">
+            <summary>
+            Cria o pacote a partir do conteúdo compactado.
+            </summary>
+            <param name="dados">Dados compactados contendo o manifesto e os documentos.</param>
+            <remarks>O conteúdo pode ser criado a partir do resultado da API que retorna o pacote assinado; se optar por armazenar o pacote localmente, pode-se utilizar este construtor para restaurar os documentos e acessá-los de forma mais simplificada. Para um melhor entendimento da estrutura dos pacotes, consulte este <see href="https://bitsign.com.br/documentacao#integracaoPacotes">link</see>.</remarks>
+        </member>
         <member name="M:BITSIGN.Proxy.DTOs.Pacote.#ctor(BITSIGN.Proxy.DTOs.Lote,BITSIGN.Proxy.Utilitarios.FormatoDeSerializacao)">
             <summary>
             Inicia o pacote com o lote para ser enviado ao serviço.
@@ -2441,11 +2448,6 @@
             <param name="lote">Lote com os documentos originais para envio e geração de assinaturas.</param>
             <param name="formatoDeSerializacao">Formato em que será serializado o manifesto.</param>
             <remarks>Aqueles documentos que estiverem com a propriedade <see cref="P:BITSIGN.Proxy.DTOs.Documento.ConteudoOriginal"/> preenchida serão embutidos no pacote; alternativamente, informe os dados do arquivo à ser assinado na propriedade <see cref="P:BITSIGN.Proxy.DTOs.Documento.Download"/>, e isso indicará ao serviço que deverá realizar o download ao invés de procurar pelo arquivo fisicamente dentro do pacote.</remarks>
-        </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Pacote.Vazio">
-            <summary>
-            Indica se o pacote está ou não vazio.
-            </summary>
         </member>
         <member name="P:BITSIGN.Proxy.DTOs.Pacote.Lote">
             <summary>

@@ -19,12 +19,16 @@ namespace BITSIGN.Proxy.DTOs
 
         private static readonly string[] Manifestos = new[] { ManifestoXml, ManifestoJson };
 
-        internal Pacote(byte[] dados)
+        /// <summary>
+        /// Cria o pacote a partir do conteúdo compactado.
+        /// </summary>
+        /// <param name="dados">Dados compactados contendo o manifesto e os documentos.</param>
+        /// <remarks>O conteúdo pode ser criado a partir do resultado da API que retorna o pacote assinado; se optar por armazenar o pacote localmente, pode-se utilizar este construtor para restaurar os documentos e acessá-los de forma mais simplificada. Para um melhor entendimento da estrutura dos pacotes, consulte este <see href="https://bitsign.com.br/documentacao#integracaoPacotes">link</see>.</remarks>
+        public Pacote(byte[] dados)
         {
-            this.Vazio = (dados?.Length ?? 0) == 0;
+            ArgumentNullException.ThrowIfNull(nameof(dados));
 
-            if (!this.Vazio)
-                Deserializar(dados);
+            this.Deserializar(dados);
         }
 
         /// <summary>
@@ -69,11 +73,6 @@ namespace BITSIGN.Proxy.DTOs
             Compactador.Compactar(
                 this.Arquivos.Concat(
                     !(this.Lote.Anexos?.Any() ?? false) ? Enumerable.Empty<(string, byte[])>() : this.Lote.Anexos.Select(static a => ($"anexos/{a.NomeDoArquivo}", a.Conteudo))));
-
-        /// <summary>
-        /// Indica se o pacote está ou não vazio.
-        /// </summary>
-        public bool Vazio { get; }
 
         /// <summary>
         /// Lote de documentos com seus respectivos arquivos.
