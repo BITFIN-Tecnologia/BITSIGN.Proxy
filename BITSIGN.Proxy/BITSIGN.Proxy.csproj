@@ -14,9 +14,9 @@
         <PackageIcon>Icon.png</PackageIcon>
         <RepositoryType>git</RepositoryType>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <AssemblyVersion>1.1.0.25</AssemblyVersion>
-        <FileVersion>1.1.0.25</FileVersion>
-        <PackageReleaseNotes>Expondo o construtor do Pacote para que seja possível a recriação do mesmo quando o conteúdo (ZIP) estiver armazenado localmente. Atualização para o .NET 8.</PackageReleaseNotes>
+        <AssemblyVersion>1.1.0.26</AssemblyVersion>
+        <FileVersion>1.1.0.26</FileVersion>
+        <PackageReleaseNotes>Correção de nome de propriedade.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Title>Biblioteca .NET para consumo dos serviços (API's) fornecidos pela BITSIGN, recepção de callbacks e demais recursos para a integração entre sistemas.</Title>
     </PropertyGroup>

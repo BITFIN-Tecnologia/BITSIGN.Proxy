@@ -61,7 +61,7 @@ namespace BITSIGN.Proxy.DTOs
                 documento.ConteudoOriginal = zip.FirstOrDefault(a => string.Compare(a.nome, documento.NomeDoArquivo, true) == 0).conteudo;
                 documento.ConteudoAssinado = zip.FirstOrDefault(a => string.Compare(a.nome, documento.NomeDoArquivoAssinado, true) == 0).conteudo;
                 documento.ConteudoDoManifesto = zip.FirstOrDefault(a => string.Compare(a.nome, documento.NomeDoArquivoDeManifesto, true) == 0).conteudo;
-                documento.ConteudoDoOrginalComManifesto = zip.FirstOrDefault(a => string.Compare(a.nome, documento.NomeDoArquivoOriginalComManifesto, true) == 0).conteudo;
+                documento.ConteudoDoOriginalComManifesto = zip.FirstOrDefault(a => string.Compare(a.nome, documento.NomeDoArquivoOriginalComManifesto, true) == 0).conteudo;
             }
 
             this.Lote = lote;

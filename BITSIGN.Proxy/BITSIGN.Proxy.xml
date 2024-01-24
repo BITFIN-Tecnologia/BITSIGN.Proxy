@@ -1933,7 +1933,7 @@
             Conteúdo do arquivo de manifesto de assinaturas.
             </summary>
         </member>
-        <member name="P:BITSIGN.Proxy.DTOs.Documento.ConteudoDoOrginalComManifesto">
+        <member name="P:BITSIGN.Proxy.DTOs.Documento.ConteudoDoOriginalComManifesto">
             <summary>
             Conteúdo do arquivo original com o manifesto de assinaturas incluído.
             </summary>

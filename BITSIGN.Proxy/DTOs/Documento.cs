@@ -340,7 +340,7 @@ namespace BITSIGN.Proxy.DTOs
         /// Conteúdo do arquivo original com o manifesto de assinaturas incluído.
         /// </summary>
         [XmlIgnore, JsonIgnore]
-        public byte[] ConteudoDoOrginalComManifesto { get; set; }
+        public byte[] ConteudoDoOriginalComManifesto { get; set; }
 
         /// <summary>
         /// URL para acesso online do manifesto de assinaturas do documento.
