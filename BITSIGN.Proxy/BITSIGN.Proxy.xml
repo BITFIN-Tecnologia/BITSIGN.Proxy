@@ -1726,6 +1726,11 @@
             Laudo Técnico.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.LetraDeCambio">
+            <summary>
+            Letra de Câmbio.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Manifesto">
             <summary>
             Manifesto.
@@ -1799,6 +1804,11 @@
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeCessao">
             <summary>
             Termo de Cessão.
+            </summary>
+        </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeConduta">
+            <summary>
+            Termo de Conduta.
             </summary>
         </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeConfidencialidade">
