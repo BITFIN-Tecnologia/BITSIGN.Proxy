@@ -125,6 +125,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string LaudoTecnico = "Laudo Técnico";
             /// <summary>
+            /// Letra de Câmbio.
+            /// </summary>
+            public const string LetraDeCambio = "Letra de Câmbio";
+            /// <summary>
             /// Manifesto.
             /// </summary>
             public const string Manifesto = "Manifesto";
