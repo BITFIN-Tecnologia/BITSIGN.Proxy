@@ -73,6 +73,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string CedulaDeProdutorRural = "Cédula de Produtor Rural";
             /// <summary>
+            /// Certificado.
+            /// </summary>
+            public const string Certificado = "Certificado";
+            /// <summary>
             /// Confissão de Dívida.
             /// </summary>
             public const string ConfissaoDeDivida = "Confissão de Dívida";
