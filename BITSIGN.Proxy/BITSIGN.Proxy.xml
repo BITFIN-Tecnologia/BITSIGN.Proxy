@@ -1661,6 +1661,11 @@
             Cédula de Produtor Rural.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.Certificado">
+            <summary>
+            Certificado.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.ConfissaoDeDivida">
             <summary>
             Confissão de Dívida.
