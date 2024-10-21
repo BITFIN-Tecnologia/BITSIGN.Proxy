@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BITSIGN.Proxy.DTOs
 {
@@ -51,18 +52,22 @@ namespace BITSIGN.Proxy.DTOs
             var zip = Compactador.Descompactar(dados);
             var manifesto = zip.FirstOrDefault(static arquivo => Manifestos.Contains(arquivo.nome, StringComparer.CurrentCultureIgnoreCase));
             var formatoDeSerializacao = string.Compare(manifesto.nome, ManifestoJson, true) == 0 ? FormatoDeSerializacao.Json : FormatoDeSerializacao.Xml;
-
             var lote = Serializador.Deserializar<List<Lote>>(Encoding.UTF8.GetString(manifesto.conteudo), formatoDeSerializacao.ToString(), "Lotes").First();
 
-            foreach (var documento in lote.Documentos)
+            Parallel.ForEach(lote.Documentos, documento =>
             {
-                var (nome, conteudo) = zip.FirstOrDefault(a => string.Compare(a.nome, documento.NomeDoArquivo, true) == 0);
-
-                documento.ConteudoOriginal = zip.FirstOrDefault(a => string.Compare(a.nome, documento.NomeDoArquivo, true) == 0).conteudo;
-                documento.ConteudoAssinado = zip.FirstOrDefault(a => string.Compare(a.nome, documento.NomeDoArquivoAssinado, true) == 0).conteudo;
-                documento.ConteudoDoManifesto = zip.FirstOrDefault(a => string.Compare(a.nome, documento.NomeDoArquivoDeManifesto, true) == 0).conteudo;
-                documento.ConteudoDoOriginalComManifesto = zip.FirstOrDefault(a => string.Compare(a.nome, documento.NomeDoArquivoOriginalComManifesto, true) == 0).conteudo;
-            }
+                foreach (var (nome, conteudo) in zip)
+                {
+                    if (string.Compare(nome, documento.NomeDoArquivo, true) == 0)
+                        documento.ConteudoOriginal = conteudo;
+                    else if (string.Compare(nome, documento.NomeDoArquivoAssinado, true) == 0)
+                        documento.ConteudoAssinado = conteudo;
+                    else if (string.Compare(nome, documento.NomeDoArquivoDeManifesto, true) == 0)
+                        documento.ConteudoDoManifesto = conteudo;
+                    else if (string.Compare(nome, documento.NomeDoArquivoOriginalComManifesto, true) == 0)
+                        documento.ConteudoDoOriginalComManifesto = conteudo;
+                }
+            });
 
             this.Lote = lote;
             this.Arquivos = zip;
