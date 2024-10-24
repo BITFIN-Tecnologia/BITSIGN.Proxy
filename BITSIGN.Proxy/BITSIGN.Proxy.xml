@@ -1801,6 +1801,11 @@
             Termo de Aceite.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeAberturaDeConta">
+            <summary>
+            Termo de Abertura de Conta.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeAdesao">
             <summary>
             Termo de Adesão.

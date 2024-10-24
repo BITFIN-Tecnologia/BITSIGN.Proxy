@@ -185,6 +185,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string TermoDeAceite = "Termo de Aceite";
             /// <summary>
+            /// Termo de Abertura de Conta.
+            /// </summary>
+            public const string TermoDeAberturaDeConta = "Termo de Abertura de Conta";
+            /// <summary>
             /// Termo de Adesão.
             /// </summary>
             public const string TermoDeAdesao = "Termo de Adesão";
