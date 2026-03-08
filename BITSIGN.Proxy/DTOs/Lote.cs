@@ -48,6 +48,12 @@ namespace BITSIGN.Proxy.DTOs
         public string Tags { get; set; }
 
         /// <summary>
+        /// Indica se deverá notificar os assinantes via WhatsApp.
+        /// </summary>
+        [XmlAttribute]
+        public bool NotificacaoWhatsApp { get; set; }
+
+        /// <summary>
         /// Estrutura para organização em diretórios virtuais.
         /// </summary>
         public string Diretorio { get; set; }

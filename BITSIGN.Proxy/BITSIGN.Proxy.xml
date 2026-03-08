@@ -2259,6 +2259,11 @@
             Tags utilizadas para correlacionar o lote ao sistema do contratante.
             </summary>
         </member>
+        <member name="P:BITSIGN.Proxy.DTOs.Lote.NotificacaoWhatsApp">
+            <summary>
+            Indica se deverá notificar os assinantes via WhatsApp.
+            </summary>
+        </member>
         <member name="P:BITSIGN.Proxy.DTOs.Lote.Diretorio">
             <summary>
             Estrutura para organização em diretórios virtuais.
