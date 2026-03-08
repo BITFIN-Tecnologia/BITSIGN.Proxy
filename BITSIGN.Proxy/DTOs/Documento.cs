@@ -205,6 +205,10 @@ namespace BITSIGN.Proxy.DTOs
             /// </summary>
             public const string TermoDeConfidencialidade = "Termo de Confidencialidade";
             /// <summary>
+            /// Termo de Endosso.
+            /// </summary>
+            public const string TermoDeEndosso = "Termo de Endosso";
+            /// <summary>
             /// Termo de Garantia.
             /// </summary>
             public const string TermoDeGarantia = "Termo de Garantia";
