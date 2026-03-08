@@ -1826,6 +1826,11 @@
             Termo de Confidencialidade.
             </summary>
         </member>
+        <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeEndosso">
+            <summary>
+            Termo de Endosso.
+            </summary>
+        </member>
         <member name="F:BITSIGN.Proxy.DTOs.Documento.Tipos.TermoDeGarantia">
             <summary>
             Termo de Garantia.
